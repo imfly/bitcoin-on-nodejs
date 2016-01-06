@@ -9,7 +9,7 @@
         "bitcoin",
         "nodejs"
     ],
-    "ignores": ["backup", "_book"],
+    "ignores": ["backup", "_book", "styles"],
     "homepage": "http://imfly.github.io/bitcoin-on-nodejs",
     "license": "MIT",
     "repository": {
