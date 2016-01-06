@@ -22,10 +22,11 @@
 
 ## 作者
 
-有好玩的事，请[跟我联系] [/6-附录/28-关于作者.md]
+有好玩的事，请[跟我联系] []
 
 [github]: https://github.com/imfly/bitcoin-on-nodejs
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
 [gitbook-summary]: https://github.com/imfly/gitbook-summary
 [self-publishing]: https://github.com/imfly/how-to-create-self-publishing-platform
+[跟我联系]: /6-附录/28-关于作者.md
 
