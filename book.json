@@ -1,0 +1,22 @@
+{
+    "bookname": "Nodejs开发加密货币",
+    "description": "第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍",
+    "author": {
+        "name": "Imfly",
+	"weixin": "kubying"
+    },
+    "keywords": [
+        "bitcoin",
+        "nodejs"
+    ],
+    "ignores": ["backup", "_book"],
+    "homepage": "http://imfly.github.io/bitcoin-on-nodejs",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/imfly/bitcoin-on-nodejs.git"
+    },
+    "bugs": {
+        "url": "https://github.com/imfly/bitcoin-on-nodejs/issues"
+    }
+}
