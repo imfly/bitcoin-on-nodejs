@@ -44,17 +44,95 @@ bitcoin OR wallet stars:>100 forks:>50 in:file extension:md
 
 你可以修改限制条件或关键字，多试验几次。
 
-如果仅限于这样的结果，作为程序员，实在不过瘾，至少数据显示就不够直观。为了一劳永逸的获得咱们想要的结果，我专门开启了一个小项目，上面`Github上Top20项目情况`，以及下面的结果就来自于这个项目的统计，这才是大数据时代应有的样子。
+如果仅限于这样的结果，实在不过瘾。为了一劳永逸的获得想要的结果，我专门设计了一个小工具，看看它给我们的效果吧。
 
 上面两个查询的结果如下：
 
-(1)表格形式
+(1)柱状图
+
+查询`bitcoin`关键字，获得如下柱状图
+
+![sacdl-bitcoin-bar][]
+
+查询`wallet`关键字（不一定是加密货币钱包），获得如下柱状图
+
+![sacdl-wallet-bar][]
 
 (2)树形展示
 
-(3)更复杂查询
+查询`bitcoin`关键字，获得如下树状图
 
-## 前10大应用介绍
+![sacdl-bitcoin-treemap][]
+
+(3)更复杂的查询
+
+请自己去体验吧。
+
+## 前10个应用简介
+
+我们查询
+
+```
+bitcoin language:JavaScript 
+```
+
+看看前10个应用都是什么。
+
+１. bitpay/bitcore　1656颗星，429个分支
+
+源码网址: https://github.com/bitpay/bitcore
+
+第一位，这是bitpay团队的产品，号称下一代PayPal。这么成功的案例，足见Nodejs开发加密货币的可行性。巴比特有专栏介绍。
+
+２. startup-class/bitstarter-leaderboard 295颗星，386个分支
+
+源码网址：https://github.com/startup-class/bitstarter-leaderboard
+
+第二位，这应该是一个用于基于比特币开发众筹网站的模板程序。巴比特在做众筹，很多人也想进入这个圈子，可以参考学习。
+
+３. bitcoinjs/bitcoinjs-lib 980颗星，305个分支
+
+源码网址：https://github.com/bitcoinjs/bitcoinjs-lib
+
+第三位，这是个比特币web钱包开发包，几乎当前市面上所有的基于网站的钱包都在用，牛吧。
+
+４. askmike/gekko 866颗星，300个分支
+
+源码网址：https://github.com/askmike/gekko
+
+第四位，你也想推出一个像时代、okcoin那样的基于网页的交易市场吗，这个代码不容错过。不过，Gekko提醒您要自担风险。
+
+５. bitpay/insight-ui 354颗星，267个分支
+
+源码网址：https://github.com/bitpay/insight-ui
+
+第五位，这是bitpay放出的一个开发web钱包的UI包（要基于bitcoin-node)，看来当前开发钱包的需求还是比较大的。可以与排行第７位的是bitpay/insight-api配合开发。
+
+６. kyledrake/coinpunk　733颗星，249个分支
+
+第六位，该项目是一个本地化的钱包服务程序，已经停止维护，取而代之的就是第３位的bitcoinjs-lib。
+
+７. bitpay/insight-api（略）
+
+８. cjb/GitTorrent 3065颗星，133个分支
+
+源码网址：https://github.com/cjb/GitTorrent
+
+第八位，不过它的好评3065颗星却是最高的。这是一个去中心化的Github，作者写了[一篇博客][]详细解释了为什么Git也可以去中心化。我本人觉得，这项目确实有意思，也为我们开发去中心化的产品扩展了视野。基于这个项目思路，可以设想很多有价值的应用。
+
+９. bitcoinjs/bitcoinjs-server
+
+源码网址：https://github.com/bitcoinjs/bitcoinjs-server
+
+第九位，已经放弃维护了。
+
+10.　untitled-dice/untitled-dice.github.io　26颗星，114个分支
+
+源码网址：https://github.com/untitled-dice/untitled-dice.github.io
+　
+第十位，一个基于比特币的赌博网站源码。有意思的是，用户评价26颗星，很低，人们的价值观还是不喜欢赌博的。但是拷贝的分支却很多，对于开发者来说，这也算是比特币的一个落地应用。
+
+其实，还有很多应用，并没有开源，或半开源，并不为人所知。比如：crypti，一个类似于以太坊的应用，就在默默开发中。后面，我们详细介绍它，并对它的源码进行解读。
 
 ## 结论
 
@@ -82,6 +160,10 @@ bitcoin OR wallet stars:>100 forks:>50 in:file extension:md
 [Github]: https://github.com 我个人称之为Github代码托管社区
 [Github自带的搜索工具]: https://github.com/search
 
-[Github上Top20项目情况]: 
+[Github上Top20项目情况]: ./styles/images/top20-table.jpg
 [github-search-bitcoin]: ./styles/images/github-search-bitcoin.jpg
 [github-search-bitcoin-result]: ./styles/images/github-search-bitcoin-result.jpg
+[sacdl-bitcoin-bar]: ./styles/images/sacdl-bitcoin-bar.jpg
+[sacdl-wallet-bar]: ./styles/images/sacdl-wallet-bar.jpg
+[sacdl-bitcoin-treemap]: ./styles/images/sacdl-bitcoin-treemap.jpg
+[一篇博客]: http://blog.printf.net/articles/2015/05/29/announcing-gittorrent-a-decentralized-github/

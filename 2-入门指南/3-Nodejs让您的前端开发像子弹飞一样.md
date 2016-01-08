@@ -48,9 +48,17 @@ npm v3.3.12
 #### 新建工程
 
 安装前端管理工具
+
 ```
 npm install -g bower
 ```
+
+通过`bower`，安装`d3.js`
+
+```
+bower install d3 
+```
+
 #### 读取Api
 
 #### D3.js展示
@@ -60,10 +68,20 @@ npm install -g bower
 
 ## 参考资源
 
+直接参考的用例：
+
+[d3.layout.treemap](http://mbostock.github.io/d3/talk/20111018/treemap.html)
+[Grouped horizontal bar chart](http://bl.ocks.org/erikvullings/51cc5332439939f1f292)
+
+官方网站
+
 [Nodejs官方网站]()
 [d3.js官方网站](https://d3js.org)　
+
+值得借鉴的文档
+
 [快速搭建 Node.js 开发环境以及加速 npm](https://cnodejs.org/topic/5338c5db7cbade005b023c98)
 [xcharts一个封装d3.js的图表展示包](http://tenxer.github.io/xcharts/)
 [大数据时代的图表可视化利器——highcharts,D3和百度的echarts](http://www.thebigdata.cn/JieJueFangAn/12972.html)
-[d3可视化实战00：d3的使用心得和学习资料汇总](http://www.storagelab.org.cn/zhangdi/2014/08/23/d3%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AE%9E%E6%88%9800%EF%BC%9Ad3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%E5%92%8C%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/)
+[d3的使用心得和学习资料汇总](http://www.storagelab.org.cn/zhangdi/2014/08/23/d3%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AE%9E%E6%88%9800%EF%BC%9Ad3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%E5%92%8C%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/)
 
