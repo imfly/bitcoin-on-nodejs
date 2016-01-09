@@ -158,7 +158,7 @@ bitcoin language:JavaScript
 
 ## 链接
 
-本文源文地址： https://github.com/imfly/bitcoin-on-nodejs
+本文源地址： https://github.com/imfly/bitcoin-on-nodejs
 
 电子书阅读： http://imfly.github.io/bitcoin-on-nodejs/
 
