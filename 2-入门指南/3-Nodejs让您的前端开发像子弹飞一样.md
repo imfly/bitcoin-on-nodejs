@@ -1,12 +1,15 @@
+Nodejs让您的前端开发像子弹飞一样
+-------------------------------
+
 ## 前言
 
 从本文开始，我们正式进入Nodejs的世界。
 
 本文，将指引您搭建Nodejs开发环境，向您介绍Nodejs的安装、使用，帮您快速进入Nodejs的世界。
 
-通过本文，让您彻底转变对前端开发的认知，;您可以学习到，如何将一些公共平台的资源为己所用，比如像巴比特一样即时显示交易市场的交易行情。
+通过本文，让您对前端开发有一个完整、全新的认知，可以学习到，如何将一些第三方平台的资源为己所用，比如像巴比特一样即时显示交易市场的交易行情。
 
-本文的实例就是，上文提到的加密货币开发语言统计分析项目(Statistical Analysis of Cryptocurrency Development Languages，简称`Sacdl`)，[点击这里][sacdl]，在线体验。
+本文的实例就是，上篇文章提到的加密货币开发语言统计分析项目(Statistical Analysis of Cryptocurrency Development Languages，简称`Sacdl`)，[点击这里][sacdl]，在线体验。
 
 ## 项目需求
 
@@ -148,6 +151,16 @@ cnpm install -g bower # 也可以使用 npm install * 命令，二者一样，�
 ```
 
 说明：`bower`是一个npm包，是专门用来管理web前端（包含js,css,images,fonts等）依赖包的。我们可以简单类比，bower用于管理前端包，npm管理后台库（包），二者用法十分相似。
+
+初始化
+
+```
+bower init
+```
+
+结果如下：
+
+![bower-init][]
 
 通过`bower`，安装`d3.js`
 
@@ -317,8 +330,8 @@ function getTreeData(dataSet) {
 d3.js的基本流程是：
 
 * 在html中，提供展示图表的位置，通常是给一个div#divId;
-* 定义图表渲染流程，怎么append`svg`元素，怎么填充`text`元素等;
-* 请求并填充数据
+* 请求并填充数据;
+* 渲染图表，用append()新增元素，填充`text`等，用remove()删除多余元素;
 
 我们用最简单的例子，演示一下（代码在工程源码的test文件夹下）：
 
@@ -334,11 +347,12 @@ d3.js的基本流程是：
 //这是要渲染的数据，可以动态获得
 var dataset = [1, 2, 3, 4];
 
-//这是渲染的方法，特别是data()方法是填充数据的重要方法
+//填充数据，通常要使用d3.layout提供的数据模板进行处理，然后用data()方法去填
 var chart = d3.select('#testId')
         .selectAll('p')
         .data(dataset, function(d) { return d; });
 
+//渲染视图，主要是下面2个方法
 //data（）之后才可以调用的enter()方法，意思是有数据填充的那部分图表元素，通常去增加`append`元素
 chart
 .enter()
@@ -351,13 +365,15 @@ chart
 chart.exit().remove();
 ```
 
-比如上面，我们默认提供了4个数值，第一次渲染正常显示;如果数据换成了[5,6]，再此渲染，enter()方法就是原来渲染[1,2]的元素（现在换成了[5,6]),而[3,4]位置的元素因为没有了数据，自然要删除掉。这样就实现了图表动态转换。
+比如上面，我们默认提供了dataset的4个数值，第一次渲染，会正常显示4个元素;接着，数据dataset换成[5,6]，再此渲染，enter()方法将获得原来渲染[1,2]的元素，并将其值换成[5,6]，而[3,4]位置的元素因为没有了数据，被删除掉。这样就实现了图表动态转换。
 
-（2）渲染我们数据
+**注意**：上面提到的`d3.layout`可能是一个颠覆三观的概念。`layout`作为层的概念，通常在html视图中用作全局共享的模板文件，比如：layout.html, layout.ejs等。但是，这里d3.js是用在数据上的，提供了`d3.layout.treemap()`等方法，用于对各种图表数据进行计算和处理，即：`数据模板`。d3.js的视图处理，就是使用append()和remove()去增加或删除元素来处理，配合诸如`.style()`元素样式格式化的方法，实现页面控制。显然，这样做的意义就是真正的`数据驱动`。
+
+（2）渲染我们的数据
 
 d3.js提供了d3.json(),d3.csv()等请求数据的方法，我们上述数据是json格式，自然就用前者了
 
-我们以矩阵图为例，现在index.html加入如下元素
+我们以矩阵图为例（我也是参考官方的示例，见参考资源），现在index.html加入如下元素
 
 ```
 <div id="sacdlTreemap"></div>
@@ -386,41 +402,184 @@ d3.json(url, function(err, data) {
 
 具体请看源码。
 
-#### 8.部署发布
+（3）查看效果
 
+前端不用服务器，因此直接右键，选择在浏览器中打开就是了。看看效果如何。
+
+#### 8.代码调试
+
+如果达到预期效果，如何发现问题所在呢？前端调试和测试也是一门学问，内容所限，无法细说。告诉您本人常用的调试前端代码的工具，就是火狐浏览器的`firebug`扩展插件。当然，对于本应用，用火狐或谷歌浏览器默认的控制台就可以了。
+
+具体用法是，在打开的浏览器页面，按下`F12`,就会在地步弹出控制台窗口，如下：
+
+![firefox-console][]
+
+错误信息，设置断点等基本功能已经具备。
+
+#### 9.部署发布
+
+经过一番调试，代码终于达到自己的预期效果，为了提高页面加载速度，增强用户体验，需要对代码进行合并、压缩，如果要保护自己的劳动，不想被别人无偿使用，还需要对代码进行混淆，最好部署到专门的服务器空间上。这些工作，可以实现一键操作。
+
+`Nodejs`圈子里，有2个最为流行的工具，可以实现上述功能的一键操作，一个是`grunt`,出现的最早。另一个是`gulp`，后来居上，号称是为了解决前者的问题而生的，目的就是为了消灭前者。事实证明，`gulp`确实很好用，简单、高效，我们就用它。
+
+（1）原理
+
+`gulp`用到的核心概念就是管道流，你可以理解成我们生活中的各种管道的概念，比如自来水管道。文件或数据就是水，`gulp`各类插件就是过滤网等水处理器械。
+
+建设一条管道涉及到5个方法，分别是：
+
+1>构建管道并起个名字用`gulp.task()`，
+2>管道入口方法叫`gulp.src()`（src代表源文件）,
+每一节管道叫`.pipe()`(要用在入口和出口中间，在其中放入各种插件方法，就相当于加了层过滤网),
+3>一直流向管道出口方法叫`gulp.dest()`（dest英文意思是目标）,
+4>监控水流变化（文件变化）用`gulp.watch`,
+5>综合调度各个管道的运行，用`gulp.run`
+
+最后在命令启动管道，就用`gulp`或`gulp taskname`命令
+
+如图，看看下面的几条管道，就很容易理解和记住常用的方法：
+
+![pipe][]
+
+（2）安装
+
+首先，
+
+```
+cnpm install gulp --globel
+```
+
+这里使用`--globel`进行全局安装，这样我们才可以在任何路径下使用`gulp`命令。
+
+然后，
+
+```
+cnpm install gulp --save-dev
+```
+
+这里安装在工程目录下，目的是方便管理。同时，因为`gulp`仅仅是开发辅助工具，只在本地开发机器上使用，因此上述命令添加`--save-dev`选项，把`gulp`模块安装在开发依赖里。
+
+（3）建管道
+
+`gulp`命令默认请求`gulpfile.js`文件，手动建一个吧，上面说各类管道（任务）都在这个文件里，本工程对js进行处理的代码如下：
+
+```
+----其他代码-----
+// 开建管道，名字叫`js`
+gulp.task('js', ['clean'], function() {
+    // 合并、压缩、混淆，并拷贝js文件
+    return es.merge(                   //这是个workflow插件，是Nodejs模块，都是Nodejs应用，当然也可以使用了
+            gulp.src(assets.js.vendor) //管道1入口
+            .pipe(gulp.dest(settings.destFolder + '/js/')), // 直接流到管道1出口，相当于简单拷贝
+
+            gulp.src(assets.js.paths) //管道2入口
+            .pipe(order(assets.js.order)) //过滤网1：排序
+            .pipe(sourcemaps.init())  //过滤网2：建sourcemaps
+		    .pipe(uglify())   //这算是管道中的管道了，过滤网3：混淆处理
+		    .pipe(concat(settings.prefix.destfile + '.js')) //过滤网4：合并处理
+            .pipe(sourcemaps.write()) //建maps结束，输出sourcemaps
+            .pipe(gulp.dest(settings.destFolder + '/js')) //管道2出口
+        )
+        .pipe(concat(settings.prefix.mergefile + '.js'))  //汇总管道：对上述2个管道的输出再合并
+        .pipe(gulp.dest(settings.destFolder + '/js/'))    //汇总管道出口
+});
+----其他代码-----
+```
+
+详情请看源码。
+
+在命令行，输入如下命令，运行该任务
+
+```
+gulp js
+```
+
+（4）插件
+
+上述代码中用到的`es`,`order`，`sourcemaps`,`uglify`等对应4个`gulp`插件，都可以从官网找到，本工程涉及到的，算是最常用的插件，如下：
+
+```
+"gulp-concat": "^2.6.0",        //合并js,css等
+"gulp-cssnano": "^2.1.0",       //css压缩，取代了gulp-minify-css
+"gulp-gh-pages": "^0.5.4",      //部署到github的`gh-pages`，本工程在线演示就是这么部署的
+"gulp-imagemin": "^2.4.0",      //图片压缩
+"gulp-order": "^1.1.1",         //js，css等顺序合并等
+"gulp-processhtml": "^1.1.0",   //将处理完的代码，替换到.html、.ejs等模板文件里
+"gulp-sourcemaps": "^1.6.0",    //产生sourcemaps文件
+"gulp-uglify": "^1.5.1",        //混淆和压缩js文件
+```
+
+（5）部署
+
+上面的插件列表里，有一个``插件，可以帮我们部署到`gh-pages`
+
+```
+var ghPages = require('gulp-gh-pages');
+
+//Deploy
+gulp.task('deploy', function() {
+    return gulp.src('./dist/**/*')
+               .pipe(ghPages());
+});
+```
+
+运行如下命令，即可
+
+```
+gulp deploy
+```
+
+当然，最好在运行部署命令之前，运行合并、压缩等处理命令，如果想省事，就定义在上述部署任务里。请参考源码。
 
 ## 总结
 
+写完这一章，好累。回头看看，发现上面的每一个小节，其实都可以用一章来说明。缺乏细节，会让读者，特别是新手，很辛苦。相反，太注重细节，会让我们失去主题。所以，这也是一个很难取舍的过程，欢迎您提供宝贵意见或建议。
+
+这里提供了完整的程序源码。源码多了很多功能，比如对输入框的处理、事件的监听、多数据格式的处理，还包括`bootstrap`的使用等。但文章仅摘录了部分核心内容，在阅读的时候，要注意结合源码，实在不明白要参考下面提供的资源，或给我留言。
+
+现在，您应该可以轻松的把比特时代、okcoin等交易市场的交易行情，即时的显示在自己的网站上了。如果，掌握些比特币核心代码，它也提供了很多Api，能不能像本文这样直接读取呢？如果可以的话，岂不是很容易就能开发一个`blockchain.info`？
+
+具体分析，请看下一篇：**《Nodejs开发加密货币》之三：Nodejs让后台开发像前端一样简单**，简单介绍`Nodejs`后台开发实践，写`Nodejs`模块，为以后的代码分析打好基础。
 
 ## 链接
 
-Github开源项目统计分析工具: <https://github.com/imfly/sacdl-project> 试用地址：<https://imfly.github.io//sacdl-project>
+项目源码: <https://github.com/imfly/sacdl-project> 
 
-## 参考资源
+试用地址：<https://imfly.github.io/sacdl-project>
 
-直接参考的用例
+## 参考
+
+参考用例
 
 d3.layout.treemap: http://mbostock.github.io/d3/talk/20111018/treemap.html
+
 Grouped horizontal bar chart: http://bl.ocks.org/erikvullings/51cc5332439939f1f292
 
 官方网站
 
 Nodejs官方网站: https://nodejs.org/
+
 Bower官方问站： http://bower.io/
+
 d3.js官方网站: https://d3js.org
 
 值得借鉴的文档
 
 [xcharts一个封装d3.js的图表展示包](http://tenxer.github.io/xcharts/)
+
 [大数据时代的图表可视化利器——highcharts,D3和百度的echarts](http://www.thebigdata.cn/JieJueFangAn/12972.html)
+
 [d3的使用心得和学习资料汇总](http://www.storagelab.org.cn/zhangdi/2014/08/23/d3%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AE%9E%E6%88%9800%EF%BC%9Ad3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%E5%92%8C%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/)
 
 [sacdl]: https://imfly.github.io/sacdl-project
 [runoob]: http://www.runoob.com/nodejs/nodejs-tutorial.html
 [nodejs install]: https://cnodejs.org/topic/5338c5db7cbade005b023c98
 [ebookcoin]: http://8btc.com/forum.php?mod=viewthread&tid=26208&highlight=%B5%E7%D7%D3%CA%E9
-[front-data-follow]: ../styles/images/front-data-follow.jpg
+[front-data-follow]: ../styles/images/2/front-data-follow.jpg
 [官方搜索示例]: https://developer.github.com/v3/search/
-[github-search-example]: ../styles/images/github-search-example.jpg
-[project-folder]:
+[github-search-example]: ../styles/images/2/github-search-example.jpg
+[project-folder]: ../styles/images/2/project-folders.png
 [project-source]: https://github.com/imfly/sacdl-project
+[firefox-console]: ../styles/images/2/firefox-console.jpg
+[pipe]: ../styles/images/2/pipe.png
+[bower-init]: ../styles/images/2/bower-init.jpg
