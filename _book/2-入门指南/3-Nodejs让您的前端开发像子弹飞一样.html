@@ -1,0 +1,501 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Nodejs让您的前端开发像子弹飞一样 | Nodejs开发加密货币</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.6">
+        <meta name="author" content="[object Object]">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../2-入门指南/4-您必须知道的几个Nodejs编码习惯.html" />
+    
+    
+    <link rel="prev" href="../2-入门指南/2-Nodejs原来在币圈如此流行？.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2.2"
+        data-chapter-title="Nodejs让您的前端开发像子弹飞一样"
+        data-filepath="2-入门指南/3-Nodejs让您的前端开发像子弹飞一样.md"
+        data-basepath=".."
+        data-revision="Sat Jan 09 2016 08:42:44 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="1-开栏寄语/1-开栏寄语.html">
+            
+                
+                    <a href="../1-开栏寄语/1-开栏寄语.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        开栏寄语
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="2-入门指南/readme.html">
+            
+                
+                    <a href="../2-入门指南/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        入门指南
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="2-入门指南/2-Nodejs原来在币圈如此流行？.html">
+            
+                
+                    <a href="../2-入门指南/2-Nodejs原来在币圈如此流行？.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Nodejs原来在币圈如此流行？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="2-入门指南/3-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                
+                    <a href="../2-入门指南/3-Nodejs让您的前端开发像子弹飞一样.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Nodejs让您的前端开发像子弹飞一样
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="2-入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                
+                    <a href="../2-入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        您必须知道的几个Nodejs编码习惯
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="3-源码解读/readme.html">
+            
+                
+                    <a href="../3-源码解读/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="3-源码解读/5-进入Crypti的代码世界.html">
+            
+                
+                    <a href="../3-源码解读/5-进入Crypti的代码世界.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        进入Crypti的代码世界
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="3-源码解读/6-细查Crypti的入口程序.html">
+            
+                
+                    <a href="../3-源码解读/6-细查Crypti的入口程序.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        细查Crypti的入口程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="3-源码解读/7-20-逐个分析区块链、加密、点对点等各模块的实现.html">
+            
+                
+                    <a href="../3-源码解读/7-20-逐个分析区块链、加密、点对点等各模块的实现.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        20-逐个分析区块链、加密、点对点等各模块的实现
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="4-最佳实践/readme.html">
+            
+                
+                    <a href="../4-最佳实践/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        最佳实践
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="4-最佳实践/21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论.html">
+            
+                
+                    <a href="../4-最佳实践/21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="5-结束语/readme.html">
+            
+                
+                    <a href="../5-结束语/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        结束语
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="5-结束语/25-结束语（进入项目实践）.html">
+            
+                
+                    <a href="../5-结束语/25-结束语（进入项目实践）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        25-结束语（进入项目实践）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" >
+            
+            <span><b>6.</b> 附录</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="6-附录/26-贡献者名单（感谢那些提供指引、帮助和纠正错误的朋友）.html">
+            
+                
+                    <a href="../6-附录/26-贡献者名单（感谢那些提供指引、帮助和纠正错误的朋友）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        26-贡献者名单（感谢那些提供指引、帮助和纠正错误的朋友）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="6-附录/27-2016年心愿单.html">
+            
+                
+                    <a href="../6-附录/27-2016年心愿单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        27-2016年心愿单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="6-附录/28-关于作者.html">
+            
+                
+                    <a href="../6-附录/28-关于作者.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        28-关于作者
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Nodejs开发加密货币</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x4ECE;&#x672C;&#x6587;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x6B63;&#x5F0F;&#x8FDB;&#x5165;Nodejs&#x7684;&#x4E16;&#x754C;&#x3002;</p>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x5C06;&#x6307;&#x5F15;&#x60A8;&#x642D;&#x5EFA;Nodejs&#x5F00;&#x53D1;&#x73AF;&#x5883;&#xFF0C;&#x5411;&#x60A8;&#x4ECB;&#x7ECD;Nodejs&#x7684;&#x5B89;&#x88C5;&#x3001;&#x4F7F;&#x7528;&#x3001;&#x5E38;&#x7528;&#x8D44;&#x6E90;&#xFF0C;&#x5E2E;&#x60A8;&#x5FEB;&#x901F;&#x8FDB;&#x5165;Nodejs&#x7684;&#x4E16;&#x754C;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x662F;&#x4EE5;&#x4ECB;&#x7ECD;&#x4E0A;&#x6587;&#x7684;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x5F00;&#x53D1;&#x8BED;&#x8A00;&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x9879;&#x76EE;(Statistical Analysis of Cryptocurrency Development Languages&#xFF0C;&#x7B80;&#x79F0;<code>Sacdl</code>)&#x4E3A;&#x4E3B;&#x7EBF;&#x3002;</p>
+<h2 id="&#x9879;&#x76EE;&#x9700;&#x6C42;">&#x9879;&#x76EE;&#x9700;&#x6C42;</h2>
+<p><code>Sacdl</code>&#x9879;&#x76EE;&#x9700;&#x8981;&#x5177;&#x5907;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>&#x65B9;&#x4FBF;&#x5730;&#x8BFB;&#x53D6;github&#x7684;Api&#xFF0C;&#x5B9E;&#x73B0;github&#x641C;&#x7D22;&#x7684;&#x5168;&#x90E8;&#x529F;&#x80FD;&#xFF1B;</li>
+<li>&#x6574;&#x7406;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x65B9;&#x4FBF;&#x5730;&#x8F6C;&#x5316;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x5B57;&#x6BB5;&#x4FE1;&#x606F;&#xFF1B;</li>
+<li>&#x96C6;&#x6210;&#x5C55;&#x793A;&#x6570;&#x636E;&#x7684;&#x56FE;&#x8868;&#x5F00;&#x53D1;&#x5305;&#xFF0C;&#x7F16;&#x5199;&#x9700;&#x8981;&#x7684;&#x56FE;&#x8868;&#xFF1B;</li>
+<li>&#x65B9;&#x4FBF;&#x6269;&#x5C55;&#xFF0C;&#x4E3A;&#x4EE5;&#x540E;&#x6DFB;&#x52A0;&#x66F4;&#x591A;Api&#x548C;&#x56FE;&#x8868;&#x6837;&#x5F0F;&#x9884;&#x7559;&#x63A5;&#x53E3;&#x3002;</li>
+</ul>
+<h2 id="&#x6280;&#x672F;&#x9009;&#x578B;">&#x6280;&#x672F;&#x9009;&#x578B;</h2>
+<p>&#x4EC5;&#x4ECE;&#x4E0A;&#x8FF0;&#x9700;&#x6C42;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;html&#x6587;&#x4EF6;&#xFF0C;&#x5916;&#x52A0;D3.js&#xFF08;&#x6216;highcharts&#xFF0C;echarts&#x7B49;&#xFF09;&#x7B2C;&#x4E09;&#x65B9;&#x5305;&#x5373;&#x53EF;&#xFF0C;&#x6839;&#x672C;&#x4E0D;&#x9700;&#x8981;<code>Nodejs</code>&#x3002;&#x4F46;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x5F88;&#x591A;&#x4EC5;&#x4EC5;&#x662F;&#x524D;&#x7AEF;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;Bootstrap&#x7B49;&#x9879;&#x76EE;&#xFF0C;&#x90FD;&#x57FA;&#x4E8E;<code>Nodejs</code>&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<p>&#x7B54;&#x6848;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5B83;&#x4E00;&#x5B9A;&#x63D0;&#x4F9B;&#x4E86;&#x8BF8;&#x591A;&#x65B9;&#x4FBF;&#x5B9E;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;</p>
+<ul>
+<li>&#x4E00;&#x4E2A;&#x9879;&#x76EE;js&#x4EE3;&#x7801;&#x901A;&#x5E38;&#x4F1A;&#x5206;&#x5272;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x4EE5;&#x5F80;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5904;&#x7406;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x5934;&#x75BC;&#xFF0C;&#x73B0;&#x5728;<code>Nodejs</code>&#x7684;&#x6A21;&#x5757;&#x7BA1;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x60A8;&#x5F7B;&#x5E95;&#x89E3;&#x8131;&#xFF1B;</li>
+<li>&#x7B2C;&#x4E09;&#x65B9;&#x5305;ds.js&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x60A8;&#x4E0D;&#x7528;&#x624B;&#x52A8;&#x4E0B;&#x8F7D;&#x4E86;&#xFF0C;&#x4E00;&#x6761;&#x547D;&#x4EE4;&#xFF0C;<code>Nodejs</code>&#x5C31;&#x5E2E;&#x60A8;&#x529E;&#x4E86;&#x3002;&#x7279;&#x522B;&#x662F;&#x5BF9;&#x4E8E;&#x591A;&#x4E2A;&#x7248;&#x672C;&#x5171;&#x5B58;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x8FD9;&#x4F1A;&#x5E26;&#x6765;&#x6781;&#x5927;&#x4FBF;&#x5229;&#xFF1B;</li>
+<li>&#x60A8;&#x5199;&#x7684;&#x524D;&#x7AEF;&#x4EE3;&#x7801;js&#x6216;css&#x6587;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x5408;&#x5E76;&#x3001;&#x538B;&#x7F29;&#x3001;&#x6DF7;&#x6DC6;&#x5417;&#xFF1F;<code>Nodejs</code>&#x63D0;&#x4F9B;&#x4E86;grunt&#xFF0C;gulp&#x7B49;&#x81EA;&#x52A8;&#x5316;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x62FF;&#x6765;&#x5C31;&#x7528;&#xFF1B;</li>
+</ul>
+<p>&#x603B;&#x4E4B;&#xFF0C;&#x6709;&#x4E86;<code>Nodejs</code>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x50CF;&#x5F00;&#x53D1;&#x540E;&#x53F0;&#x7A0B;&#x5E8F;&#x4E00;&#x6837;&#x7EC4;&#x7EC7;&#x4EE3;&#x7801;&#x548C;&#x9879;&#x76EE;&#x4E86;&#xFF1B;&#x6709;&#x4E86;<code>Nodejs</code>&#xFF0C;&#x5C31;&#x6709;&#x4E86;<code>Nodejs</code>&#x80CC;&#x540E;&#x5F3A;&#x5927;&#x7684;&#x6280;&#x672F;&#x793E;&#x533A;&#x652F;&#x6301;&#x3002;</p>
+<h2 id="&#x5F00;&#x53D1;&#x6B65;&#x9AA4;">&#x5F00;&#x53D1;&#x6B65;&#x9AA4;</h2>
+<h4 id="&#x642D;&#x5EFA;&#x73AF;&#x5883;">&#x642D;&#x5EFA;&#x73AF;&#x5883;</h4>
+<p>&#x5BF9;&#x4E8E;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x5EFA;&#x8BAE;&#x5148;&#x53BB;Nodejs&#x5B98;&#x65B9;&#x7F51;&#x7AD9;&#x6D4F;&#x89C8;&#x4E00;&#x904D;&#x3002;&#x8FD9;&#x91CC;&#x6709;&#x5E01;&#x53CB;&#x63A8;&#x8350;&#x7684;&#x4E00;&#x4E2A;&#x4E2D;&#x6587;&#x7F51;&#x7AD9;&#xFF0C;<a href="http://www.runoob.com/nodejs/nodejs-tutorial.html" target="_blank">runoob.com</a>&#xFF0C;&#x5BF9;&#x4E8E;&#x82F1;&#x6587;&#x4E0D;&#x592A;&#x597D;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x6709;&#x4E00;&#x5B9A;&#x5E2E;&#x52A9;&#x3002;</p>
+<p>&#x6211;&#x4E2A;&#x4EBA;&#x7684;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<ul>
+<li>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x662F;<code>Ubuntu</code>&#x7CFB;&#x7EDF;&#xFF1A;&#x5177;&#x4F53;&#x8FD9;&#x6837;&#xFF0C;&#x5728;&#xFF57;indowsXp&#x6216;windows7&#x4E4B;&#x4E0B;&#xFF0C;&#x901A;&#x8FC7;&#x865A;&#x62DF;&#x673A;&#x8F6F;&#x4EF6;<code>Vmware</code>&#x5B89;&#x88C5;&#x7684;<code>Ubuntu</code>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;&#x4E4B;&#x524D;&#xFF0C;&#x4E00;&#x76F4;&#x5F7B;&#x5E95;&#x5220;&#x9664;win&#x7CFB;&#x7EDF;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;Ubuntu&#xFF0C;&#x4F46;&#x662F;&#x6700;&#x65B0;&#x7248;Ubuntu&#x7F51;&#x5361;&#x9A71;&#x52A8;&#x7B49;&#x517C;&#x5BB9;&#x6027;&#x80FD;&#x4E0D;&#x592A;&#x597D;&#xFF0C;&#x53EA;&#x80FD;&#x9000;&#x800C;&#x6C42;&#x5176;&#x6B21;&#x3002;&#x4F46;&#x7528;&#x8FC7;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x53D1;&#x73B0;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5F88;&#x65B9;&#x4FBF;&#x3002;
+<em>&#x3000;IDE&#x5DE5;&#x5177;&#xFF1A;&#x4F7F;&#x7528;<code>Sublime Text</code>&#xFF1B;
+</em>&#x3000;<code>Nodejs</code>&#x901A;&#x8FC7;<code>nvm</code>&#x5B89;&#x88C5;&#x7BA1;&#x7406;&#xFF0C;&#x5177;&#x4F53;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x7BC7;&#x6587;&#x6863;&#x5F88;&#x8BE6;&#x7EC6;&#xFF0C;&#x8BF7;&#x770B;&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF0C;<code>&#x5FEB;&#x901F;&#x642D;&#x5EFA; Node.js &#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4EE5;&#x53CA;&#x52A0;&#x901F; npm</code>&#x3002;&#x6211;&#x4F7F;&#x7528;&#x7684;&#x7248;&#x672C;&#x4FE1;&#x606F;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code>nvm 0.29.0
+node v5.1.0 
+npm v3.3.12
+</code></pre><h4 id="&#x65B0;&#x5EFA;&#x5DE5;&#x7A0B;">&#x65B0;&#x5EFA;&#x5DE5;&#x7A0B;</h4>
+<p>&#x5B89;&#x88C5;&#x524D;&#x7AEF;&#x7BA1;&#x7406;&#x5DE5;&#x5177;</p>
+<pre><code>npm install -g bower
+</code></pre><p>&#x901A;&#x8FC7;<code>bower</code>&#xFF0C;&#x5B89;&#x88C5;<code>d3.js</code></p>
+<pre><code>bower install d3
+</code></pre><h4 id="&#x8BFB;&#x53D6;api">&#x8BFB;&#x53D6;Api</h4>
+<h4 id="d3js&#x5C55;&#x793A;">D3.js&#x5C55;&#x793A;</h4>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<h2 id="&#x94FE;&#x63A5;">&#x94FE;&#x63A5;</h2>
+<p>Github&#x5F00;&#x6E90;&#x9879;&#x76EE;&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x5DE5;&#x5177;: <a href="https://github.com/imfly/sacdl-project" target="_blank">https://github.com/imfly/sacdl-project</a> &#x8BD5;&#x7528;&#x5730;&#x5740;&#xFF1A;<a href="https://imfly.github.io//sacdl-project" target="_blank">https://imfly.github.io//sacdl-project</a></p>
+<h2 id="&#x53C2;&#x8003;&#x8D44;&#x6E90;">&#x53C2;&#x8003;&#x8D44;&#x6E90;</h2>
+<p>&#x76F4;&#x63A5;&#x53C2;&#x8003;&#x7684;&#x7528;&#x4F8B;&#xFF1A;</p>
+<p><a href="http://mbostock.github.io/d3/talk/20111018/treemap.html" target="_blank">d3.layout.treemap</a>
+<a href="http://bl.ocks.org/erikvullings/51cc5332439939f1f292" target="_blank">Grouped horizontal bar chart</a></p>
+<p>&#x5B98;&#x65B9;&#x7F51;&#x7AD9;</p>
+<p><a href="">Nodejs&#x5B98;&#x65B9;&#x7F51;&#x7AD9;</a>
+<a href="https://d3js.org" target="_blank">d3.js&#x5B98;&#x65B9;&#x7F51;&#x7AD9;</a>&#x3000;</p>
+<p>&#x503C;&#x5F97;&#x501F;&#x9274;&#x7684;&#x6587;&#x6863;</p>
+<p><a href="https://cnodejs.org/topic/5338c5db7cbade005b023c98" target="_blank">&#x5FEB;&#x901F;&#x642D;&#x5EFA; Node.js &#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4EE5;&#x53CA;&#x52A0;&#x901F; npm</a>
+<a href="http://tenxer.github.io/xcharts/" target="_blank">xcharts&#x4E00;&#x4E2A;&#x5C01;&#x88C5;d3.js&#x7684;&#x56FE;&#x8868;&#x5C55;&#x793A;&#x5305;</a>
+<a href="http://www.thebigdata.cn/JieJueFangAn/12972.html" target="_blank">&#x5927;&#x6570;&#x636E;&#x65F6;&#x4EE3;&#x7684;&#x56FE;&#x8868;&#x53EF;&#x89C6;&#x5316;&#x5229;&#x5668;&#x2014;&#x2014;highcharts,D3&#x548C;&#x767E;&#x5EA6;&#x7684;echarts</a>
+<a href="http://www.storagelab.org.cn/zhangdi/2014/08/23/d3%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AE%9E%E6%88%9800%EF%BC%9Ad3%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%E5%92%8C%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/" target="_blank">d3&#x7684;&#x4F7F;&#x7528;&#x5FC3;&#x5F97;&#x548C;&#x5B66;&#x4E60;&#x8D44;&#x6599;&#x6C47;&#x603B;</a></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../2-入门指南/2-Nodejs原来在币圈如此流行？.html" class="navigation navigation-prev " aria-label="Previous page: Nodejs原来在币圈如此流行？"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../2-入门指南/4-您必须知道的几个Nodejs编码习惯.html" class="navigation navigation-next " aria-label="Next page: 您必须知道的几个Nodejs编码习惯"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
