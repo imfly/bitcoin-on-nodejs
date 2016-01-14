@@ -5,4 +5,3 @@ require(["gitbook", "lodash", "jQuery"], function(gitbook, _, $) {
         $link.href = "http://book.btcnodejs.com"
     });
 });
-
