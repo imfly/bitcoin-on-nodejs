@@ -1,5 +1,5 @@
 # Book build output
-_doc
+_book
 
 # eBook build output
 *.epub
@@ -7,3 +7,8 @@ _doc
 *.pdf
 
 *.*~
+
+bower_components
+node_modules
+
+.publish

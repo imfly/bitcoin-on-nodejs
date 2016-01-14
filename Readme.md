@@ -24,6 +24,13 @@
 
 有好玩的事，请[跟我联系] []
 
+打赏：
+
+```
+(比特) 113bKRZLYNX6BmE7TjhXmwYokkUhrLfpJi
+(狗狗) DS6CgczRtavimwBDkTT21FR3AEzLrYFx7D
+```
+
 [github]: https://github.com/imfly/bitcoin-on-nodejs
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
 [gitbook-summary]: https://github.com/imfly/gitbook-summary

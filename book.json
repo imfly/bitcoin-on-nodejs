@@ -1,10 +1,7 @@
 {
     "bookname": "Nodejs开发加密货币",
     "description": "第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍",
-    "author": {
-        "name": "Imfly",
-	"weixin": "kubying"
-    },
+    "author": "Imfly",
     "keywords": [
         "bitcoin",
         "nodejs"

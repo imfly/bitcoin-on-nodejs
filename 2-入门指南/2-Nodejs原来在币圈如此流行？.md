@@ -162,18 +162,22 @@ bitcoin language:JavaScript
 
 ## 链接
 
+项目源码: <https://github.com/imfly/sacdl-project> 
+
+试用地址：<https://imfly.github.io/sacdl-project>
+
 本文源地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： http://imfly.github.io/bitcoin-on-nodejs/
+电子书阅读： http://book.btcnodejs.com/
 
 
 [Github]: https://github.com
 [Github自带的搜索工具]: https://github.com/search
 
-[Github上Top20项目情况]: ../styles/images/top20-table.jpg
-[github-search-bitcoin]: ../styles/images/github-search-bitcoin.jpg
-[github-search-bitcoin-result]: ../styles/images/github-search-bitcoin-result.jpg
-[sacdl-bitcoin-bar]: ../styles/images/sacdl-bitcoin-bar.jpg
-[sacdl-wallet-bar]: ../styles/images/sacdl-wallet-bar.jpg
-[sacdl-bitcoin-treemap]: ../styles/images/sacdl-bitcoin-treemap.jpg
+[Github上Top20项目情况]: ../assets/images/top20-table.jpg
+[github-search-bitcoin]: ../assets/images/github-search-bitcoin.jpg
+[github-search-bitcoin-result]: ../assets/images/github-search-bitcoin-result.jpg
+[sacdl-bitcoin-bar]: ../assets/images/sacdl-bitcoin-bar.jpg
+[sacdl-wallet-bar]: ../assets/images/sacdl-wallet-bar.jpg
+[sacdl-bitcoin-treemap]: ../assets/images/sacdl-bitcoin-treemap.jpg
 [一篇博客]: http://blog.printf.net/articles/2015/05/29/announcing-gittorrent-a-decentralized-github/
