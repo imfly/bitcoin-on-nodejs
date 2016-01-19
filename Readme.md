@@ -6,7 +6,7 @@
 
 ## 说明
 
-文章在[github][]上免费发布，并首发[巴比特论坛][]。永久免费访问地址: http://book.btcnodejs.com
+文章在[github][]上免费发布，并首发[巴比特论坛][]。永久免费访问地址: <http://book.btcnodejs.com>
 
 ## 使用
 
