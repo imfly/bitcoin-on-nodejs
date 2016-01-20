@@ -152,7 +152,7 @@ app.get('/search', function(req, res){
     }
 
     github.search.repos(msg, function(err, data) { //这里必须用`回调`函数，不能使用 var data = ...的方式，下篇细说
-        res.json(data); //直接输入json格式的数据
+        res.json(data); //输出json格式的数据
     })
 })
 ```
@@ -203,14 +203,19 @@ var moduleName = require('/path/to/moduleName'); //默认js后缀，习惯不用
 
 按这个方式，我们把app.js文件，拆分成典型的`MVC`的开发样式，比如，熟悉ruby on rails的朋友，都习惯把代码分开保存在controllers,models和views文件夹里，以及router文件，这里，我们仿效之。视图已经定义在了views文件夹下，下面我们重点拆分其他的。
 
-a）拆分控制器
+a）拆分模型
 
-控制器负责传递数据，是后台与前端结合点。这里，`app.get`方法里的匿名函数便是，我们分别把他们抽取出来，放在`app/controllers/repos.js`里，代码如下：
+模型model专门处理数据，无论是数据库，还是请求远程api资源，都应该是它的事。自然，我们可以把githubApi的请求独立出来，这么做：
+
+新建文件夹和文件 `app/models/repo.js`,剪切粘贴下面的代码
 
 ```
 var GitHubApi = require("github");
 
-//from https://www.npmjs.com/package/github
+/**
+ * from https://www.npmjs.com/package/github
+ * @type {GitHubApi}
+ */
 var github = new GitHubApi({
     // required 
     version: "3.0.0",
@@ -225,20 +230,54 @@ var github = new GitHubApi({
     }
 });
 
-var Repos = {
-    index: function(req, res) {
-        res.render('index');
-    },
-
-    search: function(req, res) {
-        var msg = {
+var Repo = {
+    search: function(msg, callback) {
+        var msg = msg || {
             q: 'bitcoin',
             sort: 'forks',
             order: 'desc',
             per_page: 100
         }
 
-        github.search.repos(msg, function(err, data) {
+        github.search.repos(msg, callback);
+    }
+}
+
+module.exports = Repo;
+```
+
+说明：模型Model是资源的集合，就像数据库里的一张表，名字自然用资源类的名词表示最好。对数据的增删改查都在模型里，自然在前端`public/js/utils.js`里的部分代码就应该转移到这里，从而直接输出treemap的数据格式，例如：
+
+```
+// from /public/js/utils.js
+function treeData(data) {
+    var languages = {};
+
+    var result = {
+        "name": "languages",
+        "children": []
+    }
+
+...
+
+```
+
+b）拆分控制器
+
+控制器负责从模型请求数据，并把数据发送到前端，是前端和后台的`调度员`。这里，`app.get`方法里的匿名函数便是，我们分别把他们抽取出来，放在`app/controllers/repos.js`里，并把请求githubApi的代码用模型代替，代码如下：
+
+```
+var Repo = require('../models/repo');
+
+var Repos = {
+    //get '/'
+    index: function(req, res) {
+        res.render('index');
+    },
+
+    //get '/search'
+    search: function(req, res) {
+        Repo.search(req.query.query, function(err, data) {
             res.json(data);
         })
     }
@@ -247,7 +286,7 @@ var Repos = {
 module.exports = Repos;
 ```
 
-说明：按照惯例，控制器的名称，通常是资源的名称（名词）;行为的名称，通常是动作（动词），因此`repos.index`就代码显示版本库列表，`repos.search`就是搜索版本库信息，在`app.js`中，自然这样调用：
+说明：按照惯例，控制器的名称，通常是对应模型的名称（名词）的复数;行为的名称，通常是动作（动词），因此`repos.index`就表示版本库列表，`repos.search`就是搜索版本库信息，在`app.js`中，自然这样调用：
 
 ```
 ----其他代码----
@@ -259,9 +298,9 @@ app.get('/',  repos.index);
 ----其他代码----
 ```
 
-这部分代码，就是起到分发路由的作用，于是继续重构。
+这部分代码，起到分发路由的作用，一看便知应该在路由里，于是继续重构。
 
-b）拆分路由
+c）拆分路由
 
 新建文件`app/router.js`, 把上面的代码剪切过来，修改为：
 
@@ -286,25 +325,61 @@ router(app);
 
 以后，再添加其他的任何路由，只要修改router.js就是了。
 
-c）重构模型
+d）整理视图
 
-把前端代码拷贝过来吧。
+把views整体移动到`app/views`下，并修改`app.js`代码，让模板引擎指向该文件夹
 
-（待续）
+```
+app.set('views', './app/views')
+```
+
+然后，新建`app/views/repos`文件夹，将`views/index.ejs`文件移入。
+
+说明：视图view是界面元素，通常是类html文件，按照惯例，它的文件夹与控制器同名repos，各文件名与控制器的行为action同名，如index -> index.ejs
+
+当然，视图根据模板引擎的特点，也可以进行模块化处理，进一步细化为layout.ejs, header.ejs等，方便重复使用。限于篇幅，不再罗嗦。详情，请看源码。
+
+经过这样的模块化整理，我们轻松实现了一个简单的`MVC`框架（如图），它的易用性、扩展性得到很大提升。我们已经可以快速添加更多的功能了，比如：像巴比特那样显示主流交易市场信息（下篇）。
+
+![sacdl-mvc][]
 
 （7）测试（略）
 
-详情，请看源码。
+无测试不产品。不过咱们还是省了吧，不然，又要很长的篇幅也说不完。同时，本项目仅作文章说明辅助，不能作为产品使用。如果非要用，建议您写写测试，不然后果自负。
+
+说到这的时候，本人就有一个问题没有解决：我的办公室有代理，通过Nodejs请求api.github.com是不成功的，但在家里或从浏览器直接访问就可以。这个问题，就留给高手去解决吧。
+
+我们的方向是文章，每个细节都想完美，最终的结果就会不完美。很多程序员在某个时期，会不自觉的陷入技术细节，而忽略很多重要的东西。最严重的是，很多人始终都没有拿出过一个完整的产品，像样的更不用说了。“使劲看就是盲，太专注就是傻”，值得深思。
+
+（8）部署（略）
+
+自己找个服务器，折腾折腾吧。
 
 ## 总结
 
-本文涉及的代码非常简单，但在严格控制字数的情况下，仍然罗嗦了这么多。所以，很多时候，语言的力量并不强大。
+本文涉及的代码非常简单，但在严格控制字数的情况下，仍然罗嗦了这么多。所以，很多时候，语言的力量非常苍白，说这么多干嘛，做就是了。
 
-文中，没有说明，需要读者查看源码的，包括对输入框的处理，以及对数据整理的重构，这本应该是重点要说明的。不过窃以为，传授方法最重要。
+文中，对输入框的处理没有说明，请自己查看源码（写到这个时候，其实还没有做）。（6）模块化部分，其实已经有一个叫express-generator的插件，可以一键生成。不过窃以为，该说的重点基本提到。
 
-总体来说，借助Express，从前端到后台并不复杂。前后语言的统一，给我们减少了很多思维转换的麻烦。如果你能完整实践这两篇文章，我个人认为，Nodejs应该可以入门了，但是，要想看明白一些复杂的代码，还需要掌握Nodejs的一些独特习惯，比如回调，比如对异常的处理等等，请看下一篇：**《Nodejs开发加密货币》之三：您必须知道的几个Nodejs编码习惯**，简单介绍一些大家经常遇到的坑，以便在接下来的代码分析中更加轻松。
+总体来说，使用Nodejs，从前端到后台并不复杂，或者说非常简单。前后语言的统一，给我们减少了很多思维转换的麻烦。如果你能完整实践这两篇文章，我个人认为，Nodejs应该可以入门了。
+
+但是，要想看明白一些复杂的代码，还需要掌握Nodejs的一些独特习惯，比如回调，比如对异常的处理等等，请看下一篇：**《Nodejs开发加密货币》之四：您必须知道的几个Nodejs编码习惯**，仍以sacdl项目为例，添加展示主流交易市场信息等功能，目标是简单介绍一些大家经常遇到的坑，以便在接下来的代码分析中更加轻松。
 
 [serve-page]: ../assets/images/3/serve-page.jpg
+[sacdl-mvc]: ../assets/images/3/sacdl-mvc.jpg
+
+## 链接
+
+项目源码: <https://github.com/imfly/sacdl-project> 
+
+试用地址：<https://imfly.github.io/sacdl-project> （前端）
+
+本文源地址： https://github.com/imfly/bitcoin-on-nodejs
+
+电子书阅读： http://book.btcnodejs.com/
+
+## 参考
+
+Expressjs官网： http://expressjs.com/
 
 
-进行中...
