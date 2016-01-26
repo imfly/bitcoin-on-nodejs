@@ -10,5 +10,6 @@ _book
 
 bower_components
 node_modules
+doc
 
 .publish
