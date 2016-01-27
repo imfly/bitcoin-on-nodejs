@@ -365,9 +365,6 @@ app.set('views', './app/views')
 
 但是，要想看明白一些复杂的代码，还需要掌握Nodejs的一些独特习惯，比如回调，比如对异常的处理等等，请看下一篇：**《Nodejs开发加密货币》之四：您必须知道的几个Nodejs编码习惯**，仍以sacdl项目为例，添加展示主流交易市场信息等功能，目标是简单介绍一些大家经常遇到的坑，以便在接下来的代码分析中更加轻松。
 
-[serve-page]: ../assets/images/3/serve-page.jpg
-[sacdl-mvc]: ../assets/images/3/sacdl-mvc.jpg
-
 ## 链接
 
 项目源码: <https://github.com/imfly/sacdl-project> 
@@ -383,3 +380,5 @@ app.set('views', './app/views')
 Expressjs官网： http://expressjs.com/
 
 
+[serve-page]: ../assets/images/3/serve-page.jpg
+[sacdl-mvc]: ../assets/images/3/sacdl-mvc.jpg
