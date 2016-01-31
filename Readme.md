@@ -22,14 +22,9 @@
 
 ## 作者
 
-有好玩的事，请[跟我联系] []
+我们始终关注C/C++、Nodejs等编程语言，在`区块链、电子商务、即时通信、电子书、自媒体、物联网`等领域的创新应用，已经汇聚了大批在该领域的`开发、设计、运营和管理`人才，如果您也有志于此，请[跟我联系][]
 
-打赏：
-
-```
-(比特) 113bKRZLYNX6BmE7TjhXmwYokkUhrLfpJi
-(狗狗) DS6CgczRtavimwBDkTT21FR3AEzLrYFx7D
-```
+微信：kubying
 
 [github]: https://github.com/imfly/bitcoin-on-nodejs
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
