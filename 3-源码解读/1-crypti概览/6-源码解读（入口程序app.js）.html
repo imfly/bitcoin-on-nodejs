@@ -1,0 +1,926 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>源码解读（入口程序app.js） | Nodejs开发加密货币</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.6">
+        <meta name="author" content="Imfly">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+        <link rel="stylesheet" href="../../styles/website.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../../3-源码解读/1-crypti概览/7-技术研究（domain模块、async组件）.html" />
+    
+    
+    <link rel="prev" href="../../3-源码解读/1-crypti概览/5-Crypti，一个类似以太坊的开发平台.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.2.2"
+        data-chapter-title="源码解读（入口程序app.js）"
+        data-filepath="3-源码解读/1-crypti概览/6-源码解读（入口程序app.js）.md"
+        data-basepath="../.."
+        data-revision="Tue Feb 16 2016 18:33:26 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="1-开栏寄语/1-开栏寄语.html">
+            
+                
+                    <a href="../../1-开栏寄语/1-开栏寄语.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        开栏寄语
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="2-入门指南/readme.html">
+            
+                
+                    <a href="../../2-入门指南/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        入门指南
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="2-入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                
+                    <a href="../../2-入门指南/1-Nodejs原来在币圈如此流行？.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Nodejs原来在币圈如此流行？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="2-入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                
+                    <a href="../../2-入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Nodejs让您的前端开发像子弹飞一样
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="2-入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                
+                    <a href="../../2-入门指南/3-Nodejs让后台开发像前端一样简单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Nodejs让后台开发像前端一样简单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="2-入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                
+                    <a href="../../2-入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        您必须知道的几个Nodejs编码习惯
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="3-源码解读/readme.html">
+            
+                
+                    <a href="../../3-源码解读/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="3-源码解读/0-加密货币简介/readme.html">
+            
+                
+                    <a href="../../3-源码解读/0-加密货币简介/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        加密货币简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="3-源码解读/1-crypti概览/readme.html">
+            
+                
+                    <a href="../../3-源码解读/1-crypti概览/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        crypti概览
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="3-源码解读/1-crypti概览/5-Crypti，一个类似以太坊的开发平台.html">
+            
+                
+                    <a href="../../3-源码解读/1-crypti概览/5-Crypti，一个类似以太坊的开发平台.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.1.</b>
+                        
+                        Crypti，一个类似以太坊的开发平台
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2.2" data-path="3-源码解读/1-crypti概览/6-源码解读（入口程序app.js）.html">
+            
+                
+                    <a href="../../3-源码解读/1-crypti概览/6-源码解读（入口程序app.js）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.2.</b>
+                        
+                        源码解读（入口程序app.js）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="3-源码解读/1-crypti概览/7-技术研究（domain模块、async组件）.html">
+            
+                
+                    <a href="../../3-源码解读/1-crypti概览/7-技术研究（domain模块、async组件）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.3.</b>
+                        
+                        技术研究（domain模块、async组件）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+            <span><b>3.3.</b> p2p网络设计</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="3-源码解读/2-p2p网络设计/1-源码解读.html">
+            
+                
+                    <a href="../../3-源码解读/2-p2p网络设计/1-源码解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.1.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="3-源码解读/2-p2p网络设计/2-概念解析.html">
+            
+                
+                    <a href="../../3-源码解读/2-p2p网络设计/2-概念解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.2.</b>
+                        
+                        概念解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="3-源码解读/2-p2p网络设计/3-技术研究.html">
+            
+                
+                    <a href="../../3-源码解读/2-p2p网络设计/3-技术研究.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.3.</b>
+                        
+                        技术研究
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+            <span><b>3.4.</b> 加密解密</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.4.1" data-path="3-源码解读/3-加密解密/1-源码解读.html">
+            
+                
+                    <a href="../../3-源码解读/3-加密解密/1-源码解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.1.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="3-源码解读/3-加密解密/2-概念解析.html">
+            
+                
+                    <a href="../../3-源码解读/3-加密解密/2-概念解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.2.</b>
+                        
+                        概念解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="3-源码解读/3-加密解密/3-技术研究.html">
+            
+                
+                    <a href="../../3-源码解读/3-加密解密/3-技术研究.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.3.</b>
+                        
+                        技术研究
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" >
+            
+            <span><b>3.5.</b> 签名与交易</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="3-源码解读/4-签名与交易/1-源码解读.html">
+            
+                
+                    <a href="../../3-源码解读/4-签名与交易/1-源码解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.1.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="3-源码解读/4-签名与交易/2-概念解析.html">
+            
+                
+                    <a href="../../3-源码解读/4-签名与交易/2-概念解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.2.</b>
+                        
+                        概念解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="3-源码解读/4-签名与交易/3-技术研究.html">
+            
+                
+                    <a href="../../3-源码解读/4-签名与交易/3-技术研究.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.3.</b>
+                        
+                        技术研究
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" >
+            
+            <span><b>3.6.</b> 区块链</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.6.1" data-path="3-源码解读/5-区块链/1-源码解读.html">
+            
+                
+                    <a href="../../3-源码解读/5-区块链/1-源码解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.1.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.2" data-path="3-源码解读/5-区块链/2-概念解析.html">
+            
+                
+                    <a href="../../3-源码解读/5-区块链/2-概念解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.2.</b>
+                        
+                        概念解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6.3" data-path="3-源码解读/5-区块链/3-技术研究.html">
+            
+                
+                    <a href="../../3-源码解读/5-区块链/3-技术研究.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.3.</b>
+                        
+                        技术研究
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" >
+            
+            <span><b>3.7.</b> POS机制的实现</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="3-源码解读/6-POS机制的实现/1-源码解读.html">
+            
+                
+                    <a href="../../3-源码解读/6-POS机制的实现/1-源码解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.1.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="3-源码解读/6-POS机制的实现/2-概念解析.html">
+            
+                
+                    <a href="../../3-源码解读/6-POS机制的实现/2-概念解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.2.</b>
+                        
+                        概念解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.3" data-path="3-源码解读/6-POS机制的实现/3-技术研究.html">
+            
+                
+                    <a href="../../3-源码解读/6-POS机制的实现/3-技术研究.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.3.</b>
+                        
+                        技术研究
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" >
+            
+            <span><b>3.8.</b> 帐号管理</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.8.1" data-path="3-源码解读/7-帐号管理/1-源码解读.html">
+            
+                
+                    <a href="../../3-源码解读/7-帐号管理/1-源码解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.1.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8.2" data-path="3-源码解读/7-帐号管理/2-概念解析.html">
+            
+                
+                    <a href="../../3-源码解读/7-帐号管理/2-概念解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.2.</b>
+                        
+                        概念解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8.3" data-path="3-源码解读/7-帐号管理/3-技术研究.html">
+            
+                
+                    <a href="../../3-源码解读/7-帐号管理/3-技术研究.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.3.</b>
+                        
+                        技术研究
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" >
+            
+            <span><b>3.9.</b> 侧链与第三方应用开发的讨论</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.9.1" data-path="3-源码解读/8-侧链与第三方应用开发的讨论/1-源码解读.html">
+            
+                
+                    <a href="../../3-源码解读/8-侧链与第三方应用开发的讨论/1-源码解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.1.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9.2" data-path="3-源码解读/8-侧链与第三方应用开发的讨论/2-概念解析.html">
+            
+                
+                    <a href="../../3-源码解读/8-侧链与第三方应用开发的讨论/2-概念解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.2.</b>
+                        
+                        概念解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9.3" data-path="3-源码解读/8-侧链与第三方应用开发的讨论/3-技术研究.html">
+            
+                
+                    <a href="../../3-源码解读/8-侧链与第三方应用开发的讨论/3-技术研究.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.3.</b>
+                        
+                        技术研究
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="4-最佳实践/readme.html">
+            
+                
+                    <a href="../../4-最佳实践/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        最佳实践
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="4-最佳实践/21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论.html">
+            
+                
+                    <a href="../../4-最佳实践/21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="5-结束语/readme.html">
+            
+                
+                    <a href="../../5-结束语/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        结束语
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="5-结束语/25-结束语（进入项目实践）.html">
+            
+                
+                    <a href="../../5-结束语/25-结束语（进入项目实践）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        25-结束语（进入项目实践）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" >
+            
+            <span><b>6.</b> 附录</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="6-附录/1-加密货币相关名词汇总.html">
+            
+                
+                    <a href="../../6-附录/1-加密货币相关名词汇总.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        加密货币相关名词汇总
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="6-附录/2-贡献者名单.html">
+            
+                
+                    <a href="../../6-附录/2-贡献者名单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        贡献者名单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="6-附录/3-2016年心愿单.html">
+            
+                
+                    <a href="../../6-附录/3-2016年心愿单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        2016年心愿单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="6-附录/4-关于作者.html">
+            
+                
+                    <a href="../../6-附录/4-关于作者.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        关于作者
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Nodejs开发加密货币</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x6E90;&#x7801;&#x89E3;&#x8BFB;&#xFF08;&#x5165;&#x53E3;&#x7A0B;&#x5E8F;appjs&#xFF09;">&#x6E90;&#x7801;&#x89E3;&#x8BFB;&#xFF08;&#x5165;&#x53E3;&#x7A0B;&#x5E8F;app.js&#xFF09;</h1>
+<p>&#x8FDB;&#x884C;&#x4E2D;...</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../3-源码解读/1-crypti概览/5-Crypti，一个类似以太坊的开发平台.html" class="navigation navigation-prev " aria-label="Previous page: Crypti，一个类似以太坊的开发平台"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../3-源码解读/1-crypti概览/7-技术研究（domain模块、async组件）.html" class="navigation navigation-next " aria-label="Next page: 技术研究（domain模块、async组件）"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/power.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
