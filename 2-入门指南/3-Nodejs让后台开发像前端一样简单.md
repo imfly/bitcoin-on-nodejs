@@ -380,5 +380,5 @@ app.set('views', './app/views')
 Expressjs官网： http://expressjs.com/
 
 
-[serve-page]: ../assets/images/3/serve-page.jpg
-[sacdl-mvc]: ../assets/images/3/sacdl-mvc.jpg
+[serve-page]: ../styles/images/3/serve-page.jpg
+[sacdl-mvc]: ../styles/images/3/sacdl-mvc.jpg

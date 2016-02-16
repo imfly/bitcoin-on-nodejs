@@ -74,8 +74,9 @@ Node.js® 是一个搭建在Chrome V8上的JavaScript即时运行平台，采用
 
 我个人的开发环境是这样的：
 
-* 操作系统是`Ubuntu`系统：您可以在现有系统上，使用虚拟机软件安装它。我们的全部示例和截图都是在ubuntu上完成。
-*　IDE工具：`Sublime Text`；
+* 操作系统是`Ubuntu`系统：您可以在现有系统上，使用虚拟机软件安装它。我们的全部示例和截图都是在ubuntu上完成;
+
+* IDE工具：`Sublime Text`；
 
 （1）Nodejs的安装
 
@@ -609,12 +610,12 @@ d3.js官方网站: https://d3js.org
 [runoob]: http://www.runoob.com/nodejs/nodejs-tutorial.html
 [nodejs install]: https://cnodejs.org/topic/5338c5db7cbade005b023c98
 [ebookcoin]: http://8btc.com/forum.php?mod=viewthread&tid=26208&highlight=%B5%E7%D7%D3%CA%E9
-[front-data-follow]: ../assets/images/2/data-flow.jpg
+[front-data-follow]: ../styles/images/2/data-flow.jpg
 [官方搜索示例]: https://developer.github.com/v3/search/
-[github-search-example]: ../assets/images/2/github-search-example.jpg
-[project-folder]: ../assets/images/2/project-folders.png
+[github-search-example]: ../styles/images/2/github-search-example.jpg
+[project-folder]: ../styles/images/2/project-folders.png
 [project-source]: https://github.com/imfly/sacdl-project
-[firefox-console]: ../assets/images/2/firefox-console.jpg
-[pipe]: ../assets/images/2/pipe.png
-[bower-init]: ../assets/images/2/bower-init.jpg
-[front-url.jpg]: ../assets/images/2/front-url.jpg
+[firefox-console]: ../styles/images/2/firefox-console.jpg
+[pipe]: ../styles/images/2/pipe.png
+[bower-init]: ../styles/images/2/bower-init.jpg
+[front-url.jpg]: ../styles/images/2/front-url.jpg

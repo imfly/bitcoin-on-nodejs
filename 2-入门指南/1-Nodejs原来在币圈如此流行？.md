@@ -72,7 +72,7 @@ bitcoin OR wallet stars:>100 forks:>50 in:file extension:md
 
 (3)更复杂的查询
 
-请自己去体验吧（会与下篇文章一起推出）。
+请自己去体验吧，地址：<https://imfly.github.io/sacdl-project>。
 
 ## 前10个应用简介
 
@@ -174,10 +174,10 @@ bitcoin language:JavaScript
 [Github]: https://github.com
 [Github自带的搜索工具]: https://github.com/search
 
-[Github上Top20项目情况]: ../assets/images/top20-table.jpg
-[github-search-bitcoin]: ../assets/images/github-search-bitcoin.jpg
-[github-search-bitcoin-result]: ../assets/images/github-search-bitcoin-result.jpg
-[sacdl-bitcoin-bar]: ../assets/images/sacdl-bitcoin-bar.jpg
-[sacdl-wallet-bar]: ../assets/images/sacdl-wallet-bar.jpg
-[sacdl-bitcoin-treemap]: ../assets/images/sacdl-bitcoin-treemap.jpg
+[Github上Top20项目情况]: ../styles/images/top20-table.jpg
+[github-search-bitcoin]: ../styles/images/github-search-bitcoin.jpg
+[github-search-bitcoin-result]: ../styles/images/github-search-bitcoin-result.jpg
+[sacdl-bitcoin-bar]: ../styles/images/sacdl-bitcoin-bar.jpg
+[sacdl-wallet-bar]: ../styles/images/sacdl-wallet-bar.jpg
+[sacdl-bitcoin-treemap]: ../styles/images/sacdl-bitcoin-treemap.jpg
 [一篇博客]: http://blog.printf.net/articles/2015/05/29/announcing-gittorrent-a-decentralized-github/
