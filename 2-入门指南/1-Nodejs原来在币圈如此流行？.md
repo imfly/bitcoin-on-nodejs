@@ -174,10 +174,10 @@ bitcoin language:JavaScript
 [Github]: https://github.com
 [Github自带的搜索工具]: https://github.com/search
 
-[Github上Top20项目情况]: ../styles/images/top20-table.jpg
-[github-search-bitcoin]: ../styles/images/github-search-bitcoin.jpg
-[github-search-bitcoin-result]: ../styles/images/github-search-bitcoin-result.jpg
-[sacdl-bitcoin-bar]: ../styles/images/sacdl-bitcoin-bar.jpg
-[sacdl-wallet-bar]: ../styles/images/sacdl-wallet-bar.jpg
-[sacdl-bitcoin-treemap]: ../styles/images/sacdl-bitcoin-treemap.jpg
+[Github上Top20项目情况]: ../styles/images/1/top20-table.jpg
+[github-search-bitcoin]: ../styles/images/1/github-search-bitcoin.jpg
+[github-search-bitcoin-result]: ../styles/images/1/github-search-bitcoin-result.jpg
+[sacdl-bitcoin-bar]: ../styles/images/1/sacdl-bitcoin-bar.jpg
+[sacdl-wallet-bar]: ../styles/images/1/sacdl-wallet-bar.jpg
+[sacdl-bitcoin-treemap]: ../styles/images/1/sacdl-bitcoin-treemap.jpg
 [一篇博客]: http://blog.printf.net/articles/2015/05/29/announcing-gittorrent-a-decentralized-github/

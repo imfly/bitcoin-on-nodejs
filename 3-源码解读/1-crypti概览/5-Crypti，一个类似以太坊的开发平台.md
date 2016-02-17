@@ -9,21 +9,23 @@
 
 官方定义（[白皮书][] v2.1 2015.9.30）
 
-```
-Crypti is a next generation platform that allows for the development and distribution of                           
-JavaScript based decentralized applications using an easy to use, fully featured ecosystem.                       
-Through Crypti, developers can build, publish, distribute, and monetize their applications within                       
-a custom built cryptocurrency powered system that utilizes custom blockchains, smart contracts,                       
-cloud storage, and computing nodes; all from within one industry solution.
-```
+>Crypti is a next generation platform that allows for the development and distribution of                           
+>JavaScript based decentralized applications using an easy to use, fully featured ecosystem.                       
+>Through Crypti, developers can build, publish, distribute, and monetize their applications within                       
+>a custom built cryptocurrency powered system that utilizes custom blockchains, smart contracts,                       
+>cloud storage, and computing nodes; all from within one industry solution.
 
 翻译如下：
 
-```
-Crypti，是下一代平台，允许开发和分发基于javascript的去中心化应用，是一个易于使用、功能齐全的生态系统。通过Crypti，开发者能够在一个定制的加密货币驱动的系统里构建、发布、分发他们的应用，并获利。该系统利用定制的区块链、智能合约、云存储，以及计算节点等，提供了一体化的行业解决方案。
-```
+>Crypti，是下一代平台，允许开发和分发基于javascript的去中心化应用，是一个易于使用、功能齐全的生态系统。
+>通过Crypti，开发者能够在一个定制的>加密货币驱动的系统里构建、发布、分发他们的应用，并获利。该系统利用
+>定制的区块链、智能合约、云存储，以及计算节点等，提供了一体化的行业解决方案。
 
 Crypti，使用建立在 HTTP 协议之上的点对点网络，基于 DPOS（受托人股权证明机制）共识算法，无需挖矿，大约1亿枚币子。每个块的时间为 10 秒，每个周期的 101 个区块均由 101 个代表随机生成，广播并添加到区块链里，在得到 6-10 个确认后，交易完成，一个完整的 101 个块的周期大概需要 16 分钟。
+
+截一张钱包的图片（感谢巴比特网友`coinportal`的提醒），请看：
+
+![wallet][]
 
 ## 核心功能
 
@@ -60,11 +62,11 @@ Crypti，后端基于 Node.js 开发，前端使用了 HTML5 和 CSS3，数据�
 
 ## 链接
 
-**本文采取网络化写作，随着写作的深入，很多文章和电子书目录，时常修改，若要掌握最新内容，请收藏下面的链接**
+**本系列文章即时更新，若要掌握最新内容，请关注下面的链接**
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： http://book.btcnodejs.com/3-源码解读/1-crypti概览/5-Crypti，一个类似以太坊的开发平台.html
+电子书阅读： [http://book.btcnodejs.com](http://book.btcnodejs.com/3-源码解读/1-crypti概览/5-Crypti，一个类似以太坊的开发平台.html)
 
 ## 参考
 
@@ -77,5 +79,6 @@ Crypti，后端基于 Node.js 开发，前端使用了 HTML5 和 CSS3，数据�
 
 
 [白皮书]: http://crypti.me/crypti.pdf
+[wallet]: ../../styles/images/5/wallet.png
 [点击这里]: ../../styles/images/5/crypti-0.5.3.png
 [modules]: ../../styles/images/5/modules.png
