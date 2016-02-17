@@ -55,7 +55,7 @@
         data-chapter-title="源码解读（入口程序app.js）"
         data-filepath="3-源码解读/1-crypti概览/6-源码解读（入口程序app.js）.md"
         data-basepath="../.."
-        data-revision="Tue Feb 16 2016 18:33:26 GMT+0800 (CST)"
+        data-revision="Wed Feb 17 2016 10:53:09 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -625,64 +625,6 @@
             
         </li>
     
-        <li class="chapter " data-level="3.9" >
-            
-            <span><b>3.9.</b> 侧链与第三方应用开发的讨论</span>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.9.1" data-path="3-源码解读/8-侧链与第三方应用开发的讨论/1-源码解读.html">
-            
-                
-                    <a href="../../3-源码解读/8-侧链与第三方应用开发的讨论/1-源码解读.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.9.1.</b>
-                        
-                        源码解读
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.9.2" data-path="3-源码解读/8-侧链与第三方应用开发的讨论/2-概念解析.html">
-            
-                
-                    <a href="../../3-源码解读/8-侧链与第三方应用开发的讨论/2-概念解析.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.9.2.</b>
-                        
-                        概念解析
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.9.3" data-path="3-源码解读/8-侧链与第三方应用开发的讨论/3-技术研究.html">
-            
-                
-                    <a href="../../3-源码解读/8-侧链与第三方应用开发的讨论/3-技术研究.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.9.3.</b>
-                        
-                        技术研究
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
 
             </ul>
             
@@ -867,7 +809,74 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x6E90;&#x7801;&#x89E3;&#x8BFB;&#xFF08;&#x5165;&#x53E3;&#x7A0B;&#x5E8F;appjs&#xFF09;">&#x6E90;&#x7801;&#x89E3;&#x8BFB;&#xFF08;&#x5165;&#x53E3;&#x7A0B;&#x5E8F;app.js&#xFF09;</h1>
-<p>&#x8FDB;&#x884C;&#x4E2D;...</p>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x4EE3;&#x7801;&#xFF1A; </p>
+<h2 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h2>
+<h4 id="&#x5168;&#x5C40;&#x914D;&#x7F6E;">&#x5168;&#x5C40;&#x914D;&#x7F6E;</h4>
+<p>&#xFF08;1&#xFF09;&#x5168;&#x5C40;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;</p>
+<p>&#x4F7F;&#x7528;&#x4E86;&#x6587;&#x4EF6; <code>./config.json</code> &#x6765;&#x4FDD;&#x5B58;&#x5168;&#x5C40;&#x914D;&#x7F6E;&#xFF0C;&#x5982;&#xFF1A;</p>
+<pre><code>{
+    &quot;port&quot;: 7000,
+    &quot;address&quot;: &quot;0.0.0.0&quot;,
+    &quot;serveHttpAPI&quot;: true,
+    &quot;serveHttpWallet&quot;: true,
+    &quot;version&quot;: &quot;0.1.1&quot;,
+    &quot;fileLogLevel&quot;: &quot;info&quot;,
+    &quot;consoleLogLevel&quot;: &quot;log&quot;,
+    &quot;sharePort&quot;: true,
+    ...
+</code></pre><p>&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x8981;<code>require</code>&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code>var appConfig = require(&quot;./config.json&quot;); // app.js 4&#x884C;
+</code></pre><p>&#x4E0D;&#x8FC7;&#xFF0C;&#x4E3A;&#x4E86;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x901A;&#x5E38;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;&#x4F7F;&#x7528;<code>commander</code>&#x7EC4;&#x4EF6;&#xFF0C;&#x5F15;&#x5165;&#x547D;&#x4EE4;&#x884C;&#x9009;&#x9879;</p>
+<p><code>commander</code>&#x662F;Nodejs&#x7B2C;&#x4E09;&#x65B9;&#x7EC4;&#x4EF6;&#xFF08;&#x4F7F;&#x7528;npm&#x5B89;&#x88C5;&#xFF09;&#xFF0C;&#x5E38;&#x88AB;&#x7528;&#x6765;&#x5F00;&#x53D1;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x7528;&#x6CD5;&#x6781;&#x4E3A;&#x7B80;&#x5355;&#x3002;&#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code>var program = require(&apos;commander&apos;);
+
+program
+    .version(packageJson.version)
+    .option(&apos;-c, --config &lt;path&gt;&apos;, &apos;Config file path&apos;)
+    .option(&apos;-p, --port &lt;port&gt;&apos;, &apos;Listening port number&apos;)
+    .option(&apos;-a, --address &lt;ip&gt;&apos;, &apos;Listening host name or ip&apos;)
+    .option(&apos;-b, --blockchain &lt;path&gt;&apos;, &apos;Blockchain db path&apos;)
+    .option(&apos;-x, --peers [peers...]&apos;, &apos;Peers list&apos;)
+    .option(&apos;-l, --log &lt;level&gt;&apos;, &apos;Log level&apos;)
+    .parse(process.argv);
+</code></pre><p>&#x8FD9;&#x6837;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x65F6;&#xFF0C;&#x52A0;&#x5E26;<code>-c</code>,<code>-p</code>&#x7B49;&#x9009;&#x9879;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>node app.js -p 8888
+</code></pre><p>&#x8FD9;&#x65F6;&#xFF0C;&#x8BE5;&#x9009;&#x9879;&#x5C31;&#x4EE5;<code>program.port</code>&#x7684;&#x5F62;&#x5F0F;&#x88AB;&#x4FDD;&#x5B58;&#xFF0C;&#x4E8E;&#x662F;&#x624B;&#x52A8;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<pre><code>if (program.port) {
+    appConfig.port = program.port; // app.js 40&#x884C;
+}
+</code></pre><p>&#x8FD9;&#x6837;&#xFF0C;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;appConfig&#x7684;port&#x503C;&#x88AB;&#x6539;&#x53D8;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x5904;&#x7406;Nodejs&#x5E94;&#x7528;&#x5168;&#x5C40;&#x914D;&#x7F6E;&#x7684;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x4E14;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x503C;&#x5F97;&#x7262;&#x8BB0;&#x3002;</p>
+<p>&#x4E0B;&#x4E00;&#x7BC7;&#xFF0C;&#x5728;&#x6280;&#x672F;&#x5206;&#x4EAB;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x5BF9;<code>commander</code>&#x7EC4;&#x4EF6;&#x8FDB;&#x884C;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#xFF0C;&#x65B9;&#x4FBF;&#x5FEB;&#x6377;&#x7684;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x3002;</p>
+<h4 id="&#x5168;&#x5C40;&#x9519;&#x8BEF;">&#x5168;&#x5C40;&#x9519;&#x8BEF;</h4>
+<p>&#x6211;&#x4EEC;&#x5728;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x603B;&#x7ED3;&#x65F6;&#xFF0C;&#x7279;&#x610F;&#x63D0;&#x5230;<code>&#x5F02;&#x5E38;&#x8981;&#x6355;&#x6349;</code>&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5F88;&#x8F7B;&#x677E;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x4EE3;&#x7801;&#x5BF9;&#x5168;&#x5C40;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x4F7F;&#x7528;<code>uncaughtException</code>&#x6355;&#x6349;&#x8FDB;&#x7A0B;&#x5F02;&#x5E38;</p>
+<pre><code>process.on(&apos;uncaughtException&apos;, function (err) {
+    // handle the error safely
+    logger.fatal(&apos;System error&apos;, { message: err.message, stack: err.stack });
+    process.emit(&apos;cleanup&apos;);
+});
+</code></pre><p>&#xFF08;2&#xFF09;&#x4F7F;&#x7528;<code>domain</code>&#x6A21;&#x5757;&#x6355;&#x83B7;&#x5168;&#x5C40;&#x5F02;&#x5E38;</p>
+<pre><code>var d = require(&apos;domain&apos;).create();
+d.on(&apos;error&apos;, function (err) {
+    logger.fatal(&apos;Domain master&apos;, { message: err.message, stack: err.stack });
+    process.exit(0);
+});
+d.run(function () {
+...
+</code></pre><p>&#x5BF9;&#x4E8E;<code>domain</code>&#x6A21;&#x5757;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4E0B;&#x4E00;&#x7BC7;&#xFF0C;&#x6280;&#x672F;&#x5206;&#x6790;&#x4E2D;&#x8BE6;&#x8FF0;&#x3002;</p>
+<h4 id="&#x52A0;&#x8F7D;&#x6A21;&#x5757;">&#x52A0;&#x8F7D;&#x6A21;&#x5757;</h4>
+<p>&#x8FD9;&#x624D;&#x662F;&#x771F;&#x6B63;&#x7684;&#x91CD;&#x70B9;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E00;&#x5207;&#x90FD;&#x90A3;&#x4E48;&#x5E72;&#x51C0;&#x5229;&#x7565;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x53D1;&#x73B0;&#x591A;&#x5C42;<code>&#x56DE;&#x8C03;</code>&#x90A3;&#x4E9B;<code>&#x5927;&#x5751;</code>&#xFF0C;&#x539F;&#x6765;&#x662F;&#x7528;&#x4E86;<code>async</code>&#x6D41;&#x7A0B;&#x7BA1;&#x7406;&#x7EC4;&#x4EF6;&#x3002;</p>
+<p>&#x6574;&#x4F53;&#x4F7F;&#x7528;<code>async.auto</code>&#x8FDB;&#x884C;<code>&#x987A;&#x5E8F;&#x8C03;&#x7528;</code>&#xFF1B;&#x5728;&#x52A0;&#x8F7D;<code>modules</code>&#x65F6;&#xFF0C;&#x53C8;&#x4F7F;&#x7528;<code>async.parallel</code>&#xFF0C;&#x4F7F;&#x5176;&#x5E76;&#x884C;&#x8FD0;&#x4F5C;;&#x5F53;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x6E05;&#x7406;&#x5DE5;&#x4F5C;&#x7528;&#x5230;&#x4E86;<code>async.eachSeries</code>&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;Uml&#x56FE;&#x662F;&#x6211;&#x624B;&#x5DE5;&#x753B;&#xFF0C;&#x5C55;&#x793A;&#x4E86;&#x4ECE;&#x4EE3;&#x7801;103-438&#x884C;&#x4E4B;&#x95F4;&#xFF0C;&#x5404;&#x6A21;&#x5757;&#x7684;&#x52A0;&#x8F7D;&#x8FD0;&#x884C;&#x987A;&#x5E8F;&#x3002;</p>
+<p>![async-for-modules][]</p>
+<p>&#x8FD9;&#x5F20;&#x56FE;&#xFF0C;&#x5C06;&#x662F;&#x540E;&#x7EED;&#x5404;&#x7BC7;&#x6E90;&#x7801;&#x5206;&#x6790;&#x6587;&#x7AE0;&#x7684;&#x5730;&#x56FE;&#x7D22;&#x5F15;&#xFF0C;&#x4F1A;&#x7ECF;&#x5E38;&#x5F15;&#x7528;&#x8FD9;&#x5F20;&#x56FE;&#x3002;&#x4E0B;&#x7BC7;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x6709;&#x5FC5;&#x8981;&#x5BF9;<code>async</code>&#x7EC4;&#x4EF6;&#x8FDB;&#x884C;&#x8BE6;&#x89E3;&#x68B3;&#x7406;&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x5148;&#x8BFB;&#x8BFB;&#x6709;&#x5173;&#x6E90;&#x7801;&#xFF1A;</p>
+<p>&#xFF08;1&#xFF09;</p>
+<pre><code>
+
+</code></pre><p>&#x8FDB;&#x884C;&#x4E2D;...</p>
 
                     
                     </section>
