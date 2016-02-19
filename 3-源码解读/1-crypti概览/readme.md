@@ -26,6 +26,6 @@
 
 网址： https://github.com/imfly/crypti
 
-版本： v0.5.3
+版本： v0.5.4-mainnet
 
 
