@@ -13,6 +13,16 @@
 
 地址： https://github.com/imfly/crypti/blob/0.5.4-mainnet/app.js
 
+## 类图
+
+js原本无类，因此它的类图并不好处理，仅能大致给出它与其他模块的关联关系。
+
+![appjs-uml][]
+
+## 解读
+
+直接读代码看看。
+
 #### 1.配置处理
 
 任何一个应用，都会提供一些参数。对这些参数的处理，有很多种方案。但总的来说，通常需要提供一种理想环境，即默认配置，同时给你一种方法自行修改。
@@ -261,6 +271,13 @@ modules: ['network', 'connect', 'config', 'logger', 'bus', 'sequence', 'dbSequen
 
 电子书阅读： [http://book.btcnodejs.com](http://book.btcnodejs.com/3-源码解读/1-crypti概览/6-源码解读（入口程序app.js）.html)
 
+电子书下载： [下载页面][] [PDF文件][] [ePub文件][] [Mobi文件][]
 
+
+
+[appjs-uml]: ../../styles/images/5/appjs-uml.png
 [async-for-modules]: ../../styles/images/5/async-for-modules.jpeg
-
+[PDF文件]: https://www.gitbook.com/download/pdf/book/imfly/bitcoin-on-nodejs
+[ePub文件]: https://www.gitbook.com/download/epub/book/imfly/bitcoin-on-nodejs
+[Mobi文件]: https://www.gitbook.com/download/mobi/book/imfly/bitcoin-on-nodejs
+[下载页面]: https://www.gitbook.com/book/imfly/bitcoin-on-nodejs/details
