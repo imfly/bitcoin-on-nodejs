@@ -18,7 +18,7 @@
 
 ## 协议
 
-基于免费共享协议，可以任意转载和使用，但请不要用于商业目的。
+原创作品许可 [署名-非商业性使用-禁止演绎 3.0 未本地化版本 (CC BY-NC-ND 3.0)](http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh)
 
 ## 作者
 
@@ -31,4 +31,3 @@
 [gitbook-summary]: https://github.com/imfly/gitbook-summary
 [self-publishing]: https://github.com/imfly/how-to-create-self-publishing-platform
 [跟我联系]: /6-附录/4-关于作者.md
-

@@ -15,5 +15,14 @@
     },
     "bugs": {
         "url": "https://github.com/imfly/bitcoin-on-nodejs/issues"
+    },
+    "plugins": [
+      "baidu",
+      "-livereload"
+    ],
+    "pluginsConfig": {
+        "baidu": {
+            "token": "acfc5cd60db044270ff996429917c2b7"
+        }
     }
 }
