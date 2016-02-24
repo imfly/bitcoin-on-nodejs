@@ -11,7 +11,8 @@
   - [crypti概览](/3-源码解读/1-crypti概览/readme.md)
       * [Crypti，一个类似以太坊的开发平台](/3-源码解读/1-crypti概览/5-Crypti，一个类似以太坊的开发平台.md)
       * [源码解读（入口程序app.js）](/3-源码解读/1-crypti概览/6-源码解读（入口程序app.js）.md)
-      * [技术研究——commander、domain和async介绍](/3-源码解读/1-crypti概览/7-技术研究——commander、domain和async介绍.md)
+      * [技术研究——commander介绍](/3-源码解读/1-crypti概览/7-技术研究——commander介绍.md)
+      * [技术研究——domain和async介绍](/3-源码解读/1-crypti概览/8-技术研究——domain和async介绍.md)
   - p2p网络设计
       * [源码解读](/3-源码解读/2-p2p网络设计/1-源码解读.md)
       * [概念解析](/3-源码解读/2-p2p网络设计/2-概念解析.md)
