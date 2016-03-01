@@ -1,0 +1,12 @@
+@startuml images/peer-activity.png
+title Peers节点
+(*) --> "用户请求`/api/peers/`"
+--> "new Page"
+if "continue processing?" then
+-->[yes] ===RENDERING===
+else
+-->[no] ===REDIRECT_CHECK===
+endif
+--> "Page.onDestroy()"
+-->(*)
+@enduml

@@ -1,0 +1,39 @@
+@startuml images/peerClass.png
+' modules/Peer.js
+Class Peer {
+  ' fields
+  - modules: array
+  - library: array
+  - private： hash
+  - shared: hash
+
+  ' private methods
+  -attachApi(): void
+  -updatePeerList(cb): void
+  -count(cb): void
+  -banManager(cb): void
+  -getByFilter(cb): void
+
+  ' public methods
+  +list(options, cb): rows
+  +state(pip, port, state, timeoutSeconds, cb): rows
+  +remove(pip, port, cb): void
+  +addDapp(config, cb): void
+  +update(peer, cb): void
+  +sandboxApi(call, args, cb): void
+
+  ' events
+  +onBind(scope): void
+  +onBlockchainReady(scope)
+  +onPeerReady(): void
+
+  ' shared
+  -getPeers(req, cb): void
+  -getPeer(req, cb): void
+  -version(req, cb): void
+}
+Peer -> Router: << require >>
+Class Router {
+  +map(root, config): *
+}
+@enduml

@@ -11,7 +11,7 @@
 
 ## 源码
 
-地址： https://github.com/imfly/crypti/blob/0.5.4-mainnet/app.js
+地址： https://github.com/Ebookcoin/ebookcoin/blob/master/app.js
 
 ## 类图
 
