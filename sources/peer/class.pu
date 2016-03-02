@@ -1,20 +1,26 @@
 @startuml images/peerClass.png
+title
+Peer类图及其关联关系
+
+end title
+footer copyright (c) imfly 2016.03.01 http://book.btcnodejs.com
+header 《Nodejs开发加密货币》第八篇分析用图
+
 ' modules/Peer.js
 Class Peer {
-  ' fields
   - modules: array
   - library: array
   - private： hash
   - shared: hash
-
-  ' private methods
+  ====
+  .. private methods ..
   -attachApi(): void
   -updatePeerList(cb): void
   -count(cb): void
   -banManager(cb): void
   -getByFilter(cb): void
 
-  ' public methods
+  .. public methods ..
   +list(options, cb): rows
   +state(pip, port, state, timeoutSeconds, cb): rows
   +remove(pip, port, cb): void
@@ -22,18 +28,36 @@ Class Peer {
   +update(peer, cb): void
   +sandboxApi(call, args, cb): void
 
-  ' events
+  .. events ..
   +onBind(scope): void
   +onBlockchainReady(scope)
   +onPeerReady(): void
 
-  ' shared
+  .. shared methods..
   -getPeers(req, cb): void
   -getPeer(req, cb): void
   -version(req, cb): void
 }
-Peer -> Router: << require >>
+
+' helper/router.js
 Class Router {
   +map(root, config): *
 }
+
+' relationship
+Bus <- Peer: library.bus.message('bind')
+note top on link
+触发事件
+--
+仅仅提供一个<b>事件信息</b>而已
+end note
+
+Peer -> Transport: modules.transport.getFromRandomPeer()
+Peer -up-> Router: router.map(shared, {})
+note right
+  一个简单的辅助类
+  ====
+  * 其他实例通过请求 ""map()"" 方法映射路由
+end note
+Peer -down-> dbLite: library.dbLite.query()
 @enduml
