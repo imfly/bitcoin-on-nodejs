@@ -1,12 +1,55 @@
-@startuml images/peer-activity.png
-title Peers节点
-(*) --> "用户请求`/api/peers/`"
---> "new Page"
-if "continue processing?" then
--->[yes] ===RENDERING===
+@startuml ../../styles/images/peer/activity.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+Peer类各函数调用流程图
+
+end title
+
+footer copyright (c) imfly 2016.03.01 http://book.btcnodejs.com
+header 《Nodejs开发加密货币》第八篇分析用图
+
+(*) -left-> [读取节点流程] "get `/api/peers/`"
+--> library.scheme.validate()
+--> private.getByFilter()
+--> dblite.query()
+--> (*)
+
+(*) -right-> [写入和更新流程] config.json定义原始节点
+if "命令行--peers选项存在" then
+-right->[yes] program.peers
+--> "config.peers" as peers
 else
--->[no] ===REDIRECT_CHECK===
+--> [no] peers
 endif
---> "Page.onDestroy()"
--->(*)
+--> peer.onBlockchainReady()
+if peer in sqlite ? then
+--> [yes] Ignore
+--> "private.count()" as count
+else
+--> [no] Insert
+--> count
+endif
+
+if count > 0 then
+-right-> [no] warn('Peers list is empty')
+else
+-->[yes] private.updatePeerList()
+--> library.bus.message('peerReady')
+note right: 触发事件
+--> ==b1==
+--> "private.updatePeerList()" as updatePeerList
+-down-> private.update()
+--> updatePeerList
+note top: 循环执行
+--> ==b2==
+
+==b1== --> private.banManager()
+note top: 循环执行
+--> ==b2==
+
+endif
+
+--> (*)
 @enduml

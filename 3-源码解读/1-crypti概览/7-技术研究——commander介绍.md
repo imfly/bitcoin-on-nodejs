@@ -175,7 +175,7 @@ program.action(function(cmd, options) { //code });
 
 ## 参考
 
-Node.js 命令行程序开发教程（大牛作品）: http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html
+Node.js 命令行程序开发教程（中文）: http://www.ruanyifeng.com/blog/2015/05/command-line-with-node.html
 
 用npm构建简单命令行（英文）: http://blog.npmjs.org/post/118810260230/building-a-simple-command-line-tool-with-npm
 

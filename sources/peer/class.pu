@@ -1,4 +1,7 @@
-@startuml images/peerClass.png
+@startuml ../../styles/images/peer/class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
 title
 Peer类图及其关联关系
 
@@ -49,10 +52,11 @@ Bus <- Peer: library.bus.message('bind')
 note top on link
 触发事件
 --
-仅仅提供一个<b>事件信息</b>而已
+自己实现的事件处理方法，简单实用
 end note
 
 Peer -> Transport: modules.transport.getFromRandomPeer()
+Peer <- Transport: modules.peer.list()
 Peer -up-> Router: router.map(shared, {})
 note right
   一个简单的辅助类

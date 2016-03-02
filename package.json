@@ -1,6 +1,6 @@
 {
   "name": "BtcNodejs",
-  "version": "0.0.7",
+  "version": "0.1.7",
   "description": "第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,9 @@
   },
   "keywords": [
     "bitcoin",
-    "nodejs"
+    "nodejs",
+    "ebook",
+    "pdf"
   ],
   "author": "imfly",
   "license": "MIT",
