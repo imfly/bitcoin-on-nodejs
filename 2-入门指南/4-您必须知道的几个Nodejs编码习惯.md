@@ -36,7 +36,7 @@ var fs = require('fs');
 var iconv = require('iconv-lite');
 
 var rs = fs.createReadStream('test.md');
-var chunks = [], 
+var chunks = [],
     size = 0;
 
 //接受数据：一段段的接受
@@ -217,7 +217,7 @@ function myApiFunc(callback)
 
 try/catch和异步函数不是这么工作的。回忆一下，`回调`（异步）函数的意义就在于被调用的时候myApiFunc函数已经执行了（非柱塞），这意味着try代码块已经退出。这个回调函数外面，事实上，并没有try的代码块在作用。如果用这个模式，结果就是抛出异常的时候，程序崩溃了。
 
-**（2）怎么传递错误？** 
+**（2）怎么传递错误？**
 
 Nodejs提供了3种基本的传递模式，分别是Throw， Callback，以及 EventEmitter：
 
@@ -314,7 +314,7 @@ assert.equal(typeof (callback), 'function');
 
 截至本文，我们用4篇文章，首先考查了币圈Nodejs的应用情况，简单介绍了Nodejs入门知识，为研究学习Nodejs应用奠定了基础。接下来，正式进入`源码解读`阶段，请看下一篇：**《Nodejs开发加密货币》之五：Crypti，一个类似以太坊的开发平台**，简单介绍之后，我们会从整体上分析它的功能模块布局。
 
-Crypti，是一个完整的加密货币的实现，更是一个接纳第三方扩展应用的开发平台，无论它当前的市值如何，技术本身足够吸引我们深入源码探个究竟。
+Crypti，是一个完整的加密货币的实现，更是一个接纳第三方扩展应用的开发平台，不过已经不再维护。基于它的最新发布代码，我们开启了Ebookcoin项目（电子书出版和版权保护系统），一边开发一遍分享它的代码实现。
 
 **[特别说明：临近春节，后续的更新，将在春节后发布]**
 

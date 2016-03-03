@@ -1,4 +1,4 @@
-# 源码解读（入口程序app.js）
+# 入口程序app.js解读
 
 
 ## 前言
@@ -7,7 +7,7 @@
 
 被拆分的那个文件，自然是我们重点研究的对象，通常这个文件就是App.js或server.js，我把它称之为`入口程序`。
 
-显然Crypti用的就是app.js。这一篇，我们就来阅读一下该文件，学习研究它的整体架构流程。
+显然Ebookcoin用的就是app.js。这一篇，我们就来阅读一下该文件，学习研究它的整体架构流程。
 
 ## 源码
 
@@ -269,7 +269,7 @@ modules: ['network', 'connect', 'config', 'logger', 'bus', 'sequence', 'dbSequen
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： [http://book.btcnodejs.com](http://book.btcnodejs.com/3-源码解读/1-crypti概览/6-源码解读（入口程序app.js）.html)
+电子书阅读： [http://book.btcnodejs.com](http://book.btcnodejs.com/3-源码解读/2-入口程序app.js解读.html)
 
 电子书下载： [下载页面][] [PDF文件][] [ePub文件][] [Mobi文件][]
 

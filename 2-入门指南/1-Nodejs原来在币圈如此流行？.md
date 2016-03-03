@@ -79,7 +79,7 @@ bitcoin OR wallet stars:>100 forks:>50 in:file extension:md
 我们使用github的搜索功能，并选择forks数量倒序排列，查询：
 
 ```
-bitcoin language:JavaScript 
+bitcoin language:JavaScript
 ```
 
 **注意**：每一个fork背后可能就是一个全新的产品，forks代表了程序被二次开发的情况，个人觉得对于技术选型相对更有说服力。
@@ -140,7 +140,7 @@ bitcoin language:JavaScript
 　
 第十位，一个基于比特币的赌博网站源码。有意思的是，用户评价26颗星，很低，说明人们的价值观还是不喜欢赌博的。但是拷贝的分支却很多，对于开发者来说，这也算是比特币的一个落地应用。
 
-其实，还有很多应用，没有开源，或半开源，被关注的不多，鲜为人知。比如：crypti，一个类似于以太坊的应用，就在默默开发中。后面，我们详细介绍它，并对它的源码进行解读。
+其实，还有很多应用，没有开源，或半开源，被关注的不多，鲜为人知。
 
 ## 结论
 
@@ -162,7 +162,7 @@ bitcoin language:JavaScript
 
 ## 链接
 
-项目源码: <https://github.com/imfly/sacdl-project> 
+项目源码: <https://github.com/imfly/sacdl-project>
 
 试用地址：<https://imfly.github.io/sacdl-project>
 

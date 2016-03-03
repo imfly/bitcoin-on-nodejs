@@ -1,11 +1,11 @@
 # Nodejs开发加密货币
 
-版本： 0.1.7  
-时间： 2016-02-28
+版本： 0.3.3  
+时间： 2016-03-03
 
 ## 关于
 
-这是我2016年必须完成的一项任务，积累知识，娱乐自己，方便他人。
+这是我2016年必须完成的一项任务，积累知识，娱乐自己，方便他人。[2016年心愿单][]
 
 ## 说明
 
@@ -29,8 +29,11 @@
 
 微信：kubying
 
+Ebookcoin官方开发交流QQ群：185046161
+
 [github]: https://github.com/imfly/bitcoin-on-nodejs
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
 [gitbook-summary]: https://github.com/imfly/gitbook-summary
 [self-publishing]: https://github.com/imfly/how-to-create-self-publishing-platform
-[跟我联系]: /6-附录/4-关于作者.md
+[跟我联系]: /7-附录/4-关于作者.md
+[2016年心愿单]: 7-附录/3-2016年心愿单.html
