@@ -15,6 +15,54 @@
 
 目录由命令行工具 [gitbook-summary][] 自动生成。自由写作、发布，搭建自出版平台的方法，请[点击这里][self-publishing]
 
+简要介绍如下：
+
+(1)安装gitbook
+
+```
+$ npm install -g gitbook-cli
+```
+
+(2)克隆源文
+
+```
+$ git clone https://github.com/imfly/bitcoin-on-nodejs.git
+```
+
+(3)安装依赖包
+
+```
+cd bitcoin-on-nodejs
+npm install
+gitbook install
+```
+
+(4)写作构建
+
+写作，并开启服务（构建）
+
+```
+$ gitbook serve
+```
+
+通过`http://localhost:4000`实时浏览
+
+(5)生成目录
+
+只要修改了文章标题和文件夹，就应该重新生成目录文件
+
+```
+$ npm run summary
+```
+
+(6)一键发布
+
+```
+$ npm run deploy
+```
+
+以后，只要4-6的过程就是了。
+
 ## 反馈
 
 随时告诉我您的阅读体验和问题，也可以直接fork修改，提交PR。

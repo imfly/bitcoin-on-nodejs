@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "deploy": "node_modules/.bin/gulp deploy"
+    "deploy": "node_modules/.bin/gulp deploy",
+    "summary": "node_modules/.bin/book sm"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "dependencies": {},
   "devDependencies": {
     "del": "^2.2.0",
+    "gitbook-summary": "^1.0.14",
     "gulp": "^3.9.0",
     "gulp-gh-pages": "^0.5.4"
   }
