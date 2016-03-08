@@ -1,0 +1,28 @@
+@startuml ../../../styles/images/modules/crypto/class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+Crypto模块使用和关联情况
+
+end title
+footer copyright (c) imfly 2016.03.01 http://book.btcnodejs.com
+header 《Nodejs开发加密货币》第九篇分析用图
+
+' relationship
+Block <-up- Crypto: <a> logic/block.js
+note bottom
+  这是Nodejs模块，自己定义
+  或扩展都是危险的。
+end note
+
+Crypto <-left- Transaction: <b> logic/transaction.js
+Crypto <-down- Accounts: <1> modules/accounts.js
+Crypto <-down- Dapps: <2> modules/dapps.js
+Crypto <-down- Contacts: <3> modules/contacts.js
+Crypto <-down- Delegates: <4> modules/delegates.js
+Crypto <-right- Multisignatures: <5> modules/multisignatures.js
+Crypto <-up- Signatures: <6> modules/signatures.js
+Crypto <-up- Transactions: <7> modules/transactions.js
+Crypto <-up- Transport: <8> modules/transport.js
+@enduml

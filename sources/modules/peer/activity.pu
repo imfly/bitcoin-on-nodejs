@@ -1,4 +1,4 @@
-@startuml ../../styles/images/peer/activity.png
+@startuml ../../../styles/images/modules/peer/activity.png
 skinparam BorderColor #blue\9932CC
 skinparam backgroundcolor AntiqueWhite/white
 

@@ -1,0 +1,44 @@
+@startuml ../../styles/images/logic/block/class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+logic/block类图及其关联关系
+
+end title
+footer copyright (c) imfly 2016.03.01 http://book.btcnodejs.com
+header 《Nodejs开发加密货币》第10篇分析用图
+
+' modules/Peer.js
+Class Block {
+  - genesisblock: {}
+  - scope: {}
+  ====
+  .. private methods ..
+  -blockStatus
+  -getAddressByPublicKey
+
+  .. public methods ..
+  +create(data): block
+  +sign(block, keypair): hash('hex')
+  +getBytes(block): bufferData
+  +verifySignature(block): boolean
+  +dbSave(block, cb): void
+  +objectNormalize(block): block
+  +getId(block): bignumId
+  +getHash(block): hash
+  +calculateFee(block): 10000000
+  +dbRead(raw): block
+
+  .. events ..
+
+  .. shared methods..
+
+}
+
+' relationship
+Block -left-> genesisblock: scope.genesisblock
+Block -right-> transaction: scope.transaction.getBytes()
+Block -up-> scheme: scope.scheme()
+Block -down-> dbLite: scope.dbLite.query()
+@enduml

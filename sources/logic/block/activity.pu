@@ -1,0 +1,94 @@
+@startuml ../../styles/images/logic/block/activity.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+Peer类主要函数调用流程图
+
+end title
+
+footer copyright (c) imfly 2016.03.01 http://book.btcnodejs.com
+header 《Nodejs开发加密货币》第八篇分析用图
+
+(*) -left-> [读节点流程] "get `/api/peers/`"
+--> library.scheme.validate()
+--> private.getByFilter()
+--> dblite.query()
+--> (*)
+
+(*) -right-> [写节点流程] 启动应用
+
+' app.js启动命令
+partition app.js {
+  --> config.json定义原始节点
+  if "命令行--peers选项存在" then
+  -->[yes] program.peers
+  --> "config.peers" as peers
+  else
+  --> [no] peers
+  endif
+}
+
+' 区块链加载完毕
+--> peer.onBlockchainReady()
+if peer in sqlite ? then
+--> [yes] Ignore
+--> "private.count()" as count
+else
+--> [no] Insert
+--> count
+endif
+
+if count > 0 then
+-right-> [no] warn('Peers list is empty')
+else
+-->[yes] private.updatePeerList()
+--> library.bus.message('peerReady')
+note right: 触发事件
+
+' 第一个循环：检验节点，删除或更新
+--> ==b1==
+--> "private.updatePeerList()" as updatePeerList
+partition Transport {
+  --> modules.transport.getFromRandomPeer()
+  --> async.retry(20,,,)
+  --> modules.peer.list()
+  note right: 这是Peer类list方法调用
+  if peer？ then
+  -right-> [no] warn('No peers')
+  else
+  --> [yes] transport.getFromPeer()
+  --> try get 'http://peer.ip:peer.port + url
+    if err? then
+    -right-> ==b3==
+      if err? then
+      --> [yes] modules.peer.remove()
+      note bottom: Peer类中remove方法调用
+      else
+      --> [no] modules.peer.state()
+      note bottom
+      对不合法的IP节点，Peer类中的state方法更改
+      其状态为0，并禁止10分钟。其banManager方法，
+      会定期循环将其状态为从0更改为1。
+      end note
+      endif
+    else
+    --> [no] modules.peer.update()
+    note right: 默认健康节点的状态是`2`
+    endif
+  endif
+}
+-down-> private.update()
+--> updatePeerList
+note bottom: 循环执行
+--> ==b2==
+
+' 第二个循环：更新状态
+==b1== --> private.banManager()
+note top: 循环执行
+--> ==b2==
+
+endif
+
+--> (*)
+@enduml
