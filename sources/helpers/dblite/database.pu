@@ -1,0 +1,149 @@
+@startuml ../../../styles/images/helpers/dblite/class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+数据库表格关联图
+
+end title
+footer copyright (c) imfly 2016.03.08 http://book.btcnodejs.com
+header 《Nodejs开发加密货币》第x篇分析用图
+
+' modules/Peer.js
+package DBlite <<Database>> {
+  Class blocks {
+    + id: VARCHAR PRIMARY KEY
+    + version: INT
+    + timestamp: INT
+    + height: INT
+    + previousBlock: VARCHAR FOREIGN KEY
+    + numberOfTransactions: INT
+    + totalAmount: BIGINT
+    + totalFee: BIGINT
+    + reward: BIGINT
+    + payloadLength: INT
+    + payloadHash: BINARY
+    + generatorPublicKey: BINARY
+    + blockSignature: BINARY
+  }
+
+  Class trs {
+    +id: VARCHAR PRIMARY KEY
+    +blockId: VARCHAR FOREIGN KEY
+    +type: TINYINT
+    +timestamp: INT
+    +senderPublicKey: BINARY
+    +senderId: VARCHAR
+    +recipientId: VARCHAR
+    +senderUsername: VARCHAR
+    +recipientUsername: VARCHAR
+    +amount: BIGINT
+    +fee: BIGINT
+    +signature: BINARY
+    +signSignature: BINARY
+    +requesterPublicKey: BINARY
+    +signatures: TEXT
+  }
+
+  Class signatures {
+    +transactionId: VARCHAR FOREIGN KEY
+    +publicKey: BINARY
+  }
+
+  Class delegates {
+    +username: VARCHAR
+    +transactionId: VARCHAR FOREIGN KEY
+  }
+
+  Class votes {
+    +votes: TEXT
+    +transactionId: VARCHAR FOREIGN KEY
+  }
+
+  Class usernames {
+    +username: VARCHAR
+    +transactionId: VARCHAR FOREIGN KEY
+  }
+
+  Class contacts{
+    +address: VARCHAR
+    +transactionId: VARCHAR FOREIGN KEY
+  }
+
+  Class forks_stat {
+    +delegatePublicKey: BINARY
+    +blockTimestamp: INT
+    +blockId: VARCHAR
+    +blockHeight: INT
+    +previousBlock: VARCHAR
+    +cause: INT
+  }
+
+  Class multisignatures{
+    +min: INT
+    +lifetime: INT
+    +keysgroup: TEXT
+    +transactionId: VARCHAR FOREIGN KEY
+  }
+
+  Class dapps{
+    +transactionId: VARCHAR FOREIGN KEY
+    +name: VARCHAR
+    +description: VARCHARH
+    +tags: VARCHARH
+    +siaAscii: TEXT
+    +siaIcon: TEXT
+    +git: TEXT
+    +type: INTEGER
+    +category: INTEGER
+    +icon: TEXT
+  }
+
+  Class intransfer{
+    +dappId: VARCHAR
+    +transactionId: VARCHAR FOREIGN KEY
+  }
+
+  Class sia_peers{
+    +ip: INTEGER
+    +port: TINYINT
+    +outtransfer
+    +transactionId: VARCHAR
+    +dappId: VARCHAR
+    +outTransactionId: VARCHAR
+  }
+
+  Class peers{
+    +id: INTEGER
+    +ip: INTEGER
+    +port: TINYINT
+    +state: TINYINT
+    +os: VARCHAR
+    +sharePort: TINYINT
+    +version: VARCHAR
+    +clock: INT
+  }
+
+  Class peers_dapp{
+    +peerId: INT
+    +dappid: VARCHAR
+  }
+
+  ' relationship
+    blocks "1" *-> "1" blocks: previousBlock
+    trs "0..*" *-left-> "1" blocks: blockId
+    signatures "1" *-up-> "1" trs: transactionId
+    forks_stat "1" *-up-> "1" forks_stat: previousBlock
+    delegates "*" *-up-> "1" trs: transactionId
+    votes "*" *-up-> "1" trs: transactionId
+    usernames "*" *-up-> "1" trs: transactionId
+    contacts "*" *-down-> "1" trs: transactionId
+    multisignatures "*" *-down-> "1" trs: transactionId
+    dapps "*" *-left-> "1" trs: transactionId
+    intransfer "*" *-down-> "1" trs: transactionId
+    sia_peers  "*" *-down-> "1" trs: transactionId
+    peers "1" *-left-> "*" peers_dapp: peerId
+    dapps "1" *-right-> "*" peers_dapp: dappid
+    peers "*" *-left-* "*" dapps
+}
+@enduml
