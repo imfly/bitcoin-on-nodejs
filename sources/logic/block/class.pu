@@ -37,8 +37,8 @@ Class Block {
 }
 
 ' relationship
-Block -left-> genesisblock: scope.genesisblock
-Block -right-> transaction: scope.transaction.getBytes()
+Block -left-> genesisblock
+Block -right-> transaction
 Block -up-> scheme: scope.scheme()
 Block -down-> dbLite: scope.dbLite.query()
 @enduml

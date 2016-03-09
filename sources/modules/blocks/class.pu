@@ -1,0 +1,115 @@
+@startuml ../../../styles/images/modules/blocks/class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+modules/blocks类图及其关联关系
+
+end title
+footer copyright (c) imfly 2016.03.09 http://book.btcnodejs.com
+header 《Nodejs开发加密货币》第10篇分析用图
+
+' logic/block.js
+package logic {
+  Class Block {
+    - genesisblock: {}
+    - scope: {}
+    ====
+    .. private methods ..
+    -blockStatus
+    -getAddressByPublicKey
+
+    .. public methods ..
+    +create(data): block
+    +sign(block, keypair): hash('hex')
+    +getBytes(block): bufferData
+    +verifySignature(block): boolean
+    +dbSave(block, cb): void
+    +objectNormalize(block): block
+    +getId(block): bignumId
+    +getHash(block): hash
+    +calculateFee(block): 10000000
+    +dbRead(raw): block
+
+    .. events ..
+
+    .. shared methods..
+
+  }
+
+  ' relationship
+  Block -right-> transaction
+}
+
+' modules/blocks.js
+Class Blocks {
+  - modules: {}
+  - library: {}
+
+  - lastBlock
+  - blockStatus
+  - blocksDataFields
+  - loaded
+  - isActive
+
+  --
+
+  .. private methods ..
+  -attachApi: ()
+  -saveGenesisBlock: (cb)
+  -deleteBlock: (blockId, cb)
+  -list: (filter, cb)
+  -getById: (id, cb)
+  -saveBlock: (block, cb)
+  -popLastBlock: (oldLastBlock, cb)
+  -getIdSequence: (height, cb)
+  -readDbRows: (rows)
+  -applyTransaction: (block, transaction, sender, cb)
+
+  .. public methods ..
+  +getCommonBlock: (peer, height, cb)
+  +count: (cb)
+  +loadBlocksData: (filter, options, cb)
+  +loadBlocksPart: (filter, cb)
+  +loadBlocksOffset: (limit, offset, verify, cb)
+  +loadLastBlock: (cb)
+  +getLastBlock
+  +processBlock: (block, broadcast, cb)
+  +simpleDeleteAfterBlock: (blockId, cb)
+  +loadBlocksFromPeer: (peer, lastCommonBlockId, cb)
+  +deleteBlocksBefore: (block, cb)
+  +generateBlock: (keypair, timestamp, cb)
+  +sandboxApi: (call, args, cb)
+
+  .. events ..
+  +onReceiveBlock: (block)
+  +onBind: (scope)
+  +cleanup: (cb)
+
+  .. shared methods..
+  +getBlock: (req, cb)
+  +getBlocks:  (req, cb)
+  +getHeight: (req, cb)
+  +getFee: (req, cb)
+  +getMilestone: (req, cb)
+  +getReward: (req, cb)
+  +getSupply: (req, cb)
+  +getStatus:  (req, cb)
+}
+
+' relationship
+Blocks -up-> crypto: <<require>>
+Blocks -up-> ed25519: <<require>>
+Blocks -up-> Router: <<require>>
+Blocks -up-> slots: <<require>>
+
+Blocks -left-> balancesSequence
+Blocks --> dbSequence
+Blocks -down-> genesisblock
+Blocks -right-> dbLite
+Blocks -right-> Block: dbRead(rows[i]))
+Blocks -right-> transaction
+
+Block --> scheme
+Block -down-> dbLite
+@enduml
