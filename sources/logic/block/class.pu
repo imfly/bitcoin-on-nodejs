@@ -9,7 +9,7 @@ end title
 footer copyright (c) imfly 2016.03.01 http://book.btcnodejs.com
 header 《Nodejs开发加密货币》第10篇分析用图
 
-' modules/Peer.js
+' logic/block.js
 Class Block {
   - genesisblock: {}
   - scope: {}
