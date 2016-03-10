@@ -1,0 +1,706 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>必须逾越的各种坑 | Nodejs开发加密货币</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="Imfly">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+        <link rel="stylesheet" href="../styles/website.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../4-技术分享/21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论.html" />
+    
+    
+    <link rel="prev" href="../4-技术分享/2-async介绍.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="4.3"
+        data-chapter-title="必须逾越的各种坑"
+        data-filepath="4-技术分享/20-必须逾越的各种坑.md"
+        data-basepath=".."
+        data-revision="Thu Mar 10 2016 22:17:16 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="1-开栏寄语/1-开栏寄语.html">
+            
+                
+                    <a href="../1-开栏寄语/1-开栏寄语.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        开栏寄语
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="2-入门指南/readme.html">
+            
+                
+                    <a href="../2-入门指南/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        入门指南
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="2-入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                
+                    <a href="../2-入门指南/1-Nodejs原来在币圈如此流行？.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Nodejs原来在币圈如此流行？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="2-入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                
+                    <a href="../2-入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Nodejs让您的前端开发像子弹飞一样
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="2-入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                
+                    <a href="../2-入门指南/3-Nodejs让后台开发像前端一样简单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Nodejs让后台开发像前端一样简单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="2-入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                
+                    <a href="../2-入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        您必须知道的几个Nodejs编码习惯
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="3-源码解读/readme.html">
+            
+                
+                    <a href="../3-源码解读/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="3-源码解读/0-加密货币简介.html">
+            
+                
+                    <a href="../3-源码解读/0-加密货币简介.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        加密货币简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="3-源码解读/1-Crypti，一个类似以太坊的开发平台.html">
+            
+                
+                    <a href="../3-源码解读/1-Crypti，一个类似以太坊的开发平台.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Crypti，一个类似以太坊的开发平台
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="3-源码解读/2-入口程序app.js解读.html">
+            
+                
+                    <a href="../3-源码解读/2-入口程序app.js解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        入口程序app.js解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="3-源码解读/3-一个精巧的p2p网络实现.html">
+            
+                
+                    <a href="../3-源码解读/3-一个精巧的p2p网络实现.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        一个精巧的p2p网络实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="3-源码解读/4-在Nodejs中使用加密解密技术.html">
+            
+                
+                    <a href="../3-源码解读/4-在Nodejs中使用加密解密技术.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        在Nodejs中使用加密解密技术
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="3-源码解读/5-签名与交易.html">
+            
+                
+                    <a href="../3-源码解读/5-签名与交易.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        签名与交易
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="3-源码解读/6-神秘的区块链.html">
+            
+                
+                    <a href="../3-源码解读/6-神秘的区块链.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        神秘的区块链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="3-源码解读/7-POS机制的实现.html">
+            
+                
+                    <a href="../3-源码解读/7-POS机制的实现.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        POS机制的实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="3-源码解读/8-帐号与多重签名.html">
+            
+                
+                    <a href="../3-源码解读/8-帐号与多重签名.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        帐号与多重签名
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" >
+            
+            <span><b>4.</b> 技术分享</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="4-技术分享/1-commander介绍.html">
+            
+                
+                    <a href="../4-技术分享/1-commander介绍.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        commander介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="4-技术分享/2-async介绍.html">
+            
+                
+                    <a href="../4-技术分享/2-async介绍.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        async介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.3" data-path="4-技术分享/20-必须逾越的各种坑.html">
+            
+                
+                    <a href="../4-技术分享/20-必须逾越的各种坑.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        必须逾越的各种坑
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="4-技术分享/21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论.html">
+            
+                
+                    <a href="../4-技术分享/21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="4-技术分享/3-图解加密解密技术.html">
+            
+                
+                    <a href="../4-技术分享/3-图解加密解密技术.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        图解加密解密技术
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="5-概念解析/readme.html">
+            
+                
+                    <a href="../5-概念解析/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        概念解析
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="5-概念解析/1-加密货币P2P网络.html">
+            
+                
+                    <a href="../5-概念解析/1-加密货币P2P网络.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        加密货币P2P网络
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="6-结束语/readme.html">
+            
+                
+                    <a href="../6-结束语/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        结束语
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="6-结束语/25-结束语（进入项目实践）.html">
+            
+                
+                    <a href="../6-结束语/25-结束语（进入项目实践）.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        结束语（进入项目实践）
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" >
+            
+            <span><b>7.</b> 附录</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="7-附录/1-加密货币相关名词汇总.html">
+            
+                
+                    <a href="../7-附录/1-加密货币相关名词汇总.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        加密货币相关名词汇总
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="7-附录/2-贡献者名单.html">
+            
+                
+                    <a href="../7-附录/2-贡献者名单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        贡献者名单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="7-附录/3-2016年心愿单.html">
+            
+                
+                    <a href="../7-附录/3-2016年心愿单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        2016年心愿单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="7-附录/4-关于作者.html">
+            
+                
+                    <a href="../7-附录/4-关于作者.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        关于作者
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Nodejs开发加密货币</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <p>&#x8FDB;&#x884C;&#x4E2D;...</p>
+<h1 id="&#x5FC5;&#x987B;&#x903E;&#x8D8A;&#x7684;&#x5404;&#x79CD;&#x5751;">&#x5FC5;&#x987B;&#x903E;&#x8D8A;&#x7684;&#x5404;&#x79CD;&#x5751;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x4EFB;&#x4F55;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x90FD;&#x65E0;&#x6CD5;&#x5B8C;&#x7F8E;&#x7684;&#x89E3;&#x51B3;&#x4F60;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x9047;&#x5230;&#x4EC0;&#x4E48;&#x5751;&#xFF0C;&#x5C31;&#x53EA;&#x80FD;&#x6C42;&#x52A9;&#x793E;&#x533A;&#xFF0C;&#x4E0D;&#x7136;&#x81EA;&#x5DF1;&#x95F7;&#x5934;&#x89E3;&#x51B3;&#x5C31;&#x597D;&#xFF0C;&#x522B;&#x62B1;&#x6028;&#xFF0C;&#x4E16;&#x754C;&#x672C;&#x6765;&#x5C31;&#x4E0D;&#x5B8C;&#x7F8E;&#x3002;</p>
+<h2 id="1js&#x5BF9;&#x6570;&#x636E;&#x8BA1;&#x7B97;&#x5904;&#x7406;&#x7684;&#x5404;&#x79CD;&#x95EE;&#x9898;">1.Js&#x5BF9;&#x6570;&#x636E;&#x8BA1;&#x7B97;&#x5904;&#x7406;&#x7684;&#x5404;&#x79CD;&#x95EE;&#x9898;</h2>
+<h4 id="&#x95EE;&#x9898;&#x518D;&#x73B0;">&#x95EE;&#x9898;&#x518D;&#x73B0;</h4>
+<p><strong>(1)parseInt()&#x6700;&#x597D;&#x4E0D;&#x7528;</strong></p>
+<p>&#x4E0D;&#x8981;&#x5C06; parseInt &#x5F53;&#x505A;&#x8F6C;&#x6362; Number &#x548C; Integer &#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+<p>&#x95EE;&#x9898;&#xFF1A;&#x9ED8;&#x8BA4;&#xFF0C;&#x5BF9;&#x5C0F;&#x4E8E; 0.0000001 &#xFF08;1e-7&#xFF09; &#x7684;&#x6570;&#x5B57;&#x8F6C;&#x6362;&#x6210; String &#x65F6;&#xFF0C;js&#x4F1A;&#x5C06;&#x5176;&#x53D8;&#x6210; &#x79D1;&#x5B66;&#x8BB0;&#x53F7;&#x6CD5; &#xFF0C;&#x518D;&#x5BF9;&#x8FD9;&#x4E2A;&#x6570;&#x8FDB;&#x884C; parseInt &#x64CD;&#x4F5C;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x95EE;&#x9898;&#x53D1;&#x751F;&#x3002;&#x5373;&#xFF1A;</p>
+<pre><code>parseInt(0.0000008) === 8
+</code></pre><p>&#x89E3;&#x6790;&#xFF1A;</p>
+<p>&#x5E38;&#x89C1;&#x7684;&#x95EE;&#x9898;&#x6709;&#x6D6E;&#x70B9;&#x6570;&#x6BD4;&#x8F83;&#xFF1A;</p>
+<pre><code>console.log((0.1 + 0.2) == 0.3);  // false
+console.log((0.1 + 0.2) === 0.3); // false
+console.log(0.1 + 0.2); // 0.30000000000000004
+</code></pre><p>&#x518D;&#x6709;&#xFF1A;</p>
+<pre><code>parseInt(1000000000000000000000.5, 10); // 1
+</code></pre><p>parseInt &#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x5C06;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; String(1000000000000000000000.5) &#x7684;&#x7ED3;&#x679C;&#x4E3A; &apos;1e+21&apos; &#x3002; parseInt &#x5E76;&#x6CA1;&#x6709;&#x5C06; &apos;e&apos; &#x89C6;&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x8F6C;&#x6362;&#x5230;&#x540E;&#x5C31;&#x505C;&#x6B62;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x4E5F;&#x5C31;&#x53EF;&#x4EE5;&#x89E3;&#x91CA; parseInt(0.0000008) === 8 &#xFF1A;</p>
+<pre><code>String(0.000008);  // &apos;0.000008&apos;
+String(0.0000008); // &apos;8e-7&apos;
+</code></pre><p>&#x53C2;&#x8003;&#xFF1A; <a href="http://www.tuicool.com/articles/7nMbea" target="_blank">http://www.tuicool.com/articles/7nMbea</a></p>
+<p><strong>(2)&#x5BF9;&#x4E8E;&#x5927;&#x6570;&#x636E;&#xFF0C;js&#x6709;&#x9650;&#x5236;</strong></p>
+<p>&#x95EE;&#x9898;&#xFF1A;</p>
+<p>&#x7B2C;&#x4E09;&#x65B9;api&#x63D0;&#x4F9B;&#x7684;&#x6570;&#x636E;&#xFF1A;</p>
+<pre><code>{&quot;content&quot;: &quot;Hi&quot;, &quot;created_at&quot;: 1340863646, &quot;type&quot;: &quot;text&quot;, &quot;message_id&quot;: 5758965507965321234, &quot;from_user&quot;: &quot;userC&quot;}
+</code></pre><p>&#x5176;&#x4E2D;message_id&#x662F;19&#x4F4D;number&#x7C7B;&#x578B;&#x7684;&#x3002;&#x6211;&#x7528;JSON.parse&#x89E3;&#x6790;&#x6210;JSON&#x5BF9;&#x8C61;&#x83B7;&#x53D6;&#x5176;&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>var jsonStr = &apos;{&quot;content&quot;: &quot;Hi&quot;, &quot;created_at&quot;: 1340863646, &quot;type&quot;: &quot;text&quot;, &quot;message_id&quot;: 5758965507965321234, &quot;from_user&quot;: &quot;userC&quot;}&apos;;
+var jsonObj = JSON.parse(jsonStr);
+console.log(jsonObj.message_id);//&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x662F;&#xFF1A;5758965507965321000
+</code></pre><p>&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x7684;&#x6700;&#x540E;&#x4E09;&#x4F4D;&#x53D8;&#x6210;000&#x4E86;&#x3002;&#x8D85;&#x8FC7;16&#x4F4D;&#x7684;&#x6570;&#x636E;&#x89E3;&#x6790;&#x540E;&#x5747;&#x4F1A;&#x53D8;&#x4E3A;000&#xFF1B;</p>
+<p>&#x89E3;&#x6790;&#xFF1A;</p>
+<p>&#x6D6E;&#x70B9;&#x6570;&#x8303;&#x56F4;&#xFF1A;</p>
+<pre><code>as  large  as &#xB1;1.7976931348623157 &#xD7; 10&#x7684;308&#x6B21;&#x65B9;
+as small as &#xB1;5 &#xD7; 10&#x7684;&#x2212;324&#x6B21;&#x65B9;
+</code></pre><p>&#x7CBE;&#x786E;&#x6574;&#x6570;&#x8303;&#x56F4;&#xFF1A;</p>
+<pre><code>The JavaScript number format allows you to exactly represent all integers between
+&#x2212;9007199254740992  and 9007199254740992 &#xFF08;&#x5373;&#x6B63;&#x8D1F;2&#x7684;53&#x6B21;&#x65B9;&#xFF09;
+</code></pre><p>&#x6570;&#x7EC4;&#x7D22;&#x5F15;&#x8FD8;&#x6709;&#x4F4D;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code>&#x6B63;&#x8D1F;2&#x7684;31&#x6B21;&#x65B9;
+</code></pre><p>&#x53C2;&#x8003;&#xFF1A;</p>
+<p><a href="https://cnodejs.org/topic/4ff679c84764b7290214460a" target="_blank">https://cnodejs.org/topic/4ff679c84764b7290214460a</a></p>
+<p><a href="https://cnodejs.org/topic/4fb3722c1975fe1e132b5a9a" target="_blank">https://cnodejs.org/topic/4fb3722c1975fe1e132b5a9a</a></p>
+<h4 id="&#x7EC8;&#x6781;&#x7B54;&#x6848;">&#x7EC8;&#x6781;&#x7B54;&#x6848;</h4>
+<p>&#x4F7F;&#x7528; <a href="https://github.com/Ebookcoin/node-bignum" target="_blank">node-bignum</a> &#xFF0C;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/Ebookcoin/node-bignum" target="_blank">https://github.com/Ebookcoin/node-bignum</a></p>
+<p>&#x793E;&#x533A;&#x51FA;&#x73B0;&#x4E86;&#x5F88;&#x591A;bignumber&#x5305;&#xFF0C;&#x4F46;&#x53EA;&#x6709;<a href="https://github.com/Ebookcoin/node-bignum" target="_blank">node-bignum</a>&#x53EF;&#x4EE5;&#x5B8C;&#x7F8E;&#x89E3;&#x51B3;&#x4E0A;&#x8FF0;&#x95EE;&#x9898;&#x3002;&#x8BF8;&#x5982; <a href="https://github.com/MikeMcl/bignumber.js" target="_blank">bignumber.js</a> &#x7B49;&#x65E0;&#x6CD5;&#x89E3;&#x51B3;&#x5C0F;&#x6570;&#x95EE;&#x9898;&#xFF08;&#x95EE;&#x9898;1&#xFF09;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../4-技术分享/2-async介绍.html" class="navigation navigation-prev " aria-label="Previous page: async介绍"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../4-技术分享/21-24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论.html" class="navigation navigation-next " aria-label="Next page: 24-总结关于CPU优化、数据库使用、多平台、客户端开发等源码未涉及的专项技术讨论"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-baidu/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"baidu":{"token":"acfc5cd60db044270ff996429917c2b7"},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?acfc5cd60db044270ff996429917c2b7';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    </body>
+    
+</html>
