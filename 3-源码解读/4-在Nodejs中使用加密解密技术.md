@@ -9,7 +9,7 @@
 
 ## 源码
 
-`Ebookcoin`没有提供相关扩展，全部使用Nodejs自己的`crypto`模块进行加密，使用`Ed25519`组件签名认证。本文分析，涉及到的代码文件：
+`Ebookcoin`没有提供相关扩展，全部使用Nodejs自己的`crypto`模块进行加密，使用`Ed25519`组件签名认证。本文涉及到的代码：
 
 accounts.js: https://github.com/Ebookcoin/ebookcoin/blob/master/modules/accounts.js
 
@@ -179,3 +179,8 @@ Accounts.prototype.generateAddressByPublicKey = function (publicKey) {
 
 [crypto-class.png]: ../styles/images/modules/crypto/class.png
 [crypto-activity.png]: ../styles/images/modules/crypto/activity.png
+
+[PDF文件]: https://www.gitbook.com/download/pdf/book/imfly/bitcoin-on-nodejs
+[ePub文件]: https://www.gitbook.com/download/epub/book/imfly/bitcoin-on-nodejs
+[Mobi文件]: https://www.gitbook.com/download/mobi/book/imfly/bitcoin-on-nodejs
+[下载页面]: https://www.gitbook.com/book/imfly/bitcoin-on-nodejs/details
