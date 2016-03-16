@@ -1,8 +1,11 @@
 # Nodejs开发加密货币
 
-版本： 0.3.4
 
-时间： 2016-03-10
+## 日志
+
+- [x] 发布第10篇 2016-03-16 <当前>
+- [x] 发布第9篇 2016-03-10
+- [x] 完成1-8篇
 
 ## 关于
 
@@ -74,8 +77,6 @@ $ npm run deploy
 
 ## 作者
 
-我们始终关注C/C++、Nodejs等编程语言，在`区块链、电子商务、即时通信、电子书、自媒体、物联网`等领域的创新应用，已经汇聚了大批在该领域的`开发、设计、运营和管理`人才，如果您也有志于此，请[跟我联系][]
-
 微信：kubying
 
 Ebookcoin官方开发交流QQ群：185046161
@@ -84,5 +85,4 @@ Ebookcoin官方开发交流QQ群：185046161
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
 [gitbook-summary]: https://github.com/imfly/gitbook-summary
 [self-publishing]: https://github.com/imfly/how-to-create-self-publishing-platform
-[跟我联系]: /7-附录/4-关于作者.md
 [2016年心愿单]: 7-附录/3-2016年心愿单.html
