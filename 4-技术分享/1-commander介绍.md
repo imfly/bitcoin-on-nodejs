@@ -1,4 +1,4 @@
-# 技术研究（1）——commander介绍
+# commander介绍
 
 ## 前言
 

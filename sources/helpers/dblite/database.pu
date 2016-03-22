@@ -132,8 +132,9 @@ package DBlite <<Database>> {
   ' relationship
     blocks "1" *-> "1" blocks: previousBlock
     trs "0..*" *-left-> "1" blocks: blockId
-    signatures "1" *-up-> "1" trs: transactionId
+    forks_stat "*" *-down-> "1" blocks: blockId
     forks_stat "1" *-up-> "1" forks_stat: previousBlock
+    signatures "1" *-up-> "1" trs: transactionId
     delegates "*" *-up-> "1" trs: transactionId
     votes "*" *-up-> "1" trs: transactionId
     usernames "*" *-up-> "1" trs: transactionId
@@ -142,8 +143,10 @@ package DBlite <<Database>> {
     dapps "*" *-left-> "1" trs: transactionId
     intransfer "*" *-down-> "1" trs: transactionId
     sia_peers  "*" *-down-> "1" trs: transactionId
-    peers "1" *-left-> "*" peers_dapp: peerId
-    dapps "1" *-right-> "*" peers_dapp: dappid
+    intransfer "*" *-up-> "1" dapps: dappId
+    sia_peers  "*" *-down-> "1" dapps: dappId
+    peers "1" <-up-* "*" peers_dapp: peerId
+    dapps "1" <-down-* "*" peers_dapp: dappid
     peers "*" *-left-* "*" dapps
 }
 @enduml
