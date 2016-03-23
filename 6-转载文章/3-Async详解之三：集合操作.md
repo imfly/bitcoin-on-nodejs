@@ -387,21 +387,21 @@ Reduce可以让我们给定一个初始值，用它与集合中的每一个元�
 
 在下面的示例中，将集合中的每一个元素都加倍：
 
-> <font style="background-color: #ffffff">async.concat(['aa','bb'], function(item,callback) {</font>
+> async.concat(['aa','bb'], function(item,callback) {
 >
-> <font style="background-color: #ffffff">    setTimeout(function() {</font>
+>     setTimeout(function() {
 >
-> <font style="background-color: #ffffff">        callback(null, [item, item]);</font>
+>         callback(null, [item, item]);
 >
-> <font style="background-color: #ffffff">    }, 100);</font>
+>     }, 100);
 >
-> <font style="background-color: #ffffff">}, function(err, values) {</font>
+> }, function(err, values) {
 >
-> <font style="background-color: #ffffff">    log(’1.1 err: ‘, err);</font>
+>     log(’1.1 err: ‘, err);
 >
-> <font style="background-color: #ffffff">    log(’1.1 values: ‘, values);</font>
+>     log(’1.1 values: ‘, values);
 >
-> <font style="background-color: #ffffff">});</font>
+> });
 
 打印如下：
 
