@@ -16,65 +16,63 @@ Async的内容分为三部分：
 
 ## 1\. series(tasks, [callback]) （多个函数依次执行，之间没有数据交换）
 
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
-
 有多个异步函数需要依次调用，一个完成之后才能执行下一个。各函数之间没有数据的交换，仅仅需要保证其执行顺序。这时可使用series。
 
 纯js代码：
 
-> <span style="line-height:23.3333320617676px">step1(function(err, v1) {</span>
+> step1(function(err, v1) {
 >
-> <span style="line-height:23.3333320617676px">  step2(function(err, v2) {</span>
+>   step2(function(err, v2) {
 >
-> <span style="line-height:23.3333320617676px">    step3(function(err, v3) {</span>
+>     step3(function(err, v3) {
 >
-> <span style="line-height:23.3333320617676px">       // do somethig with the err or values v1/v2/v3</span>
+>        // do somethig with the err or values v1/v2/v3
 >
-> <span style="line-height:23.3333320617676px">    }</span>
+>     }
 >
-> <span style="line-height:23.3333320617676px">  }</span>
+>   }
 >
-> <span style="line-height:23.3333320617676px">});</span>
+> });
 
 从中可以看到这嵌套还是比较多深的，如果再多几步，会更深。在代码中忽略对了每一层err的处理，否则还都等加上 if(err) return callback(err)，那就更麻烦了。
 
 对于这种情况，使用async来处理，就是这样的：
 
-> <span style="line-height:23.3333320617676px">var async = require(‘async’)</span>
+> var async = require(‘async’)
 >
-> <span style="line-height:23.3333320617676px">async.series([</span>
+> async.series([
 >
-> <span style="line-height:23.3333320617676px">   step1, step2, step3</span>
+>    step1, step2, step3
 >
-> <span style="line-height:23.3333320617676px">], function(err, values) {</span>
+> ], function(err, values) {
 >
-> <span style="line-height:23.3333320617676px">   // do somethig with the err or values v1/v2/v3</span>
+>    // do somethig with the err or values v1/v2/v3
 >
-> <span style="line-height:23.3333320617676px">});</span>
+> });
 
 可以看到代码简洁了很多，而且自动处理每个回调中的错误。当然，这里只给出来最最简单的例子，在实际中，我们常会在每个step中执行一些操作，这时可写成：
 
-> <span style="line-height:23.3333320617676px">var async = require(‘async’)</span>
+> var async = require(‘async’)
 >
-> <span style="line-height:23.3333320617676px">async.series([</span>
+> async.series([
 >
-> <span style="line-height:23.3333320617676px">  function(cb) { step1(function(err,v1) {</span>
+>   function(cb) { step1(function(err,v1) {
 >
-> <span style="line-height:23.3333320617676px">     // do something with v1</span>
+>      // do something with v1
 >
-> <span style="line-height:23.3333320617676px">     cb(err, v1);</span>
+>      cb(err, v1);
 >
-> <span style="line-height:23.3333320617676px">  }),</span>
+>   }),
 >
-> <span style="line-height:23.3333320617676px">  function(cb) { step2(...) },</span>
+>   function(cb) { step2(...) },
 >
-> <span style="line-height:23.3333320617676px">  function(cb) { step3(...) }</span>
+>   function(cb) { step3(...) }
 >
-> <span style="line-height:23.3333320617676px">], function(err, values) {</span>
+> ], function(err, values) {
 >
-> <span style="line-height:23.3333320617676px">// do somethig with the err or values v1/v2/v3</span>
+> // do somethig with the err or values v1/v2/v3
 >
-> <span style="line-height:23.3333320617676px">});</span>
+> });
 
 该函数的详细解释为：
 
@@ -93,8 +91,6 @@ Async的内容分为三部分：
 另外还需要注意的是：多个series调用之间是不分先后的，因为series本身也是异步调用。
 
 ## 2\. parallel(tasks, [callback]) （多个函数并行执行）
-
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
 
 并行执行多个函数，每个函数都是立即执行，不需要等待其它函数先执行。传给最终callback的数组中的数据按照tasks中声明的顺序，而不是执行完成的顺序。
 
@@ -138,8 +134,6 @@ Async的内容分为三部分：
 
 ## 3\. waterfall(tasks, [callback]) （多个函数依次执行，且前一个的输出为后一个的输入）
 
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
-
 与seires相似，按顺序依次执行多个函数。不同之处，每一个函数产生的值，都将传给下一个函数。如果中途出错，后面的函数将不会被执行。错误信息以及之前产生的结果，将传给waterfall最终的callback。
 
 这个函数名为waterfall(瀑布)，可以想像瀑布从上到下，中途冲过一层层突起的石头。注意，该函数不支持json格式的tasks。
@@ -156,8 +150,6 @@ Async的内容分为三部分：
 更详细示例参见：[https://github.com/freewind/async_demo/blob/master/waterfall.js](https://github.com/freewind/async_demo/blob/master/waterfall.js)
 
 ## 4\. auto(tasks, [callback]) （多个函数有依赖关系，有的并行执行，有的依次执行）
-
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
 
 用来处理有依赖关系的多个任务的执行。比如某些任务之间彼此独立，可以并行执行；但某些任务依赖于其它某些任务，只能等那些任务完成后才能执行。
 
@@ -209,8 +201,6 @@ Async的内容分为三部分：
 
 ## 5\. whilst(test, fn, callback)（用可于异步调用的while）
 
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
-
 相当于while，但其中的异步调用将在完成后才会进行下一次循环。举例如下：
 
 > var count1 = 0;   
@@ -246,8 +236,6 @@ Async的内容分为三部分：
 
 ## 6\. until(test, fn, callback) （与while相似，但判断条件相反）
 
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
-
 > var count4 = 0;   
 > async.until(   
 >     function() { return count4>3 },   
@@ -265,8 +253,6 @@ Async的内容分为三部分：
 当第一个函数条件为false时，继续执行第二个函数，否则跳出。
 
 ## 7\. queue （可设定worker数量的队列）
-
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
 
 queue相当于一个加强版的parallel，主要是限制了worker数量，不再一次性全部执行。当worker数量不够用时，新加入的任务将会排队等候，直到有新的worker可用。
 
@@ -318,11 +304,7 @@ worker数量将用完时，会调用saturated函数：
 
 更多详细示例参见：[https://github.com/freewind/async_demo/blob/master/queue.js](https://github.com/freewind/async_demo/blob/master/queue.js)
 
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
-
 ## 8\. iterator(tasks) （将几个函数包装为iterator）
-
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
 
 将一组函数包装成为一个iterator，可通过next()得到以下一个函数为起点的新的iterator。该函数通常由async在内部使用，但如果需要时，也可在我们的代码中使用它。
 
@@ -344,8 +326,6 @@ worker数量将用完时，会调用saturated函数：
 
 ## 9\. apply(function, arguments..) （给函数预绑定参数）
 
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
-
 apply是一个非常好用的函数，可以让我们给一个函数预绑定多个参数并生成一个可直接调用的新函数，简化代码。
 
 对于函数：
@@ -358,17 +338,15 @@ apply是一个非常好用的函数，可以让我们给一个函数预绑定多
 
 还可以给某些函数预设值，得到一个新函数：
 
-> <span style="line-height:23.3333320617676px">var log = async.apply(console.log, ">");</span>
+> var log = async.apply(console.log, ">");
 >
-> <span style="line-height:23.3333320617676px">log(‘hello’);</span>
+> log(‘hello’);
 >
-> <span style="line-height:23.3333320617676px">// > hello</span>
+> // > hello
 
 更详细代码参见：[https://github.com/freewind/async_demo/blob/master/apply.js](https://github.com/freewind/async_demo/blob/master/apply.js)
 
 ## 10\. nextTick(callback) （在nodejs与浏览器两边行为一致）
-
-<span style="line-height:22px; font-family:'Hiragino Sans GB W3','Hiragino Sans GB',Arial,Helvetica,simsun,u5b8bu4f53; color:rgb(48,48,48); font-size:15px"></span>
 
 nextTick的作用与nodejs的nextTick一样，都是把某个函数调用放在队列的尾部。但在浏览器端，只能使用setTimeout(callback,0)，但这个方法有时候会让其它高优先级的任务插到前面去。
 
