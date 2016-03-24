@@ -108,8 +108,15 @@ concat, concatSeries
 
 ![Nodejs流程控制组件Async全解.png][]
 
-## 源码实践
+## 源码解读
 
+看看`Ebookcoin`里面，async的使用吧，可谓到处都是。因为在入口程序一篇里，说过了，这里就不具体解读了。以后遇到再做解释。
+
+![async-in-ebookcoin.jpg][]
+
+## 趣味实践
+
+因为异步
 
 ## 总结
 
@@ -137,3 +144,4 @@ concat, concatSeries
 
 [most-depended-upon-packages.jpg]: ../styles/images/11/most-depended-upon-packages.jpg
 [Nodejs流程控制组件Async全解.png]: ../styles/images/naotu/Nodejs流程控制组件Async全解.png
+[async-in-ebookcoin.jpg]: ../styles/images/11/async-in-ebookcoin.jpg
