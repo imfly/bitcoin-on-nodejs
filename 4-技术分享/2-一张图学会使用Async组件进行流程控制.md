@@ -1,6 +1,4 @@
-进行中...
-
-# 一张图学会使用Async组件进行流程控制
+# 一张图学会使用Async组件进行异步流程控制
 
 ## 前言
 
@@ -110,17 +108,21 @@ concat, concatSeries
 
 ## 源码解读
 
-看看`Ebookcoin`里面，async的使用吧，可谓到处都是。因为在入口程序一篇里，说过了，这里就不具体解读了。以后遇到再做解释。
+看看`Ebookcoin`里面，async的使用吧，可谓到处都是。因为在[入口程序app.js解读][]里，也已经提及，这里就不再提及，以后遇到再做解释。
 
 ![async-in-ebookcoin.jpg][]
 
 ## 趣味实践
 
-因为异步
+Async官方文档提供了很多实例， 简单直观。这里，我们不再举例，而是提出一个趣味问题，供大家思考：
+
+**问题**：Aysnc能否用于递归调用，比如：爬虫程序，遍历某文件夹下的全部文件信息等？为什么？
 
 ## 总结
 
-其实，加密和验证的过程贯穿于交易的全过程，研究交易才是更好的理解加密和验证机制的方法。因此，请看下一篇：**《Nodejs开发加密货币》之十：签名与交易**
+这又是一篇老生常谈的技术分享，但写完之后，我对异步操作的流程管理，更加透彻了。Aysnc很好，但也不是万能的，它对于那些反复自调用的代码就无能为力，因为限制任务的回调就是一次。回调处理的好坏，一定程度上，能够体现一个程序员Nodejs的水平。后续，我们还会继续深入学习研究它。
+
+另外，参考里收集了几篇比较好的文章，建议读读。《Node.js最新技术栈之Promise篇》，作者 @i5ting 一位创业者，文章深入浅出，Promise/A+规范讲解循序渐进，是我喜欢的风格。《Async详解之一、二、三》虽然版本比较早，介绍个别函数已经有所变化，但对于英文不太好的朋友，是不错的入门文章。
 
 ## 链接
 
@@ -128,7 +130,7 @@ concat, concatSeries
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： [http://book.btcnodejs.com](http://book.btcnodejs.com/3-源码解读/4-在Nodejs中使用加密解密技术.html)
+电子书阅读： [http://book.btcnodejs.com](http://book.btcnodejs.com/4-技术分享/2-一张图学会使用Async组件进行流程控制.html)
 
 电子书下载： [下载页面][] [PDF文件][] [ePub文件][] [Mobi文件][]
 
@@ -139,9 +141,15 @@ concat, concatSeries
 
 ## 参考
 
-[https://github.com/caolan/async](https://github.com/caolan/async "https://github.com/caolan/async")
-[《Async详解之一、二、三》](../6-转载文章/1-Async详解之一：流程控制.html)
+[async官方文档](https://github.com/caolan/async "https://github.com/caolan/async")
+
+[Node.js最新技术栈之Promise篇](https://cnodejs.org/topic/560dbc826a1ed28204a1e7de)
+
+[《Async详解之一、二、三》（较早版本的）](../6-转载文章/1-Async详解之一：流程控制.html)
+
+[JavaScript Promise迷你书（中文版）](http://liubin.org/promises-book/#introduction)
 
 [most-depended-upon-packages.jpg]: ../styles/images/11/most-depended-upon-packages.jpg
 [Nodejs流程控制组件Async全解.png]: ../styles/images/naotu/Nodejs流程控制组件Async全解.png
 [async-in-ebookcoin.jpg]: ../styles/images/11/async-in-ebookcoin.jpg
+[入口程序app.js解读]: ../3-源码解读/2-入口程序app.js解读.html
