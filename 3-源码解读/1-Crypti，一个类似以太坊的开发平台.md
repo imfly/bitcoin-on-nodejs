@@ -105,5 +105,5 @@ Crypti，后端基于 Node.js 开发，前端使用了 HTML5 和 CSS3，数据�
 
 [白皮书]: http://crypti.me/crypti.pdf
 [wallet]: ../../styles/images/5/wallet.png
-[点击这里]: ../../styles/images/5/crypti-0.5.3.png
+[点击这里]: ../../styles/images/5/crypti.png
 [modules]: ../../styles/images/5/modules.png
