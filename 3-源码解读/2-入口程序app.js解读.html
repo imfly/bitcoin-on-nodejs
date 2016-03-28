@@ -55,7 +55,7 @@
         data-chapter-title="入口程序app.js解读"
         data-filepath="3-源码解读/2-入口程序app.js解读.md"
         data-basepath=".."
-        data-revision="Mon Mar 28 2016 09:29:31 GMT+0800 (CST)"
+        data-revision="Mon Mar 28 2016 10:06:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -669,7 +669,7 @@
 <p>&#x5730;&#x5740;&#xFF1A; <a href="https://github.com/Ebookcoin/ebookcoin/blob/master/app.js" target="_blank">https://github.com/Ebookcoin/ebookcoin/blob/master/app.js</a></p>
 <h2 id="&#x7C7B;&#x56FE;">&#x7C7B;&#x56FE;</h2>
 <p>js&#x539F;&#x672C;&#x65E0;&#x7C7B;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x7684;&#x7C7B;&#x56FE;&#x5E76;&#x4E0D;&#x597D;&#x5904;&#x7406;&#xFF0C;&#x4EC5;&#x80FD;&#x5927;&#x81F4;&#x7ED9;&#x51FA;&#x5B83;&#x4E0E;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x7684;&#x5173;&#x8054;&#x5173;&#x7CFB;&#x3002;</p>
-<p><img src="../../styles/images/5/appjs-uml.png" alt="appjs-uml"></p>
+<p><img src="../styles/images/5/appjs-uml.png" alt="appjs-uml"></p>
 <h2 id="&#x89E3;&#x8BFB;">&#x89E3;&#x8BFB;</h2>
 <p>&#x76F4;&#x63A5;&#x8BFB;&#x4EE3;&#x7801;&#x770B;&#x770B;&#x3002;</p>
 <h4 id="1&#x914D;&#x7F6E;&#x5904;&#x7406;">1.&#x914D;&#x7F6E;&#x5904;&#x7406;</h4>
@@ -744,7 +744,7 @@ scope.logger.fatal(&apos;domain &apos; + name, {message: err.message, stack: err
 <p>&#x8FD9;&#x624D;&#x662F;&#x771F;&#x6B63;&#x7684;&#x91CD;&#x70B9;&#xFF0C;&#x4E0D;&#x8FC7;&#x770B;&#x8FC7;&#x4EE3;&#x7801;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x5207;&#x90FD;&#x90A3;&#x4E48;&#x5E72;&#x51C0;&#x5229;&#x7565;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x591A;&#x5C42;<code>&#x56DE;&#x8C03;</code>&#x90A3;&#x4E9B;<code>&#x5927;&#x5751;</code>&#xFF0C;&#x539F;&#x6765;&#x662F;&#x7528;&#x4E86;<code>async</code>&#x6D41;&#x7A0B;&#x7BA1;&#x7406;&#x7EC4;&#x4EF6;&#x3002;</p>
 <p>&#x6574;&#x4F53;&#x4F7F;&#x7528;<code>async.auto</code>&#x8FDB;&#x884C;<code>&#x987A;&#x5E8F;&#x8C03;&#x7528;</code>&#xFF1B;&#x5728;&#x52A0;&#x8F7D;<code>modules</code>&#x65F6;&#xFF0C;&#x53C8;&#x4F7F;&#x7528;<code>async.parallel</code>&#xFF0C;&#x4F7F;&#x5176;&#x5E76;&#x884C;&#x8FD0;&#x4F5C;;&#x5F53;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x6E05;&#x7406;&#x5DE5;&#x4F5C;&#x7528;&#x5230;&#x4E86;<code>async.eachSeries</code>&#x3002;</p>
 <p>&#x4E0B;&#x56FE;&#x662F;&#x6211;&#x624B;&#x5DE5;&#x7B80;&#x5355;&#x753B;&#x7684;&#xFF0C;&#x8BF4;&#x660E;&#x4E86;&#x4ECE;&#x4EE3;&#x7801;103-438&#x884C;&#x4E4B;&#x95F4;&#xFF0C;&#x5404;&#x6A21;&#x5757;&#x7684;&#x52A0;&#x8F7D;&#x8FD0;&#x884C;&#x987A;&#x5E8F;&#x3002;&#xFF08;<strong>&#x8BF4;&#x660E;</strong>&#xFF1A;&#x65E2;&#x7136;&#x662F;&#x52A0;&#x8F7D;&#x987A;&#x5E8F;&#xFF0C;&#x6216;&#x8BB8;&#x4F7F;&#x7528;UML&#x7684;<code>&#x65F6;&#x5E8F;&#x56FE;</code>&#x66F4;&#x4E13;&#x4E1A;&#x4E00;&#x4E9B;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E13;&#x4E1A;&#x7684;&#x4E1C;&#x897F;&#x4E5F;&#x6709;&#x4E13;&#x4E1A;&#x7684;&#x95E8;&#x69DB;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x6709;&#x6211;&#x8FD9;&#x79CD;&#x571F;&#x529E;&#x6CD5;&#x3001;&#x5927;&#x767D;&#x8BDD;&#x66F4;&#x6709;&#x5B9E;&#x6548;&#xFF09;</p>
-<p><img src="../../styles/images/5/async-for-modules.jpeg" alt="async-for-modules"></p>
+<p><img src="../styles/images/5/async-for-modules.jpeg" alt="async-for-modules"></p>
 <p>&#x4E0B;&#x7BC7;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x6709;&#x5FC5;&#x8981;&#x5BF9;<code>async</code>&#x7EC4;&#x4EF6;&#x8FDB;&#x884C;&#x8BE6;&#x89E3;&#x68B3;&#x7406;&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x60A8;&#x53EA;&#x8981;&#x80FD;&#x731C;&#x51FA;&#x4EE3;&#x7801;&#x610F;&#x56FE;&#xFF0C;&#x5C31;&#x4E0D;&#x7528;&#x592A;&#x64CD;&#x5FC3;async&#x7684;&#x7528;&#x6CD5;&#x3002;&#x4E0B;&#x9762;&#xFF0C;&#x8BFB;&#x8BFB;&#x6709;&#x5173;&#x6E90;&#x7801;&#xFF1A;</p>
 <p>&#xFF08;1&#xFF09;&#x521D;&#x59CB;&#x7F51;&#x7EDC;</p>
 <p>&#x6211;&#x4EEC;&#x4ECE;<code>packages.json</code>&#x91CC;&#x770B;&#x5230;&#x4F7F;&#x7528;&#x4E86;<code>Express</code>&#x6846;&#x67B6;&#x3002;&#x901A;&#x8FC7;&#x524D;&#x9762;&#x90E8;&#x5206;&#x7684;&#x4ECB;&#x7ECD;&#xFF0C;&#x77E5;&#x9053;&#x5FC5;&#x987B;&#x5728;&#x5165;&#x53E3;&#x7A0B;&#x5E8F;&#x91CC;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x624D;&#x5BF9;&#x3002;&#x5177;&#x4F53;&#x5982;&#x4F55;&#x8C03;&#x7528;&#x7684;&#xFF1F;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x663E;&#x7136;&#x5341;&#x5206;&#x719F;&#x6089;&#x3002;</p>
