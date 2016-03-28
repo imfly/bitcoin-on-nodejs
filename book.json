@@ -24,5 +24,8 @@
         "baidu": {
             "token": "acfc5cd60db044270ff996429917c2b7"
         }
+    },
+    "structure": {
+      "readme": "README.md"
     }
 }
