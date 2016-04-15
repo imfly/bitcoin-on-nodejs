@@ -13,3 +13,4 @@ node_modules
 doc
 
 .publish
+.vscode
