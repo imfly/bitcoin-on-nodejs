@@ -1,9 +1,11 @@
 # Nodejs开发加密货币
 
+**注**:永久免费访问地址已经更新为: <http://bitcoin-on-nodejs.ebookchain.org>
 
 ## 日志
 
-- [x] 发布第11篇：一张图学会使用Async组件进行异步流程控制 2016-03-26 <当前>
+- [x] 发布第12篇：Ember深“坑”浅出 2016-04-17 <当前>
+- [x] 发布第11篇：一张图学会使用Async组件进行异步流程控制 2016-03-26
 - [x] 发布第10篇 2016-03-17
 - [x] 发布第9篇 2016-03-10
 - [x] 完成1-8篇
@@ -14,7 +16,7 @@
 
 ## 说明
 
-文章在[github][]上免费发布，永久免费访问地址: <http://book.btcnodejs.com>
+文章在[github][]上免费发布，永久免费访问地址: <http://bitcoin-on-nodejs.ebookchain.org>
 
 ## 使用
 
@@ -86,4 +88,4 @@ Ebookcoin官方开发交流QQ群：185046161
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
 [gitbook-summary]: https://github.com/imfly/gitbook-summary
 [self-publishing]: https://github.com/imfly/how-to-create-self-publishing-platform
-[2016年心愿单]: 7-附录/3-2016年心愿单.html
+[2016年心愿单]: 8-附录/3-2016年心愿单.html
