@@ -91,7 +91,7 @@ Crypti，后端基于 Node.js 开发，前端使用了 HTML5 和 CSS3，数据�
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： [http://book.btcnodejs.com](http://book.btcnodejs.com/3-源码解读/1-Crypti，一个类似以太坊的开发平台.html)
+电子书阅读： [http://bitcoin-on-nodejs.ebookchain.org](http://bitcoin-on-nodejs.ebookchain.org/3-源码解读/1-Crypti，一个类似以太坊的开发平台.html)
 
 ## 参考
 

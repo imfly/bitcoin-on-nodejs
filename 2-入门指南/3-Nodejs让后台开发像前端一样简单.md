@@ -373,7 +373,7 @@ app.set('views', './app/views')
 
 本文源地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： http://book.btcnodejs.com/
+电子书阅读： http://bitcoin-on-nodejs.ebookchain.org/
 
 ## 参考
 

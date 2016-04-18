@@ -130,7 +130,7 @@ Async官方文档提供了很多实例， 简单直观。这里，我们不再�
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： [http://book.btcnodejs.com](http://book.btcnodejs.com/4-技术分享/2-一张图学会使用Async组件进行流程控制.html)
+电子书阅读： [http://bitcoin-on-nodejs.ebookchain.org](http://bitcoin-on-nodejs.ebookchain.org/4-技术分享/2-一张图学会使用Async组件进行流程控制.html)
 
 电子书下载： [下载页面][] [PDF文件][] [ePub文件][] [Mobi文件][]
 

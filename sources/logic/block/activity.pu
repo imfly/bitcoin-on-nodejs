@@ -7,7 +7,7 @@ Peer类主要函数调用流程图
 
 end title
 
-footer copyright (c) imfly 2016.03.01 http://book.btcnodejs.com
+footer copyright (c) imfly 2016.03.01 http://bitcoin-on-nodejs.ebookchain.org
 header 《Nodejs开发加密货币》第八篇分析用图
 
 (*) -left-> [读节点流程] "get `/api/peers/`"

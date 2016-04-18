@@ -7,7 +7,7 @@
 
   end title
 
-  footer copyright (c) imfly 2016.03.10 http://book.btcnodejs.com
+  footer copyright (c) imfly 2016.03.10 http://bitcoin-on-nodejs.ebookchain.org
   header 《Nodejs开发加密货币》第九篇分析用图
 
   (*) --> [从接口方法开始] "post `/api/accounts/generatePublicKey`"
