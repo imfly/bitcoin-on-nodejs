@@ -4,7 +4,7 @@ var ghPages = require('gulp-gh-pages');
 var summary = require('gitbook-summary/lib/').summary;
 
 gulp.task('summary', function() {
-    // You can use multiple globbing patterns as you would with `gulp.src`
+    // If you have no book.json, please add other options.
     var options = {
         root: "."
     };
