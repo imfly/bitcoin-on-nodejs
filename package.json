@@ -3,6 +3,10 @@
   "version": "0.3.7",
   "description": "第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "scripts": {
     "test": "npm test",
     "deploy": "node_modules/.bin/gulp deploy",
@@ -27,7 +31,7 @@
   "dependencies": {},
   "devDependencies": {
     "del": "^2.2.0",
-    "gitbook-summary": "^1.0.14",
+    "gitbook-summary": "*",
     "gulp": "^3.9.0",
     "gulp-gh-pages": "^0.5.4"
   }
