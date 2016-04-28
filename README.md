@@ -2,16 +2,17 @@
 
 **注**: 永久免费访问地址已经更新为: <http://bitcoin-on-nodejs.ebookchain.org>，收藏 <http://book.btcnodejs.com> 的小伙伴，可以更新一下。
 
+亿书官网： <http://ebookchain.org>
 
 ## 关于
 
-本书可以作为Nodejs开发加密货币的入门书籍，也可以作为Ebookchain书链（及以Crypti为核心的应用）的官方开发文档。
+本书可以作为Nodejs开发加密货币的入门书籍，也可以作为亿书（及以Crypti为核心的应用Lisk）的官方开发文档。
 
-本书分享的源码是Ebookcoin（博客币），是Ebookchain(书链)的强大动力。与Lisk一样（成功众筹500多万美元），都是Crypti（已经不再维护）的一个独立分支，类似于以太坊具有侧链功能，可以承载多种去中心化的应用。因此，**无论您是研究Crypti、Lisk，还是Ebookcoin，或者学习Nodejs前后端开发技术，本书都值得参考。**
+本书分享的源码是Ebookcoin（亿书币），是亿书的强大动力。与Lisk一样（成功众筹500多万美元），都是Crypti（已经不再维护）的一个独立分支，类似于以太坊具有侧链功能，可以承载多种去中心化的应用。因此，**无论您是研究Crypti、Lisk，还是Ebookcoin，或者学习Nodejs前后端开发技术，本书都值得参考。**
 
-Ebookchain(书链)的目标是打造人人可用的去中心化软件，以加密货币为驱动，促进人类知识分享。与其他竞争币不同，我们以提供落地可用的软件为核心，力争成为人类第一个“零门槛”的加密货币产品。
+亿书的目标是打造人人可用的去中心化软件，以加密货币为驱动，促进人类知识分享。与其他竞争币不同，我们以提供落地可用的软件为核心，力争成为人类第一个“零门槛”的加密货币产品。
 
-本书写作，也是书链的最佳实践，从写到发布，简单、快捷。文章暂时在[github][]上免费发布，永久免费访问地址: <http://bitcoin-on-nodejs.ebookchain.org>
+本书写作，也是亿书的最佳实践，从写到发布，简单、快捷。文章暂时在[github][]上免费发布，永久免费访问地址: <http://bitcoin-on-nodejs.ebookchain.org>
 
 ## 日志
 
@@ -81,13 +82,13 @@ $ npm run deploy
 
 原创作品许可 [署名-非商业性使用-禁止演绎 3.0 未本地化版本 (CC BY-NC-ND 3.0)](http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh)
 
-版权被书链自动加密、保护、验证和追踪。
+版权被亿书自动加密、保护、验证和追踪。
 
 ## 作者
 
 微信：kubying
 
-Ebookchain官方开发交流QQ群：185046161
+亿书官方开发交流QQ群：185046161
 
 [github]: https://github.com/imfly/bitcoin-on-nodejs
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
