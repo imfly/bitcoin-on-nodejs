@@ -10,13 +10,14 @@
 
 本书分享的源码是Ebookcoin（亿书币），是亿书的强大动力。与Lisk一样（成功众筹500多万美元），都是Crypti（已经不再维护）的一个独立分支，类似于以太坊具有侧链功能，可以承载多种去中心化的应用。因此，**无论您是研究Crypti、Lisk，还是Ebookcoin，或者学习Nodejs前后端开发技术，本书都值得参考。**
 
-亿书的目标是打造人人可用的去中心化软件，以加密货币为驱动，促进人类知识分享。与其他竞争币不同，我们以提供落地可用的软件为核心，力争成为人类第一个“零门槛”的加密货币产品。
+亿书的目标是打造人人可用的去中心化软件，以加密货币为驱动，促进人类知识分享。与其他竞争币不同，我们以提供落地可用的软件为核心，力争成为人类第一个“零门槛”的加密货币产品。更多详情，请看[关于亿书][]
 
 本书写作，也是亿书的最佳实践，从写到发布，简单、快捷。文章暂时在[github][]上免费发布，永久免费访问地址: <http://bitcoin-on-nodejs.ebookchain.org>
 
 ## 日志
 
-- [x] 发布第12篇：Ember深“坑”浅出 2016-04-17 <当前>
+- [x] `书链`更名为`亿书`，撰写第13篇 2016-04-28 <当前>
+- [x] 发布第12篇：Ember深“坑”浅出 2016-04-17
 - [x] 发布第11篇：一张图学会使用Async组件进行异步流程控制 2016-03-26
 - [x] 发布第10篇 2016-03-17
 - [x] 发布第9篇 2016-03-10
@@ -94,3 +95,4 @@ $ npm run deploy
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
 [gitbook-summary]: https://github.com/imfly/gitbook-summary
 [self-publishing]: https://github.com/imfly/how-to-create-self-publishing-platform
+[关于亿书]: http://bitcoin-on-nodejs.ebookchain.org/8-附录/2-关于亿书.html
