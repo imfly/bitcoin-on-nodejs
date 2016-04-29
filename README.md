@@ -1,6 +1,8 @@
 # Nodejs开发加密货币
 
-**注**: 永久免费访问地址已经更新为: <http://bitcoin-on-nodejs.ebookchain.org>，收藏 <http://book.btcnodejs.com> 的小伙伴，可以更新一下。
+**注**: 永久`免费`访问地址已经更新为: <http://bitcoin-on-nodejs.ebookchain.org>
+
+如果您喜欢，请`免费`转发给身边的朋友;如果您是开发者，请`免费`为它 [点个赞][] 。虽为举手之劳，也绝非一般人能为！
 
 亿书官网： <http://ebookchain.org>
 
@@ -83,8 +85,6 @@ $ npm run deploy
 
 原创作品许可 [署名-非商业性使用-禁止演绎 3.0 未本地化版本 (CC BY-NC-ND 3.0)](http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh)
 
-版权被亿书自动加密、保护、验证和追踪。
-
 ## 作者
 
 微信：kubying
@@ -96,3 +96,4 @@ $ npm run deploy
 [gitbook-summary]: https://github.com/imfly/gitbook-summary
 [self-publishing]: https://github.com/imfly/how-to-create-self-publishing-platform
 [关于亿书]: http://bitcoin-on-nodejs.ebookchain.org/8-附录/2-关于亿书.html
+[点个赞]: https://github.com/imfly/bitcoin-on-nodejs
