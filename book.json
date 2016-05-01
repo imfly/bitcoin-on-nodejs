@@ -2,6 +2,7 @@
     "bookname": "Nodejs开发加密货币",
     "description": "第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍",
     "author": "Imfly",
+    "language": "zh",
     "keywords": [
         "bitcoin",
         "nodejs"
@@ -22,7 +23,7 @@
     ],
     "pluginsConfig": {
         "baidu": {
-            "token": "acfc5cd60db044270ff996429917c2b7"
+            "token": "a489cddfaf5ed40abc3a60e2783e8019"
         }
     },
     "structure": {

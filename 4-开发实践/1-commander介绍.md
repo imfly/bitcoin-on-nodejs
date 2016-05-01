@@ -169,7 +169,7 @@ program.action(function(cmd, options) { //code });
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： [http://bitcoin-on-nodejs.ebookchain.org](http://bitcoin-on-nodejs.ebookchain.org/4-技术分享/1-commander介绍.html)
+电子书阅读： [http://bitcoin-on-nodejs.ebookchain.org](http://bitcoin-on-nodejs.ebookchain.org/4-开发实践/1-commander介绍.html)
 
 电子书下载： [下载页面][] [PDF文件][] [ePub文件][] [Mobi文件][]
 
