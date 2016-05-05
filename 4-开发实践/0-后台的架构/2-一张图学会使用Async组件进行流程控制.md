@@ -149,7 +149,7 @@ Async官方文档提供了很多实例， 简单直观。这里，我们不再�
 
 [JavaScript Promise迷你书（中文版）](http://liubin.org/promises-book/#introduction)
 
-[most-depended-upon-packages.jpg]: ../styles/images/11/most-depended-upon-packages.jpg
-[Nodejs流程控制组件Async全解.png]: ../styles/images/naotu/Nodejs流程控制组件Async全解.png
-[async-in-ebookcoin.jpg]: ../styles/images/11/async-in-ebookcoin.jpg
-[《入口程序app.js解读》]: ../3-源码解读/2-入口程序app.js解读.html
+[most-depended-upon-packages.jpg]: ../../styles/images/11/most-depended-upon-packages.jpg
+[Nodejs流程控制组件Async全解.png]: ../../styles/images/naotu/Nodejs流程控制组件Async全解.png
+[async-in-ebookcoin.jpg]: ../../styles/images/11/async-in-ebookcoin.jpg
+[《入口程序app.js解读》]: ../../3-源码解读/2-入口程序app.js解读.html

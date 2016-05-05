@@ -5,7 +5,7 @@
 
 在入门文章部分，我们已经知道，Nodejs的应用最终都可以合并成一个文件，为了开发方便，才将其拆分成多个文件。
 
-被拆分的那个文件，自然是我们重点研究的对象，通常这个文件就是App.js或server.js，我把它称之为`入口程序`。
+被拆分的那个文件，自然是我们重点研究的对象，通常这个文件就是App.js或server.js，大家称之为`入口程序`。
 
 显然Ebookcoin用的就是app.js。这一篇，我们就来阅读一下该文件，学习研究它的整体架构流程。
 
@@ -54,7 +54,7 @@ var appConfig = require("./config.json"); // app.js 4行
 
 （2）使用`commander`组件，引入命令行选项
 
-`commander`是Nodejs第三方组件（使用npm安装），常被用来开发命令行工具，用法极为简单。源码：
+`commander`是Nodejs第三方组件（使用npm安装），常被用来开发命令行工具，用法极为简单，详细内容请看开发实践部分的分享。源码：
 
 ```
 // 1行
@@ -95,6 +95,8 @@ if (program.port) {
 
 我们在第一部分总结时，特意提到`异常要捕捉`，这里我们很轻松就可以看出来，代码对全局异常处理的方式。
 
+**注意**：对于`domain`模块，已经不提倡使用，这部分代码将再后续的更新中去除，这里仅做了解就是了。
+
 （1）使用`uncaughtException`捕捉进程异常
 
 ```
@@ -131,15 +133,13 @@ scope.logger.fatal('domain ' + name, {message: err.message, stack: err.stack});
 ...
 ```
 
-对于`domain`模块的用法，我们在下一篇，技术分析中详述。
-
 #### 3.模块加载
 
 这才是真正的重点，不过看过代码，发现一切都那么干净利略，也没有多层`回调`那些`大坑`，原来是用了`async`流程管理组件。
 
 整体使用`async.auto`进行`顺序调用`；在加载`modules`时，又使用`async.parallel`，使其并行运作;当发生错误时，清理工作用到了`async.eachSeries`。
 
-下图是我手工简单画的，说明了从代码103-438行之间，各模块的加载运行顺序。（**说明**：既然是加载顺序，或许使用UML的`时序图`更专业一些，不过专业的东西也有专业的门槛，不一定有我这种土办法、大白话更有实效）
+下图是手工简单画的，说明了从代码103-438行之间，各模块的加载运行顺序。
 
 ![async-for-modules][]
 
@@ -276,7 +276,7 @@ modules: ['network', 'connect', 'config', 'logger', 'bus', 'sequence', 'dbSequen
 
 
 [appjs-uml]: ../styles/images/5/appjs-uml.png
-[async-for-modules]: ../styles/images/5/async-for-modules.jpeg
+[async-for-modules]: ../styles/images/5/async-for-modules.jpg
 [PDF文件]: https://www.gitbook.com/download/pdf/book/imfly/bitcoin-on-nodejs
 [ePub文件]: https://www.gitbook.com/download/epub/book/imfly/bitcoin-on-nodejs
 [Mobi文件]: https://www.gitbook.com/download/mobi/book/imfly/bitcoin-on-nodejs

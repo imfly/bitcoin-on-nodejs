@@ -156,7 +156,7 @@ Ember-cli官网： http://ember-cli.com
 
 亿书官网： http://ebookchain.org  
 
-[ebookchain-official-site]: ../styles/images/5-1/ebookchain.gif
-[ember-inspector]: ../styles/images/5-1/ember-inspector.jpg
-[views-render]: ../styles/images/5-1/ember-multi-render.jpg
+[ebookchain-official-site]: ../../styles/images/5-1/ebookchain.gif
+[ember-inspector]: ../../styles/images/5-1/ember-inspector.jpg
+[views-render]: ../../styles/images/5-1/ember-multi-render.jpg
 [`gitbook-summary`]: https://github.com/imfly/gitbook-summary
