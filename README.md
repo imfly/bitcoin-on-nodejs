@@ -6,6 +6,8 @@
 
 亿书官网： <http://ebookchain.org>
 
+首发区块链俱乐部： <http://chainclub.org>
+
 ## 关于
 
 本书可以作为Nodejs开发加密货币的入门书籍，也可以作为亿书（及以Crypti为核心的应用Lisk）的官方开发文档。
