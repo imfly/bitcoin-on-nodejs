@@ -1,6 +1,6 @@
 {
   "name": "Bitcoin-on-Nodejs",
-  "version": "0.3.8",
+  "version": "0.3.13",
   "description": "第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍",
   "main": "index.js",
   "files": [
