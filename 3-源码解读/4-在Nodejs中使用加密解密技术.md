@@ -1,4 +1,4 @@
-# 在Nodejs中使用加密解密技术
+# 在Node.js中使用加密解密技术
 
 
 ## 前言
@@ -9,7 +9,7 @@
 
 ## 源码
 
-`Ebookcoin`没有提供相关扩展，全部使用Nodejs自己的`crypto`模块进行加密，使用`Ed25519`组件签名认证。本文涉及到的代码：
+`Ebookcoin`没有提供相关扩展，全部使用Node.js自己的`crypto`模块进行加密，使用`Ed25519`组件签名认证。本文涉及到的代码：
 
 accounts.js: https://github.com/Ebookcoin/ebookcoin/blob/master/modules/accounts.js
 
@@ -47,7 +47,7 @@ account.js: https://github.com/Ebookcoin/ebookcoin/blob/master/logic/account.js
 
 #### (3)加密过程
 
-Nodejs的`Crypto`模块，提供了一种封装安全凭证的方式，用于HTTPS网络或HTTP连接，也对OpenSSL的Hash，HMAC，加密，解密、签名和验证方法进行了封装。
+Node.js的`Crypto`模块，提供了一种封装安全凭证的方式，用于HTTPS网络或HTTP连接，也对OpenSSL的Hash，HMAC，加密，解密、签名和验证方法进行了封装。
 
 在币圈里，谈到加密技术时，经常听到Hash算法。很多小盆友时常与数组（array）和散列（hash）等数据格式混淆，以为Hash算法获得的结果都像json格式的键值对似的。
 
@@ -155,7 +155,7 @@ Accounts.prototype.generateAddressByPublicKey = function (publicKey) {
 
 加解密技术专业性很强，需要花费时间，深入研究。本篇权当入门，并没有对交易、区块和委托人等的加密验证处理过程进行分析，过程都比较类似，后续阅读时会进一步说明。
 
-其实，加密和验证的过程贯穿于交易的全过程，研究交易才是更好的理解加密和验证机制的方法。因此，请看下一篇：**《Nodejs开发加密货币》之十：签名与交易**
+其实，加密和验证的过程贯穿于交易的全过程，研究交易才是更好的理解加密和验证机制的方法。因此，请看下一篇：**《Node.js开发加密货币》之十：签名与交易**
 
 ## 链接
 
@@ -163,7 +163,7 @@ Accounts.prototype.generateAddressByPublicKey = function (publicKey) {
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： [http://bitcoin-on-nodejs.ebookchain.org](http://bitcoin-on-nodejs.ebookchain.org/3-源码解读/4-在Nodejs中使用加密解密技术.html)
+电子书阅读： [http://bitcoin-on-nodejs.ebookchain.org](http://bitcoin-on-nodejs.ebookchain.org/3-源码解读/4-在Node.js中使用加密解密技术.html)
 
 电子书下载： [下载页面][] [PDF文件][] [ePub文件][] [Mobi文件][]
 
@@ -175,7 +175,7 @@ Accounts.prototype.generateAddressByPublicKey = function (publicKey) {
 
 [密码学一小时必知](http://blog.helong.info/blog/2015/04/12/translate-Everything-you-need-to-know-about-cryptgraphy-in-1-hour/)
 
-[浅谈nodejs中的Crypto模块](https://cnodejs.org/topic/504061d7fef591855112bab5)
+[浅谈node.js中的Crypto模块](https://cnodejs.org/topic/504061d7fef591855112bab5)
 
 [crypto-class.png]: ../styles/images/modules/crypto/class.png
 [crypto-activity.png]: ../styles/images/modules/crypto/activity.png

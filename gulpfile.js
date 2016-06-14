@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var del = require('del');
 var ghPages = require('gulp-gh-pages');
-var summary = require('gitbook-summary/lib/').summary;
+var summary = require('gitbook-summary/lib/summary').summary;
 
 gulp.task('summary', function() {
     // If you have no book.json, please add other options.

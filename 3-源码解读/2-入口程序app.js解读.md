@@ -3,7 +3,7 @@
 
 ## 前言
 
-在入门文章部分，我们已经知道，Nodejs的应用最终都可以合并成一个文件，为了开发方便，才将其拆分成多个文件。
+在入门文章部分，我们已经知道，Node.js的应用最终都可以合并成一个文件，为了开发方便，才将其拆分成多个文件。
 
 被拆分的那个文件，自然是我们重点研究的对象，通常这个文件就是App.js或server.js，大家称之为`入口程序`。
 
@@ -54,7 +54,7 @@ var appConfig = require("./config.json"); // app.js 4行
 
 （2）使用`commander`组件，引入命令行选项
 
-`commander`是Nodejs第三方组件（使用npm安装），常被用来开发命令行工具，用法极为简单，详细内容请看开发实践部分的分享。源码：
+`commander`是Node.js第三方组件（使用npm安装），常被用来开发命令行工具，用法极为简单，详细内容请看开发实践部分的分享。源码：
 
 ```
 // 1行
@@ -87,7 +87,7 @@ if (program.port) {
 }
 ```
 
-这是处理Nodejs应用全局配置的一种常用且简单的方式，值得学习。
+这是处理Node.js应用全局配置的一种常用且简单的方式，值得学习。
 
 更多内容，我们在下一篇对`commander`组件进行详细介绍。
 
@@ -149,7 +149,7 @@ scope.logger.fatal('domain ' + name, {message: err.message, stack: err.stack});
 
 我们从`packages.json`里看到使用了`Express`框架。通过前面部分的介绍，知道必须在入口程序里，初始化才对。具体如何调用的？下面的代码，显然十分熟悉。
 
-我们知道，Express是Nodejs重要的web开发框架，这里的网络`network`本质上就是以Express为基础的web应用，自然`白皮书`才会宣扬`基于Http协议`。
+我们知道，Express是Node.js重要的web开发框架，这里的网络`network`本质上就是以Express为基础的web应用，自然`白皮书`才会宣扬`基于Http协议`。
 
 ```
 // 215行
@@ -261,7 +261,7 @@ modules: ['network', 'connect', 'config', 'logger', 'bus', 'sequence', 'dbSequen
 
 代码中还有很多细节，我们并没有逐行介绍。个人认为，读代码就像看文章，先要概览，逐步深入，不一定一开始就逐字逐句去读，那样效率低、效果差。
 
-对于这个app.js文件，成手读它可能就是分分钟的事情，而写出来却要罗嗦这么多。如果，你并没有觉得很轻松，甚至理解很困难，那么可能缺少对`commander`、`domain`和`async`等组件或模块的了解，请看下一篇：**《Nodejs开发加密货币》之七： 技术研究——commander、domain和async介绍**
+对于这个app.js文件，成手读它可能就是分分钟的事情，而写出来却要罗嗦这么多。如果，你并没有觉得很轻松，甚至理解很困难，那么可能缺少对`commander`、`domain`和`async`等组件或模块的了解，请看下一篇：**《Node.js开发加密货币》之七： 技术研究——commander、domain和async介绍**
 
 ## 链接
 

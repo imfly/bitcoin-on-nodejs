@@ -2,15 +2,15 @@
 
 ## 前言
 
-前面说过，在Nodejs的世界里“事事皆回调”，学习使用Nodejs，最不可能回避的就是“回调”（用“调回”更直观些）。无法回避，自然要积极面对，因此开源社区出现了很多代码流程控制的解决方案。比如：bluebird，q，以及这里要图解的async。
+前面说过，在Node.js的世界里“事事皆回调”，学习使用Node.js，最不可能回避的就是“回调”（用“调回”更直观些）。无法回避，自然要积极面对，因此开源社区出现了很多代码流程控制的解决方案。比如：bluebird，q，以及这里要图解的async。
 
-这种基础性的技术，社区的文档极其丰富，但是我们为什么还要介绍？个人觉得，原因很简单，它真的很有必要，在只需要顺序编码的世界里，没有关于回调的操作流程或promise/a+规范（服务器帮助实现了），用不着大费周章。但是在Nodejs的世界里，学习掌握一种方案，会显著提升编码能力。
+这种基础性的技术，社区的文档极其丰富，但是我们为什么还要介绍？个人觉得，原因很简单，它真的很有必要，在只需要顺序编码的世界里，没有关于回调的操作流程或promise/a+规范（服务器帮助实现了），用不着大费周章。但是在Node.js的世界里，学习掌握一种方案，会显著提升编码能力。
 
 为什么要介绍async，不是说bluebird性能更好吗？原因更简单：（1）Ebookcoin大量使用了aysnc，掌握它，对于理解和编码，事倍功半;（2）社区认可度高、文档丰富、使用简单、对代码没污染，无论是学习，还是使用，都没有风险。
 
 ![most-depended-upon-packages.jpg][]
 
-这是async在`https://npmjs.org`上的依赖排名，除了lodash，就是它了。而且，bluebird和q也都在前10，也基本说明，使用流程控制组件是Nodejs处理回调的标配。
+这是async在`https://npmjs.org`上的依赖排名，除了lodash，就是它了。而且，bluebird和q也都在前10，也基本说明，使用流程控制组件是Node.js处理回调的标配。
 
 ## 概念定义
 
@@ -104,7 +104,7 @@ concat, concatSeries
 
 上述解释和方法，我们全部放在一张脑图里，结合场景，按图索骥，能够很快找到正确的处理方法。
 
-![Nodejs流程控制组件Async全解.png][]
+![Node.js流程控制组件Async全解.png][]
 
 ## 源码解读
 
@@ -150,6 +150,6 @@ Async官方文档提供了很多实例， 简单直观。这里，我们不再�
 [JavaScript Promise迷你书（中文版）](http://liubin.org/promises-book/#introduction)
 
 [most-depended-upon-packages.jpg]: ../../styles/images/11/most-depended-upon-packages.jpg
-[Nodejs流程控制组件Async全解.png]: ../../styles/images/naotu/Nodejs流程控制组件Async全解.png
+[Node.js流程控制组件Async全解.png]: ../../styles/images/naotu/Node.js流程控制组件Async全解.png
 [async-in-ebookcoin.jpg]: ../../styles/images/11/async-in-ebookcoin.jpg
 [《入口程序app.js解读》]: ../../3-源码解读/2-入口程序app.js解读.html

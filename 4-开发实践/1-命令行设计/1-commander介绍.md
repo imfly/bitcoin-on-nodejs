@@ -14,9 +14,9 @@
 
 事实上，概念中含有逻辑，是逻辑的高级浓缩版。概念清晰，逻辑必然是清晰的，相反却未必。因此，学习知识，掌握概念最重要。
 
-比如，什么是模块，什么叫组件？我的理解是，Nodejs提供的原生功能模块，叫`模块`（`module`，例如：domain)，而第三方提供的独立功能模块称为`组件`(`component`)，其实他们都叫`中间件`（`middleware`)，本质没什么区别。
+比如，什么是模块，什么叫组件？我的理解是，Node.js提供的原生功能模块，叫`模块`（`module`，例如：domain)，而第三方提供的独立功能模块称为`组件`(`component`)，其实他们都叫`中间件`（`middleware`)，本质没什么区别。
 
-但是，在自己的思维逻辑中，这么简单的区分一下，其实表明我们掌握了更多信息，比如在文档、代码质量、可信度等方面，`模块`天生要好于`组件`。知道`domain`是模块，自然会去nodejs官网查找最可靠的资料（当然，官方计划废弃`domain`，不提倡再使用了）。
+但是，在自己的思维逻辑中，这么简单的区分一下，其实表明我们掌握了更多信息，比如在文档、代码质量、可信度等方面，`模块`天生要好于`组件`。知道`domain`是模块，自然会去node.js官网查找最可靠的资料（当然，官方计划废弃`domain`，不提倡再使用了）。
 
 因此，我的做法就是解读概念（官方提供）、提炼概念（官方没有）、解释概念（介绍用法），用自己的理解梳理相关知识。这里的概念不以“全”为目标，以“好记、好用、好区分”为主。
 
@@ -26,7 +26,7 @@
 
 ## Commander
 
-事实上，在Nodejs或ruby等语言环境里，只要在文件头部添加一行所谓的`shebang`(提供一个执行环境)，就可以将代码转为命令行执行。难在命令行选项处理和流程控制，所以才有了这类工具的出现，叫它们`命令行框架`最合适。
+事实上，在Node.js或ruby等语言环境里，只要在文件头部添加一行所谓的`shebang`(提供一个执行环境)，就可以将代码转为命令行执行。难在命令行选项处理和流程控制，所以才有了这类工具的出现，叫它们`命令行框架`最合适。
 
 类似`Commander`的工具有很多，但多数以规范命令行选项为主，对一些编码细节还要自己实现，比如：何时退出程序(调用`process.exit(1)`)。`Commander`把这一切都简化了，小巧灵活、简单易用，有它足够了。
 
@@ -54,7 +54,7 @@
 $ book generate [--options]
 ```
 
-只所以把起名字单独提出来，主要是在Nodejs的世界里，这一步是`固定不变`的，只要记住就是了。方法是，在`package.json`里定义下面的字段：
+只所以把起名字单独提出来，主要是在Node.js的世界里，这一步是`固定不变`的，只要记住就是了。方法是，在`package.json`里定义下面的字段：
 
 ```
 {
@@ -64,7 +64,7 @@ $ book generate [--options]
 }
 ```
 
-**注**：`package.json`文件是包配置文件，是全局配置不可逾越之地。很多工具，都是基于它，提供入口程序的。比如：Nodejs自己就是请求`main`字段的（没有定义，默认请求index.js文件)，Npm请求`scripts`字段。这里多了一个，Commander请求`bin`字段。
+**注**：`package.json`文件是包配置文件，是全局配置不可逾越之地。很多工具，都是基于它，提供入口程序的。比如：Node.js自己就是请求`main`字段的（没有定义，默认请求index.js文件)，Npm请求`scripts`字段。这里多了一个，Commander请求`bin`字段。
 
 如果，不使用`package.json`，那么定义的就是`node`命令之下的子命令，调用方法是：
 
@@ -179,7 +179,7 @@ Node.js 命令行程序开发教程（中文）: http://www.ruanyifeng.com/blog/
 
 用npm构建简单命令行（英文）: http://blog.npmjs.org/post/118810260230/building-a-simple-command-line-tool-with-npm
 
-用Node.js开发命令行工具（英文）: http://shapeshed.com/command-line-utilities-with-nodejs/
+用Node.js开发命令行工具（英文）: http://shapeshed.com/command-line-utilities-with-node.js/
 
 
 [PDF文件]: https://www.gitbook.com/download/pdf/book/imfly/bitcoin-on-nodejs
