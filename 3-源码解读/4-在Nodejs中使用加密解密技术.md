@@ -71,7 +71,7 @@ var keypair = ed.MakeKeypair(hash);
 
 加密技术的作用，重在传输和验证。所以，加密货币并不需要研究如何解密原文。而是，如何安全、快捷的验证。`Ebookcoin`使用了`Ed25519`第三方组件。
 
-该组件是一个数字签名算法。签名过程不依赖随机数生成器，没有时间通道攻击的问题，签名和公钥都很小。签名和验证的性能都极高，一个4核2.4GHz 的 Westmere cpu，每秒可以验证 71000 个签名，安全性极高，等价于RSA约3000-bit。一行代码足矣：
+该组件是一个数字签名算法。签名过程不依赖随机数生成器，没有时间通道攻击的问题，签名和公钥都很小。签名和验证的性能都极高，一个4核2.4GHz 的 Westmere cpu，每秒可以验证 71000 个签名，安全性极高，等价于RSA约3000bit。一行代码足矣：
 
 ```
 var res = ed.Verify(hash, signatureBuffer || ' ', publicKeyBuffer || ' ');
@@ -81,9 +81,9 @@ var res = ed.Verify(hash, signatureBuffer || ' ', publicKeyBuffer || ' ');
 
 在`Ebookcoin`世界里，`Ebookcoin`把用户设定的密码生成私钥和公钥，再将公钥经过16进制字符串转换产生帐号ID（类似于比特币地址）。付款的时候，只要输入这个帐号ID（或用户别名）就是了。该ID，长度通常是160⽐特（20字节），加上末尾的`L`后缀，也就是21字节长度。
 
-因此，在使用的过程中，会发现，软件（钱包程序）仅仅要求输入密码（通常很长），而不像传统的网站，还要用户名之类的信息。这通常就是加密货币的好处，即保证了安全，也实现了匿名。
+因此，在使用的过程中会发现，软件（钱包程序）仅仅要求输入密码（通常很长），而不像传统的网站，还要用户名之类的信息。这通常就是加密货币的好处，即保证了安全，也实现了匿名。
 
-`Ebookcoin`要求用户保存好最初设定的长长的明文密码串，它是找回帐号（财富）的真正钥匙。这比直接保管私钥方便得多，当然，风险也会存在，特别是那些喜欢用短密码的人。当然，`Ebookcoin`的做法是，提供了二次签名（类似于支付密码）、多重签名等措施，弥补这些问题。
+`Ebookcoin`要求用户保存好最初设定的长长的明文密码串，它是找回帐号（保存着用户的加密货币财富）的真正钥匙。这比直接保管私钥方便得多，当然，风险也会存在，特别是那些喜欢用短密码的人。为此，`Ebookcoin`提供了二次签名（类似于支付密码）、多重签名等措施，弥补这些问题。
 
 这里，仅研究一下用户ID的生成，体验上述过程，请看代码：
 
@@ -147,40 +147,20 @@ Accounts.prototype.generateAddressByPublicKey = function (publicKey) {
 };
 ```
 
-说明：上面628行，是产生公钥的方法，通常需要用户提供一个`secret`。447行，可以看到，将用户密码进行加密处理，然后直接生成了密钥对，接着将公钥继续处理。486行调用了方法`generateAddressByPublicKey`，455行，该方法对公钥再一次加密，然后做16进制处理，得到所要地址。
+说明：上面628行，是产生公钥的方法，通常需要用户提供一个密码`secret`。447行，可以看到，将用户密码进行加密处理，然后直接生成了密钥对，接着将公钥继续处理。486行调用了方法`generateAddressByPublicKey`，455行，该方法对公钥再一次加密，然后做16进制处理，得到所要地址。
 
 过程中，对于私钥没有任何处理，直接无视了。这是因为，这里的使用方法`ed25519`，基于某个明文密码的处理结果不是随机的，用户只要保护好自己的明文密码字符串，就可以再次生成对应私钥和公钥。
 
 ## 总结
 
-加解密技术专业性很强，需要花费时间，深入研究。本篇权当入门，并没有对交易、区块和委托人等的加密验证处理过程进行分析，过程都比较类似，后续阅读时会进一步说明。
+加解密技术专业性很强，需要花费时间深入研究。我在前人研究成果的基础上进行了汇总和再加工，绘制了三张脑图，建议阅读，详情见第四部分《三张图让你全面掌握加密解密技术》一章。本篇权当入门，并没有对交易、区块链和委托人等的加密验证处理过程进行分析，加密解密过程都比较类似，后续阅读时会进一步说明。
 
-其实，加密和验证的过程贯穿于交易的全过程，研究交易才是更好的理解加密和验证机制的方法。因此，请看下一篇：**《Node.js开发加密货币》之十：签名与交易**
-
-## 链接
-
-**本系列文章即时更新，若要掌握最新内容，请关注下面的链接**
-
-本源文地址： https://github.com/imfly/bitcoin-on-nodejs
-
-电子书阅读： [http://bitcoin-on-nodejs.ebookchain.org](http://bitcoin-on-nodejs.ebookchain.org/3-源码解读/4-在Node.js中使用加密解密技术.html)
-
-电子书下载： [下载页面][] [PDF文件][] [ePub文件][] [Mobi文件][]
+其实，加密和验证的过程贯穿于交易的全过程，研究交易才是更好的理解加密和验证机制的方法。因此，请看下一篇：**帐号、签名与交易**
 
 ## 参考
 
 [Ed25519官方网站](http://ed25519.cr.yp.to/)
 
-[现代密码学实践指南(2015年)](http://blog.helong.info/blog/2015/06/05/modern-crypto/)
-
-[密码学一小时必知](http://blog.helong.info/blog/2015/04/12/translate-Everything-you-need-to-know-about-cryptgraphy-in-1-hour/)
-
-[浅谈node.js中的Crypto模块](https://cnodejs.org/topic/504061d7fef591855112bab5)
-
 [crypto-class.png]: ../styles/images/modules/crypto/class.png
 [crypto-activity.png]: ../styles/images/modules/crypto/activity.png
 
-[PDF文件]: https://www.gitbook.com/download/pdf/book/imfly/bitcoin-on-nodejs
-[ePub文件]: https://www.gitbook.com/download/epub/book/imfly/bitcoin-on-nodejs
-[Mobi文件]: https://www.gitbook.com/download/mobi/book/imfly/bitcoin-on-nodejs
-[下载页面]: https://www.gitbook.com/book/imfly/bitcoin-on-nodejs/details
