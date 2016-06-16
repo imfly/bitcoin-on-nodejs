@@ -13,3 +13,7 @@
 delegates.js https://github.com/Ebookcoin/ebookcoin/blob/master/modules/delegates.js
 
 slots.js: https://github.com/Ebookcoin/ebookcoin/blob/master/helpers/slots.js
+
+accounts.js https://github.com/Ebookcoin/ebookcoin/blob/master/modules/accounts.js
+
+round.js https://github.com/Ebookcoin/ebookcoin/blob/master/modules/round.js
