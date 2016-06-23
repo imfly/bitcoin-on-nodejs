@@ -1,0 +1,45 @@
+@startuml ../../../styles/images/modules/accounts/contacts-class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+modules/contacts.js 类图及其关联关系
+
+end title
+footer copyright (c) imfly 2016.06.23 http://ebookchain.org
+header 《Nodejs开发加密货币》类图分析: 《地址》
+
+' modules/contacts.js
+Class Contacts {
+  - modules: {}
+  - library: {}
+
+  --
+
+  .. private methods ..
+  -attachApi: ()
+
+  .. public methods ..
+  + checkContacts: (publicKey, contacts, cb)
+  + checkUnconfirmedContacts: (publicKey, contacts, cb)
+  + sandboxApi: (call, args, cb)
+
+  .. events ..
+  + onBind: (scope)
+
+  .. shared methods..
+  + getUnconfirmedContacts: (req, cb)
+  + getContacts: (req, cb)
+  + addContact: (req, cb)
+  + getFee: (req, cb)
+}
+
+' relationship
+Contacts -up-> crypto: <<require>>
+Contacts -up-> ed25519: <<require>>
+Contacts -up-> Router: <<require>>
+
+Contacts -down-> library.balancesSequence
+Contacts -down-> library.transaction
+Contacts -down-> library.dblite
+@enduml

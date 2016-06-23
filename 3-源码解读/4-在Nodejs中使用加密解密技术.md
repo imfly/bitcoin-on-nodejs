@@ -163,4 +163,3 @@ Accounts.prototype.generateAddressByPublicKey = function (publicKey) {
 
 [crypto-class.png]: ../styles/images/modules/crypto/class.png
 [crypto-activity.png]: ../styles/images/modules/crypto/activity.png
-

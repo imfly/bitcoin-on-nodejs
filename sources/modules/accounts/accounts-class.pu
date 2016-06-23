@@ -1,0 +1,83 @@
+@startuml ../../../styles/images/modules/accounts/accounts-class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+modules/accounts.js 类图及其关联关系
+
+end title
+footer copyright (c) imfly 2016.06.23 http://ebookchain.org
+header 《Nodejs开发加密货币》类图分析：《地址》
+
+' logic/account.js
+package logic {
+  Class Account {
+    - genesisblock: scope.genesisblock.block
+    ====
+    .. private methods ..
+
+    .. public methods ..
+    +createTables：cb
+    +removeTables：cb
+    +objectNormalize：account
+    +toDB：raw
+    +get：filter, fields, cb
+    +set：address, fields, cb
+    +remove：address, cb
+
+    .. events ..
+
+    .. shared methods..
+
+  }
+
+  ' relationship
+  Account -left-> transaction
+}
+
+' modules/accounts.js
+Class Accounts {
+  - modules: {}
+  - library: {}
+
+  --
+
+  .. private methods ..
+  -attachApi: ()
+  -openAccount：(secret, cb)
+
+  .. public methods ..
+  + generateAddressByPublicKey: (publicKey)
+  + getAccount: (filter, fields, cb)
+  + getAccounts: (filter, fields, cb)
+  + setAccountAndGet: (data, cb)
+  + mergeAccountAndGet: (data, cb)
+  + sandboxApi: (call, args, cb)
+
+  .. events ..
+  + onBind: (scope)
+
+  .. shared methods..
+  + open: (req, cb)
+  + getBalance: (req, cb)
+  + getPublickey: (req, cb)
+  + generatePublickey: (req, cb)
+  + getDelegates: (req, cb)
+  + getDelegatesFee: (req, cb)
+  + addDelegates: (req, cb)
+  + getUsernameFee: (req, cb)
+  + addUsername: (req, cb)
+  + getAccount: (req, cb)
+  + getUsername: (req, cb)
+}
+
+' relationship
+Accounts -up-> crypto: <<require>>
+Accounts -up-> ed25519: <<require>>
+Accounts -up-> Router: <<require>>
+Accounts -up-> slots: <<require>>
+Accounts -up-> bignum: <<require>>
+
+Accounts -left-> balancesSequence
+Accounts -right-> transaction
+@enduml
