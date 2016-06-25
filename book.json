@@ -20,6 +20,7 @@
     },
     "plugins": [
       "baidu",
+      "theme-official",
       "-livereload"
     ],
     "pluginsConfig": {

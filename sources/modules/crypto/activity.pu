@@ -3,12 +3,12 @@
   skinparam backgroundcolor AntiqueWhite/white
 
   title
-  Accounts中生成用户ID流程图
+  Accounts中生成Hash地址的流程图
 
   end title
 
   footer copyright (c) imfly 2016.03.10 http://bitcoin-on-nodejs.ebookchain.org
-  header 《Nodejs开发加密货币》第九篇分析用图
+  header 《Nodejs开发加密货币》分析用图：加密和验证
 
   (*) --> [从接口方法开始] "post `/api/accounts/generatePublicKey`"
   --> shared.generatePublickey()
