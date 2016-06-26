@@ -1,0 +1,67 @@
+@startuml ../../../styles/images/modules/signatures/signatures-class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+modules/signatures.js 类图及其关联关系
+
+end title
+footer copyright (c) imfly 2016.06.26 http://ebookchain.org
+header 《Nodejs开发加密货币》类图分析：《签名和多重签名》
+
+' modules/signatures.js
+Class Signatures {
+  - modules: {}
+  - library: {}
+  --
+
+  .. private methods ..
+  -attachApi: ()
+
+  .. public methods ..
+
+  .. events ..
+  + onBind: (scope)
+
+  .. shared methods..
+  + getFee： (req, cb)
+  + addSignature： (req, cb)
+}
+
+Class Signature{
+  + create： (data, trs)
+  + calculateFee： (trs, sender)
+  + verify： (trs, sender, cb)
+  + process： (trs, sender, cb)
+  + getBytes： (trs)
+  + apply： (trs, block, sender, cb)
+  + undo： (trs, block, sender, cb)
+  + applyUnconfirmed： (trs, sender, cb)
+  + undoUnconfirmed： (trs, sender, cb)
+  + objectNormalize： (trs)
+  + dbRead： (raw)
+  + dbSave： (trs, cb)
+  + ready： (trs, sender)
+}
+
+' Signature内部类
+
+' relationship
+Signatures -up-> crypto: <<require>>
+Signatures -up-> ed25519: <<require>>
+Signatures -up-> Router: <<require>>
+Signatures -up-> slots: <<require>>
+
+Signatures -left-> library.balancesSequence
+Signatures -left-> library.scheme
+Signatures -left-> library.dbLite
+Signatures -right-> logic.transaction
+Signatures -down-> modules.accounts
+Signatures -down-> modules.transactions
+
+Signature -left-> library.scheme
+Signature -left-> library.dbLite
+Signature -down-> modules.accounts
+
+Signatures *-right- Signature:library.logic.transaction.attachAssetType
+@enduml

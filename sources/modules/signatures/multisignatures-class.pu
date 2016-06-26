@@ -1,0 +1,78 @@
+@startuml ../../../styles/images/modules/signatures/multisignatures-class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+modules/signatures.js 类图及其关联关系
+
+end title
+footer copyright (c) imfly 2016.06.26 http://ebookchain.org
+header 《Nodejs开发加密货币》类图分析：《签名和多重签名》
+
+' modules/multisignatures.js
+Class Multisignatures {
+  - modules: {}
+  - library: {}
+  --
+
+  .. private methods ..
+  -attachApi: ()
+
+  .. public methods ..
+  + sandboxApi: (call, args, cb)
+
+  .. events ..
+  + onBind: (scope)
+
+  .. shared methods..
+  + getAccounts: (req, cb)
+  + pending: (req, cb)
+  + processSignature: (tx, cb)
+  + sign: (req, cb)
+  + addMultisignature: (req, cb)
+}
+
+' Multisignatures内部类
+Class Multisignature{
+  + create： (data, trs)
+  + calculateFee： (trs, sender)
+  + verify： (trs, sender, cb)
+  + process： (trs, sender, cb)
+  + getBytes： (trs)
+  + apply： (trs, block, sender, cb)
+  + undo： (trs, block, sender, cb)
+  + applyUnconfirmed： (trs, sender, cb)
+  + undoUnconfirmed： (trs, sender, cb)
+  + objectNormalize： (trs)
+  + dbRead： (raw)
+  + dbSave： (trs, cb)
+  + ready： (trs, sender)
+}
+
+' relationship
+Multisignatures -up-> crypto: <<require>>
+Multisignatures -up-> ed25519: <<require>>
+Multisignatures -up-> Router: <<require>>
+Multisignatures -up-> slots: <<require>>
+
+Multisignatures -left-> library.balancesSequence
+Multisignatures -left-> library.genesisblock
+Multisignatures -right-> logic.transaction
+Multisignatures -left-> library.scheme
+Multisignatures -left-> library.dbLite
+Multisignatures -left-> library.network
+
+Multisignatures -down-> modules.accounts
+Multisignatures -down-> modules.transactions
+Multisignatures -down-> modules.accounts
+Multisignatures -down-> modules.transactions
+
+Multisignature -left-> library.scheme
+Multisignature -left-> library.dbLite
+Multisignature -right-> logic.transaction
+Multisignature -down-> modules.accounts
+Multisignature -down-> modules.transactions
+Multisignature -down-> modules.round
+
+Multisignatures *-right- Multisignature:library.logic.transaction.attachAssetType
+@enduml

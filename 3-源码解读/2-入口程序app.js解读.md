@@ -11,7 +11,7 @@
 
 ## 源码
 
-地址： https://github.com/Ebookcoin/ebookcoin/blob/master/app.js
+地址： https://github.com/Ebookcoin/ebookcoin/blob/v0.1.3/app.js
 
 ## 类图
 
