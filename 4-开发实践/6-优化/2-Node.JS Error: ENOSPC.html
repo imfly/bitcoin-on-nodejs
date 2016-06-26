@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="zh" >
     <head>
-        <title>生产环境下的pm2部署 · GitBook</title>
+        <title>Node.JS Error: ENOSPC · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -36,10 +36,10 @@
     
 
     
-    <link rel="next" href="3-使用ShipIt实现全自动一键部署.html" />
+    <link rel="next" href="2-一张图学会使用Async组件进行流程控制.html" />
     
     
-    <link rel="prev" href="1-Nodejs部署方案全解析.html" />
+    <link rel="prev" href="1-Js对数据计算处理的各种问题.html" />
     
 
     </head>
@@ -64,12 +64,12 @@
 
             
                 
-                <a href="3-使用ShipIt实现全自动一键部署.html" class="btn btn-link pull-right hidden-xs">
+                <a href="2-一张图学会使用Async组件进行流程控制.html" class="btn btn-link pull-right hidden-xs">
                     <i class="octicon octicon-chevron-right"></i>
                 </a>
                 
                 
-                <a href="1-Nodejs部署方案全解析.html" class="btn btn-link pull-right hidden-xs">
+                <a href="1-Js对数据计算处理的各种问题.html" class="btn btn-link pull-right hidden-xs">
                     <i class="octicon octicon-chevron-left"></i>
                 </a>
                 
@@ -162,10 +162,10 @@
         
     
         
-        <a href="../0-后台的架构/readme.html" class="list-group-item ">
+        <a href="../0-加密与解密/readme.html" class="list-group-item ">
         
             
-            后台的架构
+            加密与解密
         
         </a>
         
@@ -195,10 +195,21 @@
         
     
         
-        <a href="../3-加密与解密/readme.html" class="list-group-item ">
+        <a href="../4-部署/readme.html" class="list-group-item ">
         
             
-            加密与解密
+            部署
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../5-测试/readme.html" class="list-group-item ">
+        
+            
+            测试
         
         </a>
         
@@ -209,7 +220,7 @@
         <a href="readme.html" class="list-group-item ">
         
             
-            部署与环境
+            优化
         
         </a>
         
@@ -218,12 +229,12 @@
         
     
         
-        <a href="1-Nodejs部署方案全解析.html" class="list-group-item ">
+        <a href="1-Js对数据计算处理的各种问题.html" class="list-group-item ">
         
             
                 <i class="octicon octicon-chevron-right"></i>
             
-            Nodejs部署方案全解析
+            Js对数据计算处理的各种问题
         
         </a>
         
@@ -231,12 +242,12 @@
         
     
         
-        <a href="2-生产环境下的pm2部署.html" class="list-group-item active">
+        <a href="2-Node.JS Error: ENOSPC.html" class="list-group-item active">
         
             
                 <i class="octicon octicon-chevron-right"></i>
             
-            生产环境下的pm2部署
+            Node.JS Error: ENOSPC
         
         </a>
         
@@ -244,29 +255,31 @@
         
     
         
-        <a href="3-使用ShipIt实现全自动一键部署.html" class="list-group-item ">
+        <a href="2-一张图学会使用Async组件进行流程控制.html" class="list-group-item ">
         
             
                 <i class="octicon octicon-chevron-right"></i>
             
-            使用ShipIt实现全自动一键部署
+            一张图学会使用Async组件进行流程控制
         
         </a>
         
 
         
     
-
         
-    
-        
-        <a href="../5-常见的大坑/readme.html" class="list-group-item ">
+        <a href="3-事件循环.html" class="list-group-item ">
         
             
-            常见的大坑
+                <i class="octicon octicon-chevron-right"></i>
+            
+            事件循环
         
         </a>
         
+
+        
+    
 
         
     
@@ -309,7 +322,15 @@
     
                             
                             <div class="gb-markdown book-page-inner">
-                                
+                                <h1 id="nodejs-error-enospc">Node.JS Error: ENOSPC</h1>
+<h2 id="&#x9519;&#x8BEF;&#x63CF;&#x8FF0;">&#x9519;&#x8BEF;&#x63CF;&#x8FF0;</h2>
+<p>&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#xFF0C;&#x610F;&#x601D;&#x662F;&#x201C;&#x9A71;&#x52A8;&#x5668;&#x6CA1;&#x6709;&#x7A7A;&#x95F4;&#x201D;&#x3002;&#x5F88;&#x591A;&#x4EBA;&#x5EFA;&#x8BAE;&#x5220;&#x9664;<code>tmp</code>&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x6216;&#x628A;<code>tmp</code>&#x8F6C;&#x79FB;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5927;&#x70B9;&#x7684;&#x5730;&#x65B9;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x5BF9;&#x4E8E;ubuntu&#x7CFB;&#x7EDF;&#xFF0C;&#x53EA;&#x8981;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x547D;&#x4EE4;&#x5373;&#x53EF;&#x3002;</p>
+<h2 id="&#x89E3;&#x51B3;&#x529E;&#x6CD5;">&#x89E3;&#x51B3;&#x529E;&#x6CD5;</h2>
+<pre><code>echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p
+</code></pre><p>For Arch Linux add fs.inotify.max_user_watches=524288 to /etc/sysctl.d/99-sysctl.conf and then execute sysctl --system. This will also persist across reboots.</p>
+<h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
+<p><a href="http://stackoverflow.com/questions/22475849/node-js-error-enospc" target="_blank">http://stackoverflow.com/questions/22475849/node-js-error-enospc</a></p>
+
                             </div>
                             
                         
@@ -384,7 +405,7 @@
 
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"生产环境下的pm2部署","level":"1.6.5.2","depth":3,"next":{"title":"使用ShipIt实现全自动一键部署","level":"1.6.5.3","depth":3,"path":"4-开发实践/4-部署与环境/3-使用ShipIt实现全自动一键部署.md","ref":"4-开发实践/4-部署与环境/3-使用ShipIt实现全自动一键部署.md","articles":[]},"previous":{"title":"Nodejs部署方案全解析","level":"1.6.5.1","depth":3,"path":"4-开发实践/4-部署与环境/1-Nodejs部署方案全解析.md","ref":"4-开发实践/4-部署与环境/1-Nodejs部署方案全解析.md","articles":[]},"dir":"neutral"},"config":{"plugins":["baidu","theme-official","-livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-official":{},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"4-开发实践/4-部署与环境/2-生产环境下的pm2部署.md","mtime":"2016-06-24T11:40:33.244Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-06-26T06:14:01.770Z"},"basePath":"../..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"Node.JS Error: ENOSPC","level":"1.6.6.2","depth":3,"next":{"title":"一张图学会使用Async组件进行流程控制","level":"1.6.6.3","depth":3,"path":"4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.md","ref":"4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.md","articles":[]},"previous":{"title":"Js对数据计算处理的各种问题","level":"1.6.6.1","depth":3,"path":"4-开发实践/6-优化/1-Js对数据计算处理的各种问题.md","ref":"4-开发实践/6-优化/1-Js对数据计算处理的各种问题.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","theme-official","-livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-official":{},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"4-开发实践/6-优化/2-Node.JS Error: ENOSPC.md","mtime":"2016-06-24T11:40:33.244Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-06-26T06:48:21.072Z"},"basePath":"../..","book":{"language":""}});
 })();
 </script>
 
