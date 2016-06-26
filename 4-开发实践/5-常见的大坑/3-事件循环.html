@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="zh" >
     <head>
-        <title>setTimeout，setInterval，process.nextTick，setImmediate · GitBook</title>
+        <title>事件循环 · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -156,56 +156,56 @@
         
     
         
-        <span class="list-group-item">
+        <a href="../0-后台的架构/readme.html" class="list-group-item ">
         
             
             后台的架构
         
-        </span>
+        </a>
         
 
         
     
         
-        <span class="list-group-item">
+        <a href="../1-命令行设计/readme.html" class="list-group-item ">
         
             
             命令行设计
         
-        </span>
+        </a>
         
 
         
     
         
-        <span class="list-group-item">
+        <a href="../2-客户端开发/readme.html" class="list-group-item ">
         
             
             客户端开发
         
-        </span>
+        </a>
         
 
         
     
         
-        <span class="list-group-item">
+        <a href="../3-加密与解密/readme.html" class="list-group-item ">
         
             
             加密与解密
         
-        </span>
+        </a>
         
 
         
     
         
-        <span class="list-group-item">
+        <a href="../4-部署与环境/readme.html" class="list-group-item ">
         
             
             部署与环境
         
-        </span>
+        </a>
         
 
         
@@ -249,12 +249,12 @@
         
     
         
-        <a href="3-setTimeout，setInterval，process.nextTick，setImmediate.html" class="list-group-item active">
+        <a href="3-事件循环.html" class="list-group-item active">
         
             
                 <i class="octicon octicon-chevron-right"></i>
             
-            setTimeout，setInterval，process.nextTick，setImmediate
+            事件循环
         
         </a>
         
@@ -303,8 +303,10 @@
     
                             
                             <div class="gb-markdown book-page-inner">
-                                <h1 id="settimeout&#xFF0C;setinterval&#xFF0C;setimmediate&#xFF0C;processnexttick">setTimeout&#xFF0C;setInterval&#xFF0C;setImmediate&#xFF0C;process.nextTick</h1>
-<p>&#x4EBF;&#x4E66;&#x5E95;&#x5C42;&#x7684;&#x4EBF;&#x4E66;&#x5E01;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x7840;&#x5C42;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x9700;&#x8981;&#x6301;&#x7EED;&#x53CD;&#x590D;&#x8FD0;&#x884C;&#x3002;&#x8C03;&#x5EA6;&#x548C;&#x7BA1;&#x7406;&#x5404;&#x79CD;&#x5FAA;&#x73AF;&#x662F;&#x5F88;&#x5173;&#x952E;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x5728;&#x4EBF;&#x4E66;&#x5E01;&#x7684;&#x6E90;&#x7801;&#x91CC;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5927;&#x91CF;<code>setImmediate</code>&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x7B80;&#x5355;&#x89E3;&#x51B3;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x7528;&#x5176;&#x4ED6;setTimeout&#xFF0C;setInterval&#xFF0C;process.nextTick&#x7B49;&#x51FD;&#x6570;&#x5462;&#xFF1F;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</p>
+                                <h1 id="&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;">&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x4EBF;&#x4E66;&#x5E01;&#xFF0C;&#x662F;&#x4EBF;&#x4E66;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x57FA;&#x7840;&#x5C42;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x9700;&#x8981;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5217;&#x8868;&#xFF0C;&#x6301;&#x7EED;&#x53CD;&#x590D;&#x8FD0;&#x884C;&#xFF0C;&#x56E0;&#x6B64;&#x8C03;&#x5EA6;&#x548C;&#x7BA1;&#x7406;&#x5404;&#x79CD;&#x5FAA;&#x73AF;&#x662F;&#x5F88;&#x5173;&#x952E;&#x7684;&#x90E8;&#x5206;&#x3002;&#x5728;&#x4EBF;&#x4E66;&#x5E01;&#x7684;&#x6E90;&#x7801;&#x91CC;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5927;&#x91CF;<code>setImmediate</code>&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x3002;&#x5728;&#x6E90;&#x7801;&#x89E3;&#x8BFB;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x8BE6;&#x7EC6;&#x4E86;&#x89E3;&#x4EC0;&#x4E48;&#x65F6;&#x673A;&#x3001;&#x8981;&#x628A;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x4EFB;&#x52A1;&#x52A0;&#x5165;&#x5FAA;&#x73AF;&#x4EFB;&#x52A1;&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x6280;&#x672F;&#x7684;&#x89D2;&#x5EA6;&#xFF0C;&#x5B66;&#x4E60;Nodejs&#x5BF9;&#x4E8E;&#x5FAA;&#x73AF;&#x64CD;&#x4F5C;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;setTimeout&#xFF0C;setInterval&#xFF0C;process.nextTick&#x7B49;&#xFF0C;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x600E;&#x4E48;&#x4F7F;&#x7528;&#x4ED6;&#x4EEC;&#x7B49;&#x3002;</p>
+<h2 id="nodejs&#x7684;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x66F4;&#x52A0;&#x9002;&#x5408;&#x5F00;&#x53D1;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;">Node.js&#x7684;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x66F4;&#x52A0;&#x9002;&#x5408;&#x5F00;&#x53D1;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;</h2>
 <h2 id="&#x5B98;&#x65B9;&#x6587;&#x6863;">&#x5B98;&#x65B9;&#x6587;&#x6863;</h2>
 <p>&#x8BBF;&#x95EE; [Node.js(&#x5B98;&#x65B9;&#x957F;&#x671F;&#x652F;&#x6301;&#x7248;)&#x5B98;&#x65B9;&#x6587;&#x6863;][]&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;setTimeout&#xFF0C;setInterval&#xFF0C;setImmediate &#x8FD9;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x5C5E;&#x4E8E;&#x65F6;&#x95F4;&#xFF08;timer)&#x51FD;&#x6570;&#xFF0C;nextTick &#x5C5E;&#x4E8E;&#x8FDB;&#x7A0B;&#xFF08;process&#xFF09;&#x51FD;&#x6570;&#x3002;</p>
 <h4 id="processnexttickcallback-arg-">process.nextTick(callback[, arg][, ...])</h4>
@@ -359,7 +361,7 @@
                     <a href="#">Return to the top</a>
                 </li>
                 <li>
-                    <a href="#">Updated Jun 24th 16</a>
+                    <a href="#">Updated Jun 26th 16</a>
                 </li>
             </ul>
         </div>
@@ -398,7 +400,7 @@
 
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"setTimeout，setInterval，process.nextTick，setImmediate","level":"1.6.6.3","depth":3,"next":{"title":"附录","level":"1.7","depth":1,"ref":"","articles":[{"title":"加密货币相关名词汇总","level":"1.7.1","depth":2,"path":"5-附录/1-加密货币相关名词汇总.md","ref":"5-附录/1-加密货币相关名词汇总.md","articles":[]},{"title":"关于亿书","level":"1.7.2","depth":2,"path":"5-附录/2-关于亿书.md","ref":"5-附录/2-关于亿书.md","articles":[]},{"title":"关于区款链俱乐部","level":"1.7.3","depth":2,"path":"5-附录/3-关于区款链俱乐部.md","ref":"5-附录/3-关于区款链俱乐部.md","articles":[]},{"title":"关于作者","level":"1.7.4","depth":2,"path":"5-附录/4-关于作者.md","ref":"5-附录/4-关于作者.md","articles":[]}]},"previous":{"title":"Node.JS Error: ENOSPC","level":"1.6.6.2","depth":3,"path":"4-开发实践/5-常见的大坑/2-Node.JS Error: ENOSPC.md","ref":"4-开发实践/5-常见的大坑/2-Node.JS Error: ENOSPC.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","theme-official","-livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-official":{},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"4-开发实践/5-常见的大坑/3-setTimeout，setInterval，process.nextTick，setImmediate.md","mtime":"2016-06-24T11:40:33.244Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-06-24T16:10:10.318Z"},"basePath":"../..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"事件循环","level":"1.6.6.3","depth":3,"next":{"title":"附录","level":"1.7","depth":1,"ref":"","articles":[{"title":"加密货币相关名词汇总","level":"1.7.1","depth":2,"path":"5-附录/1-加密货币相关名词汇总.md","ref":"5-附录/1-加密货币相关名词汇总.md","articles":[]},{"title":"关于亿书","level":"1.7.2","depth":2,"path":"5-附录/2-关于亿书.md","ref":"5-附录/2-关于亿书.md","articles":[]},{"title":"关于区款链俱乐部","level":"1.7.3","depth":2,"path":"5-附录/3-关于区款链俱乐部.md","ref":"5-附录/3-关于区款链俱乐部.md","articles":[]},{"title":"关于作者","level":"1.7.4","depth":2,"path":"5-附录/4-关于作者.md","ref":"5-附录/4-关于作者.md","articles":[]}]},"previous":{"title":"Node.JS Error: ENOSPC","level":"1.6.6.2","depth":3,"path":"4-开发实践/5-常见的大坑/2-Node.JS Error: ENOSPC.md","ref":"4-开发实践/5-常见的大坑/2-Node.JS Error: ENOSPC.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","theme-official","-livereload","livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-official":{},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"4-开发实践/5-常见的大坑/3-事件循环.md","mtime":"2016-06-26T05:20:43.858Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-06-26T06:00:10.384Z"},"basePath":"../..","book":{"language":""}});
 })();
 </script>
 
