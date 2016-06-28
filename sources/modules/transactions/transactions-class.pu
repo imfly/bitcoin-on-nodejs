@@ -1,0 +1,132 @@
+@startuml ../../../styles/images/modules/transactions/transactions-class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+<b>“交易”类图及其关联关系</b>
+
+end title
+footer copyright (c) imfly 2016.06.23 http://ebookchain.org
+header 《Nodejs开发加密货币》类图分析：交易
+
+' logic/transaction.js
+package logic {
+  Class Transaction {
+    - genesisblock: scope.genesisblock.block
+    ====
+    .. private methods ..
+
+    .. public methods ..
+    + create： (data)
+    + attachAssetType： (typeId, instance)
+    + sign： (keypair, trs)
+    + multisign： (keypair, trs)
+    + getId： (trs)
+    + getHash： (trs)
+    + getBytes： (trs, skipSignature, skipSecondSignature)
+    + ready： (trs, sender)
+    + process： (trs, sender, requester, cb)
+    + verify： (trs, sender, requester, cb)
+    + verifySignature： (trs, publicKey, signature)
+    + verifySecondSignature： (trs, publicKey, signature)
+    + verifyBytes： (bytes, publicKey, signature)
+    + apply： (trs, block, sender, cb)
+    + undo： (trs, block, sender, cb)
+    + applyUnconfirmed： (trs, sender, requester, cb)
+    + undoUnconfirmed： (trs, sender, cb)
+    + dbSave： (trs, cb)
+    + objectNormalize： (trs)
+    + dbRead： (raw)
+
+    .. events ..
+
+    .. shared methods..
+
+  }
+
+  ' relationship
+
+}
+
+' modules/transactions.js
+Class Transactions {
+  - modules: {}
+  - library: {}
+
+  --
+
+  .. private methods ..
+  -attachApi: ()
+  - list: (filter, cb)
+  - getById: (id, cb)
+  - addUnconfirmedTransaction: (transaction, sender, cb)
+
+  .. public methods ..
+  + getUnconfirmedTransaction: (id)
+  + addDoubleSpending: (transaction)
+  + pushHiddenTransaction: (transaction)
+  + shiftHiddenTransaction: ()
+  + deleteHiddenTransaction: ()
+  + getUnconfirmedTransactionList: (reverse)
+  + removeUnconfirmedTransaction: (id)
+  + processUnconfirmedTransaction: (transaction, broadcast, cb)
+  + applyUnconfirmedList: (ids, cb)
+  + undoUnconfirmedList: (cb)
+  + apply: (transaction, block, sender, cb)
+  + undo: (transaction, block, sender, cb)
+  + applyUnconfirmed: (transaction, sender, cb)
+  + undoUnconfirmed: (transaction, cb)
+  + receiveTransactions: (transactions, cb)
+  + sandboxApi: (call, args, cb)
+
+  .. events ..
+  + onBind: (scope)
+
+  .. shared methods..
+  + getTransactions: (req, cb)
+  + getTransaction: (req, cb)
+  + getUnconfirmedTransaction: (req, cb)
+  + getUnconfirmedTransactions: (req, cb)
+  + addTransactions: (req, cb)
+}
+
+' inner Class
+Class Transfer {
+  ..public methods..
+  + create: (data, trs)
+  + calculateFee: (trs, sender)
+  + verify: (trs, sender, cb)
+  + process: (trs, sender, cb)
+  + getBytes: (trs)
+  + apply: (trs, block, sender, cb)
+  + undo: (trs, block, sender, cb)
+  + applyUnconfirmed: (trs, sender, cb)
+  + undoUnconfirmed: (trs, sender, cb)
+  + objectNormalize: (trs)
+  + dbRead: (raw)
+  + dbSave: (trs, cb)
+  + ready: (trs, sender)
+}
+
+' relationship
+Transactions -left-> crypto: <<require>>
+Transactions -left-> ed25519: <<require>>
+Transactions -left-> Router: <<require>>
+Transactions -left-> slots: <<require>>
+Transactions -left-> bignum: <<require>>
+Transactions -left-> TransactionTypes
+
+Transaction -left-> crypto: <<require>>
+Transaction -left-> ed25519: <<require>>
+Transaction -left-> slots: <<require>>
+Transaction -left-> bignum: <<require>>
+
+Transactions -down-> library.balancesSequence
+Transactions -down-> library.scheme
+Transactions -down-> library.dbLite
+Transactions -down-> library.genesisblock
+
+Transactions *-right- Transfer:library.logic.transaction.attachAssetType
+
+Transactions -left-> Transaction
+@enduml
