@@ -14,8 +14,6 @@ package logic {
   Class Transaction {
     - genesisblock: scope.genesisblock.block
     ====
-    .. private methods ..
-
     .. public methods ..
     + create： (data)
     + attachAssetType： (typeId, instance)
@@ -37,15 +35,7 @@ package logic {
     + dbSave： (trs, cb)
     + objectNormalize： (trs)
     + dbRead： (raw)
-
-    .. events ..
-
-    .. shared methods..
-
   }
-
-  ' relationship
-
 }
 
 ' modules/transactions.js
@@ -89,6 +79,7 @@ Class Transactions {
   + getUnconfirmedTransactions: (req, cb)
   + addTransactions: (req, cb)
 }
+note top: 这是“转账交易”类型，注册用户名、签名等交易类型与其相似
 
 ' inner Class
 Class Transfer {
@@ -107,6 +98,8 @@ Class Transfer {
   + dbSave: (trs, cb)
   + ready: (trs, sender)
 }
+
+note top: 这是一个内部类
 
 ' relationship
 Transactions -left-> crypto: <<require>>
