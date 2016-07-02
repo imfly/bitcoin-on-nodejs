@@ -1,960 +1,903 @@
+
 <!DOCTYPE HTML>
-<html lang="zh-tw" >
-    
+<html lang="zh" >
     <head>
-        
+        <title>签名和多重签名 · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>签名和多重签名 | Node.js开发加密货币</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="generator" content="GitBook 3.1.1">
         <meta name="author" content="Imfly">
         
-        <meta name="HandheldFriendly" content="true"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
+    
     <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
     
         
-        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+    
         
     
         
-        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+    
         
     
         
-        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+    
         
-    
-    
         <link rel="stylesheet" href="../styles/website.css">
+        
     
 
         
     
     
-    <link rel="next" href="../3-源码解读/7-交易.html" />
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="7-交易.html" />
     
     
-    <link rel="prev" href="../3-源码解读/5-地址.html" />
+    <link rel="prev" href="5-地址.html" />
     
 
-        
     </head>
     <body>
         
+<div class="book">
+    <div class="book-summary">
         
-    <div class="book"
-        data-level="4.6"
-        data-chapter-title="签名和多重签名"
-        data-filepath="3-源码解读/6-签名和多重签名.md"
-        data-basepath=".."
-        data-revision="Tue Jun 28 2016 16:28:55 GMT+0800 (CST)"
-        data-innerlanguage="">
-    
-
-<div class="book-summary">
-    <nav role="navigation">
-        <ul class="summary">
             
-            
-            
-            
-
-            
-
-            
-    
-        <li class="chapter " data-level="0" data-path="index.html">
-            
-                
-                    <a href="../index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                        介紹
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1" data-path="0-开篇的话/readme.html">
-            
-                
-                    <a href="../0-开篇的话/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.</b>
-                        
-                        开篇的话
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1" data-path="0-开篇的话/0-序言.html">
-            
-                
-                    <a href="../0-开篇的话/0-序言.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.</b>
-                        
-                        序言
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="0-开篇的话/1-开栏寄语.html">
-            
-                
-                    <a href="../0-开篇的话/1-开栏寄语.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.</b>
-                        
-                        开栏寄语
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="0-开篇的话/2-老老实实谈技术.html">
-            
-                
-                    <a href="../0-开篇的话/2-老老实实谈技术.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.3.</b>
-                        
-                        老老实实谈技术
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2" data-path="1-了解加密货币/readme.html">
-            
-                
-                    <a href="../1-了解加密货币/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.</b>
-                        
-                        了解加密货币
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1" data-path="1-了解加密货币/5-加密货币就是货币.html">
-            
-                
-                    <a href="../1-了解加密货币/5-加密货币就是货币.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.</b>
-                        
-                        加密货币就是货币
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2" data-path="1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
-            
-                
-                    <a href="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.</b>
-                        
-                        利益，魔鬼与天使的共同目标
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.3" data-path="1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
-            
-                
-                    <a href="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        共识机制，可编程的“利益”转移规则
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="3" data-path="2-Node.js入门指南/readme.html">
-            
-                
-                    <a href="../2-Node.js入门指南/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.</b>
-                        
-                        Node.js入门指南
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.1" data-path="2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
-            
-                
-                    <a href="../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.1.</b>
-                        
-                        Nodejs原来在币圈如此流行？
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2" data-path="2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
-            
-                
-                    <a href="../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.</b>
-                        
-                        Nodejs让您的前端开发像子弹飞一样
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
-            
-                
-                    <a href="../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.3.</b>
-                        
-                        Nodejs让后台开发像前端一样简单
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.4" data-path="2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
-            
-                
-                    <a href="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.4.</b>
-                        
-                        您必须知道的几个Nodejs编码习惯
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="4" data-path="3-源码解读/readme.html">
-            
-                
-                    <a href="../3-源码解读/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.</b>
-                        
-                        源码解读
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="4.1" data-path="3-源码解读/1-亿书，一个面向未来的自出版平台.html">
-            
-                
-                    <a href="../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.1.</b>
-                        
-                        亿书，一个面向未来的自出版平台
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.2" data-path="3-源码解读/2-入口程序app.js解读.html">
-            
-                
-                    <a href="../3-源码解读/2-入口程序app.js解读.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.2.</b>
-                        
-                        入口程序app.js解读
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.3" data-path="3-源码解读/3-一个精巧的p2p网络实现.html">
-            
-                
-                    <a href="../3-源码解读/3-一个精巧的p2p网络实现.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.3.</b>
-                        
-                        一个精巧的p2p网络实现
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.4" data-path="3-源码解读/4-加密和验证.html">
-            
-                
-                    <a href="../3-源码解读/4-加密和验证.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.4.</b>
-                        
-                        加密和验证
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.5" data-path="3-源码解读/5-地址.html">
-            
-                
-                    <a href="../3-源码解读/5-地址.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.5.</b>
-                        
-                        地址
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter active" data-level="4.6" data-path="3-源码解读/6-签名和多重签名.html">
-            
-                
-                    <a href="../3-源码解读/6-签名和多重签名.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.6.</b>
-                        
-                        签名和多重签名
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7" data-path="3-源码解读/7-交易.html">
-            
-                
-                    <a href="../3-源码解读/7-交易.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.7.</b>
-                        
-                        交易
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.8" data-path="3-源码解读/8-神秘的区块链.html">
-            
-                
-                    <a href="../3-源码解读/8-神秘的区块链.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.8.</b>
-                        
-                        神秘的区块链
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.9" data-path="3-源码解读/9-侧链的实现.html">
-            
-                
-                    <a href="../3-源码解读/9-侧链的实现.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.9.</b>
-                        
-                        侧链的实现
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.10" data-path="3-源码解读/10-DPOS机制的实现.html">
-            
-                
-                    <a href="../3-源码解读/10-DPOS机制的实现.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.10.</b>
-                        
-                        DPOS机制的实现
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5" data-path="4-开发实践/readme.html">
-            
-                
-                    <a href="../4-开发实践/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.</b>
-                        
-                        开发实践
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.1" data-path="4-开发实践/0-加密与解密/readme.html">
-            
-                
-                    <a href="../4-开发实践/0-加密与解密/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.1.</b>
-                        
-                        加密与解密
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.1.1" data-path="4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
-            
-                
-                    <a href="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.1.1.</b>
-                        
-                        三张图让你全面掌握加密解密技术
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5.2" data-path="4-开发实践/1-命令行设计/readme.html">
-            
-                
-                    <a href="../4-开发实践/1-命令行设计/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.2.</b>
-                        
-                        命令行设计
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.2.1" data-path="4-开发实践/1-命令行设计/1-commander介绍.html">
-            
-                
-                    <a href="../4-开发实践/1-命令行设计/1-commander介绍.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.2.1.</b>
-                        
-                        commander介绍
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3" data-path="4-开发实践/2-客户端开发/readme.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.</b>
-                        
-                        客户端开发
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.3.1" data-path="4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.1.</b>
-                        
-                        静态网站开发全景扫描
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3.2" data-path="4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.2.</b>
-                        
-                        一张图把握Ember开发的精髓
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3.3" data-path="4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.3.</b>
-                        
-                        一张图掌握把前端拆成可重用的Ember插件
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3.4" data-path="4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.4.</b>
-                        
-                        Ember的所有钩子方法汇总
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5.4" data-path="4-开发实践/4-部署/readme.html">
-            
-                
-                    <a href="../4-开发实践/4-部署/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.4.</b>
-                        
-                        部署
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.4.1" data-path="4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
-            
-                
-                    <a href="../4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.4.1.</b>
-                        
-                        Nodejs部署方案全解析
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.4.2" data-path="4-开发实践/4-部署/2-生产环境下的pm2部署.html">
-            
-                
-                    <a href="../4-开发实践/4-部署/2-生产环境下的pm2部署.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.4.2.</b>
-                        
-                        生产环境下的pm2部署
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.4.3" data-path="4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
-            
-                
-                    <a href="../4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.4.3.</b>
-                        
-                        使用ShipIt实现全自动一键部署
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5.5" data-path="4-开发实践/5-测试/readme.html">
-            
-                
-                    <a href="../4-开发实践/5-测试/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.5.</b>
-                        
-                        测试
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6" data-path="4-开发实践/6-优化/readme.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.</b>
-                        
-                        优化
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.6.1" data-path="4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.1.</b>
-                        
-                        Js对数据计算处理的各种问题
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6.2" data-path="4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.2.</b>
-                        
-                        Node.JS Error: ENOSPC
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6.3" data-path="4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.3.</b>
-                        
-                        一张图学会使用Async组件进行流程控制
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6.4" data-path="4-开发实践/6-优化/3-事件循环.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/3-事件循环.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.4.</b>
-                        
-                        事件循环
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="6" data-path="5-附录/readme.html">
-            
-                
-                    <a href="../5-附录/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.</b>
-                        
-                        附录
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="6.1" data-path="5-附录/1-加密货币相关名词汇总.html">
-            
-                
-                    <a href="../5-附录/1-加密货币相关名词汇总.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.1.</b>
-                        
-                        加密货币相关名词汇总
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.2" data-path="5-附录/2-关于亿书.html">
-            
-                
-                    <a href="../5-附录/2-关于亿书.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.2.</b>
-                        
-                        关于亿书
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.3" data-path="5-附录/3-关于区款链俱乐部.html">
-            
-                
-                    <a href="../5-附录/3-关于区款链俱乐部.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.3.</b>
-                        
-                        关于区款链俱乐部
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.4" data-path="5-附录/4-关于作者.html">
-            
-                
-                    <a href="../5-附录/4-关于作者.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.4.</b>
-                        
-                        关于作者
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="7" data-path="6-后记/readme.html">
-            
-                
-                    <a href="../6-后记/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.</b>
-                        
-                        后记
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="7.1" data-path="6-后记/1-记录应该记住的内容.html">
-            
-                
-                    <a href="../6-后记/1-记录应该记住的内容.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.1.</b>
-                        
-                        记录应该记住的内容
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-
-            
-            <li class="divider"></li>
-            <li>
-                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-                    本書使用 GitBook 釋出
-                </a>
-            </li>
-            
-        </ul>
-    </nav>
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
 </div>
 
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../0-开篇的话/readme.html">
+            
+                <a href="../0-开篇的话/readme.html">
+            
+                    
+                    开篇的话
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../0-开篇的话/0-序言.html">
+            
+                <a href="../0-开篇的话/0-序言.html">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../0-开篇的话/1-开栏寄语.html">
+            
+                <a href="../0-开篇的话/1-开栏寄语.html">
+            
+                    
+                    开栏寄语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../0-开篇的话/2-老老实实谈技术.html">
+            
+                <a href="../0-开篇的话/2-老老实实谈技术.html">
+            
+                    
+                    老老实实谈技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../1-了解加密货币/readme.html">
+            
+                <a href="../1-了解加密货币/readme.html">
+            
+                    
+                    了解加密货币
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../1-了解加密货币/5-加密货币就是货币.html">
+            
+                <a href="../1-了解加密货币/5-加密货币就是货币.html">
+            
+                    
+                    加密货币就是货币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
+            
+                <a href="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
+            
+                    
+                    利益，魔鬼与天使的共同目标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
+            
+                <a href="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
+            
+                    
+                    共识机制，可编程的“利益”转移规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../2-Node.js入门指南/readme.html">
+            
+                <a href="../2-Node.js入门指南/readme.html">
+            
+                    
+                    Node.js入门指南
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                <a href="../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                    
+                    Nodejs原来在币圈如此流行？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                <a href="../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                    
+                    Nodejs让您的前端开发像子弹飞一样
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                <a href="../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                    
+                    Nodejs让后台开发像前端一样简单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                <a href="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                    
+                    您必须知道的几个Nodejs编码习惯
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    源码解读
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="1-亿书，一个面向未来的自出版平台.html">
+            
+                <a href="1-亿书，一个面向未来的自出版平台.html">
+            
+                    
+                    亿书，一个面向未来的自出版平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="2-入口程序app.js解读.html">
+            
+                <a href="2-入口程序app.js解读.html">
+            
+                    
+                    入口程序app.js解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="3-一个精巧的p2p网络实现.html">
+            
+                <a href="3-一个精巧的p2p网络实现.html">
+            
+                    
+                    一个精巧的p2p网络实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="4-加密和验证.html">
+            
+                <a href="4-加密和验证.html">
+            
+                    
+                    加密和验证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="5-地址.html">
+            
+                <a href="5-地址.html">
+            
+                    
+                    地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.6" data-path="6-签名和多重签名.html">
+            
+                <a href="6-签名和多重签名.html">
+            
+                    
+                    签名和多重签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="7-交易.html">
+            
+                <a href="7-交易.html">
+            
+                    
+                    交易
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="8-神秘的区块链.html">
+            
+                <a href="8-神秘的区块链.html">
+            
+                    
+                    神秘的区块链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="9-侧链的实现.html">
+            
+                <a href="9-侧链的实现.html">
+            
+                    
+                    侧链的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="10-DPOS机制的实现.html">
+            
+                <a href="10-DPOS机制的实现.html">
+            
+                    
+                    DPOS机制的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../4-开发实践/readme.html">
+            
+                <a href="../4-开发实践/readme.html">
+            
+                    
+                    开发实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../4-开发实践/0-加密与解密/readme.html">
+            
+                <a href="../4-开发实践/0-加密与解密/readme.html">
+            
+                    
+                    加密与解密
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+            
+                <a href="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+            
+                    
+                    三张图让你全面掌握加密解密技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../4-开发实践/1-命令行设计/readme.html">
+            
+                <a href="../4-开发实践/1-命令行设计/readme.html">
+            
+                    
+                    命令行设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../4-开发实践/1-命令行设计/1-commander介绍.html">
+            
+                <a href="../4-开发实践/1-命令行设计/1-commander介绍.html">
+            
+                    
+                    commander介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../4-开发实践/2-客户端开发/readme.html">
+            
+                <a href="../4-开发实践/2-客户端开发/readme.html">
+            
+                    
+                    客户端开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
+            
+                <a href="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
+            
+                    
+                    静态网站开发全景扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
+            
+                <a href="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
+            
+                    
+                    一张图把握Ember开发的精髓
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
+            
+                <a href="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
+            
+                    
+                    一张图掌握把前端拆成可重用的Ember插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
+            
+                <a href="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
+            
+                    
+                    Ember的所有钩子方法汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../4-开发实践/4-部署/readme.html">
+            
+                <a href="../4-开发实践/4-部署/readme.html">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
+            
+                <a href="../4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
+            
+                    
+                    Nodejs部署方案全解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../4-开发实践/4-部署/2-生产环境下的pm2部署.html">
+            
+                <a href="../4-开发实践/4-部署/2-生产环境下的pm2部署.html">
+            
+                    
+                    生产环境下的pm2部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="../4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
+            
+                <a href="../4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
+            
+                    
+                    使用ShipIt实现全自动一键部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../4-开发实践/5-测试/readme.html">
+            
+                <a href="../4-开发实践/5-测试/readme.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../4-开发实践/6-优化/readme.html">
+            
+                <a href="../4-开发实践/6-优化/readme.html">
+            
+                    
+                    优化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.6.1" data-path="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
+            
+                <a href="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
+            
+                    
+                    Js对数据计算处理的各种问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.2" data-path="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
+            
+                <a href="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
+            
+                    
+                    Node.JS Error: ENOSPC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.3" data-path="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+            
+                <a href="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+            
+                    
+                    一张图学会使用Async组件进行流程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.4" data-path="../4-开发实践/6-优化/3-事件循环.html">
+            
+                <a href="../4-开发实践/6-优化/3-事件循环.html">
+            
+                    
+                    事件循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.5" data-path="../4-开发实践/6-优化/5-关于时间处理的相关问题.html">
+            
+                <a href="../4-开发实践/6-优化/5-关于时间处理的相关问题.html">
+            
+                    
+                    关于时间处理的相关问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../5-附录/readme.html">
+            
+                <a href="../5-附录/readme.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../5-附录/1-加密货币相关名词汇总.html">
+            
+                <a href="../5-附录/1-加密货币相关名词汇总.html">
+            
+                    
+                    加密货币相关名词汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../5-附录/2-关于亿书.html">
+            
+                <a href="../5-附录/2-关于亿书.html">
+            
+                    
+                    关于亿书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../5-附录/3-关于区款链俱乐部.html">
+            
+                <a href="../5-附录/3-关于区款链俱乐部.html">
+            
+                    
+                    关于区款链俱乐部
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../5-附录/4-关于作者.html">
+            
+                <a href="../5-附录/4-关于作者.html">
+            
+                    
+                    关于作者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../6-后记/readme.html">
+            
+                <a href="../6-后记/readme.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../6-后记/1-记录应该记住的内容.html">
+            
+                <a href="../6-后记/1-记录应该记住的内容.html">
+            
+                    
+                    记录应该记住的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
     <div class="book-body">
-        <div class="body-inner">
-            <div class="book-header" role="navigation">
-    <!-- Actions Left -->
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
     
 
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../" >Node.js开发加密货币</a>
+        <a href=".." >签名和多重签名</a>
     </h1>
 </div>
 
-            <div class="page-wrapper" tabindex="-1" role="main">
-                <div class="page-inner">
-                
-                
-                    <section class="normal" id="section-">
-                    
-                        <h1 id="&#x7B7E;&#x540D;&#x548C;&#x591A;&#x91CD;&#x7B7E;&#x540D;">&#x7B7E;&#x540D;&#x548C;&#x591A;&#x91CD;&#x7B7E;&#x540D;</h1>
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B7E;&#x540D;&#x548C;&#x591A;&#x91CD;&#x7B7E;&#x540D;">&#x7B7E;&#x540D;&#x548C;&#x591A;&#x91CD;&#x7B7E;&#x540D;</h1>
 <h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
 <p>&#x968F;&#x7740;&#x533A;&#x5757;&#x94FE;&#x7B49;&#x76F8;&#x5173;&#x6280;&#x672F;&#x7684;&#x521B;&#x65B0;&#x548C;&#x7A81;&#x7834;&#xFF0C;&#x5F88;&#x591A;&#x6709;&#x5F62;&#x6216;&#x65E0;&#x5F62;&#x8D44;&#x4EA7;&#x90FD;&#x5C06;&#x5B9E;&#x73B0;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#xFF0C;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x5C06;&#x65E0;&#x5904;&#x4E0D;&#x5728;&#x3002;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5206;&#x4EAB;&#x7684; <a href="http://ebookchain.org/" target="_blank">&#x4EBF;&#x4E66;</a> &#x5C31;&#x662F;&#x8981;&#x628A;&#x6570;&#x5B57;&#x51FA;&#x7248;&#x7269;&#x7248;&#x6743;&#x8FDB;&#x884C;&#x4FDD;&#x62A4;&#xFF0C;&#x5B9E;&#x73B0;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#xFF0C;&#x89E3;&#x51B3;&#x4E1A;&#x754C;&#x591A;&#x5E74;&#x6765;&#x7248;&#x6743;&#x4FDD;&#x62A4;&#x4E0D;&#x529B;&#x7684;&#x96BE;&#x9898;&#x3002;</p>
 <p>&#x65E0;&#x8BBA;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#xFF0C;&#x8FD8;&#x662F;&#x6570;&#x5B57;&#x51FA;&#x7248;&#x7248;&#x6743;&#xFF0C;&#x90FD;&#x662F;&#x6709;&#x660E;&#x786E;&#x6240;&#x6709;&#x6743;&#x7684;&#xFF0C;&#x5F53;&#x524D;&#x5B9E;&#x73B0;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x6240;&#x5C5E;&#x7684;&#x6280;&#x672F;&#x624B;&#x6BB5;&#x5C31;&#x662F;&#x672C;&#x7BC7;&#x8981;&#x4ECB;&#x7ECD;&#x7684;<code>&#x7B7E;&#x540D;</code>&#x3002;&#x800C;<code>&#x591A;&#x91CD;&#x7B7E;&#x540D;</code>&#x662F;&#x5BF9;<code>&#x7B7E;&#x540D;</code>&#x7684;&#x6269;&#x5C55;&#x4F7F;&#x7528;&#xFF0C;&#x7ED9;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x8F6C;&#x79FB;&#x63D0;&#x4F9B;&#x4E86;&#x5B89;&#x5168;&#x4FDD;&#x969C;&#x548C;&#x6280;&#x672F;&#x624B;&#x6BB5;&#x3002;&#x672C;&#x7BC7;&#xFF0C;&#x4ECE;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x5165;&#x624B;&#xFF0C;&#x8BE6;&#x7EC6;&#x4E86;&#x89E3;<code>&#x7B7E;&#x540D;</code>&#x548C;<code>&#x591A;&#x91CD;&#x7B7E;&#x540D;</code>&#x7684;&#x4F5C;&#x7528;&#x548C;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x3002;</p>
@@ -965,20 +908,20 @@
 <h2 id="&#x89E3;&#x8BFB;">&#x89E3;&#x8BFB;</h2>
 <h4 id="&#x7B7E;&#x540D;">&#x7B7E;&#x540D;</h4>
 <p>&#xFF08;1&#xFF09;&#x7B7E;&#x540D;&#x7684;&#x4F5C;&#x7528;&#x548C;&#x7279;&#x70B9;</p>
-<p><strong>&#x540D;&#x5B57;&#x7684;&#x89E3;&#x91CA;</strong>&#x3002;<code>&#x7B7E;&#x540D;</code>&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x6709;&#x4EBA;&#x7B2C;&#x4E00;&#x53CD;&#x5E94;&#x662F;&#x65E5;&#x5E38;&#x751F;&#x6D3B;&#x4E2D;&#x7684;&#x7528;&#x7B14;<code>&#x7B7E;&#x540D;</code>&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4F1A;&#x8BF4;&#xFF0C;&#x4F60;&#x7684;&#x76F4;&#x89C9;&#x662F;&#x5BF9;&#x7684;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5F53;&#x5F88;&#x591A;&#x5C0F;&#x4F19;&#x4F34;&#x770B;&#x5230;&#x7F51;&#x4E0A;&#x7684;&#x5F88;&#x591A;&#x89E3;&#x91CA;&#xFF0C;&#x5374;&#x53C8;&#x8FF7;&#x60D1;&#x4E86;&#xFF0C;&#x4E8B;&#x5B9E;&#x4E0A;&#x4E0D;&#x540C;&#x6982;&#x5FF5;&#x5728;&#x4E0D;&#x540C;&#x9886;&#x57DF;&#x7684;&#x8868;&#x8FF0;&#x662F;&#x6709;&#x5DEE;&#x522B;&#x7684;&#xFF0C;&#x4F46;&#x672C;&#x8D28;&#x76F8;&#x540C;&#x3002;&#x6211;&#x575A;&#x4FE1;&#x751F;&#x6D3B;&#x662F;&#x4E00;&#x5207;&#x521B;&#x4F5C;&#x7684;&#x6E90;&#x6CC9;&#xFF0C;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x90FD;&#x80FD;&#x4ECE;&#x751F;&#x6D3B;&#x4E2D;&#x627E;&#x5230;&#x539F;&#x578B;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x201C;&#x7B7E;&#x540D;&#x201D;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#x3002;</p>
+<p><strong>&#x540D;&#x5B57;&#x7684;&#x89E3;&#x91CA;</strong>&#x3002;<code>&#x7B7E;&#x540D;</code>&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x6709;&#x4EBA;&#x7B2C;&#x4E00;&#x53CD;&#x5E94;&#x662F;&#x65E5;&#x5E38;&#x751F;&#x6D3B;&#x4E2D;&#x7684;&#x7528;&#x7B14;<code>&#x7B7E;&#x540D;</code>&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x7684;&#x76F4;&#x89C9;&#x662F;&#x5BF9;&#x7684;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5F53;&#x5F88;&#x591A;&#x5C0F;&#x4F19;&#x4F34;&#x770B;&#x5230;&#x7F51;&#x4E0A;&#x7684;&#x89E3;&#x91CA;&#xFF0C;&#x5374;&#x53C8;&#x8FF7;&#x60D1;&#x4E86;&#xFF0C;&#x4F3C;&#x4E4E;&#x4E0E;&#x6211;&#x4EEC;&#x6240;&#x77E5;&#x7684;<code>&#x7B7E;&#x540D;</code>&#x60F3;&#x53BB;&#x751A;&#x8FDC;&#xFF0C;&#x4E8B;&#x5B9E;&#x4E0A;&#x4E0D;&#x540C;&#x6982;&#x5FF5;&#x5728;&#x4E0D;&#x540C;&#x9886;&#x57DF;&#x7684;&#x8868;&#x8FF0;&#x662F;&#x6709;&#x5DEE;&#x522B;&#x7684;&#xFF0C;&#x4F46;&#x672C;&#x8D28;&#x76F8;&#x540C;&#x3002;&#x6211;&#x575A;&#x4FE1;&#x751F;&#x6D3B;&#x662F;&#x4E00;&#x5207;&#x521B;&#x4F5C;&#x7684;&#x6E90;&#x6CC9;&#xFF0C;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x90FD;&#x80FD;&#x4ECE;&#x751F;&#x6D3B;&#x4E2D;&#x627E;&#x5230;&#x539F;&#x578B;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x201C;&#x7B7E;&#x540D;&#x201D;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#x3002;</p>
 <p><strong>&#x7B7E;&#x540D;&#x7684;&#x4F5C;&#x7528;</strong>&#x3002;&#x65E5;&#x5E38;&#x751F;&#x6D3B;&#x4E2D;&#xFF0C;&#x51E1;&#x662F;&#x9700;&#x8981;&#x786E;&#x8BA4;&#x5F52;&#x5C5E;&#x7684;&#xFF08;&#x662F;&#x7B7E;&#x540D;&#x4EBA;&#x7684;&#xFF0C;&#x4E0D;&#x662F;&#x5176;&#x4ED6;&#x7684;&#xFF09;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x6240;&#x6709;&#x8005;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x6211;&#x7B7E;&#x540D;&#x4E86;&#x4E00;&#x4EFD;&#x6587;&#x4EF6;&#xFF0C;&#x51FA;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x8D23;&#x4EFB;&#x6211;&#x8D1F;&#xFF0C;&#x6211;&#x7B7E;&#x540D;&#x4E86;&#x4E00;&#x4E2A;&#x652F;&#x7968;&#xFF0C;&#x5C31;&#x4EE3;&#x8868;&#x5C06;&#x7531;&#x6211;&#x652F;&#x4ED8;&#x3002;&#x6211;&#x4EEC;&#x666E;&#x901A;&#x8001;&#x767E;&#x59D3;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5C31;&#x662F;&#x53BB;&#x94F6;&#x884C;&#x529E;&#x4E1A;&#x52A1;&#xFF0C;&#x94F6;&#x884C;&#x804C;&#x5458;&#x4F1A;&#x8BA9;&#x4F60;&#x53CD;&#x590D;&#x7B7E;&#x4E00;&#x5927;&#x5806;&#x7684;&#x5355;&#x636E;&#xFF0C;&#x60F3;&#x5FC5;&#x6BCF;&#x4E2A;&#x4EBA;&#x90FD;&#x4F1A;&#x6709;&#x6DF1;&#x523B;&#x7684;&#x5370;&#x8C61;&#x3002;</p>
 <p><strong>&#x7B7E;&#x540D;&#x7684;&#x7279;&#x70B9;</strong>&#x3002;&#x4EBA;&#x7684;&#x7B14;&#x8FF9;&#x662F;&#x5F88;&#x4E2A;&#x6027;&#x5316;&#x7684;&#xFF0C;&#x8D8A;&#x719F;&#x7EC3;&#x7684;&#x5B57;&#x4F53;&#xFF0C;&#x4E2A;&#x6027;&#x7279;&#x5F81;&#x8D8A;&#x56FA;&#x5B9A;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x4E2A;&#x4EBA;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x4EBA;&#x5199;&#x51FA;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7B14;&#x8FF9;&#x7684;&#x6982;&#x7387;&#x975E;&#x5E38;&#x5C0F;&#xFF0C;&#x5373;&#x4FBF;&#x662F;&#x4E13;&#x4E1A;&#x6A21;&#x4EFF;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6280;&#x672F;&#x9274;&#x522B;&#x51FA;&#x6765;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x4EBA;&#x7684;<code>&#x7B7E;&#x540D;</code>&#x5C31;&#x5177;&#x6709;&#x552F;&#x4E00;&#x6027;&#x3001;&#x53EF;&#x9A8C;&#x8BC1;&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x5E76;&#x88AB;&#x6CD5;&#x5F8B;&#x8BA4;&#x53EF;&#x3002;</p>
-<p><strong>&#x7B7E;&#x540D;&#x7684;&#x9A8C;&#x8BC1;</strong>&#x5982;&#x679C;&#xFF0C;&#x4F60;&#x62FF;&#x7740;&#x4E00;&#x5F20;&#x652F;&#x7968;&#x53BB;&#x94F6;&#x884C;&#x5151;&#x6362;&#xFF0C;&#x94F6;&#x884C;&#x804C;&#x5458;&#x4F1A;&#x5BF9;&#x652F;&#x7968;&#x4E0A;&#x7684;&#x7B7E;&#x540D;&#x548C;&#x5370;&#x7AE0;&#x4ED4;&#x7EC6;&#x6BD4;&#x5BF9;&#xFF0C;&#x786E;&#x4FDD;&#x5370;&#x7AE0;&#x5927;&#x5C0F;&#x3001;&#x6837;&#x5F0F;&#xFF0C;&#x4EE5;&#x53CA;&#x4ED8;&#x6B3E;&#x4EBA;&#x7B7E;&#x540D;&#x7B49;&#xFF0C;&#x4E0E;&#x94F6;&#x884C;&#x7559;&#x5B58;&#x7684;&#x4FE1;&#x606F;&#x4E00;&#x81F4;&#xFF0C;&#x624D;&#x4F1A;&#x7ED9;&#x4F60;&#x5151;&#x4ED8;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;<code>&#x7B7E;&#x540D;</code>&#x9A8C;&#x8BC1;&#x3002;</p>
+<p><strong>&#x7B7E;&#x540D;&#x7684;&#x9A8C;&#x8BC1;</strong>&#x3002;&#x5982;&#x679C;&#xFF0C;&#x4F60;&#x62FF;&#x7740;&#x4E00;&#x5F20;&#x652F;&#x7968;&#x53BB;&#x94F6;&#x884C;&#x5151;&#x6362;&#xFF0C;&#x94F6;&#x884C;&#x804C;&#x5458;&#x4F1A;&#x5BF9;&#x652F;&#x7968;&#x4E0A;&#x7684;&#x7B7E;&#x540D;&#x548C;&#x5370;&#x7AE0;&#x4ED4;&#x7EC6;&#x6BD4;&#x5BF9;&#xFF0C;&#x786E;&#x4FDD;&#x5370;&#x7AE0;&#x5927;&#x5C0F;&#x3001;&#x6837;&#x5F0F;&#xFF0C;&#x4EE5;&#x53CA;&#x4ED8;&#x6B3E;&#x4EBA;&#x7B7E;&#x540D;&#x7B49;&#xFF0C;&#x4E0E;&#x94F6;&#x884C;&#x7559;&#x5B58;&#x7684;&#x4FE1;&#x606F;&#x4E00;&#x81F4;&#xFF0C;&#x624D;&#x4F1A;&#x7ED9;&#x4F60;&#x5151;&#x4ED8;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;<code>&#x7B7E;&#x540D;</code>&#x9A8C;&#x8BC1;&#x3002;</p>
 <p>&#xFF08;2&#xFF09;&#x6BD4;&#x7279;&#x5E01;&#x5BA2;&#x6237;&#x7AEF;&#x7B7E;&#x540D;&#x529F;&#x80FD;</p>
-<p>&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x9700;&#x8981;&#x7B7E;&#x540D;&#x3002;&#x7C7B;&#x6BD4;&#x4EBA;&#x7C7B;&#x7B7E;&#x540D;&#xFF0C;&#x6BD4;&#x7279;&#x5E01;&#x4E5F;&#x6709;&#x7B7E;&#x540D;&#x529F;&#x80FD;&#x3002;&#x5982;&#x679C;&#x4E86;&#x89E3;&#x6BD4;&#x7279;&#x5E01;&#x94B1;&#x5305;&#xFF08;&#x5BA2;&#x6237;&#x7AEF;&#x8F6F;&#x4EF6;&#xFF09;&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x7B7E;&#x540D;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5BF9;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x901A;&#x8FC7;&#x6BD4;&#x7279;&#x5E01;&#x7F51;&#x7EDC;&#x4E4B;&#x5916;&#x7684;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x548C;&#x9A8C;&#x8BC1;&#x3002;&#x6211;&#x4E2A;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x662F; <a href="https://www.bitcoin.org/" target="_blank">&#x6BD4;&#x7279;&#x5E01;&#x5B98;&#x65B9;&#x7F51;&#x7AD9;</a> &#x63D0;&#x4F9B;&#x7684;&#x6BD4;&#x592A;&#x94B1;&#x5305;&#xFF0C;&#x5982;&#x56FE;&#xFF1A;</p>
+<p>&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x9700;&#x8981;&#x7B7E;&#x540D;&#x3002;&#x7C7B;&#x6BD4;&#x4EBA;&#x7C7B;&#x7B7E;&#x540D;&#xFF0C;&#x6BD4;&#x7279;&#x5E01;&#x4E5F;&#x6709;&#x7B7E;&#x540D;&#x529F;&#x80FD;&#x3002;&#x5982;&#x679C;&#x4E86;&#x89E3;&#x6BD4;&#x7279;&#x5E01;&#x94B1;&#x5305;&#xFF08;&#x5BA2;&#x6237;&#x7AEF;&#x8F6F;&#x4EF6;&#xFF09;&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;<code>&#x7B7E;&#x540D;&#x6D88;&#x606F;</code>&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5BF9;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x901A;&#x8FC7;&#x6BD4;&#x7279;&#x5E01;&#x7F51;&#x7EDC;&#x4E4B;&#x5916;&#x7684;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x548C;&#x9A8C;&#x8BC1;&#x3002;&#x6211;&#x4E2A;&#x4EBA;&#x4F7F;&#x7528;&#x7684;&#x662F; <a href="https://www.bitcoin.org/" target="_blank">&#x6BD4;&#x7279;&#x5E01;&#x5B98;&#x65B9;&#x7F51;&#x7AD9;</a> &#x63D0;&#x4F9B;&#x7684;&#x6BD4;&#x592A;&#x94B1;&#x5305;&#xFF0C;&#x5982;&#x56FE;&#xFF1A;</p>
 <p><img src="../styles/images/third/bither-wallet-sign.png" alt="bither-wallet-sign.png"></p>
 <p>&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x5E72;&#x4EC0;&#x4E48;&#x7528;&#x7684;&#x5462;&#xFF1F;&#x6709;&#x597D;&#x591A;&#x5C0F;&#x4F19;&#x4F34;&#x4E0D;&#x6E05;&#x695A;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3E;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#xFF0C;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x7EDD;&#x4E0D;&#x9650;&#x4E8E;&#x8FD9;&#x4E9B;&#x5E94;&#x7528;&#x3002;</p>
 <p>Alice&#x5F00;&#x4E86;&#x4E00;&#x4E2A;&#x7F51;&#x5E97;&#xFF0C;&#x4F46;&#x6CA1;&#x6709;&#x76F4;&#x63A5;&#x63A5;&#x5165;&#x6BD4;&#x7279;&#x5E01;&#x7F51;&#x7EDC;&#xFF0C;&#x4E0D;&#x80FD;&#x81EA;&#x52A8;&#x786E;&#x8BA4;&#x548C;&#x9A8C;&#x8BC1;&#x652F;&#x4ED8;&#x8005;&#x3002;&#x5BA2;&#x6237;Imfly&#x8D2D;&#x4E70;&#x4E86;&#x5979;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x5E76;&#x7528;&#x6BD4;&#x7279;&#x5E01;&#x652F;&#x4ED8;&#x4E86;&#x5168;&#x90E8;&#x8D27;&#x6B3E;&#x3002;&#x56E0;&#x4E3A;&#x6BD4;&#x7279;&#x5E01;&#x5730;&#x5740;&#x548C;&#x4EA4;&#x6613;&#x90FD;&#x662F;&#x516C;&#x5F00;&#x533F;&#x540D;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5192;&#x5145;&#x5192;&#x9886;&#x5B9E;&#xFF0C;Alice&#x9700;&#x8981;&#x786E;&#x8BA4;Imfly&#x63D0;&#x4F9B;&#x7684;&#x90A3;&#x4E2A;&#x4ED8;&#x6B3E;&#x5730;&#x5740;&#x786E;&#x5B9E;&#x662F;imfly&#x672C;&#x4EBA;&#x7684;&#xFF0C;&#x5426;&#x5219;&#x4E0D;&#x80FD;&#x53D1;&#x8D27;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x9700;&#x8981;Imfly&#x5148;&#x628A;&#x652F;&#x4ED8;&#x8D27;&#x6B3E;&#x7684;&#x6BD4;&#x7279;&#x5E01;&#x5730;&#x5740;&#x548C;&#x76F8;&#x5173;&#x4EA4;&#x6613;<code>&#x7B7E;&#x540D;&#x4FE1;&#x606F;</code>&#xFF08;&#x5982;&#x56FE;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;QQ&#x6216;&#x90AE;&#x4EF6;&#x4F20;&#x7ED9;Alice&#xFF0C;Alice&#x4F7F;&#x7528;&#x5BA2;&#x6237;&#x7AEF;<code>&#x9A8C;&#x8BC1;&#x4FE1;&#x606F;&#x7B7E;&#x540D;</code>&#xFF0C;&#x624D;&#x80FD;&#x786E;&#x8BA4;&#x4EA4;&#x6613;&#x786E;&#x5B9E;&#x662F;Imfly&#x7684;&#x3002;</p>
 <p>&#x60F3;&#x8C61;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;<code>&#x7B7E;&#x540D;</code>&#x529F;&#x80FD;&#x4F1A;&#x600E;&#x4E48;&#x6837;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;&#x6BD4;&#x7279;&#x5E01;&#x4EC5;&#x662F;&#x4E00;&#x4E2A;&#x533F;&#x540D;&#x3001;&#x5B89;&#x5168;&#x7684;&#x652F;&#x4ED8;&#x624B;&#x6BB5;&#xFF0C;&#x4F46;&#x5374;&#x65E0;&#x6CD5;&#x786E;&#x8BA4;&#x652F;&#x4ED8;&#x65B9;&#x6216;&#x6536;&#x6B3E;&#x65B9;&#x662F;&#x8C01;&#xFF0C;&#x4FE1;&#x606F;&#x7684;&#x4E0D;&#x786E;&#x5B9A;&#x6027;&#xFF0C;&#x5C06;&#x4F7F;&#x5F97;&#x6BD4;&#x7279;&#x5E01;&#x7F51;&#x7EDC;&#x4E4B;&#x5916;&#x7684;&#x4EA4;&#x6613;&#x65E0;&#x6CD5;&#x8FBE;&#x6210;&#x3002;&#x5728;&#x4E2D;&#x5FC3;&#x5316;&#x7684;&#x4E16;&#x754C;&#x91CC;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#x901A;&#x8FC7;&#x8FD0;&#x8425;&#x5E73;&#x53F0;&#x8FD9;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x8FBE;&#x6210;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x652F;&#x4ED8;&#x5B9D;&#x7B49;&#xFF0C;&#x53CC;&#x65B9;&#x7684;&#x5168;&#x90E8;&#x4FE1;&#x606F;&#xFF0C;&#x5E73;&#x53F0;&#x90FD;&#x638C;&#x63E1;&#xFF0C;&#x4EFB;&#x4F55;&#x4E00;&#x65B9;&#x51FA;&#x73B0;&#x6B3A;&#x8BC8;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5411;&#x5E73;&#x53F0;&#x6295;&#x8BC9;&#x6765;&#x89E3;&#x51B3;&#x3002;&#x7528;&#x6237;&#x9700;&#x8981;&#x5BF9;&#x7B2C;&#x4E09;&#x65B9;&#x5E73;&#x53F0;&#x7EDD;&#x5BF9;&#x4FE1;&#x4EFB;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x727A;&#x7272;&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;&#x5B89;&#x5168;&#x83B7;&#x5F97;&#x4EA4;&#x6613;&#x7684;&#x57FA;&#x672C;&#x4FDD;&#x969C;&#x3002;</p>
 <p>&#xFF08;3&#xFF09;&#x7535;&#x5B50;&#x7B7E;&#x540D;</p>
 <p>&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x5206;&#x6790;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x7684;&#x662F;&#xFF0C;<code>&#x7B7E;&#x540D;</code>&#x7684;&#x4F5C;&#x7528;&#x662F;&#x786E;&#x5B9A;&#x8D44;&#x4EA7;&#x6240;&#x5C5E;&#xFF0C;&#x5176;&#x7279;&#x5F81;&#x662F;&#x7B80;&#x5355;&#x3001;&#x5B89;&#x5168;&#x3001;&#x53EF;&#x9A8C;&#x8BC1;&#x3002;&#x628A;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x62BD;&#x8C61;&#x51FA;&#x6765;&#xFF0C;&#x5E94;&#x7528;&#x5230;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x91CC;&#xFF0C;&#x4E3A;&#x4E86;&#x786E;&#x5B9A;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x6240;&#x5C5E;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x8FDB;&#x884C;<code>&#x7B7E;&#x540D;</code>&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x5927;&#x5BB6;&#x7ECF;&#x5E38;&#x770B;&#x5230;&#x7684;&#x201C;&#x7535;&#x5B50;&#x7B7E;&#x540D;&#x201D;&#x7684;&#x6982;&#x5FF5;&#x3002;&#x5728;&#x7F51;&#x7EDC;&#x4E16;&#x754C;&#x91CC;&#xFF0C;<code>&#x7B7E;&#x540D;</code>&#x53EF;&#x4EE5;&#x5BF9;&#x4EFB;&#x4F55;&#x9700;&#x8981;&#x786E;&#x8BA4;&#x7684;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x6BD4;&#x7279;&#x5E01;&#x5730;&#x5740;&#x3001;&#x7535;&#x5B50;&#x4E66;&#x7248;&#x6743;&#x7B49;&#xFF0C;&#x5E76;&#x4EE5;&#x6B64;&#x6765;&#x5BA3;&#x544A;&#x91CD;&#x8981;&#x8D44;&#x4EA7;&#x7684;&#x6240;&#x5C5E;&#xFF0C;&#x8FD9;&#x8BA9;&#x65E0;&#x9700;&#x76D1;&#x7BA1;&#x7684;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#x4EA4;&#x6613;&#x6210;&#x4E3A;&#x53EF;&#x80FD;&#x3002;</p>
-<p>&#x5177;&#x4F53;&#x5F00;&#x53D1;&#x8BBE;&#x8BA1;&#x4E2D;&#xFF0C;&#x5C31;&#x662F;&#x52A0;&#x5BC6;&#x6280;&#x672F;&#x4EE3;&#x66FF;&#x4EBA;&#x7684;&#x7B14;&#x8FF9;&#xFF0C;&#x4E0D;&#x7136;&#x4EFB;&#x4F55;&#x7B7E;&#x540D;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x6A21;&#x4EFF;&#xFF0C;&#x800C;&#x4E14;&#x6A21;&#x4EFF;&#x7684;&#x6210;&#x672C;&#x6781;&#x4F4E;&#xFF0C;&#x76F8;&#x53CD;&#xFF0C;&#x9A8C;&#x8BC1;&#x7684;&#x6210;&#x672C;&#x5374;&#x5F88;&#x9AD8;&#x3002;&#x5177;&#x4F53;&#x7684;&#x52A0;&#x5BC6;&#x6216;&#x9A8C;&#x8BC1;&#x6280;&#x672F;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;&#x524D;&#x9762;&#x7684;&#x7AE0;&#x8282;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4EBF;&#x4E66;&#x662F;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x7B7E;&#x540D;&#x6280;&#x672F;&#x7684;&#x3002;</p>
-<p>&#x4EBF;&#x4E66;&#x4E5F;&#x5177;&#x5907;&#x7B7E;&#x540D;&#x80FD;&#x529B;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#xFF0C;&#x76EE;&#x524D;&#x6CA1;&#x6709;&#x5355;&#x72EC;&#x63D0;&#x4F9B;<code>&#x7B7E;&#x540D;&#x4FE1;&#x606F;</code>&#x7684;&#x64CD;&#x4F5C;&#x4F9B;&#x7528;&#x6237;&#x4F7F;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7;&#x7B7E;&#x540D;&#xFF0C;&#x6DFB;&#x52A0;&#x4E86;<code>&#x652F;&#x4ED8;&#x5BC6;&#x7801;</code>&#x529F;&#x80FD;&#xFF0C;&#x5BF9;&#x7528;&#x6237;&#x5E10;&#x53F7;&#x8D44;&#x4EA7;&#x8FFD;&#x52A0;&#x4E86;&#x4E00;&#x5C42;&#x4FDD;&#x62A4;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x5F00;&#x53D1;&#x8BBE;&#x8BA1;&#x4E2D;&#xFF0C;&#x5C31;&#x662F;&#x7528;&#x52A0;&#x5BC6;&#x6280;&#x672F;&#x4EE3;&#x66FF;&#x4EBA;&#x7684;&#x7B14;&#x8FF9;&#xFF0C;&#x4E0D;&#x7136;&#x4EFB;&#x4F55;&#x7B7E;&#x540D;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x6A21;&#x4EFF;&#xFF0C;&#x800C;&#x4E14;&#x6A21;&#x4EFF;&#x7684;&#x6210;&#x672C;&#x6781;&#x4F4E;&#xFF0C;&#x76F8;&#x53CD;&#xFF0C;&#x9A8C;&#x8BC1;&#x7684;&#x6210;&#x672C;&#x5374;&#x5F88;&#x9AD8;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x5F53;&#x524D;&#x6570;&#x5B57;&#x51FA;&#x7248;&#x884C;&#x4E1A;&#x7248;&#x6743;&#x4FDD;&#x62A4;&#x4E0D;&#x529B;&#x7684;&#x539F;&#x56E0;&#x4E4B;&#x4E00;&#xFF0C;&#x5404;&#x5927;&#x5E73;&#x53F0;&#x4EC5;&#x4EC5;&#x901A;&#x8FC7;&#x7528;&#x6237;&#x6743;&#x9650;&#x6765;&#x9650;&#x5236;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x6570;&#x5B57;&#x51FA;&#x7248;&#x7269;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x5BF9;&#x51FA;&#x7248;&#x7269;&#x672C;&#x8EAB;&#x91C7;&#x53D6;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x7B49;&#x52A0;&#x5BC6;&#x63AA;&#x65BD;&#xFF0C;&#x4E00;&#x65E6;&#x88AB;&#x76D7;&#x7248;&#xFF0C;&#x9A8C;&#x8BC1;&#x548C;&#x53D6;&#x8BC1;&#x5DE5;&#x4F5C;&#x8017;&#x8D39;&#x5F88;&#x591A;&#x4EBA;&#x529B;&#x7269;&#x529B;&#x3002;&#x5177;&#x4F53;&#x7684;&#x52A0;&#x5BC6;&#x6216;&#x9A8C;&#x8BC1;&#x6280;&#x672F;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;&#x524D;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x3002;</p>
+<p>&#x4EBF;&#x4E66;&#x4E5F;&#x5177;&#x5907;&#x7B7E;&#x540D;&#x80FD;&#x529B;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#xFF0C;&#x76EE;&#x524D;&#x6CA1;&#x6709;&#x5355;&#x72EC;&#x63D0;&#x4F9B;<code>&#x7B7E;&#x540D;&#x4FE1;&#x606F;</code>&#x7684;&#x64CD;&#x4F5C;&#x4F9B;&#x7528;&#x6237;&#x4F7F;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7;&#x7B7E;&#x540D;&#xFF0C;&#x6DFB;&#x52A0;&#x4E86;<code>&#x652F;&#x4ED8;&#x5BC6;&#x7801;</code>&#x529F;&#x80FD;&#xFF0C;&#x5BF9;&#x7528;&#x6237;&#x5E10;&#x53F7;&#x8D44;&#x4EA7;&#x8FFD;&#x52A0;&#x4E86;&#x4E00;&#x5C42;&#x4FDD;&#x62A4;&#x3002;&#x540E;&#x7EED;&#x8FD8;&#x4F1A;&#x6269;&#x5C55;&#x66F4;&#x591A;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5BF9;&#x7528;&#x6237;&#x53D1;&#x5E03;&#x7684;&#x4EFB;&#x4F55;&#x6570;&#x5B57;&#x51FA;&#x7248;&#x7269;&#x81EA;&#x52A8;&#x8FFD;&#x52A0;<code>&#x7535;&#x5B50;&#x7B7E;&#x540D;</code>&#x6216;<code>&#x7535;&#x5B50;&#x5370;&#x7AE0;</code>&#xFF0C;&#x5E76;&#x4FDD;&#x5B58;&#x5230;&#x533A;&#x5757;&#x94FE;&#x3002;</p>
 <p>&#xFF08;4&#xFF09;&#x4EBF;&#x4E66;&#x7684;&#x652F;&#x4ED8;&#x5BC6;&#x7801;</p>
 <p><code>&#x7B7E;&#x540D;</code>&#x65B9;&#x6CD5;&#x5728;<code>modules/signatures.js</code>&#x6587;&#x4EF6;&#x91CC;&#xFF0C;&#x7C7B;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
 <p><img src="../styles/images/modules/signatures/signatures-class.png" alt="signatures-class.png"></p>
@@ -1030,7 +973,7 @@ shared.addSignature = function (req, cb) {
 <h4 id="&#x591A;&#x91CD;&#x7B7E;&#x540D;">&#x591A;&#x91CD;&#x7B7E;&#x540D;</h4>
 <p>&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#xFF0C;&#x6BD4;&#x7279;&#x5E01;&#x7684;&#x533F;&#x540D;&#x6027;&#xFF0C;&#x4F7F;&#x4EA4;&#x6613;&#x5904;&#x4E8E;&#x4E0D;&#x53EF;&#x4FE1;&#x4E4B;&#x4E2D;&#xFF0C;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x7528;&#x6237;&#x4E0D;&#x6562;&#x4EA4;&#x6613;&#x3002;&#x6709;&#x4E86;&#x7B7E;&#x540D;&#x529F;&#x80FD;&#xFF0C;&#x5C31;&#x6709;&#x4E86;&#x786E;&#x8BA4;&#x53CC;&#x65B9;&#x4FE1;&#x606F;&#x7684;&#x6709;&#x6548;&#x624B;&#x6BB5;&#xFF0C;&#x95EE;&#x9898;&#x603B;&#x7B97;&#x6709;&#x4E86;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;&#x806A;&#x660E;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x7B7E;&#x540D;&#x548C;&#x9A8C;&#x8BC1;&#x8FC7;&#x7A0B;&#x9664;&#x4E86;&#x7E41;&#x7410;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x8BA9;&#x6211;&#x4EEC;&#x89C9;&#x5F97;&#x6BD4;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x5E73;&#x53F0;&#x66F4;&#x6709;&#x6548;&#x3001;&#x66F4;&#x5B89;&#x5168;&#x3002;&#x6709;&#x6CA1;&#x6709;&#x66F4;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x5462;&#xFF1F;&#x56DE;&#x7B54;&#x662F;&#xFF1A;&#x6709;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#x3002;</p>
 <p>&#xFF08;1&#xFF09;&#x57FA;&#x672C;&#x6982;&#x5FF5;</p>
-<p>&#x591A;&#x91CD;&#x7B7E;&#x540D;&#xFF0C;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7684;&#x7406;&#x89E3;&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x7684;&#x591A;&#x4E2A;&#x7B7E;&#x540D;&#x3002;&#x7B7E;&#x540D;&#x6807;&#x5B9A;&#x7684;&#x662F;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x6240;&#x5C5E;&#x548C;&#x6743;&#x9650;&#xFF0C;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#x9884;&#x793A;&#x7740;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x53EF;&#x7531;&#x591A;&#x4EBA;&#x652F;&#x914D;&#x548C;&#x7BA1;&#x7406;&#x3002;&#x5728;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x9886;&#x57DF;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x52A8;&#x7528;&#x4E00;&#x4E2A;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x5730;&#x5740;&#x7684;&#x8D44;&#x91D1;&#xFF0C;&#x901A;&#x5E38;&#x9700;&#x8981;&#x8BE5;&#x5730;&#x5740;&#x7684;&#x6240;&#x6709;&#x4EBA;&#x4F7F;&#x7528;&#x4ED6;&#x7684;&#x79C1;&#x94A5;&#xFF08;&#x7531;&#x7528;&#x6237;&#x4E13;&#x5C5E;&#x4FDD;&#x62A4;&#xFF09;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#xFF0C;&#x5C31;&#x662F;&#x52A8;&#x7528;&#x8FD9;&#x7B14;&#x8D44;&#x91D1;&#x9700;&#x8981;&#x591A;&#x4E2A;&#x79C1;&#x94A5;&#x7B7E;&#x540D;&#xFF0C;&#x901A;&#x5E38;&#x8FD9;&#x7B14;&#x8D44;&#x91D1;&#x6216;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x4F1A;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#x7684;&#x5730;&#x5740;&#x6216;&#x5E10;&#x53F7;&#x91CC;&#x3002;&#x8FD9;&#x5C31;&#x597D;&#x6BD4;&#xFF0C;&#x6211;&#x4EEC;&#x5DE5;&#x4F5C;&#x4E2D;&#x6709;&#x4E00;&#x4EFD;&#x6587;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x591A;&#x4E2A;&#x90E8;&#x95E8;&#x7B7E;&#x7F72;&#x624D;&#x80FD;&#x751F;&#x6548;&#x4E00;&#x6837;&#x3002;</p>
+<p>&#x591A;&#x91CD;&#x7B7E;&#x540D;&#xFF0C;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7684;&#x7406;&#x89E3;&#x4E3A;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x7684;&#x591A;&#x4E2A;&#x7B7E;&#x540D;&#x3002;&#x7B7E;&#x540D;&#x6807;&#x5B9A;&#x7684;&#x662F;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x6240;&#x5C5E;&#x548C;&#x6743;&#x9650;&#xFF0C;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#x9884;&#x793A;&#x7740;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x53EF;&#x7531;&#x591A;&#x4EBA;&#x652F;&#x914D;&#x548C;&#x7BA1;&#x7406;&#x3002;&#x5728;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x9886;&#x57DF;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x52A8;&#x7528;&#x4E00;&#x4E2A;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x5730;&#x5740;&#x7684;&#x8D44;&#x91D1;&#xFF0C;&#x901A;&#x5E38;&#x9700;&#x8981;&#x8BE5;&#x5730;&#x5740;&#x7684;&#x6240;&#x6709;&#x4EBA;&#x4F7F;&#x7528;&#x4ED6;&#x7684;&#x79C1;&#x94A5;&#xFF08;&#x7531;&#x7528;&#x6237;&#x4E13;&#x5C5E;&#x4FDD;&#x62A4;&#xFF09;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#xFF0C;&#x5C31;&#x662F;&#x52A8;&#x7528;&#x8FD9;&#x7B14;&#x8D44;&#x91D1;&#x9700;&#x8981;&#x591A;&#x4E2A;&#x79C1;&#x94A5;&#x7B7E;&#x540D;&#xFF0C;&#x901A;&#x5E38;&#x8FD9;&#x7B14;&#x8D44;&#x91D1;&#x6216;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x4F1A;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#x7684;&#x5730;&#x5740;&#x6216;&#x5E10;&#x53F7;&#x91CC;&#xFF08;&#x5C31;&#x6BD4;&#x7279;&#x5E01;&#x800C;&#x8A00;&#xFF0C;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#x5730;&#x5740;&#x901A;&#x5E38;&#x4EE5;<code>3</code>&#x5F00;&#x5934;&#xFF09;&#x3002;&#x8FD9;&#x5C31;&#x597D;&#x6BD4;&#xFF0C;&#x6211;&#x4EEC;&#x5DE5;&#x4F5C;&#x4E2D;&#x6709;&#x4E00;&#x4EFD;&#x6587;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x591A;&#x4E2A;&#x90E8;&#x95E8;&#x7B7E;&#x7F72;&#x624D;&#x80FD;&#x751F;&#x6548;&#x4E00;&#x6837;&#x3002;</p>
 <p>&#x5728;&#x5B9E;&#x9645;&#x7684;&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#x5730;&#x5740;&#x53EF;&#x4EE5;&#x5173;&#x8054;n&#x4E2A;&#x79C1;&#x94A5;&#xFF0C;&#x5728;&#x9700;&#x8981;&#x8F6C;&#x8D26;&#x7B49;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x53EA;&#x8981;&#x5176;&#x4E2D;&#x7684;m&#x4E2A;&#x79C1;&#x94A5;&#x7B7E;&#x540D;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x8D44;&#x91D1;&#x8F6C;&#x79FB;&#x4E86;&#xFF0C;&#x5176;&#x4E2D;m&#x8981;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;n&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;m/n&#x5C0F;&#x4E8E;1&#xFF0C;&#x53EF;&#x4EE5;&#x662F;2/3, 3/5&#x7B49;&#x7B49;&#xFF0C;&#x662F;&#x8981;&#x5728;&#x5EFA;&#x7ACB;&#x8FD9;&#x4E2A;&#x591A;&#x91CD;&#x7B7E;&#x540D;&#x5730;&#x5740;&#x7684;&#x65F6;&#x5019;&#x786E;&#x5B9A;&#x597D;&#x7684;&#x3002;</p>
 <p>&#xFF08;2&#xFF09;&#x5DE5;&#x4F5C;&#x539F;&#x7406;</p>
 <p>&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x5728;&#x67D0;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x591A;&#x4EBA;&#x652F;&#x914D;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5728;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x6761;&#x4EF6;&#x4E0B;&#xFF0C;&#x6570;&#x5B57;&#x8D44;&#x4EA7;&#x5982;&#x679C;&#x65E0;&#x6CD5;&#x786E;&#x8BA4;&#x5F52;&#x5C5E;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x4EBA;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x597D;&#x8BA9;&#x76F8;&#x5173;&#x4EBA;&#x5171;&#x540C;&#x7B7E;&#x7F72;&#x5B83;&#x7684;&#x6240;&#x6709;&#x6743;&#x3002;</p>
@@ -1151,54 +1094,86 @@ shared.sign = function (req, cb) {
 <h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
 <p><a href="http://ebookchain.org/ebookchain.pdf" target="_blank">&#x4EBF;&#x4E66;&#x767D;&#x76AE;&#x4E66; http://ebookchain.org/ebookchain.pdf</a></p>
 
-                    
-                    </section>
-                
-                
-                </div>
-            </div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
         </div>
-
-        
-        <a href="../3-源码解读/5-地址.html" class="navigation navigation-prev " aria-label="Previous page: 地址"><i class="fa fa-angle-left"></i></a>
-        
-        
-        <a href="../3-源码解读/7-交易.html" class="navigation navigation-next " aria-label="Next page: 交易"><i class="fa fa-angle-right"></i></a>
-        
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
     </div>
 </div>
 
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="5-地址.html" class="navigation navigation-prev " aria-label="Previous page: 地址">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="7-交易.html" class="navigation navigation-next " aria-label="Next page: 交易">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
         
-<script src="../gitbook/app.js"></script>
+    </div>
 
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"签名和多重签名","level":"1.5.6","depth":2,"next":{"title":"交易","level":"1.5.7","depth":2,"path":"3-源码解读/7-交易.md","ref":"3-源码解读/7-交易.md","articles":[]},"previous":{"title":"地址","level":"1.5.5","depth":2,"path":"3-源码解读/5-地址.md","ref":"3-源码解读/5-地址.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","-livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"3-源码解读/6-签名和多重签名.md","mtime":"2016-06-29T14:12:22.797Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-07-02T12:28:13.266Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
     
-    <script src="../gitbook/plugins/gitbook-plugin-baidu/plugin.js"></script>
+        
+        <script src="../gitbook/gitbook-plugin-baidu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
     
 
-    
-    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
-    
-
-<script>
-require(["gitbook"], function(gitbook) {
-    var config = {"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
-    gitbook.start(config);
-});
-</script>
-
-        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?a489cddfaf5ed40abc3a60e2783e8019';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
     </body>
-    
 </html>
+
