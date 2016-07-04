@@ -1,0 +1,1110 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>关于时间戳及相关问题 | Node.js开发加密货币</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="Imfly">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+        <link rel="stylesheet" href="../../styles/website.css">
+    
+
+        
+    
+    
+    <link rel="next" href="../../5-附录/readme.html" />
+    
+    
+    <link rel="prev" href="../../4-开发实践/6-优化/3-事件循环.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.6.5"
+        data-chapter-title="关于时间戳及相关问题"
+        data-filepath="4-开发实践/6-优化/5-关于时间戳及相关问题.md"
+        data-basepath="../.."
+        data-revision="Mon Jul 04 2016 17:29:10 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0-开篇的话/readme.html">
+            
+                
+                    <a href="../../0-开篇的话/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        开篇的话
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="0-开篇的话/0-序言.html">
+            
+                
+                    <a href="../../0-开篇的话/0-序言.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        序言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="0-开篇的话/1-开栏寄语.html">
+            
+                
+                    <a href="../../0-开篇的话/1-开栏寄语.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        开栏寄语
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="0-开篇的话/2-老老实实谈技术.html">
+            
+                
+                    <a href="../../0-开篇的话/2-老老实实谈技术.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        老老实实谈技术
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1-了解加密货币/readme.html">
+            
+                
+                    <a href="../../1-了解加密货币/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        了解加密货币
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="1-了解加密货币/5-加密货币就是货币.html">
+            
+                
+                    <a href="../../1-了解加密货币/5-加密货币就是货币.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        加密货币就是货币
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
+            
+                
+                    <a href="../../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        利益，魔鬼与天使的共同目标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
+            
+                
+                    <a href="../../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        共识机制，可编程的“利益”转移规则
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="2-Node.js入门指南/readme.html">
+            
+                
+                    <a href="../../2-Node.js入门指南/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Node.js入门指南
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                
+                    <a href="../../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Nodejs原来在币圈如此流行？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                
+                    <a href="../../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Nodejs让您的前端开发像子弹飞一样
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                
+                    <a href="../../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Nodejs让后台开发像前端一样简单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                
+                    <a href="../../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        您必须知道的几个Nodejs编码习惯
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="3-源码解读/readme.html">
+            
+                
+                    <a href="../../3-源码解读/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="3-源码解读/1-亿书，一个面向未来的自出版平台.html">
+            
+                
+                    <a href="../../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        亿书，一个面向未来的自出版平台
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="3-源码解读/2-入口程序app.js解读.html">
+            
+                
+                    <a href="../../3-源码解读/2-入口程序app.js解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        入口程序app.js解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="3-源码解读/3-一个精巧的p2p网络实现.html">
+            
+                
+                    <a href="../../3-源码解读/3-一个精巧的p2p网络实现.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        一个精巧的p2p网络实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="3-源码解读/4-加密和验证.html">
+            
+                
+                    <a href="../../3-源码解读/4-加密和验证.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        加密和验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="3-源码解读/5-地址.html">
+            
+                
+                    <a href="../../3-源码解读/5-地址.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        地址
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="3-源码解读/6-签名和多重签名.html">
+            
+                
+                    <a href="../../3-源码解读/6-签名和多重签名.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        签名和多重签名
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="3-源码解读/7-交易.html">
+            
+                
+                    <a href="../../3-源码解读/7-交易.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        交易
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="3-源码解读/8-神秘的区块链.html">
+            
+                
+                    <a href="../../3-源码解读/8-神秘的区块链.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        神秘的区块链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="3-源码解读/9-侧链的实现.html">
+            
+                
+                    <a href="../../3-源码解读/9-侧链的实现.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        侧链的实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="3-源码解读/10-DPOS机制的实现.html">
+            
+                
+                    <a href="../../3-源码解读/10-DPOS机制的实现.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        DPOS机制的实现
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="4-开发实践/readme.html">
+            
+                
+                    <a href="../../4-开发实践/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        开发实践
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="4-开发实践/0-加密与解密/readme.html">
+            
+                
+                    <a href="../../4-开发实践/0-加密与解密/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        加密与解密
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+            
+                
+                    <a href="../../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.1.</b>
+                        
+                        三张图让你全面掌握加密解密技术
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="4-开发实践/1-命令行设计/readme.html">
+            
+                
+                    <a href="../../4-开发实践/1-命令行设计/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        命令行设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="4-开发实践/1-命令行设计/1-commander介绍.html">
+            
+                
+                    <a href="../../4-开发实践/1-命令行设计/1-commander介绍.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.1.</b>
+                        
+                        commander介绍
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="4-开发实践/2-客户端开发/readme.html">
+            
+                
+                    <a href="../../4-开发实践/2-客户端开发/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        客户端开发
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
+            
+                
+                    <a href="../../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.1.</b>
+                        
+                        静态网站开发全景扫描
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
+            
+                
+                    <a href="../../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.2.</b>
+                        
+                        一张图把握Ember开发的精髓
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.3" data-path="4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
+            
+                
+                    <a href="../../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.3.</b>
+                        
+                        一张图掌握把前端拆成可重用的Ember插件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.4" data-path="4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
+            
+                
+                    <a href="../../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.4.</b>
+                        
+                        Ember的所有钩子方法汇总
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="4-开发实践/4-部署/readme.html">
+            
+                
+                    <a href="../../4-开发实践/4-部署/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        部署
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.4.1" data-path="4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
+            
+                
+                    <a href="../../4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.1.</b>
+                        
+                        Nodejs部署方案全解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.2" data-path="4-开发实践/4-部署/2-生产环境下的pm2部署.html">
+            
+                
+                    <a href="../../4-开发实践/4-部署/2-生产环境下的pm2部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.2.</b>
+                        
+                        生产环境下的pm2部署
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4.3" data-path="4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
+            
+                
+                    <a href="../../4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.3.</b>
+                        
+                        使用ShipIt实现全自动一键部署
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="4-开发实践/5-测试/readme.html">
+            
+                
+                    <a href="../../4-开发实践/5-测试/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="4-开发实践/6-优化/readme.html">
+            
+                
+                    <a href="../../4-开发实践/6-优化/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        优化
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.6.1" data-path="4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
+            
+                
+                    <a href="../../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.1.</b>
+                        
+                        Js对数据计算处理的各种问题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.2" data-path="4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
+            
+                
+                    <a href="../../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.2.</b>
+                        
+                        Node.JS Error: ENOSPC
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.3" data-path="4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+            
+                
+                    <a href="../../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.3.</b>
+                        
+                        一张图学会使用Async组件进行流程控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.4" data-path="4-开发实践/6-优化/3-事件循环.html">
+            
+                
+                    <a href="../../4-开发实践/6-优化/3-事件循环.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.4.</b>
+                        
+                        事件循环
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.6.5" data-path="4-开发实践/6-优化/5-关于时间戳及相关问题.html">
+            
+                
+                    <a href="../../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.5.</b>
+                        
+                        关于时间戳及相关问题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="5-附录/readme.html">
+            
+                
+                    <a href="../../5-附录/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        附录
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="5-附录/1-加密货币相关名词汇总.html">
+            
+                
+                    <a href="../../5-附录/1-加密货币相关名词汇总.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        加密货币相关名词汇总
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="5-附录/2-关于亿书.html">
+            
+                
+                    <a href="../../5-附录/2-关于亿书.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        关于亿书
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="5-附录/3-关于区款链俱乐部.html">
+            
+                
+                    <a href="../../5-附录/3-关于区款链俱乐部.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        关于区款链俱乐部
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="5-附录/4-关于作者.html">
+            
+                
+                    <a href="../../5-附录/4-关于作者.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        关于作者
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6-后记/readme.html">
+            
+                
+                    <a href="../../6-后记/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        后记
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="6-后记/1-记录应该记住的内容.html">
+            
+                
+                    <a href="../../6-后记/1-记录应该记住的内容.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        记录应该记住的内容
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Node.js开发加密货币</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x5173;&#x4E8E;&#x65F6;&#x95F4;&#x6233;&#x53CA;&#x76F8;&#x5173;&#x95EE;&#x9898;">&#x5173;&#x4E8E;&#x65F6;&#x95F4;&#x6233;&#x53CA;&#x76F8;&#x5173;&#x95EE;&#x9898;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x65F6;&#x95F4;&#x6233;&#x662F;&#x5F88;&#x591A;&#x5E94;&#x7528;&#x7CFB;&#x7EDF;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x5F00;&#x53D1;&#x8BBE;&#x8BA1;&#x4E2D;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x5143;&#x7D20;&#x3002;&#x5404;&#x79CD;&#x8BED;&#x8A00;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x524D;&#x76F4;&#x63A5;&#x62FF;&#x6765;&#x5C31;&#x7528;&#x4E86;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x53D1;&#x73B0;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x3002;&#x4F46;&#x662F;&#x5728;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x4E0A;&#xFF0C;&#x5F00;&#x53D1;&#x8BED;&#x8A00;&#x6838;&#x5FC3;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7684;&#x4E2A;&#x522B;Api&#x5E76;&#x6CA1;&#x6709;&#x5B8C;&#x5168;&#x5EF6;&#x7EED;&#x4EBA;&#x7C7B;&#x4E60;&#x60EF;&#x3002;&#x5728;Javascript&#x8BED;&#x8A00;&#x91CC;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;Date&#x7C7B;&#x7684;&#x51FD;&#x6570;&#x5C31;&#x975E;&#x5E38;&#x5947;&#x8469;&#xFF0C;&#x7F51;&#x7EDC;&#x4E0A;&#x5F88;&#x591A;&#x6587;&#x6863;&#x7684;&#x4E3E;&#x4F8B;&#x90FD;&#x662F;&#x9519;&#x8BEF;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x7B80;&#x5355;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x3002;</p>
+<p>&#x8FD9;&#x4F3C;&#x4E4E;&#x4E0D;&#x662F;&#x4EC0;&#x4E48;&#x5927;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x4ECE;stackoverflow.com&#x7F51;&#x7AD9;&#x4E0A;&#x5173;&#x4E8E;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x7684;&#x95EE;&#x9898;&#xFF08;&#x89C1;&#x53C2;&#x8003;&#xFF09;&#x53CA;&#x53D7;&#x5173;&#x6CE8;&#x7A0B;&#x5EA6;&#x6765;&#x770B;&#xFF0C;&#x5374;&#x662F;&#x5F88;&#x591A;&#x4EBA;&#x9047;&#x5230;&#x7684;&#x666E;&#x904D;&#x95EE;&#x9898;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x4E07;&#x4E00;&#x8FD8;&#x6709;&#x66F4;&#x591A;&#x201C;&#x975E;&#x5E38;&#x89C4;&#x201D;&#x7684;&#x7528;&#x6CD5;&#x5B58;&#x5728;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x79CD;&#x770B;&#x4F3C;&#x5F88;&#x5C0F;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x80FD;&#x5C31;&#x662F;&#x81F4;&#x547D;&#x7684;&#xFF08;&#x903B;&#x8F91;&#x4E0A;&#x6CA1;&#x95EE;&#x9898;&#xFF0C;&#x610F;&#x8BC6;&#x4E2D;&#x6CA1;&#x53D1;&#x73B0;&#xFF09;&#x3002;&#x6309;&#x7167;&#x524D;&#x9762;&#x5173;&#x4E8E;&#x5F02;&#x5E38;&#x548C;&#x9519;&#x8BEF;&#x7684;&#x5904;&#x7406;&#x8981;&#x6C42;&#xFF0C;&#x8FD9;&#x79CD;&#x9519;&#x8BEF;&#x5E94;&#x8BE5;&#x662F;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x8EAB;&#x7684;&#x95EE;&#x9898;&#x4E86;&#xFF0C;&#x552F;&#x4E00;&#x7684;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x5C31;&#x662F;&#x63D0;&#x9AD8;&#x80FD;&#x529B;&#xFF0C;&#x8BA9;&#x81EA;&#x5DF1;&#x66F4;&#x52A0;&#x4E25;&#x8C28;&#x3001;&#x66F4;&#x52A0;&#x8BA4;&#x771F;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x5C31;&#x662F;&#x67E5;&#x7F3A;&#x8865;&#x6F0F;&#x7684;&#xFF0C;&#x63D0;&#x9192;&#x4EE5;&#x540E;&#x522B;&#x5728;&#x8FD9;&#x4E2A;&#x5C0F;&#x95EE;&#x9898;&#x4E0A;&#x7FFB;&#x8239;&#x3002;</p>
+<h2 id="&#x95EE;&#x9898;&#x518D;&#x73B0;">&#x95EE;&#x9898;&#x518D;&#x73B0;</h2>
+<p>&#x8BF7;&#x731C;&#x60F3;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x5E94;&#x8BE5;&#x8F93;&#x51FA;&#x54EA;&#x4E00;&#x5929;&#xFF1A;</p>
+<pre><code>new Date(Date.UTC(2005,7,8));
+</code></pre><p>&#x7ED3;&#x679C;&#x662F;&#xFF1A; <code>Mon Aug 08 2005 08:00:00 GMT+0800 (&#x4E2D;&#x56FD;&#x6807;&#x51C6;&#x65F6;&#x95F4;)</code> &#xFF0C; &#x5373;&#xFF1A; <code>2005&#x5E74;8&#x6708;8&#x65E5;</code></p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x770B;&#x770B;&#x8FD9;&#x7BC7;&#x6587;&#x6863;&#x7684;&#x89E3;&#x91CA; <a href="http://www.w3school.com.cn/jsref/jsref_utc.asp" target="_blank">http://www.w3school.com.cn/jsref/jsref_utc.asp</a></p>
+<p>&#x5176;&#x5B9E;&#xFF0C;&#x7F51;&#x4E0A;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x6587;&#x6863;&#x72AF;&#x4E86;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x3002;&#x6211;&#x672C;&#x4EBA;&#x4E5F;&#x662F;&#x5728;&#x53CD;&#x590D;&#x6CA1;&#x6709;&#x83B7;&#x5F97;&#x60F3;&#x8981;&#x7684;&#x7ED3;&#x679C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x624D;&#x7740;&#x624B;&#x67E5;&#x8BE2;&#x6587;&#x6863;&#x7684;&#x3002;</p>
+<h2 id="&#x65F6;&#x95F4;&#x6233;&#x7684;&#x91CD;&#x8981;&#x6027;">&#x65F6;&#x95F4;&#x6233;&#x7684;&#x91CD;&#x8981;&#x6027;</h2>
+<p>&#x65F6;&#x95F4;&#x6233;&#xFF08;timestamp&#xFF09;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x5E8F;&#x5217;&#xFF0C;&#x552F;&#x4E00;&#x5730;&#x6807;&#x8BC6;&#x67D0;&#x4E00;&#x523B;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x662F;&#x6307;&#x683C;&#x6797;&#x5A01;&#x6CBB;&#x65F6;&#x95F4;1970&#x5E74;01&#x6708;01&#x65E5;00&#x65F6;00&#x5206;00&#x79D2;(&#x5317;&#x4EAC;&#x65F6;&#x95F4;1970&#x5E74;01&#x6708;01&#x65E5;08&#x65F6;00&#x5206;00&#x79D2;)&#x8D77;&#x81F3;&#x73B0;&#x5728;&#x7684;&#x603B;&#x6BEB;&#x79D2;&#x6570;&#x3002;&#x4E2D;&#x56FD;&#x6709;&#x56FD;&#x5BB6;&#x6388;&#x65F6;&#x4E2D;&#x5FC3;&#xFF0C;&#x56E0;&#x5176;&#x5B88;&#x65F6;&#x76D1;&#x6D4B;&#x529F;&#x80FD;&#x800C;&#x4FDD;&#x969C;&#x65F6;&#x95F4;&#x6233;&#x8BC1;&#x4E66;&#x4E2D;&#x7684;&#x65F6;&#x95F4;&#x7684;&#x51C6;&#x786E;&#x6027;&#x548C;&#x4E0D;&#x88AB;&#x7BE1;&#x6539;&#xFF0C;&#x5177;&#x6709;&#x6CD5;&#x5F8B;&#x6548;&#x529B;&#x3002;</p>
+<p>2008&#x5E74;11&#x6708;25&#x65E5;&#xFF0C;&#x6DF1;&#x5733;&#x5E02;&#x9F99;&#x5C97;&#x533A;&#x6CD5;&#x9662;&#x4F9D;&#x636E;&#x6700;&#x9AD8;&#x6CD5;&#x9662;&#x201C;&#x77E5;&#x8BC6;&#x4EA7;&#x6743;&#x53F8;&#x6CD5;&#x4FDD;&#x62A4;&#x6D3B;&#x52A8;&#x6708;&#x201D;&#x7684;&#x8981;&#x6C42;&#x516C;&#x5F00;&#x5BA3;&#x5224;&#x77E5;&#x8BC6;&#x4EA7;&#x6743;&#x7EA0;&#x7EB7;&#x6848;&#xFF0C;&#x5176;&#x4E2D;&#x201C;&#x5229;&#x9F99;&#x6E56;&#x201D;&#x4E00;&#x6848;&#x7CFB;&#x56FD;&#x5185;&#x9996;&#x4F8B;&#x65F6;&#x95F4;&#x6233;&#x6280;&#x672F;&#x53F8;&#x6CD5;&#x5E94;&#x7528;&#x6848;&#x4F8B;&#xFF0C;&#x5BA3;&#x5224;&#x540E;&#x53CC;&#x65B9;&#x5F53;&#x4E8B;&#x4EBA;&#x5747;&#x672A;&#x63D0;&#x8D77;&#x4E0A;&#x8BC9;&#xFF0C;&#x8BE5;&#x6848;&#x5224;&#x51B3;&#x4E66;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x6CD5;&#x5F8B;&#x6548;&#x529B;&#x3002;</p>
+<p>&#x4ECE;&#x6280;&#x672F;&#x4E0A;&#x8BB2;&#xFF0C;&#x65F6;&#x95F4;&#x6233;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x6570;&#x636E;&#x5199;&#x5165;&#x6216;&#x4FEE;&#x6539;&#x65F6;&#x7684;&#x65F6;&#x95F4;&#x70B9;&#xFF0C;&#x4F7F;&#x7528;&#x6BEB;&#x79D2;&#x8868;&#x793A;&#xFF0C;&#x662F;&#x4E00;&#x9879;&#x6570;&#x636E;&#x5B58;&#x5728;&#x6027;&#x8BC1;&#x660E;&#xFF08;Proof of existence&#xFF09;&#x7684;&#x552F;&#x4E00;&#x6709;&#x6548;&#x53C2;&#x6570;&#x3002;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x628A;&#x65F6;&#x95F4;&#x6233;&#x4F5C;&#x4E3A;&#x91CD;&#x8981;&#x5B57;&#x6BB5;&#x4FE1;&#x606F;&#xFF0C;&#x6BCF;&#x7B14;&#x4EA4;&#x6613;&#x3001;&#x6BCF;&#x4E2A;&#x533A;&#x5757;&#x90FD;&#x8981;&#x8BB0;&#x5F55;&#x65F6;&#x95F4;&#x6233;&#x3002;&#x5BF9;&#x4E8E;&#x4EBF;&#x4E66;&#xFF08;&#x8BF7;&#x53C2;&#x8003;&#x767D;&#x76AE;&#x4E66;&#xFF09;&#x800C;&#x8A00;&#xFF0C;&#x66F4;&#x662F;&#x7248;&#x6743;&#x4FE1;&#x606F;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x6216;&#x7F3A;&#x7684;&#x5143;&#x7D20;&#x3002;</p>
+<h2 id="&#x4E0D;&#x540C;&#x4EA7;&#x54C1;&#x5BF9;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x7684;&#x9700;&#x6C42;">&#x4E0D;&#x540C;&#x4EA7;&#x54C1;&#x5BF9;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x7684;&#x9700;&#x6C42;</h2>
+<p>&#x6211;&#x5728;&#x601D;&#x8003;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x4F5C;&#x4E3A;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#xFF0C;&#x4EBF;&#x4E66;&#x5BF9;&#x6BCF;&#x7B14;&#x4EA4;&#x6613;&#x90FD;&#x6709;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x800C;&#x4E14;&#x5BF9;&#x7248;&#x6743;&#x4FDD;&#x62A4;&#xFF0C;&#x65F6;&#x95F4;&#x6233;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x5B57;&#x6BB5;&#x3002;&#x5982;&#x679C;&#xFF0C;&#x4EBF;&#x4E66;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5728;&#x4E2D;&#x56FD;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x5728;&#x7F8E;&#x56FD;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x8BE5;&#x5982;&#x4F55;&#x7EDF;&#x4E00;&#xFF0C;&#x76F8;&#x5173;&#x7684;&#x65B9;&#x6CD5;&#x8BE5;&#x5982;&#x4F55;&#x9009;&#x62E9;&#xFF1F;</p>
+<p>&#x4ECE;&#x7406;&#x8BBA;&#x4E0A;&#x5206;&#x6790;&#xFF0C;&#x4E0D;&#x540C;&#x4EA7;&#x54C1;&#x53EF;&#x80FD;&#x5BF9;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x7684;&#x9700;&#x6C42;&#x4E5F;&#x4E0D;&#x76F8;&#x540C;&#x3002;</p>
+<p>1.&#x5BF9;&#x4E8E;&#x4E00;&#x822C;&#x7684;&#x5E94;&#x7528;&#x7CFB;&#x7EDF;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x6CA1;&#x6709;&#x56FD;&#x9645;&#x5316;&#x8981;&#x6C42;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x65F6;&#x95F4;&#x81EA;&#x7136;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x8981;&#x6C42;&#xFF0C;&#x524D;&#x7AEF;&#x540E;&#x53F0;&#x7EDF;&#x4E00;&#x662F;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x4E8B;&#xFF0C;&#x53EA;&#x8981;&#x907F;&#x514D;&#x4E0A;&#x9762;&#x7684;&#x5931;&#x8BEF;&#xFF0C;&#x6B63;&#x786E;&#x4F7F;&#x7528;&#x65F6;&#x95F4;&#x76F8;&#x5173;&#x7684;&#x63A5;&#x53E3;&#x51FD;&#x6570;&#x5373;&#x53EF;&#x3002;</p>
+<p>2.&#x5BF9;&#x4E8E;&#x6709;&#x56FD;&#x9645;&#x5316;&#x9700;&#x6C42;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x8FD9;&#x79CD;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x5168;&#x4E16;&#x754C;&#x7684;&#x7528;&#x6237;&#x90FD;&#x5728;&#x4F7F;&#x7528;&#xFF0C;&#x5C31;&#x8981;&#x8003;&#x8651;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#x7684;&#x56E0;&#x7D20;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x9762;&#x5411;&#x7528;&#x6237;&#x7684;&#x65F6;&#x95F4;&#x672C;&#x5730;&#x5316;&#x95EE;&#x9898;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x9762;&#x5411;&#x4EA7;&#x54C1;&#x540E;&#x53F0;&#x7684;&#x65F6;&#x95F4;&#x7EDF;&#x4E00;&#x6027;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="&#x65F6;&#x95F4;&#x5904;&#x7406;&#x57FA;&#x672C;&#x539F;&#x7406;">&#x65F6;&#x95F4;&#x5904;&#x7406;&#x57FA;&#x672C;&#x539F;&#x7406;</h2>
+<p>&#x5929;&#x4E0B;&#x4EBA;&#x7684;&#x65F6;&#x95F4;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x76F8;&#x540C;&#x65F6;&#x523B;&#xFF0C;&#x4E0D;&#x540C;&#x65F6;&#x533A;&#x7684;&#x4EBA;&#x4EEC;&#xFF0C;&#x6240;&#x5904;&#x7684;&#x65F6;&#x7A7A;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x3002;&#x4E0D;&#x540C;&#x65F6;&#x533A;&#xFF0C;&#x4EBA;&#x4EEC;&#x5BF9;&#x4E8E;&#x65F6;&#x7A7A;&#x7684;&#x611F;&#x53D7;&#x53C8;&#x662F;&#x90A3;&#x4E48;&#x60CA;&#x5947;&#x7684;&#x76F8;&#x4F3C;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x9664;&#x4E86;&#x5357;&#x5317;&#x6781;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x5730;&#x65B9;&#x90FD;&#x662F;&#x65E9;&#x4E0A;&#x4E94;&#x516D;&#x70B9;&#x949F;&#x592A;&#x9633;&#x5347;&#x8D77;&#xFF0C;&#x4E2D;&#x5348;12&#x70B9;&#x5DE6;&#x53F3;&#x8273;&#x9633;&#x9AD8;&#x7167;&#xFF0C;&#x4E0B;&#x5348;&#x4E94;&#x516D;&#x70B9;&#x949F;&#x65E5;&#x843D;&#x897F;&#x5C71;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4E2D;&#x56FD;&#x4EBA;&#x53BB;&#x4E86;&#x7F8E;&#x56FD;&#xFF08;&#x6BD4;&#x4E2D;&#x56FD;&#x665A;13&#x4E2A;&#x5C0F;&#x65F6;&#xFF09;&#xFF0C;&#x539F;&#x672C;&#x662F;&#x4E2D;&#x5348;&#x8273;&#x9633;&#x9AD8;&#x7167;&#xFF0C;&#x4E00;&#x770B;&#x624B;&#x8868;&#xFF0C;&#x7ADF;&#x7136;&#x662F;&#x5348;&#x591C;0&#x70B9;&#x949F;&#xFF0C;&#x8FD8;&#x4E0D;&#x5F97;&#x7CBE;&#x795E;&#x5206;&#x88C2;&#x554A;&#xFF0C;&#x56E0;&#x6B64;&#x4E3A;&#x4E86;&#x8FCE;&#x5408;&#x4EBA;&#x7C7B;&#x4E60;&#x60EF;&#xFF0C;&#x81EA;&#x7136;&#x5C31;&#x6709;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x672C;&#x5730;&#x5316;&#x9700;&#x6C42;&#x3002;</p>
+<p>&#x4ECE;&#x7F16;&#x7A0B;&#x7684;&#x89D2;&#x5EA6;&#x770B;&#xFF0C;&#x65F6;&#x95F4;&#x5177;&#x5907;&#x552F;&#x4E00;&#x3001;&#x5747;&#x5300;&#x548C;&#x6052;&#x5B9A;&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x53EA;&#x8981;&#x4F7F;&#x7528;&#x7EDF;&#x4E00;&#x786E;&#x5B9A;&#x7684;&#x53C2;&#x8003;&#x70B9;&#xFF0C;&#x5C31;&#x4E0D;&#x81F3;&#x4E8E;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x51FA;&#x73B0;&#x6DF7;&#x4E71;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5BF9;&#x5E94;&#x4E0A;&#x9762;&#x7684;&#x4EA7;&#x54C1;&#x9700;&#x6C42;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E0D;&#x9700;&#x8981;&#x56FD;&#x9645;&#x5316;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x53EA;&#x8981;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x5316;&#x65F6;&#x95F4;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#xFF08;&#x53C2;&#x8003;&#x70B9;&#x662F;&#x672C;&#x5730;&#xFF09;&#xFF0C;&#x524D;&#x540E;&#x7AEF;&#x7EDF;&#x4E00;&#xFF0C;&#x903B;&#x8F91;&#x7B80;&#x5355;&#x3002;&#x800C;&#x5BF9;&#x4E8E;&#x56FD;&#x9645;&#x5316;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x90A3;&#x5C31;&#x4F7F;&#x7528;&#x4E16;&#x754C;&#x65F6;&#x95F4;&#xFF08;&#x53C2;&#x8003;&#x70B9;&#x662F;&#x56FD;&#x9645;&#x65E5;&#x671F;&#x53D8;&#x66F4;&#x7EBF;&lt;&#x89C1;&#x53C2;&#x8003;&gt;&#xFF0C;UTC&#x6216;GMT&#x6807;&#x51C6;&#x65F6;&#x95F4;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x9762;&#x5411;&#x7528;&#x6237;&#x8FDB;&#x884C;&#x672C;&#x5730;&#x5316;&#x5904;&#x7406;&#x5373;&#x53EF;&#x3002;</p>
+<h2 id="javascript&#x8BED;&#x8A00;&#x7684;date&#x5BF9;&#x8C61;">Javascript&#x8BED;&#x8A00;&#x7684;Date&#x5BF9;&#x8C61;</h2>
+<p>js&#x63D0;&#x4F9B;&#x4E86;&#x64CD;&#x4F5C;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x5BF9;&#x8C61;Date&#x3002;Date&#x5BF9;&#x8C61;&#x662F;js&#x8BED;&#x8A00;&#x7684;&#x4E00;&#x4E2D;&#x5185;&#x90E8;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF08;&#x7C7B;&#x51FD;&#x6570;&#xFF09;&#xFF0C;&#x8981;&#x4F7F;&#x7528;&#x8BED;&#x6CD5;new Date()&#x521B;&#x5EFA;&#x3002;&#x521B;&#x5EFA;&#x4E86;&#x5BF9;&#x8C61;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x79CD;&#x65B9;&#x6CD5;&#x6765;&#x64CD;&#x4F5C;&#x5B83;&#x4E86;&#x3002;&#x8FD9;&#x91CC;&#x5217;&#x51FA;&#x51E0;&#x4E2A;&#x9700;&#x8981;&#x719F;&#x7EC3;&#x638C;&#x63E1;&#x7684;&#x7EC6;&#x8282;&#x4F9B;&#x53C2;&#x8003;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x6784;&#x9020;&#x51FD;&#x6570;</p>
+<pre><code>new Date();
+new Date(milliseconds);
+new Date(dateString);
+new Date(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
+</code></pre><p>&#x7B80;&#x5355;&#x4E00;&#x53E5;&#x8BDD;&#xFF1A;&#x65B0;&#x5EFA;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;0&#xFF5E;7&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x6570;&#x5B57;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;&#x53C2;&#x6570;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF1A;</p>
+<ul>
+<li>Date&#x65F6;&#x523B;&#x9762;&#x5411;&#x672C;&#x5730;&#x65F6;&#x95F4;&#xFF0C;&#x53C2;&#x6570;&#x4EE3;&#x8868;&#x7684;&#x662F;&#x672C;&#x5730;&#x65F6;&#x95F4;&#xFF0C;&#x65B0;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#x4EE3;&#x8868;&#x7684;&#x4E5F;&#x662F;&#x672C;&#x5730;&#x65F6;&#x95F4;&#xFF0C;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x540E;&#x9762;&#x901A;&#x5E38;&#x6709;<code>(&#x67D0;&#x56FD;&#x6807;&#x51C6;&#x65F6;&#x95F4;)</code>&#x7B49;&#x5B57;&#x6837;;</li>
+<li>0&#x53C2;&#x6570;&#xFF0C;&#x4EE3;&#x8868;&#x5F53;&#x524D;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;;</li>
+<li>1&#x53C2;&#x6570;&#xFF0C;&#x82E5;&#x662F;&#x6570;&#x5B57;milliseconds&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x8DDD;&#x79BB;1970&#x5E74;1&#x6708;1&#x65E5;&#x5348;&#x591C;&#xFF08;UTC&#xFF09;&#x7684;&#x6BEB;&#x79D2;&#x6570;&#xFF0C;&#x901A;&#x5E38;&#x4F7F;&#x7528;Date.UTC()&#x51FD;&#x6570;&#x6765;&#x8BBE;&#x5B9A;;&#x82E5;&#x662F;&#x5B57;&#x7B26;&#x4E32;dateString&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x65F6;&#x95F4;&#x683C;&#x5F0F;&#xFF0C;&#x5982;&#xFF1A;<code>new Date(&apos;December 17, 1995 03:24:00&apos;);</code></li>
+<li>2~7&#x53C2;&#x6570;&#xFF0C;&#x53EA;&#x80FD;&#x662F;&#x6570;&#x5B57;&#x3002;<em>&#x53EA;&#x6709;<code>day</code>&#x4ECE;1&#x5F00;&#x59CB;&#xFF0C;&#x5176;&#x4ED6;&#x90FD;&#x662F;&#x4ECE;0&#x5F00;&#x59CB;</em>&#x3002;&#x56E0;&#x4E3A;&#x5468;&#x671F;&#x901A;&#x5E38;&#x91C7;&#x53D6;&#x53D6;&#x6A21;&#x8FD0;&#x7B97;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x6570;&#x503C;&#x5927;&#x4E8E;&#x5408;&#x7406;&#x8303;&#x56F4;&#xFF08;&#x5982;&#x6708;&#x4EFD;&#x4E3A;13&#xFF09;&#xFF0C;&#x6570;&#x503C;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x8C03;&#x6574;&#x3002;&#x6BD4;&#x5982;&#xFF1A; new Date(2013, 13, 1)&#x7B49;&#x4E8E;new Date(2014, 1, 1)&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x8868;&#x793A;&#x65E5;&#x671F;2014-02-01&#xFF08;&#x6CE8;&#x610F;&#x6708;&#x4EFD;&#x662F;&#x4ECE;0&#x5F00;&#x59CB;&#x7684;&#xFF09;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x9700;&#x8981;&#x4E16;&#x754C;&#x65F6;&#xFF0C;&#x8981;&#x4F7F;&#x7528; new Date(Date.UTC(...)) &#x548C;&#x76F8;&#x540C;&#x53C2;&#x6570;&#x3002;</li>
+</ul>
+<p>&#xFF08;3&#xFF09;&#x65B9;&#x6CD5;</p>
+<p>&#x5173;&#x4E8E;&#x65B9;&#x6CD5;&#x8981;&#x6CE8;&#x610F;&#x4E24;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><p>&#x9759;&#x6001;&#x65B9;&#x6CD5;&#xFF1A;3&#x4E2A;&#xFF0C;&#x90FD;&#x8FD4;&#x56DE;&#x8DDD;&#x79BB;&#x6807;&#x51C6;&#x65F6;&#x95F4;&#x7684;&#x6BEB;&#x79D2;&#x6570;&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94;&#x6784;&#x5EFA;&#x51FD;&#x6570;&#x4E09;&#x4E2A;&#x5F62;&#x5F0F;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC; Date.now()&#x3001;Date.parse()&#xFF08;&#x89E3;&#x6790;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x65E5;&#x671F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF09;&#x3001;Date.UTC() &#xFF08;&#x4ECE;2&#x5230;7&#x53C2;&#x6570;&#xFF09;&#x3002;</p>
+</li>
+<li><p>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#xFF1A;4&#x79CD;&#xFF0C;get&#x7C7B;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;&#x3001;set&#x7C7B;&#x8BBE;&#x7F6E;&#x65B9;&#x6CD5;&#x3001;to&#x7C7B;&#x8F6C;&#x6362;&#x65B9;&#x6CD5;&#x3001;of&#x7C7B;&#xFF0C;&#x5176;&#x4E2D;&#x6BCF;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x672C;&#x5730;&#x548C;&#x4E16;&#x754C;&#x65F6;&#x4E24;&#x4E2A;&#x53C2;&#x8003;&#x7CFB;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6BD4;&#x5982;get[UTC]Date()&#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+</ul>
+<p><strong>&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F;</strong>&#xFF1A;getTime()&#x65B9;&#x6CD5;&#x4E0D;&#x5206;&#x65F6;&#x533A;&#xFF0C;&#x8FD4;&#x56DE;Date&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x90E8;&#x6BEB;&#x79D2;&#x8868;&#x793A;&#xFF0C;&#x8FD9;&#x5C06;&#x662F;&#x53BB;&#x4F2A;&#x5B58;&#x771F;&#x7684;&#x552F;&#x4E00;&#x9014;&#x5F84;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x4E0D;&#x540C;&#x65F6;&#x533A;&#x662F;&#x5426;&#x540C;&#x65F6;&#x5462;&#xFF0C;&#x4EC5;&#x4EC5;&#x770B;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x5C31;&#x662F;&#x4E86;, &#x5E94;&#x8BE5;&#x8BF4;&#x5728;&#x4E16;&#x754C;&#x4E0A;&#x4E0D;&#x540C;&#x65F6;&#x533A;&#xFF0C;&#x540C;&#x65F6;&#x8FD0;&#x884C;<code>(new Date()).getTime()</code>&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<h2 id="&#x5B9E;&#x8DF5;">&#x5B9E;&#x8DF5;</h2>
+<p>&#x7F16;&#x7A0B;&#x91CC;&#xFF0C;&#x9700;&#x8981;&#x5904;&#x7406;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x65E0;&#x975E;&#x662F;&#x8FD9;&#x6837;&#x51E0;&#x4E2A;&#x573A;&#x666F;&#xFF08;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6765;&#x81EA;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x548C;&#x4EBF;&#x4E66;&#x6E90;&#x7801;&#xFF09;&#xFF1A;</p>
+<p>&#xFF08;1&#xFF09;&#x8BB0;&#x5F55;&#x65F6;&#x95F4;</p>
+<pre><code>var today = new Date(); //&#x672C;&#x5730;&#x5F53;&#x524D;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;
+var birthday = new Date(&quot;1995-12-17T03:24:00&quot;); //1995&#x5E74;12&#x6708;17&#x65E5;
+var birthday = new Date(1995,11,17); //1995&#x5E74;12&#x6708;17&#x65E5;
+</code></pre><p>&#x5982;&#x679C;&#x9700;&#x8981;&#x683C;&#x5F0F;&#x5316;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;to&#x4E3A;&#x524D;&#x7F00;&#x7684;&#x8F6C;&#x6362;&#x65B9;&#x6CD5;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;toLocaleDateString()&#x3001;toLocaleString()&#x7B49;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x6EE1;&#x610F;&#xFF0C;&#x5C31;&#x627E;&#x627E;&#x73B0;&#x6210;&#x7684;&#x6269;&#x5C55;&#x63D2;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982;moment.js&#x3002;&#x5982;&#x679C;&#x4ECD;&#x4E0D;&#x6EE1;&#x610F;&#xFF0C;&#x90A3;&#x5C31;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x5427;&#xFF0C;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;&#x8BA1;&#x7B97;&#x65F6;&#x95F4;</p>
+<p>&#x4E3B;&#x8981;&#x539F;&#x5219;&#x662F;&#x8BA1;&#x7B97;&#x8DDD;&#x79BB;&#x6807;&#x51C6;&#x65F6;&#x95F4;&#x7684;&#x6BEB;&#x79D2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8BA1;&#x7B97;&#x3002;&#x56E0;&#x4E3A;&#x8FD9;&#x7C7B;&#x65B9;&#x6CD5;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x57FA;&#x4E8E;&#x4E16;&#x754C;&#x65F6;UTC&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x51CF;&#x6CD5;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x6BB5;&#xFF08;&#x5DEE;&#x503C;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x53C2;&#x8003;&#x70B9;&#x62B5;&#x6D88;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x53BB;&#x8003;&#x8651;&#x53C2;&#x8003;&#x70B9;&#x7684;&#x5B58;&#x5728;&#x3002;</p>
+<p>&#x8FD9;&#x65B9;&#x9762;&#x88AB;&#x5927;&#x91CF;&#x7528;&#x5230;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x7B2C;&#x4E09;&#x65B9;&#x5305;&#x5B58;&#x5728;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;timeago.js&#x4E4B;&#x7C7B;&#x7684;&#xFF0C;&#x4E0B;&#x9762;&#x7B80;&#x5355;&#x4E3E;&#x4F8B;&#xFF1A;</p>
+<p>a&gt; &#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x63A8;&#x8350;&#x4F7F;&#x7528; Date &#x5BF9;&#x8C61;:</p>
+<pre><code>var start = Date.now();
+
+// &#x8FD9;&#x91CC;&#x8FDB;&#x884C;&#x8017;&#x65F6;&#x7684;&#x65B9;&#x6CD5;&#x8C03;&#x7528;:
+doSomethingForALongTime();
+var end = Date.now();
+var elapsed = end - start; // &#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x7684;&#x6BEB;&#x79D2;&#x503C;
+</code></pre><p>&#x4E3A;&#x4E86;&#x517C;&#x5BB9;IE8&#x53CA;&#x4EE5;&#x524D;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x505A;&#x5982;&#x4E0B;&#x5904;&#x7406;&#xFF1A;</p>
+<pre><code>if (!Date.now) {
+    Date.now = function() { return new Date().getTime(); }
+}
+</code></pre><p>b&gt; &#x5728;Node.js&#x7B49;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x5185;&#x5EFA;&#x7684;<code>getTime()</code>&#x65B9;&#x6CD5;:</p>
+<pre><code>// &#x8BBE;&#x7F6E;&#x521D;&#x59CB;&#x65F6;&#x95F4;
+var begin = Date.UTC(2016, 6, 1, 0, 0, 0, 0); // 2016&#x5E74;7&#x6708;1&#x65E5;&#xFF0C;&#x6708;&#x4EFD;&#x4ECE;0&#x5F00;&#x59CB;
+
+// &#x83B7;&#x5F97;&#x5F53;&#x524D;&#x65F6;&#x95F4;
+var now = new Date();
+var elapsed = now.getTime() - begin.getTime(); // &#x6BEB;&#x79D2;&#x503C;
+</code></pre><p>c&gt; &#x4E3A;&#x4E86;&#x83B7;&#x5F97;&#x79D2;&#x4E3A;&#x5355;&#x4F4D;&#x7684;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code>Math.floor(Date.now() / 1000)
+</code></pre><h2 id="&#x94FE;&#x63A5;">&#x94FE;&#x63A5;</h2>
+<p><strong>&#x672C;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x5373;&#x65F6;&#x66F4;&#x65B0;&#xFF0C;&#x82E5;&#x8981;&#x638C;&#x63E1;&#x6700;&#x65B0;&#x5185;&#x5BB9;&#xFF0C;&#x8BF7;&#x5173;&#x6CE8;&#x4E0B;&#x9762;&#x7684;&#x94FE;&#x63A5;</strong></p>
+<p>&#x672C;&#x6E90;&#x6587;&#x5730;&#x5740;&#xFF1A; <a href="https://github.com/imfly/bitcoin-on-nodejs" target="_blank">https://github.com/imfly/bitcoin-on-nodejs</a></p>
+<p>&#x7535;&#x5B50;&#x4E66;&#x9605;&#x8BFB;&#xFF1A; <a href="http://bitcoin-on-nodejs.ebookchain.org" target="_blank">http://bitcoin-on-nodejs.ebookchain.org</a></p>
+<h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
+<p><a href="http://baike.baidu.com/link?url=KXEt7IGgVrZmHTpJbDXFHfeJ4O2S7XCmHZiO9EFhAZOMWCaaW0clTFxIHK--M0lZdkLBWvzar7atrtUG9Js-Xq" target="_blank">&#x56FD;&#x9645;&#x65E5;&#x671F;&#x53D8;&#x66F4;&#x7EBF;</a></p>
+<p><a href="http://baike.baidu.com/link?url=6yhlQcDZiX7HkhM3o2CSkEjM-wOQ-M-X74kjsj5zq3Dxm2FQHXvel-ox7kGSSY94hRgziOIAmCW5T2go9s_TE_" target="_blank">&#x65F6;&#x95F4;&#x6233;</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">JavaScript&#x6807;&#x51C6;&#x5E93; Date&#x6587;&#x6863;</a></p>
+<p><a href="http://stackoverflow.com/questions/221294/how-do-you-get-a-timestamp-in-javascript" target="_blank">How do you get a timestamp in JavaScript?</a></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../4-开发实践/6-优化/3-事件循环.html" class="navigation navigation-prev " aria-label="Previous page: 事件循环"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../5-附录/readme.html" class="navigation navigation-next " aria-label="Next page: 附录"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-baidu/plugin.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?a489cddfaf5ed40abc3a60e2783e8019';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    </body>
+    
+</html>
