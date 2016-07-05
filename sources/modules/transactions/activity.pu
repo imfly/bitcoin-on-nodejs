@@ -18,56 +18,65 @@ partition "1.整理交易数据" {
     必须字段：secret, amount, recipientId"
     end note
     if "是否符合字段要求" then
-    --> [no] "返回错误信息"
+    --> [no] "返回错误信息" as return_error_msg
     -left-> [停在表单页面，要求用户重新填写] form
     else
-    --> [yes] "生成keypair.publicKey"
+    --> [yes] "生成公钥keypair.publicKey"
     --> 验证密码信息
-        if "重新生成的keypair.publicKey与提供的公钥是否一致" then
-        --> [no] "返回错误信息"
+        if "重新生成的公钥与提供的一致？" then
+        --> return_error_msg
         else
-        --> [yes] "乙方（接收方）地址转换"
-        --> "验证乙方用户合法性"
-            if "modules.accounts.getAccount()是否查询到用户" then
-            --> [no] "返回错误信息"
+        partition "验证乙方（接收方）用户合法性" {
+          --> [yes] "乙方地址转换"
+          note top: "别名地址与字符串地址同等作用"
+            if "查询到用户？" then
+            --> [no] return_error_msg
+        }
             else
-            --> [yes] "验证甲方（发送方）用户合法性"
-                if "是否提供了多重签名公钥（multisigAccountPublicKey）" then
-                    partition "验证多重签名" {
-                      --> [yes] "通过multisigAccountPublicKe查询用户"
-                      if "帐号和其公钥是否存在" then
-                      --> [no] "返回错误信息"
-                      else
-                          if "帐号和其多重帐号字段是否存在" then
-                          --> [no] "返回错误信息"
+                partition "验证甲方（发送方）用户合法性" {
+                    if "提供了多重签名公钥（multisigAccountPublicKey）？" then
+                        partition "验证多重签名" {
+                          --> [yes] "通过多重签名公钥查询用户！"
+                          if "帐号和其公钥存在？" then
+                          --> [no] return_error_msg
                           else
-                            if "多重帐号字段是否包含甲方公钥" then
-                            --> [no] "返回错误信息"
-                            else
-                            --> [yes] "验证甲方（发送方）用户合法性" as requester_verify
-                            endif
-                          endif
+                              if "帐号和其多重帐号字段存在？" then
+                              --> [no] return_error_msg
+                              else
+                                if "多重帐号字段包含甲方公钥？" then
+                                --> [no] return_error_msg
+                                else
+                                --> [yes] ==verify_account==
+                                endif
+                              endif
 
-                      endif
-                    }
-                else
-                --> [no] requester_verify
-                endif
+                          endif
+                        }
+                    else
+                    --> [no] ==verify_account==
+                        if "使用甲方公钥查询用户？" then
+                        --> [no] return_error_msg
+                        else
+                            if "用户有支付密码而未提供？" then
+                            --> [no] return_error_msg
+                            else
+                            --> [yes] "整理请求者（甲方）二次签名字段"
+                            note right
+                            "如果提供了多重签名，应该首先验证
+                            多重帐号公钥与甲方帐号公钥是否相同"
+                            end note
+                            --> "将交易信息交给logic.transaction.create()进一步处理"
+                            --> "modules.transactions.receiveTransactions()"
+                            endif
+                        endif
+                    endif
+                }
             endif
         endif
     endif
 }
 
-' app.js启动命令
-partition app.js {
-  --> config.json定义原始节点
-  if "命令行--peers选项存在" then
-  -->[yes] program.peers
-  --> "config.peers" as peers
-  else
-  --> [no] peers
-  endif
-}
+' logic.transaction.create()处理逻辑
 
 --> (*)
 @enduml
