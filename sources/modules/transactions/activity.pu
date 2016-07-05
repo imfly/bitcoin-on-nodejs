@@ -11,29 +11,52 @@ footer copyright (c) imfly 2016.07.05 http://ebookchain.org
 header 《Nodejs开发加密货币》分析用图：《交易》
 
 (*)--> [新建交易] "put /api/transactions/" as form
---> library.scheme.validate()
-note right
-"基本验证：确保人为输入的信息正确。
-必须字段：secret, amount, recipientId"
-end note
-if "是否符合要求" then
---> [no] "返回错误信息"
--left-> ["停在表单页面，要求用户重新填写"] form
-else
---> [yes] "生成keypair.publicKey"
---> 验证密码信息
-    if "重新生成的keypair.publicKey是否正确" then
+partition "1.整理交易数据" {
+    --> library.scheme.validate()
+    note left
+    "基本验证：确保人为输入的信息正确。
+    必须字段：secret, amount, recipientId"
+    end note
+    if "是否符合字段要求" then
     --> [no] "返回错误信息"
-    --> form
+    -left-> [停在表单页面，要求用户重新填写] form
     else
-    --> [yes] "乙方（接收方）地址转换"
-    --> "验证乙方用户合法性"
-        if "modules.accounts.getAccount()是否查询到用户" then
+    --> [yes] "生成keypair.publicKey"
+    --> 验证密码信息
+        if "重新生成的keypair.publicKey与提供的公钥是否一致" then
         --> [no] "返回错误信息"
-        --> form
+        else
+        --> [yes] "乙方（接收方）地址转换"
+        --> "验证乙方用户合法性"
+            if "modules.accounts.getAccount()是否查询到用户" then
+            --> [no] "返回错误信息"
+            else
+            --> [yes] "验证甲方（发送方）用户合法性"
+                if "是否提供了多重签名公钥（multisigAccountPublicKey）" then
+                    partition "验证多重签名" {
+                      --> [yes] "通过multisigAccountPublicKe查询用户"
+                      if "帐号和其公钥是否存在" then
+                      --> [no] "返回错误信息"
+                      else
+                          if "帐号和其多重帐号字段是否存在" then
+                          --> [no] "返回错误信息"
+                          else
+                            if "多重帐号字段是否包含甲方公钥" then
+                            --> [no] "返回错误信息"
+                            else
+                            --> [yes] "验证甲方（发送方）用户合法性" as requester_verify
+                            endif
+                          endif
+
+                      endif
+                    }
+                else
+                --> [no] requester_verify
+                endif
+            endif
         endif
     endif
-endif
+}
 
 ' app.js启动命令
 partition app.js {
