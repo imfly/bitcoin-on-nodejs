@@ -8,9 +8,12 @@
     "lib"
   ],
   "scripts": {
-    "test": "npm test",
+    "start": "gitbook serve",
     "deploy": "node_modules/.bin/gulp deploy",
     "summary": "node_modules/.bin/book sm"
+  },
+  "engines": {
+    "node": ">=4"
   },
   "repository": {
     "type": "git",
