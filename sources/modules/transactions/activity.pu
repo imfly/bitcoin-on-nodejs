@@ -3,14 +3,18 @@ skinparam BorderColor #blue\9932CC
 skinparam backgroundcolor AntiqueWhite/white
 
 title
-Transactions类主要函数调用流程图
+亿书交易相关函数调用流程图
 
 end title
 
 footer copyright (c) imfly 2016.07.05 http://ebookchain.org
 header 《Nodejs开发加密货币》分析用图：《交易》
 
-(*)--> [新建交易] "put /api/transactions/" as form
+' shared.addTransactions()代码逻辑
+
+(*)--> [新建交易] "put /api/transactions/" as inputForm
+note left: 代码在shared.addTransactions()方法里
+
 partition "1.整理交易数据" {
     --> library.scheme.validate()
     note left
@@ -19,7 +23,7 @@ partition "1.整理交易数据" {
     end note
     if "是否符合字段要求" then
     --> [no] "返回错误信息" as return_error_msg
-    -left-> [停在表单页面，要求用户重新填写] form
+    -left-> [停在表单页面，要求用户重新填写] inputForm
     else
     --> [yes] "生成公钥keypair.publicKey"
     --> 验证密码信息
@@ -65,8 +69,6 @@ partition "1.整理交易数据" {
                             "如果提供了多重签名，应该首先验证
                             多重帐号公钥与甲方帐号公钥是否相同"
                             end note
-                            --> "将交易信息交给logic.transaction.create()进一步处理"
-                            --> "modules.transactions.receiveTransactions()"
                             endif
                         endif
                     endif
@@ -77,6 +79,76 @@ partition "1.整理交易数据" {
 }
 
 ' logic.transaction.create()处理逻辑
+partition "2.给合法交易签名" {
+  -up-> "将交易信息交给logic.transaction.create()进一步处理"
+  note left: 代码在logic.transaction.create()方法里
 
+  --> "添加时间戳: timestamp: slots.getTime()"
+  note left
+  "这里的时间戳不是直接使用Date.now()获得，而是
+  亿书系统统一处理的。请看书中有关时间戳的论述"
+  end note
+
+  --> "甲方签名: trs.signature = this.sign(data.keypair, trs)"
+  --> "如果有支付密码，甲方进行二次签名: trs.signSignature = this.sign(data.secondKeypairtrs);"
+  --> "计算交易ID（getId())"
+  note left
+  "交易ID不是一个简单的随机数，
+  而是与交易类型、时间戳、甲乙方密钥、
+  地址、交易数额等直接相关的Hash值"
+  end note
+  --> "计算交易费用（fee）"
+}
+
+' modules.transactions.receiveTransactions()逻辑
+partition "3.验证交易合法性" {
+  --> "处理（未确认）交易"
+  note left
+  代码在modules.transactions.receiveTransactions()方法里，
+  显然，新整理签名的交易数据在加密货币里，属于未确认交易
+  end note
+
+  --> "执行processUnconfirmedTransaction()方法"
+  if transaction.requesterPublicKey? then
+    --> [yes] library.logic.transaction.process(transaction, sender, requester,cb)
+    note bottom
+    "这个是转账交易类型，该函数本身也进行了系列验证，
+    并使用交易ID查询区块链数据库，确保交易未完成"
+    end note
+
+    --> ==verify==
+  else
+    --> [no] library.logic.transaction.process(transaction, sender,cb)
+    note bottom
+    这个是除转账之外的功能性交易类型，
+    如注册别名地址等
+    end note
+
+    --> ==verify==
+  endif
+
+  --> private.doubleSpendingTransactions[transaction.id]
+  note bottom
+  这里要避免重复提交，甚至“双花”
+  end note
+
+  --> library.logic.transaction.verify()
+  note bottom
+  该方法是对交易的验证，而前面数据整理部分是对数据的过滤，
+  有相似的地方。这里包含：验证发送者（甲方）、签名、支付签名、
+  签名唯一性、交易费、数额、时间戳等
+  end note
+
+  --> private.addUnconfirmedTransaction()
+  note bottom
+  把未确认的交易都放到一个队列里处理
+  end note
+}
+
+partition "4.广播到网络，并写入区块链" {
+  --> library.bus.message('unconfirmedTransaction', transaction, broadcast);
+  note bottom: 触发未处理交易事件，广播到网络
+  --> Transport.onUnconfirmedTransaction()
+}
 --> (*)
 @enduml
