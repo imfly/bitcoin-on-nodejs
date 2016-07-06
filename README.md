@@ -1,6 +1,6 @@
 # Node.js开发加密货币
 
-**注**: 永久`免费`访问地址已经更新为: <http://bitcoin-on-nodejs.ebookchain.org>
+**注**: 本书仍在持续更新中，永久`免费`访问地址已经更新为: <http://bitcoin-on-nodejs.ebookchain.org>
 
 如果您喜欢，请`免费`转发给身边的朋友;如果您是开发者，请`免费`为它 [点个赞][] 。虽为举手之劳，也绝非一般人能为！
 
