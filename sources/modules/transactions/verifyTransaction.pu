@@ -1,4 +1,4 @@
-@startuml ../../../styles/images/modules/transactions/transactions-activity.png
+@startuml ../../../styles/images/modules/transactions/verifyTransaction-activity.png
 skinparam BorderColor #blue\9932CC
 skinparam backgroundcolor AntiqueWhite/white
 
@@ -12,97 +12,14 @@ header 《Nodejs开发加密货币》分析用图：《交易》
 
 ' shared.addTransactions()代码逻辑
 
-(*)--> [新建交易] "put /api/transactions/" as inputForm
-note left: 代码在shared.addTransactions()方法里
+(*)--> [新建交易] "put /api/transactions/"
 
-partition "1.整理交易数据" {
-    --> library.scheme.validate()
-    note left
-    "基本验证：确保人为输入的信息正确。
-    必须字段：secret, amount, recipientId"
-    end note
-    if "是否符合字段要求" then
-    --> [no] "返回错误信息" as return_error_msg
-    -left-> [停在表单页面，要求用户重新填写] inputForm
-    else
-    --> [yes] "生成公钥keypair.publicKey"
-    --> 验证密码信息
-        if "重新生成的公钥与提供的一致？" then
-        --> return_error_msg
-        else
-        partition "验证乙方（接收方）用户合法性" {
-          --> [yes] "乙方地址转换"
-          note top: "别名地址与字符串地址同等作用"
-            if "查询到用户？" then
-            --> [no] return_error_msg
-        }
-            else
-                partition "验证甲方（发送方）用户合法性" {
-                    if "提供了多重签名公钥（multisigAccountPublicKey）？" then
-                        partition "验证多重签名" {
-                          --> [yes] "通过多重签名公钥查询用户！"
-                          if "帐号和其公钥存在？" then
-                          --> [no] return_error_msg
-                          else
-                              if "帐号和其多重帐号字段存在？" then
-                              --> [no] return_error_msg
-                              else
-                                if "多重帐号字段包含甲方公钥？" then
-                                --> [no] return_error_msg
-                                else
-                                --> [yes] ==verify_account==
-                                endif
-                              endif
-
-                          endif
-                        }
-                    else
-                    --> [no] ==verify_account==
-                        if "使用甲方公钥查询用户？" then
-                        --> [no] return_error_msg
-                        else
-                            if "用户有支付密码而未提供？" then
-                            --> [no] return_error_msg
-                            else
-                            --> [yes] "整理请求者（甲方）二次签名字段"
-                            note right
-                            "如果提供了多重签名，应该首先验证
-                            多重帐号公钥与甲方帐号公钥是否相同"
-                            end note
-                            endif
-                        endif
-                    endif
-                }
-            endif
-        endif
-    endif
-}
-
-' logic.transaction.create()处理逻辑
-partition "2.给合法交易签名" {
-  -up-> "将交易信息交给logic.transaction.create()进一步处理"
-  note left: 代码在logic.transaction.create()方法里
-
-  --> "添加时间戳: timestamp: slots.getTime()"
-  note left
-  "这里的时间戳不是直接使用Date.now()获得，而是
-  亿书系统统一处理的。请看书中有关时间戳的论述"
-  end note
-
-  --> "甲方签名: trs.signature = this.sign(data.keypair, trs)"
-  --> "如果有支付密码，甲方进行二次签名: trs.signSignature = this.sign(data.secondKeypairtrs);"
-  --> "计算交易ID（getId())"
-  note left
-  "交易ID不是一个简单的随机数，
-  而是与交易类型、时间戳、甲乙方密钥、
-  地址、交易数额等直接相关的Hash值"
-  end note
-  --> "计算交易费用（fee）"
-}
+--> "1.整理交易数据"
+--> "2.给合法交易签名"
 
 ' modules.transactions.receiveTransactions()逻辑
 partition "3.验证交易合法性" {
-  --> "处理（未确认）交易"
+  --> "处理（未确认）交易：modules.transactions.receiveTransactions()" as receiveTransactions
   note left
   代码在modules.transactions.receiveTransactions()方法里，
   显然，新整理签名的交易数据在加密货币里，属于未确认交易
@@ -129,26 +46,31 @@ partition "3.验证交易合法性" {
 
   --> private.doubleSpendingTransactions[transaction.id]
   note bottom
-  这里要避免重复提交，甚至“双花”
+  这里要避免重复提交等“双花”问题
   end note
 
   --> library.logic.transaction.verify()
   note bottom
   该方法是对交易的验证，而前面数据整理部分是对数据的过滤，
   有相似的地方。这里包含：验证发送者（甲方）、签名、支付签名、
-  签名唯一性、交易费、数额、时间戳等
+  签名唯一性、交易费、数额、时间戳等，代码简单，不详述
   end note
 
-  --> private.addUnconfirmedTransaction()
-  note bottom
-  把未确认的交易都放到一个队列里处理
-  end note
+  partition "并入区块链" {
+    --> private.addUnconfirmedTransaction()
+    note bottom
+    把未确认的交易都放到一个队列里处理，等同于下面的方法
+    end note
+
+    --> transactions.prototype.applyUnconfirmed()
+    --> library.logic.transaction.applyUnconfirmed(transaction, sender, requester, cb);
+    --> this.scope.account.merge(sender.address,)
+    note left: 这是并入区块的方法进入点
+    --> private.types[trs.type].applyUnconfirmed.call(this, trs, sender,)
+  }
 }
 
-partition "4.广播到网络，并写入区块链" {
-  --> library.bus.message('unconfirmedTransaction', transaction, broadcast);
-  note bottom: 触发未处理交易事件，广播到网络
-  --> Transport.onUnconfirmedTransaction()
-}
+--> "4.广播到网络"
+
 --> (*)
 @enduml

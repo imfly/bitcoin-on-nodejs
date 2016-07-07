@@ -15,7 +15,7 @@ header 《Nodejs开发加密货币》分析用图：《交易》
 (*)--> [新建交易] "put /api/transactions/" as inputForm
 note left: 代码在shared.addTransactions()方法里
 
---> "请看上一步：1.整理交易数据"
+--> "1.整理交易数据"
 
 ' logic.transaction.create()处理逻辑
 partition "2.给合法交易签名" {
@@ -39,7 +39,8 @@ partition "2.给合法交易签名" {
   --> "计算交易费用（fee）"
 }
 
---> "请看下一步： 3.验证交易合法性"
+--> "3.验证交易合法性"
+--> "4.广播到网络"
 
 --> (*)
 @enduml

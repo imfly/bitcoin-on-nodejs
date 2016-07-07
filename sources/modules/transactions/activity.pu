@@ -100,7 +100,7 @@ partition "2.给合法交易签名" {
   --> "计算交易费用（fee）"
 }
 
-' modules.transactions.receiveTransactions()逻辑
+' modules.transactions.receiveTransactions()逻辑 
 partition "3.验证交易合法性" {
   --> "处理（未确认）交易：modules.transactions.receiveTransactions()" as receiveTransactions
   note left
