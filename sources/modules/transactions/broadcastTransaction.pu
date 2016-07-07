@@ -1,0 +1,26 @@
+@startuml ../../../styles/images/modules/transactions/broadcastTransaction-activity.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+把交易广播到点对点网络流程图
+
+end title
+
+footer copyright (c) imfly 2016.07.05 http://ebookchain.org
+header 《Nodejs开发加密货币》分析用图：《交易》
+
+(*)--> [新建交易] "put /api/transactions/" as inputForm
+note left: 代码在shared.addTransactions()方法里
+
+--> "请看：1.整理交易数据"
+--> "请看：2.给合法交易签名"
+--> "请看：3.验证交易合法性"
+
+partition "4.广播到网络，并写入区块链" {
+  --> library.bus.message('unconfirmedTransaction', transaction, broadcast);
+  note bottom: 触发未处理交易事件，广播到网络
+  --> Transport.onUnconfirmedTransaction()
+}
+--> (*)
+@enduml

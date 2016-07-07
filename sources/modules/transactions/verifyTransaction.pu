@@ -102,7 +102,7 @@ partition "2.给合法交易签名" {
 
 ' modules.transactions.receiveTransactions()逻辑
 partition "3.验证交易合法性" {
-  --> "处理（未确认）交易：modules.transactions.receiveTransactions()" as receiveTransactions
+  --> "处理（未确认）交易"
   note left
   代码在modules.transactions.receiveTransactions()方法里，
   显然，新整理签名的交易数据在加密货币里，属于未确认交易
@@ -129,57 +129,26 @@ partition "3.验证交易合法性" {
 
   --> private.doubleSpendingTransactions[transaction.id]
   note bottom
-  这里要避免重复提交等“双花”问题
+  这里要避免重复提交，甚至“双花”
   end note
 
   --> library.logic.transaction.verify()
   note bottom
   该方法是对交易的验证，而前面数据整理部分是对数据的过滤，
   有相似的地方。这里包含：验证发送者（甲方）、签名、支付签名、
-  签名唯一性、交易费、数额、时间戳等，代码简单，不详述
+  签名唯一性、交易费、数额、时间戳等
   end note
 
-  partition "并入区块链" {
-    --> private.addUnconfirmedTransaction()
-    note bottom
-    把未确认的交易都放到一个队列里处理，等同于下面的方法
-    end note
-
-    --> transactions.prototype.applyUnconfirmed()
-    --> library.logic.transaction.applyUnconfirmed(transaction, sender, requester, cb);
-    --> this.scope.account.merge(sender.address,)
-    note left: 这是并入区块的方法进入点
-    --> private.types[trs.type].applyUnconfirmed.call(this, trs, sender,)
-  }
+  --> private.addUnconfirmedTransaction()
+  note bottom
+  把未确认的交易都放到一个队列里处理
+  end note
 }
 
-partition "4.广播到网络" {
+partition "4.广播到网络，并写入区块链" {
   --> library.bus.message('unconfirmedTransaction', transaction, broadcast);
-  note bottom: "触发未处理交易事件，广播到网络，其中broadcast=true"
-  partition "modules/transport.js" {
-    --> transport.onUnconfirmedTransaction()
-    --> transport.broadcast()
-    note bottom
-    "该方法发出广播指令，包含广播的节点数量、交易数据、请求方法"
-    end note
-    --> modules.peer.list()
-    note left:该方法获得指定数量节点，并逐个随机执行下面的方法
-    --> transport.getFromPeer()
-    note bottom
-    "当找到某节点，该方法就把交易数据，通过post
-    方法发送到`api/peer/transactions`接口，整个
-    过程，是使用request组件模拟浏览器实现的"
-    end note
-
-    --> request(req,[])
-    --> router.post("/transactions,[])
-    --> library.balancesSequence.add()
-    --> receiveTransactions
-    --> modules.peer.update()
-    note bottom
-    "当该节点请求成功时，交易结束之后，就会趁机更新该节点的状态"
-    end note
-  }
+  note bottom: 触发未处理交易事件，广播到网络
+  --> Transport.onUnconfirmedTransaction()
 }
 --> (*)
 @enduml
