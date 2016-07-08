@@ -3,7 +3,7 @@ skinparam BorderColor #blue\9932CC
 skinparam backgroundcolor AntiqueWhite/white
 
 title
-亿书交易相关函数调用流程图
+验证交易合法性流程图
 
 end title
 
@@ -12,9 +12,7 @@ header 《Nodejs开发加密货币》分析用图：《交易》
 
 ' shared.addTransactions()代码逻辑
 
-(*)--> [新建交易] "put /api/transactions/"
-
---> "1.整理交易数据"
+(*)--> [新建交易] "1.生成交易数据"
 --> "2.给合法交易签名"
 
 ' modules.transactions.receiveTransactions()逻辑
@@ -22,15 +20,15 @@ partition "3.验证交易合法性" {
   --> "处理（未确认）交易：modules.transactions.receiveTransactions()" as receiveTransactions
   note left
   代码在modules.transactions.receiveTransactions()方法里，
-  显然，新整理签名的交易数据在加密货币里，属于未确认交易
+  显然，新建并签名的交易数据属于未确认交易
   end note
 
   --> "执行processUnconfirmedTransaction()方法"
   if transaction.requesterPublicKey? then
     --> [yes] library.logic.transaction.process(transaction, sender, requester,cb)
     note bottom
-    "这个是转账交易类型，该函数本身也进行了系列验证，
-    并使用交易ID查询区块链数据库，确保交易未完成"
+    这个是转账交易类型，该函数本身也进行了系列验证，
+    并使用交易ID查询区块链数据库，确保交易属于未完成
     end note
 
     --> ==verify==
@@ -45,32 +43,34 @@ partition "3.验证交易合法性" {
   endif
 
   --> private.doubleSpendingTransactions[transaction.id]
-  note bottom
-  这里要避免重复提交等“双花”问题
+  note left
+  这里要避免“双花”问题
   end note
 
   --> library.logic.transaction.verify()
-  note bottom
-  该方法是对交易的验证，而前面数据整理部分是对数据的过滤，
-  有相似的地方。这里包含：验证发送者（甲方）、签名、支付签名、
-  签名唯一性、交易费、数额、时间戳等，代码简单，不详述
+  note right
+  前面数据整理部分是对数据正确性的处理，
+  而该方法是对交易的验证，主要包含：验证
+  发送者（甲方）、签名、支付签名、签名唯
+  一性、交易费、数额、时间戳等，代码简单
   end note
 
-  partition "并入区块链" {
+  partition "加入区块链" {
     --> private.addUnconfirmedTransaction()
     note bottom
-    把未确认的交易都放到一个队列里处理，等同于下面的方法
+    把未确认的交易都放到一个队列
+    里处理，等同于下面的方法
     end note
 
     --> transactions.prototype.applyUnconfirmed()
     --> library.logic.transaction.applyUnconfirmed(transaction, sender, requester, cb);
     --> this.scope.account.merge(sender.address,)
-    note left: 这是并入区块的方法进入点
+    note left: 通过该方法把交易信息关联到（加入）到区块链
     --> private.types[trs.type].applyUnconfirmed.call(this, trs, sender,)
   }
 }
 
---> "4.广播到网络"
+--> "4.广播到点对点网络"
 
 --> (*)
 @enduml

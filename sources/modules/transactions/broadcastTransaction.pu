@@ -3,49 +3,47 @@ skinparam BorderColor #blue\9932CC
 skinparam backgroundcolor AntiqueWhite/white
 
 title
-把交易广播到点对点网络流程图
+广播到点对点网络流程图
 
 end title
 
 footer copyright (c) imfly 2016.07.05 http://ebookchain.org
 header 《Nodejs开发加密货币》分析用图：《交易》
 
-(*)--> [新建交易] "put /api/transactions/" as inputForm
-note left: 代码在shared.addTransactions()方法里
+(*)--> [新建交易] "1.生成交易数据"
+--> "2.给合法交易签名"
+--> "3.验证交易合法性" as verifyTrs
 
---> "请看：1.整理交易数据"
---> "请看：2.给合法交易签名"
---> "请看：3.验证交易合法性" as verifyTrs
-
-partition "4.广播到网络" {
+partition "4.广播到点对点网络" {
   --> library.bus.message('unconfirmedTransaction', transaction, broadcast);
   note top: "触发未处理交易事件，广播到网络，其中broadcast=true"
   partition "modules/transport.js" {
     --> transport.onUnconfirmedTransaction()
     --> transport.broadcast()
     note left
-    "该方法发出广播指令，
+    该方法发出广播指令，
     包含广播的节点数量、
-    交易数据、请求方法"
+    交易数据、请求方法
     end note
+
     --> modules.peer.list()
     note left:该方法获得指定数量节点，并逐个随机执行下面的方法
     --> transport.getFromPeer()
     note left
-    "当找到某节点，该方法就把交易数据，通过post
-    方法发送到`api/peer/transactions`接口，整个
-    过程，是使用request组件模拟浏览器实现的"
+    当找到某节点，该方法就把交易数据，
+    通过post方法发送到`api/peer/transactions`接口，
+    整个过程，是使用request组件模拟浏览器实现的
     end note
 
     --> request(req,[])
-    --> router.post("/transactions,[])
+    --> router.post("/transactions,function())
     --> library.balancesSequence.add()
     --> verifyTrs
-    -down-> modules.peer.update()
+    -right-> modules.peer.update()
     note bottom
-    "当该节点请求成功时，
+    当该节点请求成功时，
     交易结束之后，就会
-    趁机更新该节点的状态"
+    趁机更新该节点的状态
     end note
   }
 }

@@ -3,7 +3,7 @@ skinparam BorderColor #blue\9932CC
 skinparam backgroundcolor AntiqueWhite/white
 
 title
-交易签名流程图
+给合法交易签名流程图
 
 end title
 
@@ -12,10 +12,7 @@ header 《Nodejs开发加密货币》分析用图：《交易》
 
 ' shared.addTransactions()代码逻辑
 
-(*)--> [新建交易] "put /api/transactions/" as inputForm
-note left: 代码在shared.addTransactions()方法里
-
---> "1.整理交易数据"
+(*)--> [新建交易] "1.生成交易数据"
 
 ' logic.transaction.create()处理逻辑
 partition "2.给合法交易签名" {
@@ -24,23 +21,25 @@ partition "2.给合法交易签名" {
 
   --> "添加时间戳: timestamp: slots.getTime()"
   note left
-  "这里的时间戳不是直接使用Date.now()获得，而是
-  亿书系统统一处理的。请看书中有关时间戳的论述"
+  这里的时间戳不是直接使用
+  Date.now()获得，而是亿书
+  系统统一处理的。请看书中
+  实践部分有关时间戳的文章
   end note
 
   --> "甲方签名: trs.signature = this.sign(data.keypair, trs)"
   --> "如果有支付密码，甲方进行二次签名: trs.signSignature = this.sign(data.secondKeypairtrs);"
   --> "计算交易ID（getId())"
   note left
-  "交易ID不是一个简单的随机数，
+  交易ID不是一个简单的随机数，
   而是与交易类型、时间戳、甲乙方密钥、
-  地址、交易数额等直接相关的Hash值"
+  地址、交易数额等直接相关的Hash值
   end note
   --> "计算交易费用（fee）"
 }
 
 --> "3.验证交易合法性"
---> "4.广播到网络"
+--> "4.广播到点对点网络"
 
 --> (*)
 @enduml
