@@ -1,975 +1,903 @@
+
 <!DOCTYPE HTML>
-<html lang="zh-tw" >
-    
+<html lang="zh" >
     <head>
-        
+        <title>共识机制，可编程的“利益”转移规则 · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>共识机制，可编程的“利益”转移规则 | Node.js开发加密货币</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="generator" content="GitBook 3.1.1">
         <meta name="author" content="Imfly">
         
-        <meta name="HandheldFriendly" content="true"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
+    
     <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
     
         
-        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+    
         
     
         
-        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+    
         
     
         
-        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+    
         
-    
-    
         <link rel="stylesheet" href="../styles/website.css">
+        
     
 
         
     
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
     
     <link rel="next" href="../2-Node.js入门指南/readme.html" />
     
     
-    <link rel="prev" href="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html" />
+    <link rel="prev" href="6-利益，魔鬼与天使的共同目标.html" />
     
 
-        
     </head>
     <body>
         
+<div class="book">
+    <div class="book-summary">
         
-    <div class="book"
-        data-level="2.3"
-        data-chapter-title="共识机制，可编程的“利益”转移规则"
-        data-filepath="1-了解加密货币/7-共识机制，可编程的“利益”转移规则.md"
-        data-basepath=".."
-        data-revision="Fri Jul 08 2016 16:44:30 GMT+0800 (CST)"
-        data-innerlanguage="">
-    
-
-<div class="book-summary">
-    <nav role="navigation">
-        <ul class="summary">
             
-            
-            
-            
-
-            
-
-            
-    
-        <li class="chapter " data-level="0" data-path="index.html">
-            
-                
-                    <a href="../index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                        介紹
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1" data-path="0-开篇的话/readme.html">
-            
-                
-                    <a href="../0-开篇的话/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.</b>
-                        
-                        开篇的话
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1" data-path="0-开篇的话/0-序言.html">
-            
-                
-                    <a href="../0-开篇的话/0-序言.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.</b>
-                        
-                        序言
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="0-开篇的话/1-开栏寄语.html">
-            
-                
-                    <a href="../0-开篇的话/1-开栏寄语.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.</b>
-                        
-                        开栏寄语
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="0-开篇的话/2-老老实实谈技术.html">
-            
-                
-                    <a href="../0-开篇的话/2-老老实实谈技术.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.3.</b>
-                        
-                        老老实实谈技术
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2" data-path="1-了解加密货币/readme.html">
-            
-                
-                    <a href="../1-了解加密货币/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.</b>
-                        
-                        了解加密货币
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1" data-path="1-了解加密货币/5-加密货币就是货币.html">
-            
-                
-                    <a href="../1-了解加密货币/5-加密货币就是货币.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.</b>
-                        
-                        加密货币就是货币
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2" data-path="1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
-            
-                
-                    <a href="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.</b>
-                        
-                        利益，魔鬼与天使的共同目标
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter active" data-level="2.3" data-path="1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
-            
-                
-                    <a href="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        共识机制，可编程的“利益”转移规则
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="3" data-path="2-Node.js入门指南/readme.html">
-            
-                
-                    <a href="../2-Node.js入门指南/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.</b>
-                        
-                        Node.js入门指南
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.1" data-path="2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
-            
-                
-                    <a href="../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.1.</b>
-                        
-                        Nodejs原来在币圈如此流行？
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2" data-path="2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
-            
-                
-                    <a href="../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.</b>
-                        
-                        Nodejs让您的前端开发像子弹飞一样
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
-            
-                
-                    <a href="../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.3.</b>
-                        
-                        Nodejs让后台开发像前端一样简单
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.4" data-path="2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
-            
-                
-                    <a href="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.4.</b>
-                        
-                        您必须知道的几个Nodejs编码习惯
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="4" data-path="3-源码解读/readme.html">
-            
-                
-                    <a href="../3-源码解读/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.</b>
-                        
-                        源码解读
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="4.1" data-path="3-源码解读/1-亿书，一个面向未来的自出版平台.html">
-            
-                
-                    <a href="../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.1.</b>
-                        
-                        亿书，一个面向未来的自出版平台
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.2" data-path="3-源码解读/2-入口程序app.js解读.html">
-            
-                
-                    <a href="../3-源码解读/2-入口程序app.js解读.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.2.</b>
-                        
-                        入口程序app.js解读
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.3" data-path="3-源码解读/3-一个精巧的p2p网络实现.html">
-            
-                
-                    <a href="../3-源码解读/3-一个精巧的p2p网络实现.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.3.</b>
-                        
-                        一个精巧的p2p网络实现
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.4" data-path="3-源码解读/4-加密和验证.html">
-            
-                
-                    <a href="../3-源码解读/4-加密和验证.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.4.</b>
-                        
-                        加密和验证
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.5" data-path="3-源码解读/5-地址.html">
-            
-                
-                    <a href="../3-源码解读/5-地址.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.5.</b>
-                        
-                        地址
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.6" data-path="3-源码解读/6-签名和多重签名.html">
-            
-                
-                    <a href="../3-源码解读/6-签名和多重签名.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.6.</b>
-                        
-                        签名和多重签名
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7" data-path="3-源码解读/7-交易.html">
-            
-                
-                    <a href="../3-源码解读/7-交易.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.7.</b>
-                        
-                        交易
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.8" data-path="3-源码解读/8-神秘的区块链.html">
-            
-                
-                    <a href="../3-源码解读/8-神秘的区块链.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.8.</b>
-                        
-                        神秘的区块链
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.9" data-path="3-源码解读/9-侧链的实现.html">
-            
-                
-                    <a href="../3-源码解读/9-侧链的实现.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.9.</b>
-                        
-                        侧链的实现
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.10" data-path="3-源码解读/10-DPOS机制的实现.html">
-            
-                
-                    <a href="../3-源码解读/10-DPOS机制的实现.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.10.</b>
-                        
-                        DPOS机制的实现
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5" data-path="4-开发实践/readme.html">
-            
-                
-                    <a href="../4-开发实践/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.</b>
-                        
-                        开发实践
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.1" data-path="4-开发实践/0-加密与解密/readme.html">
-            
-                
-                    <a href="../4-开发实践/0-加密与解密/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.1.</b>
-                        
-                        加密与解密
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.1.1" data-path="4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
-            
-                
-                    <a href="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.1.1.</b>
-                        
-                        三张图让你全面掌握加密解密技术
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5.2" data-path="4-开发实践/1-命令行设计/readme.html">
-            
-                
-                    <a href="../4-开发实践/1-命令行设计/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.2.</b>
-                        
-                        命令行设计
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.2.1" data-path="4-开发实践/1-命令行设计/1-commander介绍.html">
-            
-                
-                    <a href="../4-开发实践/1-命令行设计/1-commander介绍.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.2.1.</b>
-                        
-                        commander介绍
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3" data-path="4-开发实践/2-客户端开发/readme.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.</b>
-                        
-                        客户端开发
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.3.1" data-path="4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.1.</b>
-                        
-                        静态网站开发全景扫描
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3.2" data-path="4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.2.</b>
-                        
-                        一张图把握Ember开发的精髓
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3.3" data-path="4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.3.</b>
-                        
-                        一张图掌握把前端拆成可重用的Ember插件
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3.4" data-path="4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
-            
-                
-                    <a href="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.3.4.</b>
-                        
-                        Ember的所有钩子方法汇总
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5.4" data-path="4-开发实践/4-部署/readme.html">
-            
-                
-                    <a href="../4-开发实践/4-部署/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.4.</b>
-                        
-                        部署
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.4.1" data-path="4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
-            
-                
-                    <a href="../4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.4.1.</b>
-                        
-                        Nodejs部署方案全解析
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.4.2" data-path="4-开发实践/4-部署/2-生产环境下的pm2部署.html">
-            
-                
-                    <a href="../4-开发实践/4-部署/2-生产环境下的pm2部署.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.4.2.</b>
-                        
-                        生产环境下的pm2部署
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.4.3" data-path="4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
-            
-                
-                    <a href="../4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.4.3.</b>
-                        
-                        使用ShipIt实现全自动一键部署
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="5.5" data-path="4-开发实践/5-测试/readme.html">
-            
-                
-                    <a href="../4-开发实践/5-测试/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.5.</b>
-                        
-                        测试
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6" data-path="4-开发实践/6-优化/readme.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.</b>
-                        
-                        优化
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.6.1" data-path="4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.1.</b>
-                        
-                        Js对数据计算处理的各种问题
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6.2" data-path="4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.2.</b>
-                        
-                        Node.JS Error: ENOSPC
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6.3" data-path="4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.3.</b>
-                        
-                        一张图学会使用Async组件进行流程控制
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6.4" data-path="4-开发实践/6-优化/3-事件循环.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/3-事件循环.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.4.</b>
-                        
-                        事件循环
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="5.6.5" data-path="4-开发实践/6-优化/5-关于时间戳及相关问题.html">
-            
-                
-                    <a href="../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>5.6.5.</b>
-                        
-                        关于时间戳及相关问题
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="6" data-path="5-附录/readme.html">
-            
-                
-                    <a href="../5-附录/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.</b>
-                        
-                        附录
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="6.1" data-path="5-附录/1-加密货币相关名词汇总.html">
-            
-                
-                    <a href="../5-附录/1-加密货币相关名词汇总.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.1.</b>
-                        
-                        加密货币相关名词汇总
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.2" data-path="5-附录/2-关于亿书.html">
-            
-                
-                    <a href="../5-附录/2-关于亿书.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.2.</b>
-                        
-                        关于亿书
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.3" data-path="5-附录/3-关于区款链俱乐部.html">
-            
-                
-                    <a href="../5-附录/3-关于区款链俱乐部.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.3.</b>
-                        
-                        关于区款链俱乐部
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="6.4" data-path="5-附录/4-关于作者.html">
-            
-                
-                    <a href="../5-附录/4-关于作者.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>6.4.</b>
-                        
-                        关于作者
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="7" data-path="6-后记/readme.html">
-            
-                
-                    <a href="../6-后记/readme.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.</b>
-                        
-                        后记
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="7.1" data-path="6-后记/1-记录应该记住的内容.html">
-            
-                
-                    <a href="../6-后记/1-记录应该记住的内容.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>7.1.</b>
-                        
-                        记录应该记住的内容
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-
-            
-            <li class="divider"></li>
-            <li>
-                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-                    本書使用 GitBook 釋出
-                </a>
-            </li>
-            
-        </ul>
-    </nav>
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
 </div>
 
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../0-开篇的话/readme.html">
+            
+                <a href="../0-开篇的话/readme.html">
+            
+                    
+                    开篇的话
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../0-开篇的话/0-序言.html">
+            
+                <a href="../0-开篇的话/0-序言.html">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../0-开篇的话/1-开栏寄语.html">
+            
+                <a href="../0-开篇的话/1-开栏寄语.html">
+            
+                    
+                    开栏寄语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../0-开篇的话/2-老老实实谈技术.html">
+            
+                <a href="../0-开篇的话/2-老老实实谈技术.html">
+            
+                    
+                    老老实实谈技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    了解加密货币
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="5-加密货币就是货币.html">
+            
+                <a href="5-加密货币就是货币.html">
+            
+                    
+                    加密货币就是货币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="6-利益，魔鬼与天使的共同目标.html">
+            
+                <a href="6-利益，魔鬼与天使的共同目标.html">
+            
+                    
+                    利益，魔鬼与天使的共同目标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="7-共识机制，可编程的“利益”转移规则.html">
+            
+                <a href="7-共识机制，可编程的“利益”转移规则.html">
+            
+                    
+                    共识机制，可编程的“利益”转移规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../2-Node.js入门指南/readme.html">
+            
+                <a href="../2-Node.js入门指南/readme.html">
+            
+                    
+                    Node.js入门指南
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                <a href="../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                    
+                    Nodejs原来在币圈如此流行？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                <a href="../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                    
+                    Nodejs让您的前端开发像子弹飞一样
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                <a href="../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                    
+                    Nodejs让后台开发像前端一样简单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                <a href="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                    
+                    您必须知道的几个Nodejs编码习惯
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../3-源码解读/readme.html">
+            
+                <a href="../3-源码解读/readme.html">
+            
+                    
+                    源码解读
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
+            
+                <a href="../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
+            
+                    
+                    亿书，一个面向未来的自出版平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../3-源码解读/2-入口程序app.js解读.html">
+            
+                <a href="../3-源码解读/2-入口程序app.js解读.html">
+            
+                    
+                    入口程序app.js解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../3-源码解读/3-一个精巧的p2p网络实现.html">
+            
+                <a href="../3-源码解读/3-一个精巧的p2p网络实现.html">
+            
+                    
+                    一个精巧的p2p网络实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../3-源码解读/4-加密和验证.html">
+            
+                <a href="../3-源码解读/4-加密和验证.html">
+            
+                    
+                    加密和验证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../3-源码解读/5-地址.html">
+            
+                <a href="../3-源码解读/5-地址.html">
+            
+                    
+                    地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../3-源码解读/6-签名和多重签名.html">
+            
+                <a href="../3-源码解读/6-签名和多重签名.html">
+            
+                    
+                    签名和多重签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../3-源码解读/7-交易.html">
+            
+                <a href="../3-源码解读/7-交易.html">
+            
+                    
+                    交易
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../3-源码解读/8-神秘的区块链.html">
+            
+                <a href="../3-源码解读/8-神秘的区块链.html">
+            
+                    
+                    神秘的区块链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../3-源码解读/9-侧链的实现.html">
+            
+                <a href="../3-源码解读/9-侧链的实现.html">
+            
+                    
+                    侧链的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../3-源码解读/10-DPOS机制的实现.html">
+            
+                <a href="../3-源码解读/10-DPOS机制的实现.html">
+            
+                    
+                    DPOS机制的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../4-开发实践/readme.html">
+            
+                <a href="../4-开发实践/readme.html">
+            
+                    
+                    开发实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../4-开发实践/0-加密与解密/readme.html">
+            
+                <a href="../4-开发实践/0-加密与解密/readme.html">
+            
+                    
+                    加密与解密
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+            
+                <a href="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+            
+                    
+                    三张图让你全面掌握加密解密技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../4-开发实践/1-命令行设计/readme.html">
+            
+                <a href="../4-开发实践/1-命令行设计/readme.html">
+            
+                    
+                    命令行设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../4-开发实践/1-命令行设计/1-commander介绍.html">
+            
+                <a href="../4-开发实践/1-命令行设计/1-commander介绍.html">
+            
+                    
+                    commander介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../4-开发实践/2-客户端开发/readme.html">
+            
+                <a href="../4-开发实践/2-客户端开发/readme.html">
+            
+                    
+                    客户端开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
+            
+                <a href="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
+            
+                    
+                    静态网站开发全景扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
+            
+                <a href="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
+            
+                    
+                    一张图把握Ember开发的精髓
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
+            
+                <a href="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
+            
+                    
+                    一张图掌握把前端拆成可重用的Ember插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
+            
+                <a href="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
+            
+                    
+                    Ember的所有钩子方法汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../4-开发实践/4-部署/readme.html">
+            
+                <a href="../4-开发实践/4-部署/readme.html">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
+            
+                <a href="../4-开发实践/4-部署/1-Nodejs部署方案全解析.html">
+            
+                    
+                    Nodejs部署方案全解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../4-开发实践/4-部署/2-生产环境下的pm2部署.html">
+            
+                <a href="../4-开发实践/4-部署/2-生产环境下的pm2部署.html">
+            
+                    
+                    生产环境下的pm2部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="../4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
+            
+                <a href="../4-开发实践/4-部署/3-使用ShipIt实现全自动一键部署.html">
+            
+                    
+                    使用ShipIt实现全自动一键部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../4-开发实践/5-测试/readme.html">
+            
+                <a href="../4-开发实践/5-测试/readme.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../4-开发实践/6-优化/readme.html">
+            
+                <a href="../4-开发实践/6-优化/readme.html">
+            
+                    
+                    优化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.6.1" data-path="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
+            
+                <a href="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
+            
+                    
+                    Js对数据计算处理的各种问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.2" data-path="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
+            
+                <a href="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
+            
+                    
+                    Node.JS Error: ENOSPC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.3" data-path="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+            
+                <a href="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+            
+                    
+                    一张图学会使用Async组件进行流程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.4" data-path="../4-开发实践/6-优化/3-事件循环.html">
+            
+                <a href="../4-开发实践/6-优化/3-事件循环.html">
+            
+                    
+                    事件循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.5" data-path="../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
+            
+                <a href="../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
+            
+                    
+                    关于时间戳及相关问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../5-附录/readme.html">
+            
+                <a href="../5-附录/readme.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../5-附录/1-加密货币相关名词汇总.html">
+            
+                <a href="../5-附录/1-加密货币相关名词汇总.html">
+            
+                    
+                    加密货币相关名词汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../5-附录/2-关于亿书.html">
+            
+                <a href="../5-附录/2-关于亿书.html">
+            
+                    
+                    关于亿书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../5-附录/3-关于区款链俱乐部.html">
+            
+                <a href="../5-附录/3-关于区款链俱乐部.html">
+            
+                    
+                    关于区款链俱乐部
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../5-附录/4-关于作者.html">
+            
+                <a href="../5-附录/4-关于作者.html">
+            
+                    
+                    关于作者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../6-后记/readme.html">
+            
+                <a href="../6-后记/readme.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../6-后记/1-记录应该记住的内容.html">
+            
+                <a href="../6-后记/1-记录应该记住的内容.html">
+            
+                    
+                    记录应该记住的内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
     <div class="book-body">
-        <div class="body-inner">
-            <div class="book-header" role="navigation">
-    <!-- Actions Left -->
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
     
 
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../" >Node.js开发加密货币</a>
+        <a href=".." >共识机制，可编程的“利益”转移规则</a>
     </h1>
 </div>
 
-            <div class="page-wrapper" tabindex="-1" role="main">
-                <div class="page-inner">
-                
-                
-                    <section class="normal" id="section-">
-                    
-                        <h1 id="&#x5171;&#x8BC6;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x7F16;&#x7A0B;&#x7684;&#x5229;&#x76CA;&#x8F6C;&#x79FB;&#x89C4;&#x5219;">&#x5171;&#x8BC6;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x7F16;&#x7A0B;&#x7684;&#x5229;&#x76CA;&#x8F6C;&#x79FB;&#x89C4;&#x5219;</h1>
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5171;&#x8BC6;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x7F16;&#x7A0B;&#x7684;&#x5229;&#x76CA;&#x8F6C;&#x79FB;&#x89C4;&#x5219;">&#x5171;&#x8BC6;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x7F16;&#x7A0B;&#x7684;&#x5229;&#x76CA;&#x8F6C;&#x79FB;&#x89C4;&#x5219;</h1>
 <h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
 <p>&#x524D;&#x9762;&#x7684;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x8BF4;&#x8FC7;&#xFF0C;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x90FD;&#x662F;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#x7684;&#xFF0C;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#x7684;&#x57FA;&#x7840;&#x5C31;&#x662F;P2P&#x8282;&#x70B9;&#x4F17;&#x591A;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x5438;&#x5F15;&#x7528;&#x6237;&#x52A0;&#x5165;&#x7F51;&#x7EDC;&#x6210;&#x4E3A;&#x8282;&#x70B9;&#xFF0C;&#x6709;&#x90A3;&#x4E9B;&#x6FC0;&#x52B1;&#x673A;&#x5236;&#xFF1F;&#x540C;&#x65F6;&#xFF0C;&#x5F00;&#x53D1;&#x7684;&#x91CD;&#x70B9;&#x662F;&#x8BA9;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x51B3;&#x5B9A;&#x54EA;&#x4E2A;&#x8282;&#x70B9;&#x5199;&#x5165;&#xFF1F;&#x4F55;&#x65F6;&#x5199;&#x5165;&#xFF1F;&#x4E00;&#x65E6;&#x5199;&#x5165;&#xFF0C;&#x53C8;&#x600E;&#x4E48;&#x4FDD;&#x8BC1;&#x4E0D;&#x88AB;&#x5176;&#x4ED6;&#x7684;&#x8282;&#x70B9;&#x66F4;&#x6539;&#xFF08;&#x4E0D;&#x53EF;&#x9006;&#xFF09;&#xFF1F;&#x56DE;&#x7B54;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x7684;&#x7B54;&#x6848;&#xFF0C;&#x5C31;&#x662F;&#x5171;&#x8BC6;&#x673A;&#x5236;&#x3002;</p>
 <p>&#x5171;&#x8BC6;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x7F16;&#x7A0B;&#x7684;&#x5229;&#x76CA;&#x8F6C;&#x79FB;&#x89C4;&#x5219;&#x3002;&#x8FD9;&#x4E2A;&#x9898;&#x76EE;&#x5199;&#x51FA;&#x6765;&#xFF0C;&#x5C31;&#x6709;&#x70B9;&#x6FC0;&#x52A8;&#xFF0C;&#x7F16;&#x7A0B;&#x5F00;&#x53D1;&#x8FD9;&#x4E48;&#x591A;&#x5E74;&#xFF0C;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x8FC7;&#x5F88;&#x591A;&#x65B9;&#x6CD5;&#xFF0C;&#x8BD5;&#x56FE;&#x901A;&#x8FC7;&#x67D0;&#x79CD;&#x6FC0;&#x52B1;&#x624B;&#x6BB5;&#x63D0;&#x9AD8;&#x7528;&#x6237;&#x7C98;&#x6027;&#xFF0C;&#x628A;&#x7528;&#x6237;&#x7559;&#x4F4F;&#x3002;&#x6BD4;&#x5982;&#x5E38;&#x89C1;&#x7684;&#x79EF;&#x5206;&#x673A;&#x5236;&#x3001;&#x7528;&#x6237;&#x7B49;&#x7EA7;&#x7B49;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x80FD;&#x4E0E;&#x52A0;&#x5BC6;&#x8D27;&#x5E01;&#x7684;&#x5171;&#x8BC6;&#x673A;&#x5236;&#x76F8;&#x63D0;&#x5E76;&#x8BBA;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x533A;&#x5757;&#x94FE;&#x4EA7;&#x54C1;&#xFF0C;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5C0F;&#x5C0F;&#x7684;&#x793E;&#x4F1A;&#xFF0C;&#x4E00;&#x4E2A;&#x7531;&#x7F51;&#x7EDC;&#x8282;&#x70B9;&#x7EC4;&#x6210;&#x7684;&#x81EA;&#x9002;&#x5E94;&#x7EC4;&#x7EC7;&#xFF0C;&#x8FD9;&#x4E2A;&#x7EC4;&#x7EC7;&#x7684;&#x8FD0;&#x884C;&#xFF0C;&#x8981;&#x7531;&#x5171;&#x8BC6;&#x673A;&#x5236;&#x6765;&#x89C4;&#x8303;&#x3002;</p>
@@ -1043,54 +971,86 @@
 <p><a href="http://www.8btc.com/the-dao-going-to-be-doa" target="_blank">&#x6BD4;&#x7279;&#x80A1;&#x521B;&#x59CB;&#x4EBA;&#xFF1A;The DAO &#x5728;&#x8D70;BTS&#x7684;&#x8001;&#x8DEF;&#xFF0C;&#x6216;&#x79BB;&#x6B7B;&#x671F;&#x5DF2;&#x4E0D;&#x8FDC;</a></p>
 <p><a href="http://wiki.mbalib.com/wiki/&#x673A;&#x5236;" target="_blank">&#x673A;&#x5236;&#x89E3;&#x6790;</a></p>
 
-                    
-                    </section>
-                
-                
-                </div>
-            </div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
         </div>
-
-        
-        <a href="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html" class="navigation navigation-prev " aria-label="Previous page: 利益，魔鬼与天使的共同目标"><i class="fa fa-angle-left"></i></a>
-        
-        
-        <a href="../2-Node.js入门指南/readme.html" class="navigation navigation-next " aria-label="Next page: Node.js入门指南"><i class="fa fa-angle-right"></i></a>
-        
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
     </div>
 </div>
 
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="6-利益，魔鬼与天使的共同目标.html" class="navigation navigation-prev " aria-label="Previous page: 利益，魔鬼与天使的共同目标">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../2-Node.js入门指南/readme.html" class="navigation navigation-next " aria-label="Next page: Node.js入门指南">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
         
-<script src="../gitbook/app.js"></script>
+    </div>
 
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"共识机制，可编程的“利益”转移规则","level":"1.3.3","depth":2,"next":{"title":"Node.js入门指南","level":"1.4","depth":1,"path":"2-Node.js入门指南/readme.md","ref":"2-Node.js入门指南/readme.md","articles":[{"title":"Nodejs原来在币圈如此流行？","level":"1.4.1","depth":2,"path":"2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.md","ref":"2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.md","articles":[]},{"title":"Nodejs让您的前端开发像子弹飞一样","level":"1.4.2","depth":2,"path":"2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.md","ref":"2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.md","articles":[]},{"title":"Nodejs让后台开发像前端一样简单","level":"1.4.3","depth":2,"path":"2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.md","ref":"2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.md","articles":[]},{"title":"您必须知道的几个Nodejs编码习惯","level":"1.4.4","depth":2,"path":"2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.md","ref":"2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.md","articles":[]}]},"previous":{"title":"利益，魔鬼与天使的共同目标","level":"1.3.2","depth":2,"path":"1-了解加密货币/6-利益，魔鬼与天使的共同目标.md","ref":"1-了解加密货币/6-利益，魔鬼与天使的共同目标.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","-livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"1-了解加密货币/7-共识机制，可编程的“利益”转移规则.md","mtime":"2016-07-07T15:27:27.505Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-07-08T13:43:37.583Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
     
-    <script src="../gitbook/plugins/gitbook-plugin-baidu/plugin.js"></script>
+        
+        <script src="../gitbook/gitbook-plugin-baidu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
     
 
-    
-    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
-    
-
-<script>
-require(["gitbook"], function(gitbook) {
-    var config = {"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
-    gitbook.start(config);
-});
-</script>
-
-        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?a489cddfaf5ed40abc3a60e2783e8019';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
     </body>
-    
 </html>
+
