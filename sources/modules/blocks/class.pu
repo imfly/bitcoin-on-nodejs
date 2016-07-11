@@ -30,15 +30,7 @@ package logic {
     +getHash(block): hash
     +calculateFee(block): 10000000
     +dbRead(raw): block
-
-    .. events ..
-
-    .. shared methods..
-
   }
-
-  ' relationship
-  Block -right-> transaction
 }
 
 ' modules/blocks.js
@@ -103,13 +95,15 @@ Blocks -up-> ed25519: <<require>>
 Blocks -up-> Router: <<require>>
 Blocks -up-> slots: <<require>>
 
-Blocks -left-> balancesSequence
+Blocks -right-> balancesSequence
 Blocks --> dbSequence
 Blocks -down-> genesisblock
-Blocks -right-> dbLite
-Blocks -right-> Block: dbRead(rows[i]))
-Blocks -right-> transaction
+Blocks -down-> dbLite
+Blocks -left-> Block: dbRead(rows[i]))
+Blocks -down-> transaction
 
-Block --> scheme
+Block -up-> scheme
 Block -down-> dbLite
+Block -left-> genesisblock
+Block -right-> transaction
 @enduml
