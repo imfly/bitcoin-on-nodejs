@@ -349,5 +349,5 @@ Node is Not Single Threaded： http://rickgaribay.net/archive/2012/01/28/node-is
 Node.js 异步异常的处理与domain模块解析: https://cnodejs.org/topic/516b64596d38277306407936
 
 
-[pipe]: ../styles/images/2/pipe.png
+[pipe]: ../styles/images/third/pipe.png
 [NodeJS 错误处理最佳实践]: http://segmentfault.com/a/1190000002741935#articleHeader3

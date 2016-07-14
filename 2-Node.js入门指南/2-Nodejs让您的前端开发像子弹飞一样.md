@@ -610,12 +610,12 @@ d3.js官方网站: https://d3js.org
 [runoob]: http://www.runoob.com/node.js/node.js-tutorial.html
 [node.js install]: https://cnodejs.org/topic/5338c5db7cbade005b023c98
 [ebookcoin]: http://8btc.com/forum.php?mod=viewthread&tid=26208&highlight=%B5%E7%D7%D3%CA%E9
-[front-data-follow]: ../styles/images/2/data-flow.jpg
+[front-data-follow]: ../styles/images/third/data-flow.jpg
 [官方搜索示例]: https://developer.github.com/v3/search/
-[github-search-example]: ../styles/images/2/github-search-example.jpg
-[project-folder]: ../styles/images/2/project-folders.png
+[github-search-example]: ../styles/images/third/github-search-example.jpg
+[project-folder]: ../styles/images/third/project-folders.png
 [project-source]: https://github.com/imfly/sacdl-project
-[firefox-console]: ../styles/images/2/firefox-console.jpg
-[pipe]: ../styles/images/2/pipe.png
-[bower-init]: ../styles/images/2/bower-init.jpg
-[front-url.jpg]: ../styles/images/2/front-url.jpg
+[firefox-console]: ../styles/images/third/firefox-console.jpg
+[pipe]: ../styles/images/third/pipe.png
+[bower-init]: ../styles/images/third/bower-init.jpg
+[front-url.jpg]: ../styles/images/third/front-url.jpg

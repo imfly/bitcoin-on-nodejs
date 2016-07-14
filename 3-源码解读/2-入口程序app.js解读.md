@@ -275,8 +275,8 @@ modules: ['network', 'connect', 'config', 'logger', 'bus', 'sequence', 'dbSequen
 
 
 
-[appjs-uml]: ../styles/images/5/appjs-uml.png
-[async-for-modules]: ../styles/images/5/async-for-modules.jpg
+[appjs-uml]: ../styles/images/third/appjs-uml.png
+[async-for-modules]: ../styles/images/third/async-for-modules.jpg
 [PDF文件]: https://www.gitbook.com/download/pdf/book/imfly/bitcoin-on-nodejs
 [ePub文件]: https://www.gitbook.com/download/epub/book/imfly/bitcoin-on-nodejs
 [Mobi文件]: https://www.gitbook.com/download/mobi/book/imfly/bitcoin-on-nodejs
