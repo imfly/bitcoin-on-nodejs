@@ -1,0 +1,63 @@
+@startuml ../../../styles/images/modules/blocks/blocks-database.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+区块链数据库表格关联图
+
+end title
+footer copyright (c) imfly 2016.07.18 http://bitcoin-on-nodejs.ebookchain.org
+header 《Nodejs开发加密货币》分析用图：《区块链》
+
+' modules/Peer.js
+package Blocks <<Database>> {
+  Class blocks {
+    + id: VARCHAR PRIMARY KEY
+    + version: INT
+    + timestamp: INT
+    + height: INT
+    + previousBlock: VARCHAR FOREIGN KEY
+    + numberOfTransactions: INT
+    + totalAmount: BIGINT
+    + totalFee: BIGINT
+    + reward: BIGINT
+    + payloadLength: INT
+    + payloadHash: BINARY
+    + generatorPublicKey: BINARY
+    + blockSignature: BINARY
+  }
+
+  Class trs {
+    +id: VARCHAR PRIMARY KEY
+    +blockId: VARCHAR FOREIGN KEY
+    +type: TINYINT
+    +timestamp: INT
+    +senderPublicKey: BINARY
+    +senderId: VARCHAR
+    +recipientId: VARCHAR
+    +senderUsername: VARCHAR
+    +recipientUsername: VARCHAR
+    +amount: BIGINT
+    +fee: BIGINT
+    +signature: BINARY
+    +signSignature: BINARY
+    +requesterPublicKey: BINARY
+    +signatures: TEXT
+  }
+
+  Class forks_stat {
+    +delegatePublicKey: BINARY
+    +blockTimestamp: INT
+    +blockId: VARCHAR
+    +blockHeight: INT
+    +previousBlock: VARCHAR
+    +cause: INT
+  }
+
+  ' relationship
+    blocks "1" *-> "1" blocks: previousBlock
+    trs "0..*" *-left-> "1" blocks: blockId
+    forks_stat "*" *-down-> "1" blocks: blockId
+    forks_stat "1" *-up-> "1" blocks: previousBlock
+}
+@enduml

@@ -7,10 +7,10 @@ title
 
 end title
 footer copyright (c) imfly 2016.03.08 http://bitcoin-on-nodejs.ebookchain.org
-header 《Nodejs开发加密货币》第x篇分析用图
+header 《Nodejs开发加密货币》分析用图
 
 ' modules/Peer.js
-package DBlite <<Database>> {
+package Datebase <<Database>> {
   Class blocks {
     + id: VARCHAR PRIMARY KEY
     + version: INT
@@ -133,7 +133,7 @@ package DBlite <<Database>> {
     blocks "1" *-> "1" blocks: previousBlock
     trs "0..*" *-left-> "1" blocks: blockId
     forks_stat "*" *-down-> "1" blocks: blockId
-    forks_stat "1" *-up-> "1" forks_stat: previousBlock
+    forks_stat "1" *-down-> "1" blocks: previousBlock
     signatures "1" *-up-> "1" trs: transactionId
     delegates "*" *-up-> "1" trs: transactionId
     votes "*" *-up-> "1" trs: transactionId
