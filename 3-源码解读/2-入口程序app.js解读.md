@@ -201,7 +201,7 @@ scope.network.server.listen(scope.config.port, scope.config.address, function (e
 
 （3）加载逻辑
 
-看代码知道，其核心逻辑功能应该是：账户管理、交易和区块链。这些模块，有其执行顺序，我们需要在后面的篇章中，分别单独介绍。
+看代码知道，其核心逻辑功能是：账户管理、交易和区块链。这些模块，本质上是对数据库操作的封装，`account`与`modules/accounts`模块对应，`transaction`与`modules/transactions`模块对应，`block`与`modules/blocks`模块对应，我们会在介绍相关模块时，一起分析。
 
 ```
 // 379行
