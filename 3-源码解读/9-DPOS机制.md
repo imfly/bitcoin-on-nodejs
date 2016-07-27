@@ -12,13 +12,17 @@
 
 delegates.js https://github.com/Ebookcoin/ebookcoin/blob/v0.1.3/modules/delegates.js
 
-slots.js: https://github.com/Ebookcoin/ebookcoin/blob/v0.1.3/helpers/slots.js
+round.js https://github.com/Ebookcoin/ebookcoin/blob/v0.1.3/modules/round.js
 
 accounts.js https://github.com/Ebookcoin/ebookcoin/blob/v0.1.3/modules/accounts.js
 
-round.js https://github.com/Ebookcoin/ebookcoin/blob/v0.1.3/modules/round.js
+slots.js: https://github.com/Ebookcoin/ebookcoin/blob/v0.1.3/helpers/slots.js
 
-## 需求
+## 类图
+
+## 流程图
+
+## 解读
 
 [亿书白皮书][] 描述了DPOS（授权股权证明）机制原理，亿书由受托人来创建区块，获得新币（铸币），从而保证整个网络安全运行。想成为受托人，用户
 
