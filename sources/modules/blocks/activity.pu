@@ -12,15 +12,64 @@ header 《Nodejs开发加密货币》分析用图：《区块链》
 
 (*) --> 启动应用
 
-partition "写入创世区块" {
+partition "1.保存创世区块" {
   --> app.js: new Blocks()
   --> blocks.js: saveGenesisBlock()
   --> blocks.js: saveBlock()
   --> logic/block.js: dbSave()
 }
 
---> [节点准备完毕] library.bus.message('peerReady')
-note right: 触发事件
+partition "2.加载本地区块" {
+  --> app.js : scope.bus.message("bind", scope.modules);
+  --> ==bind==
+  --> "其他bind事件"
+  ==bind== --> modules/loader.js : Loader.prototype.onBind()
+  --> modules/loader.js : private.loadBlockChain
+  --> logic/account.js : createTables()
+  --> "modules/blocks.js : loadBlocksOffset()" as loadBlocksOffset
+  partition "3.验证本地区块" {
+    --> block.previousBlock != private.lastBlock.id
+    --> library.logic.block.verifySignature(block)
+    --> modules/delegates.js : validateBlockSlot
+    --> library.logic.transaction.verify(transaction,)
+    --> loadBlocksOffset
+  }
+  --> library.bus.message('blockchainReady');
+  --> ==blockchainReady==
+}
+
+partition "4.创建新区块" {
+  --> modules/delegates.js : loop()
+  --> modules/delegates.js : getBlockSlotData()
+  --> modules/blocks.js ： generateBlock()
+  --> modules/transactions.js : getUnconfirmedTransactionList()
+  --> logic/block.js : create()
+  --> modules/blocks.js : processBlock()
+}
+
+partition "5.产生区块链分叉" {
+  --> modules.delegates.fork()
+  note right: 4种原因导致分叉，请看文字解释
+}
+
+--> (*)
+
+partition "6.同步区块链，并解决分叉" {
+  ==blockchainReady== --> library.bus.message('peerReady')
+  --> modules/loader.js : onPeerReady()
+  --> private.loadBlocks(lastBlock, cb);
+  if lastBlock.id == private.genesisBlock.block.id? then
+  --> [yes] private.loadFullDb(data.peer,[])
+  --> "modules.blocks.loadBlocksFromPeer(peer,)" as loadBlocksFromPeer
+  else
+  --> [no] private.findUpdate(lastBlock,[])
+  endif
+  --> modules.blocks.getCommonBlock()
+  --> modules.transactions.undoUnconfirmedList()
+  --> modules.round.directionSwap('backward',)
+  --> modules.blocks.deleteBlocksBefore(commonBlock,)
+  --> loadBlocksFromPeer
+}
 
 --> (*)
 @enduml
