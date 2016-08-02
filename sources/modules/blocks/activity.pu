@@ -50,6 +50,11 @@ partition "4.创建新区块" {
 partition "5.产生区块链分叉" {
   --> modules.delegates.fork()
   note right: 4种原因导致分叉，请看文字解释
+  --> modules/blocks.js : saveBlock()
+  note right
+  如果没有分叉行为，就可以保存和广播区块了
+  这里触发“newBlock”事件，把新块广播到网络
+  end note
 }
 
 --> (*)
