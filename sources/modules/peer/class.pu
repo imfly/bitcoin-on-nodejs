@@ -13,7 +13,7 @@ header 《Nodejs开发加密货币》第八篇分析用图
 Class Peer {
   - modules: array
   - library: array
-  - private： hash
+  - privated： hash
   - shared: hash
   ====
   .. private methods ..

@@ -127,7 +127,7 @@ partition "3.验证交易合法性" {
     --> ==verify==
   endif
 
-  --> private.doubleSpendingTransactions[transaction.id]
+  --> privated.doubleSpendingTransactions[transaction.id]
   note bottom
   这里要避免重复提交等“双花”问题
   end note
@@ -140,7 +140,7 @@ partition "3.验证交易合法性" {
   end note
 
   partition "并入区块链" {
-    --> private.addUnconfirmedTransaction()
+    --> privated.addUnconfirmedTransaction()
     note bottom
     把未确认的交易都放到一个队列里处理，等同于下面的方法
     end note
@@ -149,7 +149,7 @@ partition "3.验证交易合法性" {
     --> library.logic.transaction.applyUnconfirmed(transaction, sender, requester, cb);
     --> this.scope.account.merge(sender.address,)
     note left: 这是并入区块的方法进入点
-    --> private.types[trs.type].applyUnconfirmed.call(this, trs, sender,)
+    --> privated.types[trs.type].applyUnconfirmed.call(this, trs, sender,)
   }
 }
 

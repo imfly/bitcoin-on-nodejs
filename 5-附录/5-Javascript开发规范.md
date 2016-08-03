@@ -95,7 +95,7 @@ https://github.com/airbnb/javascript
     // bad
     var superman = {
       default: { clark: 'kent' },
-      private: true
+      privated: true
     };
 
     // good

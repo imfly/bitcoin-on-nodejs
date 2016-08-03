@@ -42,7 +42,7 @@ partition "3.验证交易合法性" {
     --> ==verify==
   endif
 
-  --> private.doubleSpendingTransactions[transaction.id]
+  --> privated.doubleSpendingTransactions[transaction.id]
   note left
   这里要避免“双花”问题
   end note
@@ -56,7 +56,7 @@ partition "3.验证交易合法性" {
   end note
 
   partition "加入区块链" {
-    --> private.addUnconfirmedTransaction()
+    --> privated.addUnconfirmedTransaction()
     note bottom
     把未确认的交易都放到一个队列
     里处理，等同于下面的方法
@@ -66,7 +66,7 @@ partition "3.验证交易合法性" {
     --> library.logic.transaction.applyUnconfirmed(transaction, sender, requester, cb);
     --> this.scope.account.merge(sender.address,)
     note left: 通过该方法把交易信息关联到（加入）到区块链
-    --> private.types[trs.type].applyUnconfirmed.call(this, trs, sender,)
+    --> privated.types[trs.type].applyUnconfirmed.call(this, trs, sender,)
   }
 }
 

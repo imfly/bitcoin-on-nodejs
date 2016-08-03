@@ -12,7 +12,7 @@
 
   (*) --> [从接口方法开始] "post `/api/accounts/generatePublicKey`"
   --> shared.generatePublickey()
-  --> private.openAccount(secret, cb)
+  --> privated.openAccount(secret, cb)
   --> hash = crypto.createHash('sha256').update(secret, 'utf8').digest();
   --> ed.MakeKeypair(hash);
   --> setAccountAndGet(data, cb);

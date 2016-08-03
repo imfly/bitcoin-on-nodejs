@@ -24,11 +24,11 @@ partition "2.加载本地区块" {
   --> ==bind==
   --> "其他bind事件"
   ==bind== --> modules/loader.js : Loader.prototype.onBind()
-  --> modules/loader.js : private.loadBlockChain
+  --> modules/loader.js : privated.loadBlockChain
   --> logic/account.js : createTables()
   --> "modules/blocks.js : loadBlocksOffset()" as loadBlocksOffset
   partition "3.验证本地区块" {
-    --> block.previousBlock != private.lastBlock.id
+    --> block.previousBlock != privated.lastBlock.id
     --> library.logic.block.verifySignature(block)
     --> modules/delegates.js : validateBlockSlot
     --> library.logic.transaction.verify(transaction,)
@@ -62,12 +62,12 @@ partition "5.产生区块链分叉" {
 partition "6.同步区块链，并解决分叉" {
   ==blockchainReady== --> library.bus.message('peerReady')
   --> modules/loader.js : onPeerReady()
-  --> private.loadBlocks(lastBlock, cb);
-  if lastBlock.id == private.genesisBlock.block.id? then
-  --> [yes] private.loadFullDb(data.peer,[])
+  --> privated.loadBlocks(lastBlock, cb);
+  if lastBlock.id == privated.genesisBlock.block.id? then
+  --> [yes] privated.loadFullDb(data.peer,[])
   --> "modules.blocks.loadBlocksFromPeer(peer,)" as loadBlocksFromPeer
   else
-  --> [no] private.findUpdate(lastBlock,[])
+  --> [no] privated.findUpdate(lastBlock,[])
   endif
   --> modules.blocks.getCommonBlock()
   --> modules.transactions.undoUnconfirmedList()
