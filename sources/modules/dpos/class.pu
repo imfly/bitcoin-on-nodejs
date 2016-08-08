@@ -1,0 +1,135 @@
+@startuml ../../../styles/images/modules/dpos/dpos-class.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+DPoS机制相关类图及其关联关系
+
+end title
+footer copyright (c) imfly 2016.08.09 http://bitcoin-on-nodejs.ebookchain.org
+header 《Nodejs开发加密货币》分析用图：《DPoS机制》
+
+
+package helpers {
+  ' helpers/slots.js
+  Class Slots {
+    .. private methods ..
+    - beginEpochTime()
+    - getEpochTime(time)
+
+    .. public methods ..
+    + getTime (time)
+    + getRealTime (epochTime)
+    + getSlotNumber (epochTime)
+    + getSlotTime (slot)
+    + getNextSlot ()
+    + getLastSlot (nextSlot)
+  }
+
+  ' helpers/blockStatus.js
+  Class BlockStatus {
+    +milestones: {}
+    +distance: 3000000
+    +rewardOffset: 60480
+
+    --
+
+    .. public methods ..
+    +parseHeight: (height)
+    +calcMilestone: (height)
+    +calcReward: (height)
+    +calcSupply: (height)
+  }
+}
+
+package modules {
+  ' modules/blocks.js
+  Class Blocks {
+  }
+
+  ' modules/loader.js
+  Class Delegates {
+    - loaded
+    - keypairs
+
+    .. private methods ..
+    - attachApi ()
+    - getKeysSortByVote (cb)
+    - getBlockSlotData (slot, height, cb)
+    - loop (cb)
+    - loadMyDelegates (cb)
+
+    .. public methods ..
+    + generateDelegateList (height, cb)
+    + checkDelegates (publicKey, votes, cb)
+    + checkUnconfirmedDelegates (publicKey, votes, cb)
+    + fork (block, cause)
+    + validateBlockSlot (block, cb)
+    + sandboxApi (call, args, cb)
+
+    .. Events ..
+    onBind (scope)
+    onBlockchainReady ()
+    cleanup (cb)
+
+    .. Shared ..
+    + getDelegate (req, cb)
+    + getVoters (req, cb)
+    + getDelegates (req, cb)
+    + getFee (req, cb)
+    + enableForging (req, cb)
+    + disableForging (req, cb)
+    + statusForging (req, cb)
+    + addDelegate (req, cb)
+  }
+
+  ' modules/round.js
+  Class Round {
+    - loaded
+    - feesByRound
+    - rewardsByRound
+    - delegatesByRound
+    - unFeesByRound
+    - unRewardsByRound
+    - unDelegatesByRound
+
+    .. private methods ..
+    - RoundChanges (round)
+
+    .. public methods ..
+    + loaded ()
+    + calc (height)
+    + getVotes (round, cb)
+    + flush (round, cb)
+    + directionSwap (direction, lastBlock, cb)
+    + backwardTick (block, previousBlock, cb)
+    + tick (block, cb)
+    + sandboxApi (call, args, cb)
+
+    .. Events ..
+    onBind  (scope)
+    onBlockchainReady ()
+    onFinishRound (round)
+    cleanup (cb)
+  }
+}
+
+package logic {
+  ' logic/transaction.js
+  Class Transaction {
+
+  }
+}
+
+' relationship
+BlockStatus -up-> Blocks
+Slots -up-> Blocks
+Slots -right-> Delegates
+Slots -left-> Transaction
+Delegates -right-> Transaction
+Delegates -left-> library.balancesSequence
+Delegates -left-> library.scheme
+Delegates -left-> library.dbLite
+Delegates -left-> library.config
+Delegates -right-> Round
+@enduml
