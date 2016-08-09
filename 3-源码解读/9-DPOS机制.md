@@ -148,13 +148,138 @@ function getEpochTime(time) {
 
 #### 4.受托人（循环）周期（Round）
 
-为了安全，亿书规定受托人每轮都要变更，确保那些不稳定或者做坏事的节点被及时剔除出去。另外，尽管系统会随机找寻受托人产生新块，但是在一个轮次内，每个受托人都有机会产生一个新区块（并获得奖励）并广播，这一点与比特币每个节点都要通过工作量证明机制（PoW）竞争获得广播权要简化了很多。
+为了安全，亿书规定受托人每轮都要变更，确保那些不稳定或者做坏事的节点被及时剔除出去。另外，尽管系统会随机找寻受托人产生新块，但是在一个轮次内，每个受托人都有机会产生一个新区块（并获得奖励）并广播，这一点与比特币每个节点都要通过工作量证明机制（PoW）竞争获得广播权相比，要简化很多。
 
 这样，亿书每个区块都会与特定的受托人关系起来，其高度(height)和产生器公钥(generatorPublicKey)必是严格对应的。块高度可以轻松找到当前块的受托人周期（modules/round.js 文件51行的calc()方法），generatorPublicKey代表的就是受托人。而单点广播的权限也自然确定，具体代码见 modules/round.js 文件。
 
-这里，需要重点关注的是该文件的 tick() 和 backwardTick() 方法。tick，英文意思是“滴答声或做标记”，如果大家开发过股票分析软件，在金融领域，tick还有数据快照的涵义，意思是某个时段的交易数据。我个人觉得，这里就是这个意思，是指在一个受托人周期内某个受托人的数据快照。具体代码如下：
+这里，需要重点关注的是该文件的 tick() 和 backwardTick() 方法。tick，英文意思是“滴答声或做标记”，如果大家开发过股票分析软件，在金融领域，tick还有数据快照的涵义，意思是某个时段的交易数据。我个人觉得，这里就是这个意思，是指在一个受托人周期内某个受托人的数据快照。相关数据存储在 mem_round 表里，程序退出时就会被清空。具体代码如下：
 
 ```
+// modules/round.js
+// 224行
+Round.prototype.tick = function (block, cb) {
+	...
+	modules.accounts.mergeAccountAndGet({
+		publicKey: block.generatorPublicKey,
+		producedblocks: 1,
+		blockId: block.id,
+		round: modules.round.calc(block.height)
+	}, function (err) {
+		if (err) {
+			return done(err);
+		}
+
+		var round = self.calc(block.height);
+
+		...
+
+		if (round !== nextRound || block.height == 1) {
+			if (privated.delegatesByRound[round].length == constants.delegates || block.height == 1 || block.height == 101) {
+				var outsiders = [];
+
+				async.series([
+					function (cb) {
+						if (block.height != 1) {
+							modules.delegates.generateDelegateList(block.height, function (err, roundDelegates) {
+								if (err) {
+									return cb(err);
+								}
+								for (var i = 0; i < roundDelegates.length; i++) {
+									if (privated.delegatesByRound[round].indexOf(roundDelegates[i]) == -1) {
+										outsiders.push(modules.accounts.generateAddressByPublicKey(roundDelegates[i]));
+									}
+								}
+								cb();
+							});
+						} else {
+							cb();
+						}
+					},
+
+					function (cb) {
+						if (!outsiders.length) {
+							return cb();
+						}
+						var escaped = outsiders.map(function (item) {
+							return "'" + item + "'";
+						});
+						library.dbLite.query('update mem_accounts set missedblocks = missedblocks + 1 where address in (' + escaped.join(',') + ')', function (err, data) {
+							cb(err);
+						});
+					},
+
+					function (cb) {
+						self.getVotes(round, function (err, votes) {
+							if (err) {
+								return cb(err);
+							}
+							async.eachSeries(votes, function (vote, cb) {
+								library.dbLite.query('update mem_accounts set vote = vote + $amount where address = $address', {
+									address: modules.accounts.generateAddressByPublicKey(vote.delegate),
+									amount: vote.amount
+								}, cb);
+							}, function (err) {
+								self.flush(round, function (err2) {
+									cb(err || err2);
+								});
+							})
+						});
+					},
+
+					function (cb) {
+						var roundChanges = new RoundChanges(round);
+
+						async.forEachOfSeries(privated.delegatesByRound[round], function (delegate, index, cb) {
+							var changes = roundChanges.at(index);
+
+							modules.accounts.mergeAccountAndGet({
+								publicKey: delegate,
+								balance: changes.balance,
+								u_balance: changes.balance,
+								blockId: block.id,
+								round: modules.round.calc(block.height),
+								fees: changes.fees,
+								rewards: changes.rewards
+							}, function (err) {
+								if (err) {
+									return cb(err);
+								}
+								if (index === privated.delegatesByRound[round].length - 1) {
+									modules.accounts.mergeAccountAndGet({
+										publicKey: delegate,
+										balance: changes.feesRemaining,
+										u_balance: changes.feesRemaining,
+										blockId: block.id,
+										round: modules.round.calc(block.height),
+										fees: changes.feesRemaining
+									}, cb);
+								} else {
+									cb();
+								}
+							});
+						}, cb);
+					},
+
+					function (cb) {
+						self.getVotes(round, function (err, votes) {
+							if (err) {
+								return cb(err);
+							}
+							async.eachSeries(votes, function (vote, cb) {
+								library.dbLite.query('update mem_accounts set vote = vote + $amount where address = $address', {
+									address: modules.accounts.generateAddressByPublicKey(vote.delegate),
+									amount: vote.amount
+								}, cb);
+							}, function (err) {
+								library.bus.message('finishRound', round);
+								self.flush(round, function (err2) {
+									cb(err || err2);
+								});
+							})
+						});
+					}
+				], function (err) {
+					...
 
 ```
 
@@ -162,11 +287,14 @@ function getEpochTime(time) {
 
 该周期主要针对块奖励进行设置，与比特币的块奖励每4年减半类似，亿书的块奖励也会遵循一定规则。大致的情况是这样的，第一阶段（大概1年）奖励5EBC（亿书币）/块，第二年奖励4EBC（亿书币）/块，4年之后降到1EBC(亿书币)/块，以后永远保持1EBC/块，所以总量始终在少量增发。（**亿书正式上线的产品可能会做适当调整，这里仅作测试参考**）
 
-具体增发量很容易计算，第一阶段时间长度 = rewards.distance * 10秒 / （24 * 60 * 60） = 347.2天，第一阶段增发量 = rewards.distance * 5 = 3000000 * 5 = 1500万。第二年1200万，第三年900万，第四年600万，以后每年300万。这种适当通胀的情况是DPoS机制的一个特点，也是为了给节点提供奖励，争取更多用户为网络做贡献。
+具体增发量很容易计算，第一阶段时间长度 = rewards.distance * 10秒 / （24 * 60 * 60） = 347.2天，第一阶段增发量 = rewards.distance * 5 = 3000000 * 5 = 1500万。第二阶段1200万，第三阶段900万，第四阶段600万，以后每阶段300万。这种适当通胀的情况是DPoS机制的一个特点，也是为了给节点提供奖励，争取更多用户为网络做贡献。
 
-很多小伙伴担心这种通胀，会降低代币的价值，影响代币的价格。事实上，对于拥有大量侧链应用（下一篇介绍）的平台产品来说，一定要保证有足够代币供各侧链产品使用，不然会对侧链造成不必要的冲击，也会造成主链和侧链绑定紧密，互相掣肘，对整个生态系统都不是好事情。
+很多小伙伴担心这种通胀，会降低代币的价值，影响代币的价格。事实上，对于拥有大量侧链应用（下一篇介绍）的平台产品来说，一定要保证有足够代币供各侧链产品使用，不然会对侧链造成不必要的冲击，也会造成主链和侧链绑定紧密，互相掣肘，对整个生态系统都不是好事情。这种情况可以通过最近以太坊的运行情况体会出来，特别是侧链应用使用侧链众筹时更不必说，此消彼长，价格波动剧烈。
 
-具体代码见文件 helpers/milestones.js 。该文件编码很简单，都是一些算术运算，请自行浏览。唯一需要提醒的是，这里的代码有一处非常隐晦的Bug，就是涉及到parseInt()方法的使用（请参考开发实践部分《Js对数据计算处理的各种问题》），主要是 milestones.js 文件的第26行。不过对系统的影响非常细微，仅仅在某个别区块高度的时候才会出现几次，比如：出现类似 parseInt(2/300000000) = 6 的情况。（亿书将在后面的版本中修改）
+具体代码见文件 helpers/milestones.js，该文件编码很简单，都是一些算术运算，请自行浏览。唯一需要提醒的是，代码有一处非常隐晦的Bug，就是涉及到parseInt()方法的使用（请参考开发实践部分《Js对数据计算处理的各种问题》一章），特别是第26行。不过对系统的影响非常细微，仅仅在某个别区块高度的时候才会出现几次，比如：出现类似 parseInt(2/300000000) = 6 的情况。（亿书将在后面的版本中修改）
+
+#### 6.广播处理
+
 
 ## 链接
 
