@@ -26,8 +26,8 @@ package helpers {
     + getLastSlot (nextSlot)
   }
 
-  ' helpers/blockStatus.js
-  Class BlockStatus {
+  ' helpers/milestones.js
+  Class Milestones {
     +milestones: {}
     +distance: 3000000
     +rewardOffset: 60480
@@ -122,7 +122,7 @@ package logic {
 }
 
 ' relationship
-BlockStatus -up-> Blocks
+Milestones -up-> Blocks
 Slots -up-> Blocks
 Slots -right-> Delegates
 Slots -left-> Transaction

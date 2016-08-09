@@ -16,7 +16,7 @@ package logic {
     - scope: {}
     ====
     .. private methods ..
-    -blockStatus
+    -milestones
     -getAddressByPublicKey
 
     .. public methods ..
@@ -40,7 +40,7 @@ package modules {
     - library: {}
 
     - lastBlock
-    - blockStatus
+    - milestones
     - blocksDataFields
     - loaded
     - isActive

@@ -1,16 +1,16 @@
-@startuml ../../../styles/images/helpers/blockStatus/class.png
+@startuml ../../../styles/images/helpers/milestones/class.png
   skinparam BorderColor #blue\9932CC
   skinparam backgroundcolor AntiqueWhite/white
 
   title
-  helpers/blockStatus类图及其关联关系
+  helpers/milestones类图及其关联关系
 
   end title
   footer copyright (c) imfly 2016.03.09 http://bitcoin-on-nodejs.ebookchain.org
   header 《Nodejs开发加密货币》第x篇分析用图
 
-  ' helpers/blockStatus.js
-  Class BlockStatus {
+  ' helpers/milestones.js
+  Class Milestones {
     +milestones: {}
     +distance: 3000000
     +rewardOffset: 60480
@@ -45,5 +45,5 @@
   }
 
   ' relationship
-  BlockStatus -> Constants: <<require>>
+  Milestones -> Constants: <<require>>
 @enduml

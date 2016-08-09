@@ -1,9 +1,9 @@
-@startuml ../../../styles/images/helpers/blockStatus/activity.png
+@startuml ../../../styles/images/helpers/milestones/activity.png
 skinparam BorderColor #blue\9932CC
 skinparam backgroundcolor AntiqueWhite/white
 
 title
-helpers/blockStatus类主要函数调用流程图
+helpers/milestones类主要函数调用流程图
 
 end title
 
