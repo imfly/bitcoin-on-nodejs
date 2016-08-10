@@ -1,0 +1,95 @@
+@startuml ../../../styles/images/modules/database/mem-database.png
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+
+title
+用户数据相关表格关联图
+
+end title
+footer copyright (c) imfly 2016.08.10 http://bitcoin-on-nodejs.ebookchain.org
+header 《Nodejs开发加密货币》分析用图
+
+package Datebase <<Database>> {
+  Class mem_round {
+    + address: String
+    + amount: BigInt
+    + delegate: String
+    + blockId: String
+    + round: BigInt
+  }
+
+  Class mem_accounts {
+    + username: String
+    + isDelegate: BigInt
+    + u_isDelegate: BigInt
+    + secondSignature: BigInt
+    + u_secondSignature: BigInt
+    + u_username: String
+    + address: String
+    + publicKey: Binary
+    + secondPublicKey: Binary
+    + balance: BigInt
+    + u_balance: BigInt
+    + vote: BigInt
+    + rate: BigInt
+    + delegates: Text
+    + contacts: Text
+    + followers: Text
+    + u_delegates: Text
+    + u_contacts: Text
+    + u_followers: Text
+    + multisignatures: Text
+    + u_multisignatures: Text
+    + multimin: BigInt
+    + u_multimin: BigInt
+    + multilifetime: BigInt
+    + u_multilifetime: BigInt
+    + blockId: String
+    + nameexist: Boolean
+    + u_nameexist: Boolean
+    + producedblocks: BigInt
+    + missedblocks: BigInt
+    + virgin: Boolean
+    + fees: BigInt
+    + rewards: BigInt
+  }
+
+  Class mem_accounts2delegates {
+    + accountId: String
+    + dependentId: String
+  }
+
+  Class mem_accounts2contacts {
+    + accountId: String
+    + dependentId: String
+  }
+
+  Class mem_accounts2u_delegates {
+    + accountId: String
+    + dependentId: String
+  }
+
+  Class mem_accounts2u_contacts {
+    + accountId: String
+    + dependentId: String
+  }
+
+  Class mem_accounts2multisignatures {
+    + accountId: String
+    + dependentId: String
+  }
+
+  Class mem_accounts2u_multisignatures {
+    + accountId: String
+    + dependentId: String
+  }
+
+  ' relationship
+  mem_accounts "1" <-left-* "*" mem_accounts2delegates: accountId
+  mem_accounts "1" <-down-* "*" mem_accounts2contacts: accountId
+  mem_accounts "1" <-down-* "*" mem_accounts2u_delegates: accountId
+  mem_accounts "1" <-right-* "*" mem_accounts2u_contacts: accountId
+  mem_accounts "1" <-up-* "*" mem_accounts2multisignatures: accountId
+  mem_accounts "1" <-up-* "*" mem_accounts2u_multisignatures: accountId
+}
+@enduml

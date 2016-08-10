@@ -1,80 +1,39 @@
-@startuml ../../../styles/images/modules/dpos/dpos-activity.png
+@startuml ../../../styles/images/modules/dpos/milestones-activity.png
 skinparam BorderColor #blue\9932CC
 skinparam backgroundcolor AntiqueWhite/white
 
 title
-DPOS机制流程图
+奖励周期计算流程图
 
 end title
 
 footer copyright (c) imfly 2016.08.09 http://bitcoin-on-nodejs.ebookchain.org
 header 《Nodejs开发加密货币》分析用图：《DPoS机制》
 
-(*) --> 启动应用
+(*) --> [给定某个块高度height] "计算相对高度值parseHeight(height)"
 
-partition "1.保存创世区块" {
-  --> app.js: new Blocks()
-  --> blocks.js: saveGenesisBlock()
-  --> blocks.js: saveBlock()
-  --> logic/block.js: dbSave()
-}
+note right
+这里预先设定了转折点的间隔量distance = 3000000
+以及每个间隔的起点rewardOffset = 60480，这样，
+就能够简单的确认该高度处在哪个间隔期内，
+即：location = (height-rewardOffset)/distance
+end note
 
-partition "2.加载本地区块" {
-  --> app.js : scope.bus.message("bind", scope.modules);
-  --> ==bind==
-  --> "其他bind事件"
-  ==bind== --> modules/loader.js : Loader.prototype.onBind()
-  --> modules/loader.js : privated.loadBlockChain
-  --> logic/account.js : createTables()
-  --> "modules/blocks.js : loadBlocksOffset()" as loadBlocksOffset
-  partition "3.验证本地区块" {
-    --> block.previousBlock != privated.lastBlock.id
-    --> library.logic.block.verifySignature(block)
-    --> modules/delegates.js : validateBlockSlot
-    --> library.logic.transaction.verify(transaction,)
-    --> loadBlocksOffset
-  }
-  --> library.bus.message('blockchainReady');
-  --> ==blockchainReady==
-}
+if location > 最大里程碑(4) then
+--> [yes] "最大里程碑(4)"
+--> "获得当前所处转折点" as milestone
+else
+--> [no] location
+--> milestone
+endif
 
-partition "4.创建新区块" {
-  --> modules/delegates.js : loop()
-  --> modules/delegates.js : getBlockSlotData()
-  --> modules/blocks.js ： generateBlock()
-  --> modules/transactions.js : getUnconfirmedTransactionList()
-  --> logic/block.js : create()
-  --> modules/blocks.js : processBlock()
-}
+--> 计算当前应该获得的奖励
 
-partition "5.产生区块链分叉" {
-  --> modules.delegates.fork()
-  note right: 4种原因导致分叉，请看文字解释
-  --> modules/blocks.js : saveBlock()
-  note right
-  如果没有分叉行为，就可以保存和广播区块了
-  这里触发“newBlock”事件，把新块广播到网络
-  end note
-}
-
---> (*)
-
-partition "6.同步区块链，并解决分叉" {
-  ==blockchainReady== --> library.bus.message('peerReady')
-  --> modules/loader.js : onPeerReady()
-  --> privated.loadBlocks(lastBlock, cb);
-  if lastBlock.id == privated.genesisBlock.block.id? then
-  --> [yes] privated.loadFullDb(data.peer,[])
-  --> "modules.blocks.loadBlocksFromPeer(peer,)" as loadBlocksFromPeer
-  else
-  --> [no] privated.findUpdate(lastBlock,[])
-  endif
-  --> modules.blocks.getCommonBlock()
-  --> modules.transactions.undoUnconfirmedList()
-  --> modules.round.directionSwap('backward',)
-  --> modules.blocks.deleteBlocksBefore(commonBlock,)
-  --> loadBlocksFromPeer
-}
+note right
+其实，这里有个简单的逻辑，当未达到奖励起点位置时，
+奖励为0，大于设定最大里程碑位置时，奖励都按最大
+里程碑的奖励额度计算
+end note
 
 --> (*)
 @enduml
