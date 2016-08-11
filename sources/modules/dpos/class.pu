@@ -31,7 +31,7 @@ package helpers {
     +milestones: {}
     +distance: 3000000
     +rewardOffset: 60480
-
+ 
     --
 
     .. public methods ..
