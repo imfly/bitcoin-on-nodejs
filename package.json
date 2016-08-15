@@ -36,6 +36,7 @@
     "del": "^2.2.0",
     "gitbook-summary": "*",
     "gulp": "^3.9.0",
-    "gulp-gh-pages": "^0.5.4"
+    "gulp-gh-pages": "^0.5.4",
+    "lodash": "^4.15.0"
   }
 }
