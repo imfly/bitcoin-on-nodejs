@@ -122,7 +122,7 @@ Async官方文档提供了很多实例， 简单直观。这里，我们不再�
 
 这又是一篇老生常谈的技术分享，但写完之后，我对异步操作的流程管理，更加清晰了。Aysnc很好，但也不是万能的，它对于那些反复自调用的代码就无能为力，因为限制任务的回调就是一次。后续，有机会还会继续深入学习研究它。
 
-另外，参考里收集了几篇比较好的文章，建议读读。《Node.js最新技术栈之Promise篇》，作者 @i5ting 一位创业者，文章深入浅出，Promise/A+规范讲解循序渐进，是我喜欢的风格。《Async详解之一、二、三》虽然版本比较早，介绍个别函数已经有所变化，但对于英文不太好的朋友，是不错的入门文章。
+另外，参考里收集了几篇比较好的文章，建议读读。《Node.js最新技术栈之Promise篇》，作者 @i5ting 一位创业者，文章深入浅出，Promise/A+规范讲解循序渐进，是我喜欢的风格。
 
 ## 链接
 
@@ -130,22 +130,12 @@ Async官方文档提供了很多实例， 简单直观。这里，我们不再�
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-电子书阅读： [http://bitcoin-on-nodejs.ebookchain.org](http://bitcoin-on-nodejs.ebookchain.org/4-开发实践/2-一张图学会使用Async组件进行流程控制.html)
-
-电子书下载： [下载页面][] [PDF文件][] [ePub文件][] [Mobi文件][]
-
-[PDF文件]: https://www.gitbook.com/download/pdf/book/imfly/bitcoin-on-nodejs
-[ePub文件]: https://www.gitbook.com/download/epub/book/imfly/bitcoin-on-nodejs
-[Mobi文件]: https://www.gitbook.com/download/mobi/book/imfly/bitcoin-on-nodejs
-[下载页面]: https://www.gitbook.com/book/imfly/bitcoin-on-nodejs/details
 
 ## 参考
 
 [async官方文档](https://github.com/caolan/async "https://github.com/caolan/async")
 
 [Node.js最新技术栈之Promise篇](https://cnodejs.org/topic/560dbc826a1ed28204a1e7de)
-
-[Async详解之一、二、三（较早版本的）](../6-转载文章/1-Async详解之一：流程控制.html)
 
 [JavaScript Promise迷你书（中文版）](http://liubin.org/promises-book/#introduction)
 

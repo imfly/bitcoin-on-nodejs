@@ -6,7 +6,7 @@
 
 虽然大家已经被面向对象编程（Object-oriented programing）洗脑了，但很明显这种编程方式在 JavaScript 里非常笨拙，这种语言里没有类可以用，社区采取的变通方法不下三种，还要应对忘记调用 `new` 关键字后的怪异行为，真正的私有成员只能通过闭包（closure）才能实现，而多数情况，就像我们在亿书代码里那样，把私有方法放在一个privated变量里，视觉上区分一下而已，本质上并非私有方法。对大多数人来说，函数式编程看起来才更加自然。而且，在Nodejs的世界里，大量的回调函数是数据驱动的，使用函数式编程更加容易理解和处理。
 
-函数式编程远远没有面向对象编程普及，本篇文章，借鉴了几篇优秀文档（见参考），结合亿书项目实践，汇总了一些平时用得到的函数式编程思路，为更好的优化设计亿书代码做好准备。当前的亿书代码还是以面向对象的思维为主，我们不希望把这种整体结构打乱，而是对个别函数方法采用函数式编程进行优化升级。本篇内容将包括函数式编程基本概念，主要特点和方法。
+函数式编程远远没有面向对象编程普及，本篇文章借鉴了几篇优秀文档（见参考），结合亿书项目实践和个人体会，汇总了一些平时用得到的函数式编程思路，为更好的优化设计亿书做好准备。本篇内容包括函数式编程基本概念，主要特点和编码方法，其中的一些代码实例主要参考了 《mostly adequate guide》和 lodash 的相关代码，参考里也提供了它们的链接，向这个领域的作者、译者和开发者们致敬。
 
 ## 什么是函数式编程？
 
@@ -105,6 +105,9 @@ multiply(flock_b, add(flock_a, flock_a));
 ```
 
 到这里，程序就变得非常有意思，如果更加复杂的应用，也可以确保结果可以预期，这就是函数式编程。
+
+## 函数式编程的优势
+
 
 ## 函数式编程的基本原则
 
@@ -306,9 +309,56 @@ var associative = compose(f, compose(g, h)) == compose(compose(f, g), h);
 // true
 ```
 
-函数式编程有个叫“隐式编程”（[Tacit programming][]，见参考）的概念，也叫“point-free 模式”，意思是函数不用指明操作的参数（也叫 points），而是让组合它的函数处理参数。函数、柯里化（curry）以及组合协作起来非常有助于实现这种模式。
+函数式编程有个叫“隐式编程”（[Tacit programming][]，见参考）的概念，也叫“point-free 模式”，意思是函数不用指明操作的参数（也叫 points），而是让组合它的函数处理参数。柯里化以及组合协作起来非常有助于实现这种模式。首先，利用柯里化，让每个函数都先接收数据，然后操作数据；接着，通过组合，实现把数据从第一个函数传递到下一个函数那里去。这样，就能做到通过管道把数据在**接受单个参数的函数**间传递。
+
+显然，隐式编程模式隐去了不必要的参数命名，让代码更加简洁和通用。通过这种模式，我们也很容易了解一个函数是否是接受输入返回输出的小函数。比如，replace，split等都是这样的小函数，可以直接组合；map接受两个参数自然不能直接组合，不过可以先让它接受一个函数，转化为一个参数的函数；但是 while 循环是无论如何不能组合的。另外，并非所有的函数式代码都是这种模式的，所以，适当选择，不能使用的时候就用普通函数。
+
+下面，看个例子：
+
+```js
+// 非隐式编程，因为提到了数据：word
+var snakeCase = function (word) {
+  return word.toLowerCase().replace(/\s+/ig, '_');
+};
+
+// 隐式编程
+var snakeCase = compose(replace(/\s+/ig, '_'), toLowerCase);
+```
+
+本来，js的错误定位就不准确，这样的组合给 debug 带来了更多困难。还好，我们可以使用下面这个实用的，但是不纯的 `trace` 函数来追踪代码的执行情况。
+
+```js
+var trace = curry(function(tag, x){
+  console.log(tag, x);
+  return x;
+});
+
+var dasherize = compose(join('-'), toLower, split(' '), replace(/\s{2,}/ig, ' '));
+
+dasherize('The world is a vampire');
+// TypeError: Cannot read property 'apply' of undefined
+```
+
+这里报错了，来 `trace` 下：
+
+```js
+var dasherize = compose(join('-'), toLower, trace("after split"), split(' '), replace(/\s{2,}/ig, ' '));
+// after split [ 'The', 'world', 'is', 'a', 'vampire' ]
+```
+
+啊，`toLower` 的参数是一个数组（记住，上面的代码是从右向左执行的奥），所以需要先用 `map` 调用一下它。
+
+```js
+var dasherize = compose(join('-'), map(toLower), split(' '), replace(/\s{2,}/ig, ' '));
+
+dasherize('The world is a vampire');
+
+// 'the-world-is-a-vampire'
+```
 
 ## 参考
+
+[lodash website]: https://lodash.com/
 
 [mostly-adequate-guide（英文）](https://github.com/DrBoolean/mostly-adequate-guide)
 
