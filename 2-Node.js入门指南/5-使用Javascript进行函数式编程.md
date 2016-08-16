@@ -441,9 +441,64 @@ compose(map(f), filter(compose(p, f))) == compose(filter(p), map(f));
 
 （4）容器：处理控制流、异常、异步和状态
 
+从代码功能来说，类型是最小单元，类似原子；函数就是基本单元，类似由原子形成的各类细胞；容器就是由细胞构成的人体组织。在一个程序里，容器就是一个功能模块，能够独立完成某方面的功能或事务。从作用上类比，就像面向对象编程里的一个类，包含了很多特定的方法（函数）和属性（状态），当然具体编码方法却完全不同。
+
+首先，创建一个容器：
+
+```js
+var Container = function(x) {
+  this.__value = x;
+}
+
+Container.of = function(x) { return new Container(x); };
+```
+
+我们把它命名为 `Container`，使用 `Container.of` 作为构造器（constructor），这样就不用到处去写糟糕的 `new` 关键字了，非常省心。这个容器具备一切容器的标准特征：
+
+* 容器有且只有一个属性的对象。尽管容器可以有不止一个的属性，但大多数容器还是只有一个。我们很随意地把 `Container` 的这个属性命名为 `__value`，你也可以改成别的。所以说，容器就像面向对象的类，但不是，因为我们不会为它添加面向对象观念下的属性和方法。
+* 容器必须能够装载任意类型的值。因此，这里的`__value` 不能是某个特定的类型。
+* 数据一旦存放到 `Container`，就会一直待在那儿。我们*可以*用 `.__value` 获取到数据，但这样做有悖初衷。
+
+**1.仿函数（functor）**
+
+网上搜索了一下，大家普遍认为这个概念很难理解。说实话，从字面意思上，无论是中文函子、仿函数，还是英文functor，我一开始都没有理解是个什么东西。 大家普遍认可的是 [Functor, Applicative, 以及 Monad 的图片阐释](http://jiyinyiyong.github.io/monads-in-pictures/) 里的解释，图文并茂非常清晰，请自行查阅吧。
+
+对这种舶来品，我通常的做法是直接看它的英文解释（见参考 维基百科上的functor词条），`In mathematics, a functor is a type of mapping between categories, which is applied in category theory.` 译为：在数学中，仿函数应用于范畴学，是一种范畴之间的映射。很明显 functor 是范畴学里的概念，按照这里的解释把它称为 `Mappable` 更为恰当，但为时已晚，哪怕 *functor* 一点也不 *fun*。
+
+为了进一步了解它是什么东西，怎么个映射法，我们先创建一个实例看看。接着上面的容器话题，一旦容器里有了值，不管这个值是什么，我们就需要一种方法来让别的函数能够操作它。这句话的意思是，值外面有了容器，就给定了一个范畴（上下文），我们就没有办法像前面那样简单的操作这个值了，怎么办？仿函数（functor）就派上用场了。
+
+```js
+// (a -> b) -> Container a -> Container b
+Container.prototype.map = function(f){
+  return Container.of(f(this.__value))
+}
+```
+
+这个 `map` 跟数组那个著名的 `map` 一样，除了前者的参数是 `Container a` 而后者是 `[a]`。它们的使用方式也几乎一致：
+
+```js
+Container.of(2).map(function(two){ return two + 2 })
+//=> Container(4)
+
+
+Container.of("flamethrowers").map(function(s){ return s.toUpperCase() })
+//=> Container("FLAMETHROWERS")
+
+
+Container.of("bombs").map(concat(' away')).map(_.prop('length'))
+//=> Container(10)
+```
+
+我们能够在不离开 `Container` 的情况下操作容器里面的值。`Container` 里的值传递给 `map` 函数之后，就可以任我们操作；操作结束后，为了防止意外再把它放回它所属的 `Container`。这样做的结果是，我们能连续地调用 `map`，运行任何我们想运行的函数。甚至还可以改变值的类型。让容器自己去运用函数能给我们带来什么好处？答案是抽象，对于函数运用的抽象。当 `map` 一个函数的时候，我们请求容器来运行这个函数，这是一种十分强大的理念。
+
+这种让容器去运行函数的方法就是使用“仿函数”，因此，可以这样定义它：
+
+> 仿函数 是实现了 `map` 函数并遵守一些特定规则的容器类型。
+
+
 （5）Functor, Applicative, 以及 Monad
 
-这是高级部分，理解这些复杂的概念，请参考 [Functor, Applicative, 以及 Monad 的图片阐释](http://jiyinyiyong.github.io/monads-in-pictures/) ，详细内容请阅读其他参考文档。
+这是高级部分，理解这些复杂的概念，请参考，详细内容请阅读其他参考文档。
 
 ## 参考
 
@@ -472,3 +527,5 @@ compose(map(f), filter(compose(p, f))) == compose(filter(p), map(f));
 [Functor, Applicative, 以及 Monad 的图片阐释](http://jiyinyiyong.github.io/monads-in-pictures/)
 
 [图解 Monad](http://www.ruanyifeng.com/blog/2015/07/monad.html)
+
+[Functor（维基百科）](https://en.wikipedia.org/wiki/Functor)
