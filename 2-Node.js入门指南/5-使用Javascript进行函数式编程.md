@@ -104,10 +104,35 @@ add(multiply(flock_b, flock_a), multiply(flock_a, flock_b));
 multiply(flock_b, add(flock_a, flock_a));
 ```
 
-到这里，程序就变得非常有意思，如果更加复杂的应用，也可以确保结果可以预期，这就是函数式编程。
+到这里，程序就变得非常有意思，如果更加复杂的应用，也能够确保结果可以预期，这就是函数式编程。
 
 ## 函数式编程的优势
 
+1. 简化开发和维护
+
+从上面的代码，可以体会到这一点。使用函数式编程，可以充分发挥Javascript语言自身的优点，每一个函数都是独立单元，便于调试和测试，也方便模块化组合，代码量少、开发效率高。有人比较过C语言与Lisp语言，同样功能的程序，极端情况下，Lisp代码的长度可能是C代码的二十分之一。
+
+2. 更接近自然语言，代码即文档
+
+上面使用分配律之后的代码`multiply(flock_b, add(flock_a, flock_a))`，完全可以改成下面这样：
+
+```
+add(flock_a, flock_a).multiply(flock_b) // = (flock_a + flock_a) * flock_b
+```
+
+特别是下面这样的句式，如果是用惯了ruby on rails的小伙伴，更加熟悉下面的语句：
+
+```
+User.all().sortBy('name').limit(20)
+```
+
+3. 能够实现"并发编程"（concurrency）
+
+函数式编程不依赖、也不会改变外界的状态，相同输入获得相同输出，因此不存在"锁"线程的问题。不必担心一个线程的数据，被另一个线程修改，所以可以很放心地把工作分摊到多个线程，实现"并发编程"。目前的计算机基本上都是多核的了，多线程应用将是常态，亿书客户端也会考虑优化线程服务，提高软件性能，改善用户体验，这将非常有帮助。
+
+4. 热部署和热升级
+
+函数式编程没有副作用，只要接口没变化，改变函数内部代码对外部没有任何影响。所以，可以在运行状态下直接升级代码，不需要重启，也不需要停机。这对于每秒要处理很多交易的加密货币系统来说，尤为重要。亿书将在未来实现每个节点的热部署和热升级，使节点建立和维护零难度。
 
 ## 函数式编程的基本原则
 
@@ -356,6 +381,70 @@ dasherize('The world is a vampire');
 // 'the-world-is-a-vampire'
 ```
 
+（3）注释：签名函数的行为和目的
+
+函数式编程非常灵活，包括隐式编程在内，参数被大大减少和弱化，这就为我们阅读和使用函数带来困扰，对协作开发也是一项挑战，如何解决？通常的做法就是添加详细的文档或注释，不过函数式编程有其自己的处理方式，那就是类型签名。类型签名在写纯函数时所起的作用非常大，短短一行，就能暴露函数的行为和目的。这里介绍一下，在函数式编程里，非常著名的Hindley-Milner类型系统。这个名称是两位科学家的名字组合，常被简称为HM类型系统。在使用该类型系统中，注意以下几点要素：
+
++ **函数都写成 `a -> b` 的样子**。其中 `a` 和 `b` 是任意类型的变量，这句话的意思是“一个接受a，返回b的函数”。延伸一下，`a -> (b -> c)` 的意思就是“一个接受a，返回一个接受b返回c的函数的函数”，即柯里化了。
+
++ **把最后一个类型视作返回值**。比如 `a -> (b -> c)` 简单的理解成 `a -> b -> c` 也没有关系，只不过中间柯里化的过程被忽略了而已。
+
++ **参数优先级是从左向右，每传一个参数，就会得到后面对应部分的类型签名**。比如，`a -> (b -> c)`，传入了参数 a，得到的自然是新函数，`b -> c` 。
+
++ **可以在类型签名中使用变量**。把变量命名为 `a` 和 `b` 只是一种约定俗成的习惯，可以使用任何自己喜欢的名称。对于相同的变量名，其类型也一定相同。比如：`a -> b` 可以是从任意类型的 `a` 到任意类型的 `b`，但是 `a -> a` 必须是同一个类型。例如，可以是 `String -> String`，也可以是 `Number -> Number`，但不能是 `String -> Bool`。同时，也说明函数将会*以一种统一的行为作用于所有的类型 a 或 b *，而不能做任何特定的事情，这能够帮助我们推断函数可能的实现。
+
+最简单的例子：
+
+```js
+//  capitalize :: String -> String
+var capitalize = function(s){
+  return toUpperCase(head(s)) + toLowerCase(tail(s));
+}
+
+capitalize("smurf");
+//=> "Smurf"
+```
+
+这里，`capitalize` 函数的类型签名就是“capitalize :: String -> String”这行注释，可以理解为“一个接受 `String` 返回 `String` 的函数”。通俗点说，它接受一个 `String` 类型作为输入，并返回一个 `String` 类型的输出。
+
+复杂一点的例子：
+
+```
+//  match :: Regex -> String -> [String]
+//  理解为：接受一个 `Regex` 和一个 `String`，返回一个 `[String]`
+var match = curry(function(reg, s){
+  return s.match(reg);
+});
+
+//  match :: Regex -> (String -> [String])
+//  理解为：接受一个 `Regex` 作为参数，返回一个从 `String` 到 `[String]` 的函数
+var match = curry(function(reg, s){
+  return s.match(reg);
+});
+
+//  onHoliday :: String -> [String]
+//  理解为：已经调用了 `Regex` 参数的 `match`。给了第一个参数 `Regex`，返回结果就是后面的签名内容
+var onHoliday = match(/holiday/ig);
+```
+
+让我们体会类型签名的好处：
+
+```js
+// head :: [a] -> a
+compose(f, head) == compose(head, map(f));
+
+// filter :: (a -> Bool) -> [a] -> [a]
+compose(map(f), filter(compose(p, f))) == compose(filter(p), map(f));
+```
+
+上面第一个等式，左边：先获取数组的`头部`，然后对它调用函数 `f`；右边：先对数组中的每一个元素调用 `f`，然后再取其返回结果的`头部`。尽管没有看到head，f等具体的代码实现，我们也知道这两个表达式的作用显然是相等的，但是前者要快得多，这是常识。这就为我们使用和优化提供了便利，在使用函数的时候，可以更加灵活的选择。
+
+（4）容器：处理控制流、异常、异步和状态
+
+（5）Functor, Applicative, 以及 Monad
+
+这是高级部分，理解这些复杂的概念，请参考 [Functor, Applicative, 以及 Monad 的图片阐释](http://jiyinyiyong.github.io/monads-in-pictures/) ，详细内容请阅读其他参考文档。
+
 ## 参考
 
 [lodash website]: https://lodash.com/
@@ -377,3 +466,9 @@ dasherize('The world is a vampire');
 [柯里化（维基百科）](https://zh.wikipedia.org/wiki/柯里化)
 
 [Tacit programming](https://en.wikipedia.org/wiki/Tacit_programming)
+
+[Hindley–Milner type system](https://en.wikipedia.org/wiki/Hindley–Milner_type_system)
+
+[Functor, Applicative, 以及 Monad 的图片阐释](http://jiyinyiyong.github.io/monads-in-pictures/)
+
+[图解 Monad](http://www.ruanyifeng.com/blog/2015/07/monad.html)
