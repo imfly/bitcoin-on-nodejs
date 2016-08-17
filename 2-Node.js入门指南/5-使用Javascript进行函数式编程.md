@@ -108,11 +108,11 @@ multiply(flock_b, add(flock_a, flock_a));
 
 ## 函数式编程的优势
 
-1. 简化开发和维护
+1. 易于开发：代码简洁，大大降低开发成本
 
 从上面的代码，可以体会到这一点。使用函数式编程，可以充分发挥Javascript语言自身的优点，每一个函数都是独立单元，便于调试和测试，也方便模块化组合，代码量少、开发效率高。有人比较过C语言与Lisp语言，同样功能的程序，极端情况下，Lisp代码的长度可能是C代码的二十分之一。
 
-2. 更接近自然语言，代码即文档
+2. 易于分享：更接近自然语言，代码即文档
 
 上面使用分配律之后的代码`multiply(flock_b, add(flock_a, flock_a))`，完全可以改成下面这样：
 
@@ -126,11 +126,11 @@ add(flock_a, flock_a).multiply(flock_b) // = (flock_a + flock_a) * flock_b
 User.all().sortBy('name').limit(20)
 ```
 
-3. 能够实现"并发编程"（concurrency）
+3. 性能更高：能够实现"并发编程"（concurrency）
 
 函数式编程不依赖、也不会改变外界的状态，相同输入获得相同输出，因此不存在"锁"线程的问题。不必担心一个线程的数据，被另一个线程修改，所以可以很放心地把工作分摊到多个线程，实现"并发编程"。目前的计算机基本上都是多核的了，多线程应用将是常态，亿书客户端也会考虑优化线程服务，提高软件性能，改善用户体验，这将非常有帮助。
 
-4. 热部署和热升级
+4. 简化部署：热部署和热升级
 
 函数式编程没有副作用，只要接口没变化，改变函数内部代码对外部没有任何影响。所以，可以在运行状态下直接升级代码，不需要重启，也不需要停机。这对于每秒要处理很多交易的加密货币系统来说，尤为重要。亿书将在未来实现每个节点的热部署和热升级，使节点建立和维护零难度。
 
@@ -489,20 +489,45 @@ Container.of("bombs").map(concat(' away')).map(_.prop('length'))
 //=> Container(10)
 ```
 
-我们能够在不离开 `Container` 的情况下操作容器里面的值。`Container` 里的值传递给 `map` 函数之后，就可以任我们操作；操作结束后，为了防止意外再把它放回它所属的 `Container`。这样做的结果是，我们能连续地调用 `map`，运行任何我们想运行的函数。甚至还可以改变值的类型。让容器自己去运用函数能给我们带来什么好处？答案是抽象，对于函数运用的抽象。当 `map` 一个函数的时候，我们请求容器来运行这个函数，这是一种十分强大的理念。
+我们能够在不离开 `Container` 的情况下操作容器里面的值。`Container` 里的值传递给 `map` 函数之后，就可以任我们操作；操作结束后，为了防止意外再把它放回它所属的 `Container`。这样做的结果是，我们能连续地调用 `map`，运行任何我们想运行的函数，甚至还可以改变值的类型。
 
-这种让容器去运行函数的方法就是使用“仿函数”，因此，可以这样定义它：
+让容器自己去运用函数能给我们带来什么好处？答案是抽象，对于函数运用的抽象。当 `map` 一个函数的时候，我们请求容器来运行这个函数，这是一种十分强大的理念。这种让容器去运行函数的方法就是“仿函数”，因此，可以这样定义它：
 
-> 仿函数 是实现了 `map` 函数并遵守一些特定规则的容器类型。
+> 仿函数 是实现了 `map` 函数并遵守一些特定规则的容器。
 
+这里的`Container`有点功能单一，下面，让我们定义几个更加有用的仿函数吧：
 
-（5）Functor, Applicative, 以及 Monad
+#### Maybe
+
+这也是函数式编程里常用的一种仿函数，在调用 `map` 的时候能够提供更多有用的行为。
+
+```js
+var Maybe = function(x) {
+  this.__value = x;
+}
+
+Maybe.of = function(x) {
+  return new Maybe(x);
+}
+
+Maybe.prototype.isNothing = function() {
+  return (this.__value === null || this.__value === undefined);
+}
+
+Maybe.prototype.map = function(f) {
+  return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this.__value));
+}
+```
+
+（5）Applicative, Monad
 
 这是高级部分，理解这些复杂的概念，请参考，详细内容请阅读其他参考文档。
 
 ## 参考
 
-[lodash website]: https://lodash.com/
+[lodash FP Guide]: https://github.com/lodash/lodash/wiki/FP-Guide
+
+[ramda.js](http://ramdajs.com)
 
 [mostly-adequate-guide（英文）](https://github.com/DrBoolean/mostly-adequate-guide)
 
@@ -529,3 +554,5 @@ Container.of("bombs").map(concat(' away')).map(_.prop('length'))
 [图解 Monad](http://www.ruanyifeng.com/blog/2015/07/monad.html)
 
 [Functor（维基百科）](https://en.wikipedia.org/wiki/Functor)
+
+[JavaScript Function Composition](http://thenorthcode.net/2016/02/07/javascript-function-composition/)
