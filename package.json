@@ -33,10 +33,13 @@
   "homepage": "http://imfly.github.io/bitcoin-on-nodejs#readme",
   "dependencies": {},
   "devDependencies": {
+    "data.task": "^3.1.0",
     "del": "^2.2.0",
     "gitbook-summary": "*",
     "gulp": "^3.9.0",
     "gulp-gh-pages": "^0.5.4",
-    "lodash": "^4.15.0"
+    "lodash": "^4.15.0",
+    "moment": "^2.14.1",
+    "ramda": "^0.22.1"
   }
 }

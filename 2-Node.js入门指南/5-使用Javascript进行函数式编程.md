@@ -439,9 +439,9 @@ compose(map(f), filter(compose(p, f))) == compose(filter(p), map(f));
 
 上面第一个等式，左边：先获取数组的`头部`，然后对它调用函数 `f`；右边：先对数组中的每一个元素调用 `f`，然后再取其返回结果的`头部`。尽管没有看到head，f等具体的代码实现，我们也知道这两个表达式的作用显然是相等的，但是前者要快得多，这是常识。这就为我们使用和优化提供了便利，在使用函数的时候，可以更加灵活的选择。
 
-（4）容器：处理控制流、异常、异步和状态
+（4）容器：处理控制流、异常、异步和状态的独立模块
 
-从代码功能来说，类型是最小单元，类似原子；函数就是基本单元，类似由原子形成的各类细胞；容器就是由细胞构成的人体组织。在一个程序里，容器就是一个功能模块，能够独立完成某方面的功能或事务。从作用上类比，就像面向对象编程里的一个类，包含了很多特定的方法（函数）和属性（状态），当然具体编码方法却完全不同。
+从代码功能来说，类型是最小单元，类似原子；函数就是基本单元，类似由原子形成的各类细胞；容器就是由细胞构成的人体组织。在一个程序里，容器就像一个功能模块（比面向对象中的类要灵活得多），有自己的上下文，包含了特定的方法（函数，主要是仿函数）和属性（状态），能够独立完成某方面的功能或事务。容器之间的操作和通信，需要用到特殊的数据类型——仿函数（functor）。
 
 首先，创建一个容器：
 
@@ -451,39 +451,39 @@ var Container = function(x) {
 }
 
 Container.of = function(x) { return new Container(x); };
-```
 
-我们把它命名为 `Container`，使用 `Container.of` 作为构造器（constructor），这样就不用到处去写糟糕的 `new` 关键字了，非常省心。这个容器具备一切容器的标准特征：
-
-* 容器有且只有一个属性的对象。尽管容器可以有不止一个的属性，但大多数容器还是只有一个。我们很随意地把 `Container` 的这个属性命名为 `__value`，你也可以改成别的。所以说，容器就像面向对象的类，但不是，因为我们不会为它添加面向对象观念下的属性和方法。
-* 容器必须能够装载任意类型的值。因此，这里的`__value` 不能是某个特定的类型。
-* 数据一旦存放到 `Container`，就会一直待在那儿。我们*可以*用 `.__value` 获取到数据，但这样做有悖初衷。
-
-**1.仿函数（functor）**
-
-网上搜索了一下，大家普遍认为这个概念很难理解。说实话，从字面意思上，无论是中文函子、仿函数，还是英文functor，我一开始都没有理解是个什么东西。 大家普遍认可的是 [Functor, Applicative, 以及 Monad 的图片阐释](http://jiyinyiyong.github.io/monads-in-pictures/) 里的解释，图文并茂非常清晰，请自行查阅吧。
-
-对这种舶来品，我通常的做法是直接看它的英文解释（见参考 维基百科上的functor词条），`In mathematics, a functor is a type of mapping between categories, which is applied in category theory.` 译为：在数学中，仿函数应用于范畴学，是一种范畴之间的映射。很明显 functor 是范畴学里的概念，按照这里的解释把它称为 `Mappable` 更为恰当，但为时已晚，哪怕 *functor* 一点也不 *fun*。
-
-为了进一步了解它是什么东西，怎么个映射法，我们先创建一个实例看看。接着上面的容器话题，一旦容器里有了值，不管这个值是什么，我们就需要一种方法来让别的函数能够操作它。这句话的意思是，值外面有了容器，就给定了一个范畴（上下文），我们就没有办法像前面那样简单的操作这个值了，怎么办？仿函数（functor）就派上用场了。
-
-```js
 // (a -> b) -> Container a -> Container b
 Container.prototype.map = function(f){
   return Container.of(f(this.__value))
 }
 ```
 
-这个 `map` 跟数组那个著名的 `map` 一样，除了前者的参数是 `Container a` 而后者是 `[a]`。它们的使用方式也几乎一致：
+我们把它命名为 `Container`，使用 `Container.of` 作为构造器（constructor），这样就不用到处去写糟糕的 `new` 关键字了，非常省心。这个容器具备一切容器的标准特征：
+
+* **容器有且只有一个属性的对象**。尽管容器可以有不止一个的属性，但大多数容器还是只有一个。我们很随意地把 `Container` 的这个属性命名为 `__value`，你也可以改成别的。所以说，容器就像面向对象的类，但不是，因为我们不会为它添加面向对象观念下的属性和方法。
+* **容器必须能够装载任意类型的值**。因此，这里的`__value` 不能是某个特定的类型。
+* **数据一旦存放到容器，就会一直待在那儿**。我们*可以*用 `.__value` 获取到数据，但这样做有悖初衷。
+* **仿函数是容器的接口**。操作和使用数据要使用仿函数（functor），因此，在具体使用中，仿函数基本上代表了容器本身。在函数式编程里，到处都有仿函数的身影，像 tree、list、map 和 pair 等可迭代数据类型，以及eventstream 和 observable 也都是。
+
+这里需要，重点解释一下什么是仿函数？
+
+网上搜索了一下，大家普遍认为这个概念很难理解。说实话，从字面意思上，无论是中文函子、仿函数，还是英文functor，我一开始都没有理解是个什么东西。 大家普遍认可的是 [Functor, Applicative, 以及 Monad 的图片阐释](http://jiyinyiyong.github.io/monads-in-pictures/) 里的解释，图文并茂非常清晰，请自行查阅吧。
+
+对这种舶来品，我通常的做法是直接看它的英文解释（见参考 维基百科上的functor词条），`In mathematics, a functor is a type of mapping between categories, which is applied in category theory.` 译为：在数学中，仿函数应用于范畴学，是一种范畴之间的映射。按照这里的解释把它称为 `Mappable` 或许更为恰当。
+
+为了进一步了解它是什么东西，怎么个映射法，我们先创建一个实例看看。接着上面的容器话题，一旦容器里有了值，不管这个值是什么，我们就需要一种方法来让别的函数能够操作它。这句话的意思是，值外面有了容器，就给定了一个范畴（上下文），我们就没有办法像前面那样简单的操作这个值了，怎么办？仿函数就派上用场了。
+
+上面代码里的 `map` 跟数组那个著名的 `map` 一样，除了前者的参数是 `Container a` 而后者是 `[a]`。它们的使用方式也几乎一致：
 
 ```js
+// 非特殊情况，我们使用 Ramdajs
+var _ = require('ramda');
+
 Container.of(2).map(function(two){ return two + 2 })
 //=> Container(4)
 
-
 Container.of("flamethrowers").map(function(s){ return s.toUpperCase() })
 //=> Container("FLAMETHROWERS")
-
 
 Container.of("bombs").map(concat(' away')).map(_.prop('length'))
 //=> Container(10)
@@ -491,37 +491,246 @@ Container.of("bombs").map(concat(' away')).map(_.prop('length'))
 
 我们能够在不离开 `Container` 的情况下操作容器里面的值。`Container` 里的值传递给 `map` 函数之后，就可以任我们操作；操作结束后，为了防止意外再把它放回它所属的 `Container`。这样做的结果是，我们能连续地调用 `map`，运行任何我们想运行的函数，甚至还可以改变值的类型。
 
-让容器自己去运用函数能给我们带来什么好处？答案是抽象，对于函数运用的抽象。当 `map` 一个函数的时候，我们请求容器来运行这个函数，这是一种十分强大的理念。这种让容器去运行函数的方法就是“仿函数”，因此，可以这样定义它：
+让容器自己去运用函数有利于对函数运用的抽象。当 `map` 一个函数的时候，我们请求容器来运行这个函数，这是一种十分强大的理念。这种让容器去运行函数的方法就是“仿函数”。通俗点点讲，一个函数在调用的时候，如果被 `map` 包裹了，那么它就会从一个非仿函数转换为一个仿函数。一般情况下，普通函数更适合操作普通的数据类型而不是容器类型，在必要的时候再通过 map 变为合适的仿函数去操作容器类型，这样做的好处是随需求而变，能得到更简单、重用性更高的函数。
 
-> 仿函数 是实现了 `map` 函数并遵守一些特定规则的容器。
-
-这里的`Container`有点功能单一，下面，让我们定义几个更加有用的仿函数吧：
-
-#### Maybe
-
-这也是函数式编程里常用的一种仿函数，在调用 `map` 的时候能够提供更多有用的行为。
+仿函数的概念既然来自于范畴学，应该满足一些定律，学习理解这些实用的定律，会帮助我们更好的使用它。
 
 ```js
-var Maybe = function(x) {
+// 同一性 identity
+map(id) === id;
+
+// 结合律 composition
+compose(map(f), map(g)) === map(compose(f, g));
+```
+
+#### 数据验证
+
+上面的`Container`功能单一，下面，让我们对他进行一系列重构看看。先数据加上验证看看，毕竟数据是否为空，是编程无法绕开的逻辑之一。
+
+```js
+var Container = function(x) {
   this.__value = x;
 }
 
-Maybe.of = function(x) {
-  return new Maybe(x);
+Container.of = function(x) {
+  return new Container(x);
 }
 
-Maybe.prototype.isNothing = function() {
+Container.prototype.isNothing = function() {
   return (this.__value === null || this.__value === undefined);
 }
 
-Maybe.prototype.map = function(f) {
-  return this.isNothing() ? Maybe.of(null) : Maybe.of(f(this.__value));
+Container.prototype.map = function(f) {
+  return this.isNothing() ? Container.of(null) : Container.of(f(this.__value));
+}
+
+Container.of(null).map(match(/a/ig));
+//=> Container(null)
+
+Container.of({name: "Boris"}).map(_.prop("age")).map(add(10));
+//=> Container(null)
+```
+
+看似很小的改进，却让代码更加健壮。除了时刻检查参数的存在性，还能用 `Container.of(null)` 来发送失败的信号，让程序接到这个信号时立刻切断后续代码的执行，这通常是编码希望达到的效果。
+
+#### 错误处理
+
+对于错误处理，当我们不知道可能是什么错误时，用的比较多的是`throw/catch`，这会影响性能，错误信息也不怎么友好，而且可能会打破“纯”函数，让其变得不再“纯”。当然，我们也会使用if语句来判定，给出具体的错误信息。在函数式编程里，通常使用 `Either` 这个函数（字面含义为“或者”的意思，属于二选一的两个分支，这也是一种仿函数），如下：
+
+```js
+var Left = function(x) {
+  this.__value = x;
+}
+
+Left.of = function(x) {
+  return new Left(x);
+}
+
+Left.prototype.map = function(f) {
+  return this;
+}
+
+var Right = function(x) {
+  this.__value = x;
+}
+
+Right.of = function(x) {
+  return new Right(x);
+}
+
+Right.prototype.map = function(f) {
+  return Right.of(f(this.__value));
 }
 ```
 
-（5）Applicative, Monad
+这里略去了创建 `Either` 父类，只给出了它的两个子类`Left`（代表错误） 和 `Right`（代表正确），来看看它们是怎么运行的：
 
-这是高级部分，理解这些复杂的概念，请参考，详细内容请阅读其他参考文档。
+```js
+Right.of("rain").map(function(str){ return "b"+str; });
+// Right("brain")
+
+Left.of("rain").map(function(str){ return "b"+str; });
+// Left("rain")
+
+Right.of({host: 'localhost', port: 80}).map(_.prop('host'));
+// Right('localhost')
+
+Left.of("rolls eyes...").map(_.prop("host"));
+// Left('rolls eyes...')
+```
+
+`Left` 无视 `map` 它的请求。`Right` 的作用就是一个最基础的 `Container`。这里强大的地方在于，`Left` 有能力在它内部嵌入一个错误消息。
+
+前面说了，我们可以用 `Container.of(null)` 来表示失败并把程序引向另一个分支，但是它不会告诉我们太多信息，有时候我们想知道失败的原因是什么。比如：
+
+```js
+var moment = require('moment');
+
+//  getAge :: Date -> User -> Either(String, Number)
+var getAge = _.curry(function(now, user) {
+  //moment v2.3.0 以后的版本要添加true参数，表示使用严格模式，参考：http://momentjs.com/docs/#/parsing
+  var birthdate = moment(user.birthdate, 'YYYY-MM-DD', true);
+  if(!birthdate.isValid()) return Left.of("Birth date could not be parsed");
+  return Right.of(now.diff(birthdate, 'years'));
+});
+
+getAge(moment(), {birthdate: '2005-12-12'});
+// Right(9)
+
+getAge(moment(), {birthdate: '20010704'});
+// Left("Birth date could not be parsed")
+```
+
+这么一来，就像 `Container.of(null)`，当返回一个 `Left` 的时候就直接让程序终止。跟 `Container.of(null)` 不同的是，现在我们对程序为何终止有了更多信息。让我们进一步看看，怎么用：
+
+```js
+//  fortune :: Number -> String
+var fortune  = _.compose(_.concat("If you survive, you will be "), _.add(1));
+
+//  zoltar :: User -> Either(String, _)  
+// 在类型签名中使用 `_`， 表示一个应该忽略的值；
+// 通常，不会把 `console.log` 放到 `zoltar` 函数里，而是在调用 `zoltar` 的时候才 `map` 它
+var zoltar = _.compose(_.map(console.log), _.map(fortune), getAge(moment()));
+
+zoltar({birthdate: '2005-12-12'});
+// "If you survive, you will be 11"
+// Right(undefined)
+
+zoltar({birthdate: 'balloons!'});
+// Left("Birth date could not be parsed")
+```
+
+进一步优化，添加一个 either 方法，让它接受两个函数（分别对应left 和 right的情况）和一个静态值为参数：
+
+```js
+//  either :: (a -> c) -> (b -> c) -> Either a b -> c
+var either = _.curry(function(f, g, e) {
+  switch(e.constructor) {
+    case Left: return f(e.__value);
+    case Right: return g(e.__value);
+  }
+});
+
+//  zoltar :: User -> _
+var zoltar = _.compose(console.log, either(_.identity, fortune), getAge(moment()));
+
+zoltar({birthdate: '2005-12-12'});
+// "If you survive, you will be 10"
+// undefined
+
+zoltar({birthdate: 'balloons!'});
+// "Birth date could not be parsed"
+// undefined
+```
+
+`Either` 并不仅仅只对合法性检查这种一般性的错误作用非凡，对一些更严重的、能够中断程序执行的错误比如文件丢失或者 socket 连接断开等，同样效果显著。另外，这里仅把`Either` 当作一个错误消息的容器，其实它还能更多的事情，比如，它表示了逻辑或（也就是 `||`）。
+
+#### 异步处理
+
+在Node.js里，回调（callback）是无法回避的，还好，处理异步代码，函数式编程有一种更好的方式。这种方式的内部机制过于复杂，所以还是直接用 [Folktale](http://folktalejs.org/) 里的 `Data.Task` ，来从实例中去体会吧：
+
+```js
+// 这是Folktale官方的例子
+var Task = require('data.task')
+var fs = require('fs')
+
+// read : String -> Task(Error, Buffer)
+function read(path) {
+  return new Task(function(reject, resolve) {
+    fs.readFile(path, function(error, data) {
+      if (error)  reject(error)
+      else        resolve(data)
+    })
+  })
+}
+
+// decode : Task(Error, Buffer) -> Task(Error, String)
+function decode(buffer) {
+  return buffer.map(function(a) {
+    return a.toString('utf-8')
+  })
+}
+
+var intro = decode(read('intro.txt'))
+var outro = decode(read('outro.txt'))
+
+// You can use `.chain` to sequence two asynchronous actions, and
+// `.map` to perform a synchronous computation with the eventual
+// value of the Task.
+var concatenated = intro.chain(function(a) {
+                     return outro.map(function(b) {
+                       return a + b
+                     })
+                   })
+
+concatenated.fork(
+  function(error) { throw error }
+, function(data)  { console.log(data) }
+)
+
+// 传入普通的实际值也没问题
+Task.of(3).map(function(three){ return three + 1 });
+// Task(4)
+```
+
+例子中的 `reject` 和 `result` 函数分别是失败和成功的回调。正如你看到的，我们只是简单地调用 `Task` 的 `map` 函数，就能操作将来的值，好像这个值就在那儿似的。到现在 `map` 对你来说应该不稀奇了。如果熟悉 promise 的话，你该能认出来 `map` 就是 `then`，`Task` 就是一个 promise。
+
+我们必须调用 `fork` 方法才能运行 `Task`，它会 fork 一个子进程运行它接收到的参数代码，其他部分的执行不受影响，主线程也不会阻塞。当然这种效果也可以用其他一些技术比如线程实现，但这里的这种方法工作起来就像是一个普通的异步调用，而且 event loop 能够不受影响地继续运转。我们来看一下 `fork`：
+
+```js
+// Pure application
+//=====================
+// blogTemplate :: String
+
+//  blogPage :: Posts -> HTML
+var blogPage = Handlebars.compile(blogTemplate);
+
+//  renderPage :: Posts -> HTML
+var renderPage = compose(blogPage, sortBy('date'));
+
+//  blog :: Params -> Task(Error, HTML)
+var blog = compose(map(renderPage), getJSON('/posts'));
+
+
+// Impure calling code
+//=====================
+blog({}).fork(
+  function(error){ $("#error").html(error.message); },
+  function(page){ $("#main").html(page); }
+);
+
+$('#spinner').show();
+```
+
+调用 `fork` 之后，`Task` 就赶紧跑去找一些文章，渲染到页面上。与此同时，我们在页面上展示一个 spinner，因为 `fork` 不会等收到响应了才执行它后面的代码。最后，我们要么把文章展示在页面上，要么就显示一个出错信息，视 `getJSON` 请求是否成功而定。
+
+花点时间思考下这里的控制流为何是线性的。我们只需要从下读到上，从右读到左就能理解代码，即便这段程序实际上会在执行过程中到处跳来跳去。这种方式使得阅读和理解应用程序的代码比那种要在各种回调和错误处理代码块之间跳跃的方式容易得多。
+
+天哪，你看到了么，`Task` 居然也包含了 `Either`！没办法，为了能处理将来可能出现的错误，它必须得这么做，因为普通的控制流在异步的世界里不适用。这自然是好事一桩，因为它天然地提供了充分的“纯”错误处理。
+
+## 总结
+
+当然，还有更多的仿函数，比如：Monad，大家尝试自己研究吧。理解这些复杂的概念，请详细阅读其他参考文档。
 
 ## 参考
 

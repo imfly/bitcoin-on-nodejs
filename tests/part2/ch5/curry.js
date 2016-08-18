@@ -1,34 +1,38 @@
-var curry = require('lodash').curry;
+var _ = require('ramda');
 
-var match = curry(function(what, str) {
-  return str.match(what);
-});
+var Task = require('data.task')
+var fs = require('fs')
 
-var a = match(/\s+/g, "hello world");
-// [ ' ' ]
+// read : String -> Task(Error, Buffer)
+function read(path) {
+  return new Task(function(reject, resolve) {
+    fs.readFile(path, function(error, data) {
+      if (error)  reject(error)
+      else        resolve(data)
+    })
+  })
+}
+// decode : Task(Error, Buffer) -> Task(Error, String)
+function decode(buffer) {
+  return buffer.map(function(a) {
+    return a.toString('utf-8')
+  })
+}
 
-var b = match(/\s+/g)("hello world");
-// [ ' ' ]
+var intro = decode(read('intro.txt'));
+var outro = decode(read('outro.txt'));
 
-var hasSpaces = match(/\s+/g);
-// function(x) { return x.match(/\s+/g) }
+var concatenated = intro.chain(function(a) {
+                     return outro.map(function(b) {
+                       return a + b
+                     })
+                   })
 
-var c = hasSpaces("hello world");
-// [ ' ' ]
+concatenated.fork(
+ function(error) { throw error }
+, function(data)  { console.log(data) }
+)
 
-var d = hasSpaces("spaceless");
-// null
-
-var filter = curry(function(f, ary) {
-  return ary.filter(f);
-});
-
-var e = filter(hasSpaces, ["tori_spelling", "tori amos"]);
-// ["tori amos"]
-
-
-console.log(a);
-console.log(b);
-console.log(c);
-console.log(d);
-console.log(e);
+// var intro = decode(read('intro.txt')) //.map(_.split('\n')).map(_.head);
+//
+// console.log(intro);
