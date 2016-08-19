@@ -1,955 +1,999 @@
-
 <!DOCTYPE HTML>
-<html lang="zh" >
+<html lang="zh-tw" >
+    
     <head>
-        <title>学点函数式编程 · GitBook</title>
+        
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>学点函数式编程 | Node.js开发加密货币</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.1.1">
+        <meta name="generator" content="GitBook 2.6.7">
         <meta name="author" content="Imfly">
         
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
-    
     <link rel="stylesheet" href="../gitbook/style.css">
-
     
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
         
-
-    
-
-    
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
         
     
         
-    
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
         
     
         
-    
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
-        
+    
         <link rel="stylesheet" href="../styles/website.css">
-        
     
 
         
     
-    
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
     
     <link rel="next" href="../3-源码解读/readme.html" />
     
     
-    <link rel="prev" href="4-您必须知道的几个Nodejs编码习惯.html" />
+    <link rel="prev" href="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html" />
     
 
+        
     </head>
     <body>
         
-<div class="book">
-    <div class="book-summary">
         
+    <div class="book"
+        data-level="3.5"
+        data-chapter-title="学点函数式编程"
+        data-filepath="2-Node.js入门指南/5-学点函数式编程.md"
+        data-basepath=".."
+        data-revision="Fri Aug 19 2016 10:21:11 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0-开篇的话/readme.html">
+            
+                
+                    <a href="../0-开篇的话/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        开篇的话
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="0-开篇的话/0-序言.html">
+            
+                
+                    <a href="../0-开篇的话/0-序言.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        序言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="0-开篇的话/1-开栏寄语.html">
+            
+                
+                    <a href="../0-开篇的话/1-开栏寄语.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        开栏寄语
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1-了解加密货币/readme.html">
+            
+                
+                    <a href="../1-了解加密货币/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        了解加密货币
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="1-了解加密货币/5-加密货币就是货币.html">
+            
+                
+                    <a href="../1-了解加密货币/5-加密货币就是货币.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        加密货币就是货币
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
+            
+                
+                    <a href="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        利益，魔鬼与天使的共同目标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
+            
+                
+                    <a href="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        共识机制，可编程的“利益”转移规则
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="2-Node.js入门指南/readme.html">
+            
+                
+                    <a href="../2-Node.js入门指南/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Node.js入门指南
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                
+                    <a href="../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Nodejs原来在币圈如此流行？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                
+                    <a href="../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Nodejs让您的前端开发像子弹飞一样
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                
+                    <a href="../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Nodejs让后台开发像前端一样简单
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                
+                    <a href="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        您必须知道的几个Nodejs编码习惯
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.5" data-path="2-Node.js入门指南/5-学点函数式编程.html">
+            
+                
+                    <a href="../2-Node.js入门指南/5-学点函数式编程.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        学点函数式编程
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="3-源码解读/readme.html">
+            
+                
+                    <a href="../3-源码解读/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        源码解读
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="3-源码解读/1-亿书，一个面向未来的自出版平台.html">
+            
+                
+                    <a href="../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        亿书，一个面向未来的自出版平台
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="3-源码解读/2-入口程序app.js解读.html">
+            
+                
+                    <a href="../3-源码解读/2-入口程序app.js解读.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        入口程序app.js解读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="3-源码解读/3-一个精巧的p2p网络实现.html">
+            
+                
+                    <a href="../3-源码解读/3-一个精巧的p2p网络实现.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        一个精巧的p2p网络实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="3-源码解读/4-加密和验证.html">
+            
+                
+                    <a href="../3-源码解读/4-加密和验证.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        加密和验证
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="3-源码解读/5-地址.html">
+            
+                
+                    <a href="../3-源码解读/5-地址.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        地址
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="3-源码解读/6-签名和多重签名.html">
+            
+                
+                    <a href="../3-源码解读/6-签名和多重签名.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        签名和多重签名
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="3-源码解读/7-交易.html">
+            
+                
+                    <a href="../3-源码解读/7-交易.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        交易
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="3-源码解读/8-区块链.html">
+            
+                
+                    <a href="../3-源码解读/8-区块链.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        区块链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="3-源码解读/9-DPOS机制.html">
+            
+                
+                    <a href="../3-源码解读/9-DPOS机制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        DPOS机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="3-源码解读/10-侧链.html">
+            
+                
+                    <a href="../3-源码解读/10-侧链.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        侧链
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="4-开发实践/readme.html">
+            
+                
+                    <a href="../4-开发实践/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        开发实践
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="4-开发实践/0-加密与解密/readme.html">
+            
+                
+                    <a href="../4-开发实践/0-加密与解密/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        加密与解密
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+            
+                
+                    <a href="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.1.</b>
+                        
+                        三张图让你全面掌握加密解密技术
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="4-开发实践/1-命令行设计/readme.html">
+            
+                
+                    <a href="../4-开发实践/1-命令行设计/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        命令行设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="4-开发实践/1-命令行设计/1-commander介绍.html">
+            
+                
+                    <a href="../4-开发实践/1-命令行设计/1-commander介绍.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.1.</b>
+                        
+                        commander介绍
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="4-开发实践/2-客户端开发/readme.html">
+            
+                
+                    <a href="../4-开发实践/2-客户端开发/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        客户端开发
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
+            
+                
+                    <a href="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.1.</b>
+                        
+                        静态网站开发全景扫描
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
+            
+                
+                    <a href="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.2.</b>
+                        
+                        一张图把握Ember开发的精髓
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.3" data-path="4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
+            
+                
+                    <a href="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.3.</b>
+                        
+                        一张图掌握把前端拆成可重用的Ember插件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.4" data-path="4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
+            
+                
+                    <a href="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.4.</b>
+                        
+                        Ember的所有钩子方法汇总
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="4-开发实践/4-测试/readme.html">
+            
+                
+                    <a href="../4-开发实践/4-测试/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="4-开发实践/5-部署/readme.html">
+            
+                
+                    <a href="../4-开发实践/5-部署/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        部署
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.5.1" data-path="4-开发实践/5-部署/1-Nodejs部署方案全解析.html">
+            
+                
+                    <a href="../4-开发实践/5-部署/1-Nodejs部署方案全解析.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.1.</b>
+                        
+                        Nodejs部署方案全解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5.2" data-path="4-开发实践/5-部署/2-生产环境下的pm2部署.html">
+            
+                
+                    <a href="../4-开发实践/5-部署/2-生产环境下的pm2部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.2.</b>
+                        
+                        生产环境下的pm2部署
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5.3" data-path="4-开发实践/5-部署/3-使用ShipIt实现全自动一键部署.html">
+            
+                
+                    <a href="../4-开发实践/5-部署/3-使用ShipIt实现全自动一键部署.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.3.</b>
+                        
+                        使用ShipIt实现全自动一键部署
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="4-开发实践/6-优化/readme.html">
+            
+                
+                    <a href="../4-开发实践/6-优化/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        优化
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.6.1" data-path="4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
+            
+                
+                    <a href="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.1.</b>
+                        
+                        Js对数据计算处理的各种问题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.2" data-path="4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
+            
+                
+                    <a href="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.2.</b>
+                        
+                        Node.JS Error: ENOSPC
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.3" data-path="4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+            
+                
+                    <a href="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.3.</b>
+                        
+                        一张图学会使用Async组件进行流程控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.4" data-path="4-开发实践/6-优化/3-事件循环.html">
+            
+                
+                    <a href="../4-开发实践/6-优化/3-事件循环.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.4.</b>
+                        
+                        事件循环
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6.5" data-path="4-开发实践/6-优化/5-关于时间戳及相关问题.html">
+            
+                
+                    <a href="../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.5.</b>
+                        
+                        关于时间戳及相关问题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="5-附录/readme.html">
+            
+                
+                    <a href="../5-附录/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        附录
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="5-附录/1-加密货币相关名词汇总.html">
+            
+                
+                    <a href="../5-附录/1-加密货币相关名词汇总.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        加密货币相关名词汇总
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="5-附录/2-Javascript开发规范.html">
+            
+                
+                    <a href="../5-附录/2-Javascript开发规范.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        Javascript开发规范
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="5-附录/3-ES5开发规范.html">
+            
+                
+                    <a href="../5-附录/3-ES5开发规范.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        ES5开发规范
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="5-附录/4-资源链接.html">
+            
+                
+                    <a href="../5-附录/4-资源链接.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        资源链接
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="5-附录/6-关于亿书.html">
+            
+                
+                    <a href="../5-附录/6-关于亿书.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        关于亿书
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="5-附录/7-关于区款链俱乐部.html">
+            
+                
+                    <a href="../5-附录/7-关于区款链俱乐部.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        关于区款链俱乐部
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="5-附录/8-关于作者.html">
+            
+                
+                    <a href="../5-附录/8-关于作者.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        关于作者
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6-后记/readme.html">
+            
+                
+                    <a href="../6-后记/readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        后记
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
 </div>
 
-            
-                <nav role="navigation">
-                
-
-
-<ul class="summary">
-    
-    
-
-    
-
-    
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../0-开篇的话/readme.html">
-            
-                <a href="../0-开篇的话/readme.html">
-            
-                    
-                    开篇的话
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.2.1" data-path="../0-开篇的话/0-序言.html">
-            
-                <a href="../0-开篇的话/0-序言.html">
-            
-                    
-                    序言
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="../0-开篇的话/1-开栏寄语.html">
-            
-                <a href="../0-开篇的话/1-开栏寄语.html">
-            
-                    
-                    开栏寄语
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.3" data-path="../0-开篇的话/2-老老实实谈技术.html">
-            
-                <a href="../0-开篇的话/2-老老实实谈技术.html">
-            
-                    
-                    老老实实谈技术
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="../1-了解加密货币/readme.html">
-            
-                <a href="../1-了解加密货币/readme.html">
-            
-                    
-                    了解加密货币
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="../1-了解加密货币/5-加密货币就是货币.html">
-            
-                <a href="../1-了解加密货币/5-加密货币就是货币.html">
-            
-                    
-                    加密货币就是货币
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
-            
-                <a href="../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
-            
-                    
-                    利益，魔鬼与天使的共同目标
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
-            
-                <a href="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
-            
-                    
-                    共识机制，可编程的“利益”转移规则
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="readme.html">
-            
-                <a href="readme.html">
-            
-                    
-                    Node.js入门指南
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="1-Nodejs原来在币圈如此流行？.html">
-            
-                <a href="1-Nodejs原来在币圈如此流行？.html">
-            
-                    
-                    Nodejs原来在币圈如此流行？
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.2" data-path="2-Nodejs让您的前端开发像子弹飞一样.html">
-            
-                <a href="2-Nodejs让您的前端开发像子弹飞一样.html">
-            
-                    
-                    Nodejs让您的前端开发像子弹飞一样
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.3" data-path="3-Nodejs让后台开发像前端一样简单.html">
-            
-                <a href="3-Nodejs让后台开发像前端一样简单.html">
-            
-                    
-                    Nodejs让后台开发像前端一样简单
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.4" data-path="4-您必须知道的几个Nodejs编码习惯.html">
-            
-                <a href="4-您必须知道的几个Nodejs编码习惯.html">
-            
-                    
-                    您必须知道的几个Nodejs编码习惯
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.4.5" data-path="5-学点函数式编程.html">
-            
-                <a href="5-学点函数式编程.html">
-            
-                    
-                    学点函数式编程
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="../3-源码解读/readme.html">
-            
-                <a href="../3-源码解读/readme.html">
-            
-                    
-                    源码解读
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
-            
-                <a href="../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
-            
-                    
-                    亿书，一个面向未来的自出版平台
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.2" data-path="../3-源码解读/2-入口程序app.js解读.html">
-            
-                <a href="../3-源码解读/2-入口程序app.js解读.html">
-            
-                    
-                    入口程序app.js解读
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.3" data-path="../3-源码解读/3-一个精巧的p2p网络实现.html">
-            
-                <a href="../3-源码解读/3-一个精巧的p2p网络实现.html">
-            
-                    
-                    一个精巧的p2p网络实现
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.4" data-path="../3-源码解读/4-加密和验证.html">
-            
-                <a href="../3-源码解读/4-加密和验证.html">
-            
-                    
-                    加密和验证
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="../3-源码解读/5-地址.html">
-            
-                <a href="../3-源码解读/5-地址.html">
-            
-                    
-                    地址
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.6" data-path="../3-源码解读/6-签名和多重签名.html">
-            
-                <a href="../3-源码解读/6-签名和多重签名.html">
-            
-                    
-                    签名和多重签名
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.7" data-path="../3-源码解读/7-交易.html">
-            
-                <a href="../3-源码解读/7-交易.html">
-            
-                    
-                    交易
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.8" data-path="../3-源码解读/8-区块链.html">
-            
-                <a href="../3-源码解读/8-区块链.html">
-            
-                    
-                    区块链
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.9" data-path="../3-源码解读/9-DPOS机制.html">
-            
-                <a href="../3-源码解读/9-DPOS机制.html">
-            
-                    
-                    DPOS机制
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.10" data-path="../3-源码解读/10-侧链.html">
-            
-                <a href="../3-源码解读/10-侧链.html">
-            
-                    
-                    侧链
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="../4-开发实践/readme.html">
-            
-                <a href="../4-开发实践/readme.html">
-            
-                    
-                    开发实践
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="../4-开发实践/0-加密与解密/readme.html">
-            
-                <a href="../4-开发实践/0-加密与解密/readme.html">
-            
-                    
-                    加密与解密
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1.1" data-path="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
-            
-                <a href="../4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
-            
-                    
-                    三张图让你全面掌握加密解密技术
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="../4-开发实践/1-命令行设计/readme.html">
-            
-                <a href="../4-开发实践/1-命令行设计/readme.html">
-            
-                    
-                    命令行设计
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.2.1" data-path="../4-开发实践/1-命令行设计/1-commander介绍.html">
-            
-                <a href="../4-开发实践/1-命令行设计/1-commander介绍.html">
-            
-                    
-                    commander介绍
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="../4-开发实践/2-客户端开发/readme.html">
-            
-                <a href="../4-开发实践/2-客户端开发/readme.html">
-            
-                    
-                    客户端开发
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.3.1" data-path="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
-            
-                <a href="../4-开发实践/2-客户端开发/4-静态网站开发全景扫描.html">
-            
-                    
-                    静态网站开发全景扫描
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3.2" data-path="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
-            
-                <a href="../4-开发实践/2-客户端开发/5-一张图把握Ember开发的精髓.html">
-            
-                    
-                    一张图把握Ember开发的精髓
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3.3" data-path="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
-            
-                <a href="../4-开发实践/2-客户端开发/6-一张图掌握把前端拆成可重用的Ember插件.html">
-            
-                    
-                    一张图掌握把前端拆成可重用的Ember插件
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3.4" data-path="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
-            
-                <a href="../4-开发实践/2-客户端开发/7-Ember的所有钩子方法汇总.html">
-            
-                    
-                    Ember的所有钩子方法汇总
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.4" data-path="../4-开发实践/4-测试/readme.html">
-            
-                <a href="../4-开发实践/4-测试/readme.html">
-            
-                    
-                    测试
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.5" data-path="../4-开发实践/5-部署/readme.html">
-            
-                <a href="../4-开发实践/5-部署/readme.html">
-            
-                    
-                    部署
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.5.1" data-path="../4-开发实践/5-部署/1-Nodejs部署方案全解析.html">
-            
-                <a href="../4-开发实践/5-部署/1-Nodejs部署方案全解析.html">
-            
-                    
-                    Nodejs部署方案全解析
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.5.2" data-path="../4-开发实践/5-部署/2-生产环境下的pm2部署.html">
-            
-                <a href="../4-开发实践/5-部署/2-生产环境下的pm2部署.html">
-            
-                    
-                    生产环境下的pm2部署
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.5.3" data-path="../4-开发实践/5-部署/3-使用ShipIt实现全自动一键部署.html">
-            
-                <a href="../4-开发实践/5-部署/3-使用ShipIt实现全自动一键部署.html">
-            
-                    
-                    使用ShipIt实现全自动一键部署
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6" data-path="../4-开发实践/6-优化/readme.html">
-            
-                <a href="../4-开发实践/6-优化/readme.html">
-            
-                    
-                    优化
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.6.1" data-path="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
-            
-                <a href="../4-开发实践/6-优化/1-Js对数据计算处理的各种问题.html">
-            
-                    
-                    Js对数据计算处理的各种问题
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6.2" data-path="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
-            
-                <a href="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
-            
-                    
-                    Node.JS Error: ENOSPC
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6.3" data-path="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
-            
-                <a href="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
-            
-                    
-                    一张图学会使用Async组件进行流程控制
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6.4" data-path="../4-开发实践/6-优化/3-事件循环.html">
-            
-                <a href="../4-开发实践/6-优化/3-事件循环.html">
-            
-                    
-                    事件循环
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6.5" data-path="../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
-            
-                <a href="../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
-            
-                    
-                    关于时间戳及相关问题
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="../5-附录/readme.html">
-            
-                <a href="../5-附录/readme.html">
-            
-                    
-                    附录
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.1" data-path="../5-附录/1-加密货币相关名词汇总.html">
-            
-                <a href="../5-附录/1-加密货币相关名词汇总.html">
-            
-                    
-                    加密货币相关名词汇总
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.2" data-path="../5-附录/5-Javascript开发规范.html">
-            
-                <a href="../5-附录/5-Javascript开发规范.html">
-            
-                    
-                    Javascript开发规范
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.3" data-path="../5-附录/6-ES5开发规范.html">
-            
-                <a href="../5-附录/6-ES5开发规范.html">
-            
-                    
-                    ES5开发规范
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.4" data-path="../5-附录/7-资源链接.html">
-            
-                <a href="../5-附录/7-资源链接.html">
-            
-                    
-                    资源链接
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8" data-path="../6-后记/readme.html">
-            
-                <a href="../6-后记/readme.html">
-            
-                    
-                    后记
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="../6-后记/1-记录应该记住的内容.html">
-            
-                <a href="../6-后记/1-记录应该记住的内容.html">
-            
-                    
-                    记录应该记住的内容
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="../6-后记/2-关于亿书.html">
-            
-                <a href="../6-后记/2-关于亿书.html">
-            
-                    
-                    关于亿书
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.3" data-path="../6-后记/3-关于区款链俱乐部.html">
-            
-                <a href="../6-后记/3-关于区款链俱乐部.html">
-            
-                    
-                    关于区款链俱乐部
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.4" data-path="../6-后记/4-关于作者.html">
-            
-                <a href="../6-后记/4-关于作者.html">
-            
-                    
-                    关于作者
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
     <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
     
 
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >学点函数式编程</a>
+        <a href="../" >Node.js开发加密货币</a>
     </h1>
 </div>
 
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="&#x5B66;&#x70B9;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;">&#x5B66;&#x70B9;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</h1>
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x5B66;&#x70B9;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;">&#x5B66;&#x70B9;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</h1>
 <h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
 <p>&#x867D;&#x7136;&#x5927;&#x5BB6;&#x5DF2;&#x7ECF;&#x88AB;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#xFF08;Object-oriented programing&#xFF09;&#x6D17;&#x8111;&#x4E86;&#xFF0C;&#x4F46;&#x5F88;&#x660E;&#x663E;&#x8FD9;&#x79CD;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#x5728; JavaScript &#x91CC;&#x975E;&#x5E38;&#x7B28;&#x62D9;&#xFF0C;&#x8FD9;&#x79CD;&#x8BED;&#x8A00;&#x91CC;&#x6CA1;&#x6709;&#x7C7B;&#x53EF;&#x4EE5;&#x7528;&#xFF0C;&#x793E;&#x533A;&#x91C7;&#x53D6;&#x7684;&#x53D8;&#x901A;&#x65B9;&#x6CD5;&#x4E0D;&#x4E0B;&#x4E09;&#x79CD;&#xFF0C;&#x8FD8;&#x8981;&#x5E94;&#x5BF9;&#x5FD8;&#x8BB0;&#x8C03;&#x7528; <code>new</code> &#x5173;&#x952E;&#x5B57;&#x540E;&#x7684;&#x602A;&#x5F02;&#x884C;&#x4E3A;&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x79C1;&#x6709;&#x6210;&#x5458;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x95ED;&#x5305;&#xFF08;closure&#xFF09;&#x624D;&#x80FD;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x591A;&#x6570;&#x60C5;&#x51B5;&#xFF0C;&#x5C31;&#x50CF;&#x6211;&#x4EEC;&#x5728;&#x4EBF;&#x4E66;&#x4EE3;&#x7801;&#x91CC;&#x90A3;&#x6837;&#xFF0C;&#x628A;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#x653E;&#x5728;&#x4E00;&#x4E2A;privated&#x53D8;&#x91CF;&#x91CC;&#xFF0C;&#x89C6;&#x89C9;&#x4E0A;&#x533A;&#x5206;&#x4E00;&#x4E0B;&#x800C;&#x5DF2;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x5E76;&#x975E;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#x3002;&#x5BF9;&#x5927;&#x591A;&#x6570;&#x4EBA;&#x6765;&#x8BF4;&#xFF0C;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x770B;&#x8D77;&#x6765;&#x624D;&#x66F4;&#x52A0;&#x81EA;&#x7136;&#x3002;&#x800C;&#x4E14;&#xFF0C;&#x5728;Nodejs&#x7684;&#x4E16;&#x754C;&#x91CC;&#xFF0C;&#x5927;&#x91CF;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x662F;&#x6570;&#x636E;&#x9A71;&#x52A8;&#x7684;&#xFF0C;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x66F4;&#x52A0;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x548C;&#x5904;&#x7406;&#x3002;</p>
 <p>&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x8FDC;&#x8FDC;&#x6CA1;&#x6709;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x666E;&#x53CA;&#xFF0C;&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x501F;&#x9274;&#x4E86;&#x51E0;&#x7BC7;&#x4F18;&#x79C0;&#x6587;&#x6863;&#xFF08;&#x89C1;&#x53C2;&#x8003;&#xFF09;&#xFF0C;&#x7ED3;&#x5408;&#x4EBF;&#x4E66;&#x9879;&#x76EE;&#x5B9E;&#x8DF5;&#x548C;&#x4E2A;&#x4EBA;&#x4F53;&#x4F1A;&#xFF0C;&#x6C47;&#x603B;&#x4E86;&#x4E00;&#x4E9B;&#x5E73;&#x65F6;&#x7528;&#x5F97;&#x5230;&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x601D;&#x8DEF;&#xFF0C;&#x4E3A;&#x66F4;&#x597D;&#x7684;&#x4F18;&#x5316;&#x8BBE;&#x8BA1;&#x4EBF;&#x4E66;&#x505A;&#x597D;&#x51C6;&#x5907;&#x3002;&#x672C;&#x7BC7;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#xFF0C;&#x4E3B;&#x8981;&#x7279;&#x70B9;&#x548C;&#x7F16;&#x7801;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#x5B9E;&#x4F8B;&#x4E3B;&#x8981;&#x53C2;&#x8003;&#x4E86; &#x300A;mostly adequate guide&#x300B;&#xFF0C;folktalejs &#x548C; ramdajs &#x7684;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#xFF0C;&#x53C2;&#x8003;&#x91CC;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x5B83;&#x4EEC;&#x7684;&#x94FE;&#x63A5;&#xFF0C;&#x8BF7;&#x8BA4;&#x771F;&#x53C2;&#x8003;&#x5B66;&#x4E60;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8FD0;&#x884C;&#x6587;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x8BF7;&#x63D0;&#x524D;&#x5B89;&#x88C5;ramda&#x7B49;&#x76F8;&#x5E94;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x7EC4;&#x4EF6;&#x3002;</p>
@@ -1288,13 +1332,13 @@ Container.prototype.map = <span class="hljs-function"><span class="hljs-keyword"
 <ul>
 <li><strong>&#x5BB9;&#x5668;&#x6709;&#x4E14;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5BF9;&#x8C61;</strong>&#x3002;&#x5C3D;&#x7BA1;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x6709;&#x4E0D;&#x6B62;&#x4E00;&#x4E2A;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x5927;&#x591A;&#x6570;&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x3002;&#x6211;&#x4EEC;&#x5F88;&#x968F;&#x610F;&#x5730;&#x628A; <code>Container</code> &#x7684;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x547D;&#x540D;&#x4E3A; <code>__value</code>&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x6539;&#x6210;&#x522B;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;&#x5BB9;&#x5668;&#x5C31;&#x50CF;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#xFF0C;&#x4F46;&#x4E0D;&#x662F;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E0D;&#x4F1A;&#x4E3A;&#x5B83;&#x6DFB;&#x52A0;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x89C2;&#x5FF5;&#x4E0B;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</li>
 <li><strong>&#x5BB9;&#x5668;&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x88C5;&#x8F7D;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x7684;&#x503C;</strong>&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;<code>__value</code> &#x4E0D;&#x80FD;&#x662F;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x7C7B;&#x578B;&#x3002;</li>
-<li><strong>&#x6570;&#x636E;&#x4E00;&#x65E6;&#x5B58;&#x653E;&#x5230;&#x5BB9;&#x5668;&#xFF0C;&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x5F85;&#x5728;&#x90A3;&#x513F;</strong>&#x3002;&#x6211;&#x4EEC;<em>&#x53EF;&#x4EE5;</em>&#x7528; <code>.__value</code> &#x83B7;&#x53D6;&#x5230;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x8FD9;&#x6837;&#x505A;&#x6709;&#x6096;&#x521D;&#x8877;&#x3002;</li>
-<li><strong>&#x4EFF;&#x51FD;&#x6570;&#x662F;&#x5BB9;&#x5668;&#x7684;&#x63A5;&#x53E3;</strong>&#x3002;&#x64CD;&#x4F5C;&#x548C;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x8981;&#x4F7F;&#x7528;&#x4EFF;&#x51FD;&#x6570;&#xFF08;functor&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5728;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x4E2D;&#xFF0C;&#x4EFF;&#x51FD;&#x6570;&#x57FA;&#x672C;&#x4E0A;&#x4EE3;&#x8868;&#x4E86;&#x5BB9;&#x5668;&#x672C;&#x8EAB;&#x3002;&#x5728;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x91CC;&#xFF0C;&#x5230;&#x5904;&#x90FD;&#x6709;&#x4EFF;&#x51FD;&#x6570;&#x7684;&#x8EAB;&#x5F71;&#xFF0C;&#x50CF; tree&#x3001;list&#x3001;map &#x548C; pair &#x7B49;&#x53EF;&#x8FED;&#x4EE3;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4EE5;&#x53CA;eventstream &#x548C; observable &#x4E5F;&#x90FD;&#x662F;&#x3002;</li>
+<li><strong>of&#x65B9;&#x6CD5;&#x662F;&#x5BB9;&#x5668;&#x7684;&#x5165;&#x53E3;&#x8BBF;&#x95EE;&#x65B9;&#x6CD5;</strong>&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x7B80;&#x5355;&#x901A;&#x7528;&#x5730;&#x5F80;&#x4EFF;&#x51FD;&#x6570;&#x91CC;&#x586B;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x6570;&#x636E;&#x4E00;&#x65E6;&#x5B58;&#x653E;&#x5230;&#x5BB9;&#x5668;&#xFF0C;&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x5F85;&#x5728;&#x90A3;&#x513F;&#x3002;&#x6211;&#x4EEC;<em>&#x53EF;&#x4EE5;</em>&#x7528; <code>.__value</code> &#x83B7;&#x53D6;&#x5230;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x5C3D;&#x91CF;&#x522B;&#x8FD9;&#x4E48;&#x505A;&#x3002;</li>
+<li><strong>&#x4EFF;&#x51FD;&#x6570;&#x662F;&#x5BB9;&#x5668;&#x7684;&#x51FA;&#x53E3;&#x8BBF;&#x95EE;&#x65B9;&#x6CD5;</strong>&#x3002;&#x64CD;&#x4F5C;&#x548C;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x8981;&#x4F7F;&#x7528;&#x4EFF;&#x51FD;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5728;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x4E2D;&#xFF0C;&#x4EFF;&#x51FD;&#x6570;&#x57FA;&#x672C;&#x4E0A;&#x4EE3;&#x8868;&#x4E86;&#x5BB9;&#x5668;&#x672C;&#x8EAB;&#x3002;&#x5728;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x91CC;&#xFF0C;&#x5230;&#x5904;&#x90FD;&#x6709;&#x4EFF;&#x51FD;&#x6570;&#x7684;&#x8EAB;&#x5F71;&#xFF0C;&#x50CF; tree&#x3001;list&#x3001;map &#x548C; pair &#x7B49;&#x53EF;&#x8FED;&#x4EE3;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4EE5;&#x53CA;eventstream &#x548C; observable &#x4E5F;&#x90FD;&#x662F;&#x3002;</li>
 </ul>
 <p><strong>&#x4EC0;&#x4E48;&#x662F;&#x4EFF;&#x51FD;&#x6570;&#xFF1F;</strong></p>
 <p>&#x7F51;&#x4E0A;&#x641C;&#x7D22;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x5927;&#x5BB6;&#x666E;&#x904D;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x5F88;&#x96BE;&#x7406;&#x89E3;&#x3002;&#x8BF4;&#x5B9E;&#x8BDD;&#xFF0C;&#x4ECE;&#x5B57;&#x9762;&#x610F;&#x601D;&#x4E0A;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x4E2D;&#x6587;&#x51FD;&#x5B50;&#x3001;&#x4EFF;&#x51FD;&#x6570;&#xFF0C;&#x8FD8;&#x662F;&#x82F1;&#x6587;functor&#xFF0C;&#x6211;&#x4E00;&#x5F00;&#x59CB;&#x90FD;&#x6CA1;&#x6709;&#x7406;&#x89E3;&#x662F;&#x4E2A;&#x4EC0;&#x4E48;&#x4E1C;&#x897F;&#x3002; &#x5927;&#x5BB6;&#x666E;&#x904D;&#x8BA4;&#x53EF;&#x7684;&#x662F; <a href="http://jiyinyiyong.github.io/monads-in-pictures/" target="_blank">Functor, Applicative, &#x4EE5;&#x53CA; Monad &#x7684;&#x56FE;&#x7247;&#x9610;&#x91CA;</a> &#x91CC;&#x7684;&#x89E3;&#x91CA;&#xFF0C;&#x56FE;&#x6587;&#x5E76;&#x8302;&#x975E;&#x5E38;&#x6E05;&#x6670;&#xFF0C;&#x8BF7;&#x81EA;&#x884C;&#x67E5;&#x9605;&#x5427;&#x3002;</p>
 <p>&#x5BF9;&#x8FD9;&#x79CD;&#x8236;&#x6765;&#x54C1;&#xFF0C;&#x6211;&#x901A;&#x5E38;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x76F4;&#x63A5;&#x770B;&#x5B83;&#x7684;&#x82F1;&#x6587;&#x89E3;&#x91CA;&#xFF08;&#x89C1;&#x53C2;&#x8003; &#x7EF4;&#x57FA;&#x767E;&#x79D1;&#x4E0A;&#x7684;functor&#x8BCD;&#x6761;&#xFF09;&#xFF0C;<code>In mathematics, a functor is a type of mapping between categories, which is applied in category theory.</code> &#x8BD1;&#x4E3A;&#xFF1A;&#x5728;&#x6570;&#x5B66;&#x4E2D;&#xFF0C;&#x4EFF;&#x51FD;&#x6570;&#x5E94;&#x7528;&#x4E8E;&#x8303;&#x7574;&#x5B66;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x8303;&#x7574;&#x4E4B;&#x95F4;&#x7684;&#x6620;&#x5C04;&#x3002;&#x6309;&#x7167;&#x8FD9;&#x91CC;&#x7684;&#x89E3;&#x91CA;&#x628A;&#x5B83;&#x79F0;&#x4E3A; <code>Mappable</code> &#x6216;&#x8BB8;&#x66F4;&#x4E3A;&#x6070;&#x5F53;&#x3002;</p>
-<p>&#x4E3A;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x4E86;&#x89E3;&#x5B83;&#x662F;&#x4EC0;&#x4E48;&#x4E1C;&#x897F;&#xFF0C;&#x600E;&#x4E48;&#x4E2A;&#x6620;&#x5C04;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x770B;&#x770B;&#x3002;&#x63A5;&#x7740;&#x4E0A;&#x9762;&#x7684;&#x5BB9;&#x5668;&#x8BDD;&#x9898;&#xFF0C;&#x4E00;&#x65E6;&#x5BB9;&#x5668;&#x91CC;&#x6709;&#x4E86;&#x503C;&#xFF0C;&#x4E0D;&#x7BA1;&#x8FD9;&#x4E2A;&#x503C;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x6765;&#x8BA9;&#x522B;&#x7684;&#x51FD;&#x6570;&#x80FD;&#x591F;&#x64CD;&#x4F5C;&#x5B83;&#x3002;&#x8FD9;&#x53E5;&#x8BDD;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C;&#x503C;&#x5916;&#x9762;&#x6709;&#x4E86;&#x5BB9;&#x5668;&#xFF0C;&#x5C31;&#x7ED9;&#x5B9A;&#x4E86;&#x4E00;&#x4E2A;&#x8303;&#x7574;&#xFF08;&#x4E0A;&#x4E0B;&#x6587;&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x50CF;&#x524D;&#x9762;&#x90A3;&#x6837;&#x7B80;&#x5355;&#x7684;&#x64CD;&#x4F5C;&#x8FD9;&#x4E2A;&#x503C;&#x4E86;&#xFF0C;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x4EFF;&#x51FD;&#x6570;&#x5C31;&#x6D3E;&#x4E0A;&#x7528;&#x573A;&#x4E86;&#x3002;</p>
+<p>&#x63A5;&#x7740;&#x4E0A;&#x9762;&#x7684;&#x5BB9;&#x5668;&#x8BDD;&#x9898;&#xFF0C;&#x4E00;&#x65E6;&#x5BB9;&#x5668;&#x91CC;&#x6709;&#x4E86;&#x503C;&#xFF0C;&#x4E0D;&#x7BA1;&#x8FD9;&#x4E2A;&#x503C;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x6765;&#x8BA9;&#x522B;&#x7684;&#x51FD;&#x6570;&#x80FD;&#x591F;&#x64CD;&#x4F5C;&#x5B83;&#x3002;&#x8FD9;&#x53E5;&#x8BDD;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C;&#x503C;&#x5916;&#x9762;&#x6709;&#x4E86;&#x5BB9;&#x5668;&#xFF0C;&#x5C31;&#x7ED9;&#x5B9A;&#x4E86;&#x4E00;&#x4E2A;&#x8303;&#x7574;&#xFF08;&#x4E0A;&#x4E0B;&#x6587;&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x50CF;&#x524D;&#x9762;&#x90A3;&#x6837;&#x7B80;&#x5355;&#x7684;&#x64CD;&#x4F5C;&#x8FD9;&#x4E2A;&#x503C;&#x4E86;&#xFF0C;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x4EFF;&#x51FD;&#x6570;&#x5C31;&#x6D3E;&#x4E0A;&#x7528;&#x573A;&#x4E86;&#x3002;&#x5F62;&#x8C61;&#x70B9;&#x8BF4;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5BB9;&#x5668;&#x8BBE;&#x5B9A;&#x4E86;&#x4E00;&#x4E2A;&#x8303;&#x7574;&#xFF0C;&#x4EFF;&#x51FD;&#x6570;&#x5C31;&#x4E3A;&#x5B83;&#x642D;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x4EA4;&#x6D41;&#x901A;&#x9053;&#x3002;</p>
 <p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x91CC;&#x7684; <code>map</code> &#x8DDF;&#x6570;&#x7EC4;&#x90A3;&#x4E2A;&#x8457;&#x540D;&#x7684; <code>map</code> &#x4E00;&#x6837;&#xFF0C;&#x9664;&#x4E86;&#x524D;&#x8005;&#x7684;&#x53C2;&#x6570;&#x662F; <code>Container a</code> &#x800C;&#x540E;&#x8005;&#x662F; <code>[a]</code>&#x3002;&#x5B83;&#x4EEC;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4E5F;&#x51E0;&#x4E4E;&#x4E00;&#x81F4;&#xFF1A;</p>
 <pre><code class="lang-js"><span class="hljs-comment">// &#x975E;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; Ramdajs</span>
 <span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;ramda&apos;</span>);
@@ -1308,16 +1352,18 @@ Container.of(<span class="hljs-string">&quot;flamethrowers&quot;</span>).map(<sp
 Container.of(<span class="hljs-string">&quot;bombs&quot;</span>).map(concat(<span class="hljs-string">&apos; away&apos;</span>)).map(_.prop(<span class="hljs-string">&apos;length&apos;</span>))
 <span class="hljs-comment">//=&gt; Container(10)</span>
 </code></pre>
+<p><code>of</code> &#x65B9;&#x6CD5;&#x4E0D;&#x5355;&#x5355;&#x662F;&#x7528;&#x6765;&#x907F;&#x514D;&#x4F7F;&#x7528; <code>new</code> &#x5173;&#x952E;&#x5B57;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x7528;&#x6765;&#x628A;&#x503C;&#x653E;&#x5230;<em>&#x9ED8;&#x8BA4;&#x6700;&#x5C0F;&#x5316;&#x4E0A;&#x4E0B;&#x6587;</em>&#xFF08;default minimal context&#xFF09;&#x4E2D;&#x7684;&#x3002;<code>of</code>&#x5176;&#x5B9E;&#x5C31;&#x662F;<code>pure</code>&#x3001;<code>point</code>&#x3001;<code>unit</code> &#x548C; <code>return</code> &#x4E4B;&#x7C7B;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x79F0;&#x4E4B;&#x4E3A; <em>pointed&#x4EFF;&#x51FD;&#x6570;</em> &#xFF08;&#x5B9E;&#x73B0;&#x4E86; <code>of</code> &#x65B9;&#x6CD5;&#x7684;&#x4EFF;&#x51FD;&#x6570;&#xFF09;&#x7684;&#x91CD;&#x8981;&#x63A5;&#x53E3;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x5173;&#x952E;&#x662F;&#x628A;&#x4EFB;&#x610F;&#x503C;&#x4E22;&#x5230;&#x5BB9;&#x5668;&#x91CC;&#x7136;&#x540E;&#x5F00;&#x59CB;&#x5230;&#x5904;&#x4F7F;&#x7528; <code>map</code> &#x7684;&#x80FD;&#x529B;&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x5728;&#x4E0D;&#x79BB;&#x5F00; <code>Container</code> &#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x64CD;&#x4F5C;&#x5BB9;&#x5668;&#x91CC;&#x9762;&#x7684;&#x503C;&#x3002;<code>Container</code> &#x91CC;&#x7684;&#x503C;&#x4F20;&#x9012;&#x7ED9; <code>map</code> &#x51FD;&#x6570;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4EFB;&#x6211;&#x4EEC;&#x64CD;&#x4F5C;&#xFF1B;&#x64CD;&#x4F5C;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x610F;&#x5916;&#x518D;&#x628A;&#x5B83;&#x653E;&#x56DE;&#x5B83;&#x6240;&#x5C5E;&#x7684; <code>Container</code>&#x3002;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x7ED3;&#x679C;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x8FDE;&#x7EED;&#x5730;&#x8C03;&#x7528; <code>map</code>&#xFF0C;&#x8FD0;&#x884C;&#x4EFB;&#x4F55;&#x6211;&#x4EEC;&#x60F3;&#x8FD0;&#x884C;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x751A;&#x81F3;&#x8FD8;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x503C;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
-<p>&#x8BA9;&#x5BB9;&#x5668;&#x81EA;&#x5DF1;&#x53BB;&#x8FD0;&#x7528;&#x51FD;&#x6570;&#x6709;&#x5229;&#x4E8E;&#x5BF9;&#x51FD;&#x6570;&#x8FD0;&#x7528;&#x7684;&#x62BD;&#x8C61;&#x3002;&#x5F53; <code>map</code> &#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x8BF7;&#x6C42;&#x5BB9;&#x5668;&#x6765;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x5341;&#x5206;&#x5F3A;&#x5927;&#x7684;&#x7406;&#x5FF5;&#x3002;&#x8FD9;&#x79CD;&#x8BA9;&#x5BB9;&#x5668;&#x53BB;&#x8FD0;&#x884C;&#x51FD;&#x6570;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x201C;&#x4EFF;&#x51FD;&#x6570;&#x201D;&#x3002;&#x901A;&#x4FD7;&#x70B9;&#x70B9;&#x8BB2;&#xFF0C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x88AB; <code>map</code> &#x5305;&#x88F9;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x5C31;&#x4F1A;&#x4ECE;&#x4E00;&#x4E2A;&#x975E;&#x4EFF;&#x51FD;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x4EFF;&#x51FD;&#x6570;&#x3002;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x666E;&#x901A;&#x51FD;&#x6570;&#x66F4;&#x9002;&#x5408;&#x64CD;&#x4F5C;&#x666E;&#x901A;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x800C;&#x4E0D;&#x662F;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#xFF0C;&#x5728;&#x5FC5;&#x8981;&#x7684;&#x65F6;&#x5019;&#x518D;&#x901A;&#x8FC7; map &#x53D8;&#x4E3A;&#x5408;&#x9002;&#x7684;&#x4EFF;&#x51FD;&#x6570;&#x53BB;&#x64CD;&#x4F5C;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x597D;&#x5904;&#x662F;&#x968F;&#x9700;&#x6C42;&#x800C;&#x53D8;&#xFF0C;&#x80FD;&#x5F97;&#x5230;&#x66F4;&#x7B80;&#x5355;&#x3001;&#x91CD;&#x7528;&#x6027;&#x66F4;&#x9AD8;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
-<p>&#x4EFF;&#x51FD;&#x6570;&#x7684;&#x6982;&#x5FF5;&#x65E2;&#x7136;&#x6765;&#x81EA;&#x4E8E;&#x8303;&#x7574;&#x5B66;&#xFF0C;&#x5E94;&#x8BE5;&#x6EE1;&#x8DB3;&#x4E00;&#x4E9B;&#x5B9A;&#x5F8B;&#xFF0C;&#x5B66;&#x4E60;&#x7406;&#x89E3;&#x8FD9;&#x4E9B;&#x5B9E;&#x7528;&#x7684;&#x5B9A;&#x5F8B;&#xFF0C;&#x4F1A;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x66F4;&#x597D;&#x7684;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
+<p>&#x8BA9;&#x5BB9;&#x5668;&#x81EA;&#x5DF1;&#x53BB;&#x8FD0;&#x7528;&#x51FD;&#x6570;&#x6709;&#x5229;&#x4E8E;&#x5BF9;&#x51FD;&#x6570;&#x8FD0;&#x7528;&#x7684;&#x62BD;&#x8C61;&#x3002;&#x5F53; <code>map</code> &#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x8BF7;&#x6C42;&#x5BB9;&#x5668;&#x6765;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x5341;&#x5206;&#x5F3A;&#x5927;&#x7684;&#x7406;&#x5FF5;&#x3002;&#x8FD9;&#x79CD;&#x8BA9;&#x5BB9;&#x5668;&#x53BB;&#x8FD0;&#x884C;&#x51FD;&#x6570;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x201C;&#x4EFF;&#x51FD;&#x6570;&#x201D;&#x3002;&#x901A;&#x4FD7;&#x70B9;&#x8BB2;&#xFF0C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x88AB; <code>map</code> &#x5305;&#x88F9;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x5C31;&#x4F1A;&#x4ECE;&#x4E00;&#x4E2A;&#x975E;&#x4EFF;&#x51FD;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x4EFF;&#x51FD;&#x6570;&#x3002;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x666E;&#x901A;&#x51FD;&#x6570;&#x66F4;&#x9002;&#x5408;&#x64CD;&#x4F5C;&#x666E;&#x901A;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x800C;&#x4E0D;&#x662F;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#xFF0C;&#x5728;&#x5FC5;&#x8981;&#x7684;&#x65F6;&#x5019;&#x518D;&#x901A;&#x8FC7; map &#x53D8;&#x4E3A;&#x5408;&#x9002;&#x7684;&#x4EFF;&#x51FD;&#x6570;&#x53BB;&#x64CD;&#x4F5C;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x597D;&#x5904;&#x662F;&#x968F;&#x9700;&#x6C42;&#x800C;&#x53D8;&#xFF0C;&#x80FD;&#x5F97;&#x5230;&#x66F4;&#x7B80;&#x5355;&#x3001;&#x91CD;&#x7528;&#x6027;&#x66F4;&#x9AD8;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x4EFF;&#x51FD;&#x6570;&#x7684;&#x6982;&#x5FF5;&#x65E2;&#x7136;&#x6765;&#x81EA;&#x4E8E;&#x8303;&#x7574;&#x5B66;&#xFF0C;&#x5E94;&#x8BE5;&#x6EE1;&#x8DB3;&#x4E00;&#x4E9B;&#x5B9A;&#x5F8B;&#xFF0C;&#x5B66;&#x4E60;&#x7406;&#x89E3;&#x8FD9;&#x4E9B;&#x5B9E;&#x7528;&#x7684;&#x5B9A;&#x5F8B;&#xFF0C;&#x4F1A;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x66F4;&#x597D;&#x7684;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x5B9A;&#x5F8B;&#xFF1A;</p>
 <pre><code class="lang-js"><span class="hljs-comment">// &#x540C;&#x4E00;&#x6027; identity</span>
 map(id) === id;
 
 <span class="hljs-comment">// &#x7ED3;&#x5408;&#x5F8B; composition</span>
 compose(map(f), map(g)) === map(compose(f, g));
 </code></pre>
-<h4 id="&#x6570;&#x636E;&#x9A8C;&#x8BC1;&#xFF08;maybe&#xFF09;">&#x6570;&#x636E;&#x9A8C;&#x8BC1;&#xFF08;Maybe&#xFF09;</h4>
+<p>&#x4E0B;&#x9762;&#xFF0C;&#x6839;&#x636E;&#x529F;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x4ECB;&#x7ECD;&#x51E0;&#x79CD;&#x91CD;&#x8981;&#x7684;&#x4EFF;&#x51FD;&#x6570;&#x3002;</p>
+<p><strong> 1&gt; &#x6570;&#x636E;&#x9A8C;&#x8BC1;&#xFF08;Maybe&#xFF09;</strong></p>
 <p>&#x4E0A;&#x9762;&#x7684;<code>Container</code>&#x529F;&#x80FD;&#x5355;&#x4E00;&#xFF0C;&#x4E0B;&#x9762;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x4E00;&#x7CFB;&#x5217;&#x91CD;&#x6784;&#xFF0C;&#x4EE5;&#x6EE1;&#x8DB3;&#x6211;&#x4EEC;&#x4E0D;&#x540C;&#x7684;&#x9700;&#x8981;&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x6BCF;&#x6B21;&#x91CD;&#x6784;&#xFF0C;&#x5F97;&#x51FA;&#x7684;&#x65B0;&#x5BB9;&#x5668;&#xFF0C;&#x90FD;&#x662F;&#x4E00;&#x79CD;&#x5177;&#x5907;&#x7279;&#x5B9A;&#x529F;&#x80FD;&#x7684;&#x4EFF;&#x51FD;&#x6570;&#x3002;&#x5148;&#x7ED9;&#x6570;&#x636E;&#x52A0;&#x4E0A;&#x9A8C;&#x8BC1;&#x770B;&#x770B;&#xFF0C;&#x6BD5;&#x7ADF;&#x6570;&#x636E;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x662F;&#x7F16;&#x7A0B;&#x65E0;&#x6CD5;&#x7ED5;&#x5F00;&#x7684;&#x903B;&#x8F91;&#x4E4B;&#x4E00;&#xFF0C;&#x5177;&#x5907;&#x8FD9;&#x79CD;&#x7279;&#x6027;&#x7684;&#x4EFF;&#x51FD;&#x6570;&#xFF0C;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x91CC;&#x79F0;&#x4E4B;&#x4E3A;Maybe&#x3002;&#x66F4;&#x591A;&#x5185;&#x5BB9;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;&#x5B66;&#x4E60; <a href="https://github.com/folktale/data.maybe/blob/master/lib/maybe.js" target="_blank">folktale&apos;s data.maybe</a>&#x3002;</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> Maybe = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
   <span class="hljs-keyword">this</span>.__value = x;
@@ -1342,7 +1388,7 @@ Maybe.of({name: <span class="hljs-string">&quot;Boris&quot;</span>}).map(_.prop(
 <span class="hljs-comment">//=&gt; Maybe(null)</span>
 </code></pre>
 <p>&#x770B;&#x4F3C;&#x5F88;&#x5C0F;&#x7684;&#x6539;&#x8FDB;&#xFF0C;&#x5374;&#x8BA9;&#x4EE3;&#x7801;&#x66F4;&#x52A0;&#x5065;&#x58EE;&#x3002;&#x9664;&#x4E86;&#x65F6;&#x523B;&#x68C0;&#x67E5;&#x53C2;&#x6570;&#x7684;&#x5B58;&#x5728;&#x6027;&#xFF0C;&#x8FD8;&#x80FD;&#x7528; <code>Maybe(null)</code> &#x6765;&#x53D1;&#x9001;&#x5931;&#x8D25;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;&#x8BA9;&#x7A0B;&#x5E8F;&#x63A5;&#x5230;&#x8FD9;&#x4E2A;&#x4FE1;&#x53F7;&#x65F6;&#x7ACB;&#x523B;&#x5207;&#x65AD;&#x540E;&#x7EED;&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x901A;&#x5E38;&#x662F;&#x7F16;&#x7801;&#x5E0C;&#x671B;&#x8FBE;&#x5230;&#x7684;&#x6548;&#x679C;&#x3002;</p>
-<h4 id="&#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF08;either&#xFF09;">&#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF08;Either&#xFF09;</h4>
+<p><strong> 2&gt; &#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF08;Either&#xFF09;</strong></p>
 <p>&#x5BF9;&#x4E8E;&#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x53EF;&#x80FD;&#x662F;&#x4EC0;&#x4E48;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x662F;<code>throw/catch</code>&#xFF0C;&#x8FD9;&#x4F1A;&#x5F71;&#x54CD;&#x6027;&#x80FD;&#xFF0C;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x4E5F;&#x4E0D;&#x600E;&#x4E48;&#x53CB;&#x597D;&#xFF0C;&#x800C;&#x4E14;&#x53EF;&#x80FD;&#x4F1A;&#x6253;&#x7834;&#x201C;&#x7EAF;&#x201D;&#x51FD;&#x6570;&#xFF0C;&#x8BA9;&#x5176;&#x53D8;&#x5F97;&#x4E0D;&#x518D;&#x201C;&#x7EAF;&#x201D;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x4F1A;&#x4F7F;&#x7528;if&#x8BED;&#x53E5;&#x6765;&#x5224;&#x5B9A;&#xFF0C;&#x7ED9;&#x51FA;&#x5177;&#x4F53;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;&#x5728;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x91CC;&#xFF0C;&#x901A;&#x5E38;&#x4F7F;&#x7528; <code>Either</code> &#x8FD9;&#x4E2A;&#x4EFF;&#x51FD;&#x6570;&#x3002;&#x5B57;&#x9762;&#x542B;&#x4E49;&#x4E3A;&#x201C;&#x6216;&#x8005;&#x201D;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x5C5E;&#x4E8E;&#x4E8C;&#x9009;&#x4E00;&#x7684;&#x4E24;&#x4E2A;&#x5206;&#x652F;&#x3002;&#x66F4;&#x591A;&#x5185;&#x5BB9;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;&#x5B66;&#x4E60; <a href="https://github.com/folktale/data.either/blob/master/lib/either.js" target="_blank">folktale&apos;s data.either</a>&#x3002;</p>
 <p>&#x8FD9;&#x91CC;&#xFF0C;&#x5217;&#x51FA;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> Left = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>{
@@ -1437,7 +1483,7 @@ zoltar({birthdate: <span class="hljs-string">&apos;balloons!&apos;</span>});
 <span class="hljs-comment">// undefined</span>
 </code></pre>
 <p><code>Either</code> &#x5E76;&#x4E0D;&#x4EC5;&#x4EC5;&#x53EA;&#x5BF9;&#x5408;&#x6CD5;&#x6027;&#x68C0;&#x67E5;&#x8FD9;&#x79CD;&#x4E00;&#x822C;&#x6027;&#x7684;&#x9519;&#x8BEF;&#x6709;&#x4F5C;&#x7528;&#xFF0C;&#x5BF9;&#x4E00;&#x4E9B;&#x66F4;&#x4E25;&#x91CD;&#x7684;&#x3001;&#x80FD;&#x591F;&#x4E2D;&#x65AD;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x6BD4;&#x5982;&#x6587;&#x4EF6;&#x4E22;&#x5931;&#x6216;&#x8005; socket &#x8FDE;&#x63A5;&#x65AD;&#x5F00;&#x7B49;&#xFF0C;&#x540C;&#x6837;&#x6548;&#x679C;&#x663E;&#x8457;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x8FD9;&#x91CC;&#x4EC5;&#x628A;<code>Either</code>&#x5F53;&#x4F5C;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x6D88;&#x606F;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x5176;&#x5B9E;&#x5B83;&#x8FD8;&#x80FD;&#x505A;&#x66F4;&#x591A;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
-<h4 id="&#x5F02;&#x6B65;&#x5904;&#x7406;&#xFF08;task&#xFF09;">&#x5F02;&#x6B65;&#x5904;&#x7406;&#xFF08;Task&#xFF09;</h4>
+<p><strong> 3&gt; &#x5F02;&#x6B65;&#x5904;&#x7406;&#xFF08;Task&#xFF09;</strong></p>
 <p>&#x5728;JavaScript&#x7684;&#x4E16;&#x754C;&#x91CC;&#xFF0C;&#x56DE;&#x8C03;&#xFF08;callback&#xFF09;&#x662F;&#x65E0;&#x6CD5;&#x56DE;&#x907F;&#x7684;&#x3002;&#x8FD8;&#x597D;&#xFF0C;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x4EE3;&#x7801;&#xFF0C;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x6709;&#x4E00;&#x79CD;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x5185;&#x90E8;&#x673A;&#x5236;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;&#x901A;&#x8FC7;&#x4F7F;&#x7528; <a href="http://folktalejs.org/" target="_blank">Folktale</a> &#x91CC;&#x7684; <code>Data.Task</code> &#xFF0C;&#x6765;&#x4ECE;&#x5B9E;&#x4F8B;&#x4E2D;&#x53BB;&#x4F53;&#x4F1A;&#x5427;&#xFF1A;</p>
 <pre><code class="lang-js"><span class="hljs-comment">// &#x8FD9;&#x662F;Folktale&#x5B98;&#x65B9;&#x7684;&#x4F8B;&#x5B50;</span>
 <span class="hljs-keyword">var</span> Task = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;data.task&apos;</span>)
@@ -1478,9 +1524,74 @@ concatenated.fork(
 </code></pre>
 <p>&#x4F8B;&#x5B50;&#x4E2D;&#x7684; <code>reject</code> &#x548C; <code>resolve</code> &#x51FD;&#x6570;&#x5206;&#x522B;&#x662F;&#x5931;&#x8D25;&#x548C;&#x6210;&#x529F;&#x7684;&#x56DE;&#x8C03;&#x3002;&#x6211;&#x4EEC;&#x7528;<code>chain</code> &#x6765;&#x8FD0;&#x884C;&#x4E24;&#x4E2A;&#x5F02;&#x6B65;&#x884C;&#x4E3A;&#xFF1B;&#x7B80;&#x5355;&#x5730;&#x8C03;&#x7528; <code>Task</code> &#x7684; <code>map</code> &#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x80FD;&#x64CD;&#x4F5C;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x4E4B;&#x540E;&#x7684;&#x503C;&#xFF0C;&#x597D;&#x50CF;&#x8FD9;&#x4E2A;&#x503C;&#x5C31;&#x5728;&#x90A3;&#x513F;&#x4F3C;&#x7684;&#xFF1B;&#x8C03;&#x7528; <code>fork</code> &#x65B9;&#x6CD5;&#x624D;&#x80FD;&#x8FD0;&#x884C; <code>Task</code>&#xFF0C;&#x5B83;&#x4F1A; fork &#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x5B83;&#x63A5;&#x6536;&#x5230;&#x7684;&#x53C2;&#x6570;&#x4EE3;&#x7801;&#xFF0C;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#x7684;&#x6267;&#x884C;&#x4E0D;&#x53D7;&#x5F71;&#x54CD;&#xFF0C;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E5F;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x3002;</p>
 <p>&#x8FD9;&#x91CC;&#x7684;&#x63A7;&#x5236;&#x6D41;&#x662F;&#x7EBF;&#x6027;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x4ECE;&#x4E0B;&#x8BFB;&#x5230;&#x4E0A;&#xFF0C;&#x4ECE;&#x53F3;&#x8BFB;&#x5230;&#x5DE6;&#x5C31;&#x80FD;&#x7406;&#x89E3;&#x4EE3;&#x7801;&#xFF0C;&#x5373;&#x4FBF;&#x8FD9;&#x6BB5;&#x7A0B;&#x5E8F;&#x5B9E;&#x9645;&#x4E0A;&#x4F1A;&#x5728;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x5230;&#x5904;&#x8DF3;&#x6765;&#x8DF3;&#x53BB;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4F7F;&#x5F97;&#x9605;&#x8BFB;&#x548C;&#x7406;&#x89E3;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x4EE3;&#x7801;&#x6BD4;&#x90A3;&#x79CD;&#x8981;&#x5728;&#x5404;&#x79CD;&#x56DE;&#x8C03;&#x548C;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x4EE3;&#x7801;&#x5757;&#x4E4B;&#x95F4;&#x8DF3;&#x8DC3;&#x7684;&#x65B9;&#x5F0F;&#x5BB9;&#x6613;&#x5F97;&#x591A;&#x3002;</p>
+<p><strong> 4&gt; &#x5D4C;&#x5957;&#x5904;&#x7406;&#xFF08;Monad &#x548C; Applicative&#xFF09;</strong></p>
+<p>&#x8FD9;&#x4E2A;&#x4E16;&#x754C;&#x662F;&#x590D;&#x6742;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x666E;&#x901A;&#x51FD;&#x6570;&#x653E;&#x8FDB;&#x4E86;&#x5BB9;&#x5668;&#xFF0C;&#x5F04;&#x51FA;&#x8FD9;&#x4E48;&#x591A;&#x4EFF;&#x51FD;&#x6570;&#x51FA;&#x6765;&#x3002;&#x90A3;&#x5982;&#x679C;&#x628A;&#x5BB9;&#x5668;&#x653E;&#x8FDB;&#x76F8;&#x540C;&#x7684;&#x5BB9;&#x5668;&#x91CC;&#xFF0C;&#x4E00;&#x5C42;&#x5C42;&#x5D4C;&#x5957;&#x8D77;&#x6765;&#xFF08;&#x5C31;&#x50CF;&#x5C42;&#x5C42;&#x5305;&#x88F9;&#x7684;&#x6D0B;&#x8471;Monad&#xFF09;&#x600E;&#x4E48;&#x529E;&#x5462;&#xFF1F;&#x6700;&#x76F4;&#x63A5;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x591A;&#x7528;&#x51E0;&#x6B21;map&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x8FD9;&#x7C7B;&#x60C5;&#x51B5;&#xFF0C;&#x6709;&#x4E13;&#x95E8;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&#x540C;&#x7C7B;&#x578B;&#x5BB9;&#x5668;&#x5D4C;&#x5957;&#x8C03;&#x7528; &#x2014;&#x2014; Monad</li>
+</ul>
+<p>&#x5982;&#x679C;&#x6709;&#x4E24;&#x5C42;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x5D4C;&#x5957;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x53EF;&#x4EE5;&#x7528; <code>join</code> &#x628A;&#x5B83;&#x4EEC;&#x538B;&#x6241;&#x5230;&#x4E00;&#x5757;&#x53BB;&#x3002;&#x8FD9;&#x79CD;&#x7ED3;&#x5408;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x4EFF;&#x51FD;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x8054;&#xFF0C;&#x5C31;&#x662F; monad &#x4E4B;&#x6240;&#x4EE5;&#x6210;&#x4E3A; monad &#x7684;&#x539F;&#x56E0;&#x3002;&#x6765;&#x770B;&#x770B;&#x5B83;&#x66F4;&#x7CBE;&#x786E;&#x7684;&#x5B8C;&#x6574;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<blockquote>
+<p>monad &#x662F;&#x53EF;&#x4EE5;&#x53D8;&#x6241;&#xFF08;flatten&#xFF09;&#x7684; pointed &#x4EFF;&#x51FD;&#x6570;&#x3002;</p>
+</blockquote>
+<p>&#x4E00;&#x4E2A;&#x4EFF;&#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x8981;&#x5B83;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A; <code>join</code> &#x65B9;&#x6CD5;&#x548C;&#x4E00;&#x4E2A; <code>of</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x9075;&#x5B88;&#x4E00;&#x4E9B;&#x5B9A;&#x5F8B;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x540C;&#x7C7B;&#x578B;&#x5D4C;&#x5957;&#x4EFF;&#x51FD;&#x6570;&#xFF08;&#x8FD9;&#x662F;&#x6211;&#x4E2A;&#x4EBA;&#x675C;&#x64B0;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x771F;&#x6B63;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x9AD8;&#x624B;&#x4F1A;&#x4E0D;&#x559C;&#x6B22;&#xFF0C;&#x5927;&#x5BB6;&#x4E60;&#x60EF;&#x7684;&#x8FD8;&#x662F;monad&#xFF09;&#x3002;<code>join</code> &#x7684;&#x5B9E;&#x73B0;&#x5E76;&#x4E0D;&#x590D;&#x6742;&#xFF0C;&#x6765;&#x4E3A; <code>Maybe</code> &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#xFF1A;</p>
+<pre><code class="lang-js">Maybe.prototype.join = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.isNothing() ? Maybe.of(<span class="hljs-literal">null</span>) : <span class="hljs-keyword">this</span>.__value;
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A; <code>Maybe(Maybe(x))</code>&#xFF0C;&#x90A3;&#x4E48; <code>.__value</code> &#x5C06;&#x4F1A;&#x79FB;&#x9664;&#x591A;&#x4F59;&#x7684;&#x4E00;&#x5C42;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x80FD;&#x5B89;&#x5FC3;&#x5730;&#x4ECE;&#x90A3;&#x5F00;&#x59CB;&#x8FDB;&#x884C; <code>map</code>&#x3002;&#x8981;&#x4E0D;&#x7136;&#xFF0C;&#x5C06;&#x4F1A;&#x53EA;&#x6709;&#x4E00;&#x4E2A; <code>Maybe</code>&#xFF0C;&#x56E0;&#x4E3A;&#x4ECE;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;&#x88AB; <code>map</code> &#x8C03;&#x7528;&#x3002;</p>
+<p>&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x603B;&#x662F;&#x5728;&#x7D27;&#x8DDF;&#x7740; <code>map</code> &#x7684;&#x540E;&#x9762;&#x8C03;&#x7528; <code>join</code>&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x8FD9;&#x4E2A;&#x884C;&#x4E3A;&#x8FDB;&#x4E00;&#x6B65;&#x62BD;&#x8C61;&#x5230;&#x4E00;&#x4E2A;&#x53EB;&#x505A; <code>chain</code> &#x7684;&#x51FD;&#x6570;&#x91CC;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-comment">//  chain :: Monad m =&gt; (a -&gt; m b) -&gt; m a -&gt; m b</span>
+<span class="hljs-keyword">var</span> chain = curry(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f, m</span>)</span>{
+  <span class="hljs-keyword">return</span> m.map(f).join(); <span class="hljs-comment">// &#x6216;&#x8005; compose(join, map(f))(m)</span>
+});
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4EC5;&#x4EC5;&#x662F;&#x628A; map/join &#x6253;&#x5305;&#x5230;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x51FD;&#x6570;&#x4E2D;&#x3002;&#x5728;&#x4E00;&#x4E9B;&#x5E93;&#x91CC;&#xFF0C; <code>chain</code> &#x4E5F;&#x53EB;&#x505A; <code>&gt;&gt;=</code>&#xFF08;&#x8BFB;&#x4F5C; bind&#xFF09;&#x6216;&#x8005; <code>flatMap</code>&#xFF0C;&#x90FD;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x7684;&#x4E0D;&#x540C;&#x540D;&#x79F0;&#x7F62;&#x4E86;&#x3002;<code>flatMap</code> &#x662F;&#x6700;&#x7B80;&#x5355;&#x660E;&#x4E86;&#xFF0C;&#x4F46;<code>chain</code>&#x662F; JS &#x91CC;&#x63A5;&#x53D7;&#x7A0B;&#x5EA6;&#x6700;&#x9AD8;&#x7684;&#x4E00;&#x4E2A;&#x3002;&#x867D;&#x7136;&#x8FD9;&#x4E48;&#x7B80;&#x5355;&#x7684;&#x5904;&#x7406;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x7528;&#x9014;&#x5374;&#x88AB;&#x65E0;&#x9650;&#x6269;&#x5C55;&#xFF0C;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x201C;Task&#x201D;&#x7684;&#x4F8B;&#x5B50;&#x7528;&#x7684;&#x5C31;&#x662F;&#x5B83;&#xFF0C;&#x8BF7;&#x8BBF;&#x95EE;&#x5B83;&#x7684;&#x6E90;&#x7801;&#x81EA;&#x884C;&#x7814;&#x7A76;&#x5427;&#x3002;</p>
+<ul>
+<li>&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x5BB9;&#x5668;&#x7684;&#x8C03;&#x7528; &#x2014;&#x2014; Applicative</li>
+</ul>
+<p>&#x540C;&#x7C7B;&#x578B;&#x5BB9;&#x5668;&#x5D4C;&#x5957;&#xFF0C;&#x4F7F;&#x7528;Monad&#x4EFF;&#x51FD;&#x6570;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x95EE;&#x9898;&#xFF1A;&#x6240;&#x6709;&#x7684;&#x4EE3;&#x7801;&#x90FD;&#x53EA;&#x4F1A;&#x5728;&#x524D;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#x624D;&#x6267;&#x884C;&#x3002;&#x5176;&#x5B9E;&#xFF0C;&#x5728;&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x662F;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x3002;&#x5176;&#x66F4;&#x597D;&#x7684;&#x66FF;&#x4EE3;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x4F7F;&#x7528;applicative&#x4EFF;&#x51FD;&#x6570;&#x3002;applicative&#x4EFF;&#x51FD;&#x6570;&#x662F;&#x5B9E;&#x73B0;&#x4E86; <code>ap</code> &#x65B9;&#x6CD5;&#x7684;pointed&#x4EFF;&#x51FD;&#x6570;&#x3002;<code>ap</code> &#x65B9;&#x6CD5;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-js">Container.prototype.ap = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">other_container</span>) </span>{
+  <span class="hljs-keyword">return</span> other_container.map(<span class="hljs-keyword">this</span>.__value);
+}
+</code></pre>
+<p><code>this.__value</code> &#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x4F1A;&#x63A5;&#x6536;&#x53E6;&#x4E00;&#x4E2A; functor &#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EA;&#x9700; <code>map</code> &#x5B83;&#x3002;&#x8FD9;&#x91CC;&#x9690;&#x542B;&#x7684;&#x5B9A;&#x5F8B;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-js">F.of(x).map(f) == F.of(f).ap(F.of(x))
+</code></pre>
+<p>map &#x4E00;&#x4E2A; <code>f</code> &#x7B49;&#x4EF7;&#x4E8E; <code>ap</code> &#x4E00;&#x4E2A;&#x503C;&#x4E3A; <code>f</code> &#x7684; functor&#x3002;&#x66F4;&#x7B80;&#x5355;&#x7684;&#x7406;&#x89E3;&#x5C31;&#x662F;: <code>map</code> &#x7B49;&#x4EF7;&#x4E8E; <code>of/ap</code>&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x70B9;&#x6765;&#x5B9A;&#x4E49; <code>map</code>&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// &#x4ECE; of/ap &#x884D;&#x751F;&#x51FA;&#x7684; map</span>
+X.prototype.map = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.constructor.of(f).ap(<span class="hljs-keyword">this</span>);
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x4E00;&#x4E2A; <code>chain</code> &#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x501F;&#x52A9; monad &#x8F7B;&#x677E;&#x5F97;&#x5230;&#x4EFF;&#x51FD;&#x6570;&#xFF08;&#x542B;&#x6709;map&#x65B9;&#x6CD5;&#x7684;&#xFF09; &#x548C; applicative&#xFF08;&#x542B;&#x6709;ap&#x65B9;&#x6CD5;&#x7684;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// &#x4ECE; chain &#x884D;&#x751F;&#x51FA;&#x7684; map</span>
+X.prototype.map = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>{
+  <span class="hljs-keyword">var</span> m = <span class="hljs-keyword">this</span>;
+  <span class="hljs-keyword">return</span> m.chain(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>{
+    <span class="hljs-keyword">return</span> m.constructor.of(f(a));
+  });
+}
+
+<span class="hljs-comment">// &#x4ECE; chain/map &#x884D;&#x751F;&#x51FA;&#x7684; ap</span>
+X.prototype.ap = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">other</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.chain(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>{
+    <span class="hljs-keyword">return</span> other.map(f);
+  });
+};
+</code></pre>
+<p>&#x8FD9;&#x4E00;&#x70B9;&#x975E;&#x5E38;&#x5F3A;&#x5927;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x5BA1;&#x67E5;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x81EA;&#x52A8;&#x5316;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;&#x5904;&#x7406;&#x591A;&#x4E2A;&#x4EFF;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x662F; applicative functor &#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x597D;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#x3002;&#x501F;&#x52A9;applicative&#xFF0C;&#x80FD;&#x591F;&#x5728;&#x4EFF;&#x51FD;&#x6570;&#x7684;&#x4E16;&#x754C;&#x91CC;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x3002;&#x5C3D;&#x7BA1;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; monad &#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x76EE;&#x7684;&#xFF0C;&#x5411;&#x4E0B;&#x7684;&#x5D4C;&#x5957;&#x7ED3;&#x6784;&#x4F7F;&#x5F97; monad &#x62E5;&#x6709;&#x4E32;&#x884C;&#x8BA1;&#x7B97;&#x3001;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x548C;&#x6682;&#x7F13;&#x540E;&#x7EED;&#x6267;&#x884C;&#x7B49;&#x72EC;&#x7279;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x4F46;&#x5728;&#x4E0D;&#x9700;&#x8981; monad &#x7279;&#x5B9A;&#x529F;&#x80FD;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6700;&#x597D;&#x4F7F;&#x7528; applicative&#xFF0C;&#x7528;&#x5408;&#x9002;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x89E3;&#x51B3;&#x5408;&#x9002;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x7ED9;&#x4E2A;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5047;&#x8BBE;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65C5;&#x6E38;&#x7F51;&#x7AD9;&#xFF0C;&#x65E2;&#x9700;&#x8981;&#x83B7;&#x53D6;&#x6E38;&#x5BA2;&#x76EE;&#x7684;&#x5730;&#x7684;&#x5217;&#x8868;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x83B7;&#x53D6;&#x5730;&#x65B9;&#x4E8B;&#x4EF6;&#x7684;&#x5217;&#x8868;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x8BF7;&#x6C42;&#x4EC5;&#x4EC5;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x76F8;&#x4E92;&#x72EC;&#x7ACB;&#x7684; api &#x8C03;&#x7528;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Http.get :: String -&gt; Task Error HTML</span>
+
+<span class="hljs-keyword">var</span> renderPage = curry(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">destinations, events</span>) </span>{ <span class="hljs-comment">/* render page */</span>  });
+
+Task.of(renderPage).ap(Http.get(<span class="hljs-string">&apos;/destinations&apos;</span>)).ap(Http.get(<span class="hljs-string">&apos;/events&apos;</span>))
+<span class="hljs-comment">// Task(&quot;&lt;div&gt;some page with dest and events&lt;/div&gt;&quot;)</span>
+</code></pre>
+<p>&#x4E24;&#x4E2A;&#x8BF7;&#x6C42;&#x5C06;&#x4F1A;&#x540C;&#x65F6;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x5F53;&#x4E24;&#x8005;&#x7684;&#x54CD;&#x5E94;&#x90FD;&#x8FD4;&#x56DE;&#x4E4B;&#x540E;&#xFF0C;<code>renderPage</code> &#x5C31;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x8FD9;&#x4E0E; monad &#x7248;&#x672C;&#x7684;&#x90A3;&#x79CD;&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#x524D;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x624D;&#x80FD;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x540E;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x3002;&#x672C;&#x6765;&#x5C31;&#x65E0;&#x9700;&#x6839;&#x636E;&#x76EE;&#x7684;&#x5730;&#x6765;&#x83B7;&#x53D6;&#x4E8B;&#x4EF6;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x3002;&#x7531;&#x6B64;&#x6765;&#x770B; applicative &#x5904;&#x7406;&#x5F02;&#x6B65;&#x548C;&#x5E76;&#x53D1;&#x662F;&#x591A;&#x4E48;&#x7B80;&#x5355;&#x7684;&#x4E8B;&#x60C5;&#x3002;&#x8FD8;&#x6709;&#x66F4;&#x591A;&#x66F4;&#x597D;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x76F8;&#x5173;&#x6587;&#x6863;&#x3002;</p>
 <h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
-<p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x662F;&#x4ECE;&#x601D;&#x7EF4;&#x548C;&#x5B9E;&#x8DF5;&#x89D2;&#x5EA6;&#x6765;&#x5B66;&#x4E60;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#xFF0C;&#x9488;&#x5BF9;&#x7F16;&#x7801;&#x4E2D;&#x7684;&#x5E38;&#x89C1;&#x95EE;&#x9898;&#x5217;&#x4E3E;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x57FA;&#x672C;&#x89E3;&#x51B3;&#x601D;&#x8DEF;&#xFF0C;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x4E0E;&#x5176;&#x4ED6;&#x7F16;&#x7801;&#x65B9;&#x6CD5;&#x505A;&#x4E86;&#x7C7B;&#x6BD4;&#xFF0C;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x5341;&#x5206;&#x786E;&#x5207;&#xFF0C;&#x8BF7;&#x9605;&#x8BFB;&#x65F6;&#x8BA4;&#x771F;&#x533A;&#x5206;&#x8FA8;&#x522B;&#x3002;&#x56E0;&#x4E3A;&#x4EC5;&#x4EC5;&#x4ECE;&#x601D;&#x7EF4;&#x903B;&#x8F91;&#x51FA;&#x53D1;&#xFF0C;&#x5E76;&#x6CA1;&#x7F57;&#x5217;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x8FC7;&#x591A;&#x5185;&#x5BB9;&#x548C;&#x65B9;&#x5F0F;&#x65B9;&#x6CD5;&#xFF0C;&#x751A;&#x81F3;&#x4E00;&#x4E9B;&#x91CD;&#x8981;&#x7684;&#x4EFF;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;Monad&#x7B49;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x5728;&#x6587;&#x4E2D;&#x63D0;&#x53CA;&#xFF0C;&#x53C2;&#x8003;&#x91CC;&#x5217;&#x4E3E;&#x4E86;&#x4E00;&#x4E9B;&#x6587;&#x6863;&#xFF0C;&#x8BF7;&#x81EA;&#x884C;&#x7814;&#x7A76;&#x9605;&#x8BFB;&#x3002;</p>
-<p>&#x76EE;&#x524D;&#xFF0C;&#x793E;&#x533A;&#x6709;&#x5F88;&#x591A;&#x73B0;&#x6210;&#x4F18;&#x79C0;&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x5E93;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;lodash/FP&#xFF0C;ramda.js&#xFF0C;Folktale&#x7B49;&#xFF0C;&#x6587;&#x7AE0; <a href="http://www.cnblogs.com/tolg/p/4717247.html" target="_blank">Javascript&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x5E93;</a> &#x8FD8;&#x5217;&#x51FA;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x4F18;&#x79C0;&#x7684;&#x5E93;&#xFF0C;&#x65E2;&#x53EF;&#x4EE5;&#x5728;&#x751F;&#x4EA7;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x66F4;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x5B66;&#x4E60;&#x7814;&#x7A76;&#x7684;&#x8303;&#x672C;&#xFF0C;&#x503C;&#x5F97;&#x53C2;&#x8003;&#x3002;</p>
+<p>&#x672C;&#x6587;&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x5165;&#x95E8;&#x6587;&#x7AE0;&#xFF0C;&#x4E3B;&#x8981;&#x9762;&#x5411;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x4EE5;&#x53CA;&#x4E60;&#x60EF;&#x4E86;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x3002;&#x6587;&#x7AE0;&#x4ECE;&#x601D;&#x7EF4;&#x548C;&#x5B9E;&#x8DF5;&#x89D2;&#x5EA6;&#x6765;&#x7814;&#x7A76;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;&#xFF0C;&#x9488;&#x5BF9;&#x7F16;&#x7801;&#x4E2D;&#x7684;&#x5E38;&#x89C1;&#x95EE;&#x9898;&#x5217;&#x4E3E;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x57FA;&#x672C;&#x89E3;&#x51B3;&#x601D;&#x8DEF;&#xFF0C;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x4E0E;&#x5176;&#x4ED6;&#x7F16;&#x7801;&#x65B9;&#x6CD5;&#x505A;&#x4E86;&#x7C7B;&#x6BD4;&#xFF0C;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x5341;&#x5206;&#x786E;&#x5207;&#xFF0C;&#x8BF7;&#x9605;&#x8BFB;&#x65F6;&#x533A;&#x5206;&#x8FA8;&#x522B;&#x3002;&#x56E0;&#x4E3A;&#x6587;&#x7AE0;&#x91CD;&#x5728;&#x601D;&#x7EF4;&#x903B;&#x8F91;&#xFF0C;&#x5E76;&#x6CA1;&#x7F57;&#x5217;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x8FC7;&#x591A;&#x5185;&#x5BB9;&#x548C;&#x65B9;&#x5F0F;&#x65B9;&#x6CD5;&#xFF0C;&#x63D0;&#x5230;&#x7684;&#x5185;&#x5BB9;&#x4E5F;&#x6CA1;&#x6709;&#x505A;&#x6DF1;&#x5165;&#x63A2;&#x8BA8;&#xFF0C;&#x53C2;&#x8003;&#x91CC;&#x5217;&#x4E3E;&#x4E86;&#x4E00;&#x4E9B;&#x4F18;&#x79C0;&#x6587;&#x6863;&#xFF0C;&#x542B;&#x6709;&#x5927;&#x91CF;&#x5206;&#x6790;&#x89E3;&#x8BFB;&#xFF0C;&#x8BF7;&#x81EA;&#x884C;&#x67E5;&#x9605;&#x3002;</p>
+<p>&#x76EE;&#x524D;&#xFF0C;&#x5F00;&#x6E90;&#x793E;&#x533A;&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x4F18;&#x79C0;&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x5E93;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;lodash/FP&#xFF0C;ramda.js&#xFF0C;Folktale&#x7B49;&#xFF0C;&#x6587;&#x7AE0; <a href="http://www.cnblogs.com/tolg/p/4717247.html" target="_blank">Javascript&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x5E93;</a> &#x8FD8;&#x5217;&#x51FA;&#x4E86;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x4F18;&#x79C0;&#x7684;&#x5E93;&#xFF0C;&#x5E76;&#x4F5C;&#x4E86;&#x6DF1;&#x5165;&#x5206;&#x6790;&#x548C;&#x4ECB;&#x7ECD;&#x3002;&#x8FD9;&#x4E9B;&#x5E93;&#xFF0C;&#x65E2;&#x53EF;&#x4EE5;&#x5728;&#x751F;&#x4EA7;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x66F4;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x5B66;&#x4E60;&#x7814;&#x7A76;&#x7684;&#x8303;&#x672C;&#xFF0C;&#x503C;&#x5F97;&#x5B66;&#x4E60;&#x53C2;&#x8003;&#x3002;&#x4EBF;&#x4E66;&#x5C06;&#x5728;&#x672A;&#x6765;&#x7684;&#x7248;&#x672C;&#x548C;&#x4EA7;&#x54C1;&#x4E2D;&#xFF0C;&#x8BA4;&#x771F;&#x5B66;&#x4E60;&#x5B9E;&#x8DF5;&#x8FD9;&#x4E9B;&#x4F18;&#x79C0;&#x7684;&#x7F16;&#x7A0B;&#x65B9;&#x6CD5;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x51CF;&#x5C11;&#x6838;&#x5FC3;&#x5E93;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#xFF0C;&#x63D0;&#x9AD8;&#x4E3B;&#x94FE;&#x548C;&#x4FA7;&#x94FE;&#x7684;&#x7EFC;&#x5408;&#x6027;&#x80FD;&#x3002;</p>
 <h2 id="&#x94FE;&#x63A5;">&#x94FE;&#x63A5;</h2>
 <p><strong>&#x672C;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x5373;&#x65F6;&#x66F4;&#x65B0;&#xFF0C;&#x82E5;&#x8981;&#x638C;&#x63E1;&#x6700;&#x65B0;&#x5185;&#x5BB9;&#xFF0C;&#x8BF7;&#x5173;&#x6CE8;&#x4E0B;&#x9762;&#x7684;&#x94FE;&#x63A5;</strong></p>
 <p>&#x672C;&#x6E90;&#x6587;&#x5730;&#x5740;&#xFF1A; <a href="https://github.com/imfly/bitcoin-on-nodejs" target="_blank">https://github.com/imfly/bitcoin-on-nodejs</a></p>
@@ -1491,8 +1602,7 @@ concatenated.fork(
 <p><a href="https://github.com/lodash/lodash/wiki/FP-Guide" target="_blank">lodash FP Guide</a></p>
 <p><a href="http://ramdajs.com" target="_blank">ramda.js</a></p>
 <p><a href="http://folktalejs.org/" target="_blank">Folktale</a></p>
-<p><a href="https://github.com/DrBoolean/mostly-adequate-guide" target="_blank">mostly-adequate-guide&#xFF08;&#x82F1;&#x6587;&#xFF09;</a></p>
-<p><a href="http://llh911001.gitbooks.io/mostly-adequate-guide-chinese" target="_blank">mostly-adequate-guide&#xFF08;&#x4E2D;&#x6587;&#xFF09;</a></p>
+<p><a href="https://github.com/DrBoolean/mostly-adequate-guide" target="_blank">mostly-adequate-guide</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2012/04/functional_programming.html" target="_blank">&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x521D;&#x63A2;</a></p>
 <p><a href="http://www.codeceo.com/article/javascript-functional-programming-1.html" target="_blank">&#x4F7F;&#x7528; JavaScript &#x8FDB;&#x884C;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;</a></p>
 <p><a href="https://en.wikipedia.org/wiki/Structured_programming" target="_blank">&#x7ED3;&#x6784;&#x5316;&#x7F16;&#x7A0B;</a></p>
@@ -1507,86 +1617,58 @@ concatenated.fork(
 <p><a href="http://thenorthcode.net/2016/02/07/javascript-function-composition/" target="_blank">JavaScript Function Composition</a></p>
 <p><a href="http://www.cnblogs.com/tolg/p/4717247.html" target="_blank">Javascript&#x7684;&#x51FD;&#x6570;&#x5F0F;&#x5E93;</a></p>
 
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
-                        </div>
-                    </div>
+                    
+                    </section>
                 
+                
+                </div>
             </div>
+        </div>
 
-            
-                
-                <a href="4-您必须知道的几个Nodejs编码习惯.html" class="navigation navigation-prev " aria-label="Previous page: 您必须知道的几个Nodejs编码习惯">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="../3-源码解读/readme.html" class="navigation navigation-next " aria-label="Next page: 源码解读">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
+        
+        <a href="../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html" class="navigation navigation-prev " aria-label="Previous page: 您必须知道的几个Nodejs编码习惯"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../3-源码解读/readme.html" class="navigation navigation-next " aria-label="Next page: 源码解读"><i class="fa fa-angle-right"></i></a>
         
     </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"学点函数式编程","level":"1.4.5","depth":2,"next":{"title":"源码解读","level":"1.5","depth":1,"path":"3-源码解读/readme.md","ref":"3-源码解读/readme.md","articles":[{"title":"亿书，一个面向未来的自出版平台","level":"1.5.1","depth":2,"path":"3-源码解读/1-亿书，一个面向未来的自出版平台.md","ref":"3-源码解读/1-亿书，一个面向未来的自出版平台.md","articles":[]},{"title":"入口程序app.js解读","level":"1.5.2","depth":2,"path":"3-源码解读/2-入口程序app.js解读.md","ref":"3-源码解读/2-入口程序app.js解读.md","articles":[]},{"title":"一个精巧的p2p网络实现","level":"1.5.3","depth":2,"path":"3-源码解读/3-一个精巧的p2p网络实现.md","ref":"3-源码解读/3-一个精巧的p2p网络实现.md","articles":[]},{"title":"加密和验证","level":"1.5.4","depth":2,"path":"3-源码解读/4-加密和验证.md","ref":"3-源码解读/4-加密和验证.md","articles":[]},{"title":"地址","level":"1.5.5","depth":2,"path":"3-源码解读/5-地址.md","ref":"3-源码解读/5-地址.md","articles":[]},{"title":"签名和多重签名","level":"1.5.6","depth":2,"path":"3-源码解读/6-签名和多重签名.md","ref":"3-源码解读/6-签名和多重签名.md","articles":[]},{"title":"交易","level":"1.5.7","depth":2,"path":"3-源码解读/7-交易.md","ref":"3-源码解读/7-交易.md","articles":[]},{"title":"区块链","level":"1.5.8","depth":2,"path":"3-源码解读/8-区块链.md","ref":"3-源码解读/8-区块链.md","articles":[]},{"title":"DPOS机制","level":"1.5.9","depth":2,"path":"3-源码解读/9-DPOS机制.md","ref":"3-源码解读/9-DPOS机制.md","articles":[]},{"title":"侧链","level":"1.5.10","depth":2,"path":"3-源码解读/10-侧链.md","ref":"3-源码解读/10-侧链.md","articles":[]}]},"previous":{"title":"您必须知道的几个Nodejs编码习惯","level":"1.4.4","depth":2,"path":"2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.md","ref":"2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","-livereload","livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"2-Node.js入门指南/5-学点函数式编程.md","mtime":"2016-08-18T15:17:41.739Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-08-18T15:09:58.174Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
 </div>
 
         
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
+<script src="../gitbook/app.js"></script>
+
     
-        
-        <script src="../gitbook/gitbook-plugin-baidu/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
+    <script src="../gitbook/plugins/gitbook-plugin-baidu/plugin.js"></script>
     
 
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = '//hm.baidu.com/hm.js?a489cddfaf5ed40abc3a60e2783e8019';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
     </body>
+    
 </html>
-
