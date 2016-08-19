@@ -106,5 +106,5 @@ $ npm run deploy
 [巴比特论坛]: http://8btc.com/thread-27448-1-1.html
 [gitbook-summary]: https://github.com/imfly/gitbook-summary
 [self-publishing]: https://github.com/imfly/how-to-create-self-publishing-platform
-[关于亿书]: http://bitcoin-on-nodejs.ebookchain.org/8-附录/2-关于亿书.html
+[关于亿书]: ./5-附录/6-关于亿书.md
 [点个赞]: https://github.com/imfly/bitcoin-on-nodejs
