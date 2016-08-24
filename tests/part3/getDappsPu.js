@@ -29,20 +29,34 @@ var file = function(file) {
 };
 
 var match = _.curry(function(what, str) {
-  console.log(str.match(what));
+    console.log(str.match(what));
     return str.match(what);
 });
 
+var filter = _.curry(function(f, ary) {
+  return _.map(f, ary);
+});
+
+var replace = _.curry(function (r, s, str) {
+  return _.replace(r, s, str)
+})
+
 var privates = match(/privated(.[a-zA-Z]*) = /g);
+var methodName = match(/\.[a-zA-Z]*/g);
+var replaceWith_ = replace(/\./, '-');
 
-// var filter = _.curry(function(f, txt) {
-//     return txt.match(f);
-// });
+var findAllOf = filter(methodName);
+// var findAll = filter(replaceWith_);
 
-// var findAllOf = filter(hasSpaces);
+var write = _.curry(function(path, data, cb) {
+    var p = privates(data);
+    var formatData = findAllOf(p);
 
-var write =  _.curry(function(path, data, cb) {
-    fs.writeFile(path, privates(data), cb);
+    var fData = _.map(function (d) {
+      console.log(d);
+      return _.replace(/\./, '-', d); //replaceWith_(formatData);
+    }, formatData);
+    fs.writeFile(path, fData, cb);
 })
 
 var getFile = _.compose(decode, read, file);
@@ -51,6 +65,7 @@ getFile('./dapps.js').fork(
     function(error) {
         throw error
     },
+
     function(data) {
         var setFile = write('dapps.pu');
         setFile(data, function() {
