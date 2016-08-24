@@ -33,7 +33,7 @@ var match = _.curry(function(what, str) {
     return str.match(what);
 });
 
-var privates = match(/privated(.*) = f/g);
+var privates = match(/privated(.[a-zA-Z]*) = /g);
 
 // var filter = _.curry(function(f, txt) {
 //     return txt.match(f);
