@@ -1,0 +1,112 @@
+@startuml 
+skinparam BorderColor #blue9932CC 
+skinparam backgroundcolor AntiqueWhite/white 
+title 
+类图标题
+end title 
+footer  copyright (c) imfly 2016年9月2日晚上8点36分,  http://bitcoin-on-nodejs.ebookchain.org 
+
+header 《Nodejs开发加密货币》分析用图
+
+Class isASCII{
+
+}
+
+Class OutTransfer{
+  + create: (data,trs)
+  + calculateFee: (trs,sender)
+  + verify: (trs,sender,cb)
+  + process: (trs,sender,cb)
+  + getBytes: (trs)
+  + apply: (trs,block,sender,cb)
+  + undo: (trs,block,sender,cb)
+  + applyUnconfirmed: (trs,sender,cb)
+  + undoUnconfirmed: (trs,sender,cb)
+  + objectNormalize: (trs)
+  + dbRead: (raw)
+  + dbSave: (trs,cb)
+  + ready: (trs,sender)
+}
+
+Class InTransfer{
+  + create: (data,trs)
+  + calculateFee: (trs,sender)
+  + verify: (trs,sender,cb)
+  + process: (trs,sender,cb)
+  + getBytes: (trs)
+  + apply: (trs,block,sender,cb)
+  + undo: (trs,block,sender,cb)
+  + applyUnconfirmed: (trs,sender,cb)
+  + undoUnconfirmed: (trs,sender,cb)
+  + objectNormalize: (trs)
+  + dbRead: (raw)
+  + dbSave: (trs,cb)
+  + ready: (trs,sender)
+}
+
+Class DApp{
+  + create: (data,trs)
+  + calculateFee: (trs,sender)
+  + verify: (trs,sender,cb)
+  + process: (trs,sender,cb)
+  + getBytes: (trs)
+  + apply: (trs,block,sender,cb)
+  + undo: (trs,block,sender,cb)
+  + applyUnconfirmed: (trs,sender,cb)
+  + undoUnconfirmed: (trs,sender,cb)
+  + objectNormalize: (trs)
+  + dbRead: (raw)
+  + dbSave: (trs,cb)
+  + ready: (trs,sender)
+}
+
+Class DApps{
+  - attachApi: ()
+  - get: (id,cb)
+  - getByIds: (ids,cb)
+  - list: (filter,cb)
+  - createBasePathes: (cb)
+  - installDependencies: (dApp,cb)
+  - getInstalledIds: (cb)
+  - removeDApp: (dApp,cb)
+  - downloadDApp: (dApp,cb)
+  - symlink: (dApp,cb)
+  - apiHandler: (message,callback)
+  - getFile: (dapp,res)
+  - getIcon: (dapp,res)
+  - dappRoutes: (dapp,cb)
+  - launch: (body,cb)
+  - downloadSiaFile: (id,ascii,icon,path,cb)
+  - launchApp: (dApp,params,cb)
+  - stop: (dApp,cb)
+  - addTransactions: (req,cb)
+  + sandboxApi: (call,args,cb)
+  + message: (dappid,body,cb)
+  + request: (dappid,method,path,query,cb)
+  + onBind: (scope)
+  + onBlockchainReady: ()
+  + onDeleteBlocksBefore: (block)
+  + onNewBlock: (block,broadcast)
+  + getGenesis: (req,cb)
+  + setReady: (req,cb)
+  + getCommonBlock: (req,cb)
+  + sendWithdrawal: (req,cb)
+  + getWithdrawalLastTransaction: (req,cb)
+  + getBalanceTransactions: (req,cb)
+}
+
+OutTransfer --> dbLite
+OutTransfer --> accounts
+InTransfer --> dbLite
+InTransfer --> accounts
+DApp --> dbLite
+DApps --> balancesSequence
+DApps --> accounts
+DApps --> dbLite
+DApps --> network
+DApps --> commands
+DApps --> sql
+DApps --> sia
+DApps --> routes
+DApps --> scheme
+@enduml

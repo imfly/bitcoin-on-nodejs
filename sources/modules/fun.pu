@@ -1,21 +1,56 @@
-@startuml
+@startuml ../../styles/images/modules/fun-activity.png
 
-skinparam backgroundColor #AAFFFF
-skinparam activity {
-  StartColor red
-  BarColor SaddleBrown
-  EndColor Silver
-  BackgroundColor Peru
-  BackgroundColor<< Begin >> Olive
-  BorderColor Peru
-  FontName Impact
-}
+skinparam BorderColor #blue\9932CC
+skinparam backgroundcolor AntiqueWhite/white
+skinparam activityShape octagon
 
-(*) --> "Climbs on Platform" << Begin >>
+title 函数式编程入门经典实例
+footer copyright (c) imfly 2016.09.02 http://bitcoin-on-nodejs.ebookchain.org
+header 《Nodejs开发加密货币》分析用图：《轻松从Js文件生成UML类图》
+
+(*)-right-> [Js源码文件] "1.读取文件"
+note top
+整个程序入口是`lib/index.js`，
+仅仅是提供一个可运行环境而已
+end note
+note right
+这里使用`lib/read.js`，而且是使用
+“data.task”异步读取的，这是让我们
+后续采取顺序编程的方式编码的基础。
+关于“data.task”，请参阅《函数式编程
+入门经典》
+end note
 --> === S1 ===
---> Bows
---> === S2 ===
---> WavesArmes
---> (*)
+--> 2.解析数据
+note bottom
+这里使用`lib/parser.js`，对读取的
+的数据data进行第一道“过滤器”处理，
+实际上，解析工作给了Esprima，这里
+主要是结合需要做了进一步处理，最终
+得到的是json格式的数据
+end note
+-right-> === S2 ===
+-right-> 3.格式数据
+note top
+这里使用`lib/format.js`，要根据
+json数据整理成我们需要的形式，函
+数式编程的身影更加明显
+end note
+-right-> === S3 ===
+--> 4.模板文件
+note left
+这里使用`lib/template.js`，以及
+`lib/config.js`，是针对用户可见
+的接口参数，方便修改用的。这一步
+就已经得到了`.pu`格式的文件了
+end note
+--> === S4 ===
+--> 5.产生图片
+note left
+这里使用`lib/generate.js`，是对
+`.pu`文件的一步简单操作，仅仅为
+方便而已
+end note
+-right-> [png等图片](*)
 
 @enduml
