@@ -48,17 +48,53 @@ header 《Nodejs开发加密货币》分析用图：《区块链》
 
 ## 关于抽象语法树
 
-抽象语法树是程序的一种中间表示形式，在程序分析等领域有广泛的应用。凡是涉及到对源程序进行操作和处理的应用，都会用到抽象语法树，比如我们大家经常使用的智能编辑器、语言翻译器等。
+抽象语法树是程序的一种中间表示形式，在程序分析领域有广泛的应用。凡是涉及到对源程序进行操作和处理的应用，都会用到抽象语法树，比如我们大家经常使用的智能编辑器、语言翻译器等。前面也说了，对js代码的混淆和压缩，都用到了它。在Node.js的世界里，有几个比较优秀的抽象语法树处理包，比如：Esprima、acorn等。我们这里使用的是Esprima，著名的混淆和压缩工具 [UglifyJS][] 最早是自己开发的解析工具，但是 [UglifyJS2][] 使用acorn进行了重写。
+
+在没有任何运行环境的情况下，要想对源码进行分析，通常有两种方法可选，一个就是正则表达式，正如我在第一版本里用到的，但是正则表达式仅能抽取源码有限的格式，很容易把格式固定，特别是对js这种没有真正的类的概念的脚本语言来说，就更不通用。因此，更好的，也是最通用方法就是使用抽象语法树。之所以要研究和使用这项技术，一个根本目的是另一个与亿书项目配套的辅助项目——亿书的远程开源协作开发平台。该平台，将能监控每一个贡献者的代码数量和质量，给出优化建议，对贡献者的每次代码贡献支付合理的亿书币报酬，最后写入亿书链。
 
 ## 工具实现过程
 
 #### （1）基本需求
 
+这个工具需求非常简单，就是给一个js源码文件，直接导出分析后的Uml文件或图片。这类简单的应用模型，非常普遍，甚至可以说任何大的应用项目，都是由这类简单的应用模型搭积木似的搭起来的。我们在入门部分提到过，使用NOde.js，最好习惯数据“流”的概念，这里从js文件到Uml或图片文件的过程，就是典型的数据“流”的实现。我们要做的，仅仅是在这个“流”上制造一些“过滤器”而已。
+
+上一篇关于函数式编程的文章里，我们也说函数式编程更适合处理数据“流”，其做法的一个重点是告诉程序“是什么”（声明式），而不是“怎么干”（命令式）。换句话说，我们只要好好描述这里的“过滤器”是什么就行了，千万不要关心它们怎么干。比如开发的过程中，为了调试方便，我先是这么搭积木的（命令式）：
+
+```
+// 文件 ./lib/index.js
+// 26行
+function(data) {
+    var functionList = parser(data);
+    var formatData = format(functionList);
+    var result = template(formatData);
+
+    ...
+}
+```
+
+这段代码一看就可以写成这样：
+
+```
+var result = template(format(parser(data)));
+```
+
+所以，这段代码在函数式编程里就是（我们使用ramda来处理函数式编程）：
+
+```
+// 11行
+var getPuml = _.compose(template, format, parser); //声明式
+
+// 28行
+var puml = getPuml(data);
+```
+
+沿着这个思路逐个拆分和组合，就非常清晰的处理了整个过程。
+
+#### （2）架构流程和代码结构
+
+还是用一张图来说明吧，非常简单。
 
 
-#### （2）架构流程
-
-#### （3）代码结构
 
 ## 链接
 
@@ -73,8 +109,13 @@ header 《Nodejs开发加密货币》分析用图：《区块链》
 ## 参考
 
 [Abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
+[Fun with Esprima and Static Analysis](http://tobyho.com/2013/12/02/fun-with-esprima/)
+[UglifyJS][]
+[UglifyJS2][]
 
 [《Nodejs开发加密货币》]: https://github.com/imfly/bitcoin-on-nodejs
 [Graphviz]: http://www.graphviz.org/
 [js2uml]: https://github.com/imfly/js2uml
 [v0.1.0]: https://github.com/imfly/js2uml/releases/tag/v0.1.0
+[UglifyJS]: https://github.com/mishoo/UglifyJS
+[UglifyJS2]: https://github.com/mishoo/UglifyJS2
