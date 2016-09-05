@@ -1,7 +1,4 @@
-进行中...
-
-
-# Ember的所有钩子方法汇总
+# Ember的两个重要钩子方法介绍
 
 ## `contentFor`钩子方法
 
@@ -44,7 +41,7 @@ http://ember-cli.com/api/classes/Addon.html#method_contentFor
 // index.js
 module.exports = {
   name: 'ember-cli-command-line-output',
-  
+
   included: function(app) {
     this.ui.writeLine('Including external files!');
   }
