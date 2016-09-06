@@ -1,18 +1,22 @@
-# 开发Ember-cli插件和蓝图模板
+# 开发Ember-cli插件
 
-插件（addon）可以让代码在应用间轻松共享，本向导将通过一个虚构的`ember-cli-xbutton`插件的开发过程来展开。
+## 前言
 
-### 安装
+如果一个所谓的框架，虽然强大，但是会拒很多现有的工具于门外，这样的框架不会被大家广泛接受。Ember.js具备这样的扩展能力，现在官方网站有很多扩展插件（addon）可以直接拿来用。本文参考官方文档，结合`ember-cli-fullPagejs`插件的开发过程，介绍了Ember-cli插件开发的各个细节。
+
+#### 安装
+
 一个插件可以像其他任何npm包一样安装：
 
 `npm install --save-dev <package name>`
 
-安装这个(虚构的)xbutton插件包：
+安装这个(虚构的)fullPagejs插件包：
 
-`npm install --save-dev ember-cli-xbutton`
+`npm install --save-dev ember-cli-fullPagejs`
 
-### 发现
-Ember CLI将检查一个插件的存在，通过检测每个应用依赖，搜索他们的`package.json`文件，看在`keywords`部分是否有`ember-addon`关键字 (如下).
+#### 发现
+
+Ember CLI将检查一个插件的存在，通过检测每个应用的依赖包，搜索这些依赖包的`package.json`文件，看在`keywords`部分是否有`ember-addon`关键字 (如下).
 
 ```javascript
   "keywords": [
@@ -21,16 +25,17 @@ Ember CLI将检查一个插件的存在，通过检测每个应用依赖，搜�
   ],
 ```
 
-### 场景
+#### 场景
+
 Ember CLI插件API，当前支持下面的场景:
 
-* 操作主程序的`Brocfile.js`文件中的`EmberApp`
+* 通过`ember-cli-build.js`操作`EmberApp`（主应用）
 * 添加预处理器到默认的注册表
 * 提供一个自定义应用程序树与应用程序合并
-* 提供定制的专用(服务器)中间件
-* 添加自定义/额外的蓝图模板,通常为脚本生成应用程序/工程文件
+* 提供定制的专用(服务)中间件
+* 添加自定义的额外的蓝图模板，为脚本生成应用程序/工程文件
 
-### 插件命令行选项
+#### 插件命令行选项
 Ember CLI有一个 *addon* 命令，带有下面的选项:
 
 ```bash
@@ -46,7 +51,7 @@ ember addon <addon-name> <options...>
 
 注意：一个插件不会在已经存在的应用程序中被创建
 
-### 创建插件
+#### 创建插件
 创建一个基本插件:
 
 `ember addon <addon-name>`
@@ -54,7 +59,7 @@ ember addon <addon-name> <options...>
 运行该命令，就会产生下面这些文件：
 
 ```bash
-ember addon my-xbutton
+ember addon my-fullPagejs
 version x.y.zz
 installing
   create .bowerrc
@@ -81,10 +86,10 @@ Installing packages for tooling via npm
 Installed browser packages via Bower.
 ```
 
-### 插件约定
+#### 插件约定
 插件基于“约定优于配置”，与 *Ember* 哲学一致。建议你遵循这些约定，让自己更容易、让别人更好地理解你的代码。这同样适用于插件的蓝图模板。
 
-### 插件工程结构
+#### 插件工程结构
 插件工程遵循这些结构约定:
 
 * `app/` - 合并到应用程序的命名空间。
@@ -96,12 +101,12 @@ Installed browser packages via Bower.
 * `package.json` - Node元数据，依赖库等。
 * `index.js` - 主要Node入口点(遵从npm约定)。
 
-### Package.json
+#### Package.json
 插件的`package.json`文件，像这样:
 
 ```javascript
 {
-  "name": "ember-cli-xbutton", // 插件名称
+  "name": "ember-cli-fullPagejs", // 插件名称
   "version": "0.0.1", // 插件版本
   "directories": {
     "doc": "doc",
@@ -137,12 +142,12 @@ Installed browser packages via Bower.
 ```javascript
   "keywords": [
     "ember-addon",
-    "xbutton",
+    "fullPagejs",
     "button"
   ],
 ```
 
-### 插件入口节点
+#### 插件入口节点
 插件将利用npm约定，并寻找一个`index.js` 作为入口点，除非通过`package.json`文件的`"main"`属性指定另一个入口点。建议你使用`index.js`作为插件入口点。
 
 产生的`index.js`文件是一个简单的js对象(POJO) ，你可以定制和扩展，像这样：
@@ -154,11 +159,11 @@ module.exports = {
 };
 ```
 
-### 管理插件依赖
-安装客户端依赖要通过'Bower'。这里我们安装一个虚构的bower依赖`xbutton`:
+#### 管理插件依赖
+安装客户端依赖要通过'Bower'。这里我们安装一个虚构的bower依赖`fullPagejs`:
 
 ```
-bower install --save-dev xbutton
+bower install --save-dev fullPagejs
 ```
 
 添加bower组件到开发依赖
@@ -166,34 +171,34 @@ bower install --save-dev xbutton
 ```javascript
 // bower.js
 {
-  "name": "ember-xbutton",
+  "name": "ember-fullPagejs",
   "dependencies": {
     // ...
   },
   "devDependencies": {
-    "xbutton":  "^1.4.0"
+    "fullPagejs":  "^1.4.0"
   }
 ```
 
-### 插件的Brocfile
+#### 插件的Brocfile
 
 通常你可以空着`Brocfile.js`文件，不用管它。只有需要定制插件的合并树时才去处理它。理解如何使用[Brocfile API](https://www.npmjs.org/package/broccoli).
 
-### 组件
+#### 组件
 为了允许应用程序不用手动导入语句而使用插件组件,把组件放在`app/components`目录下。
 
 ```javascript
-// app/components/xbutton.js
+// app/components/fullPagejs.js
 
 import Ember from 'ember';
-import XButton from 'ember-xbutton/components/xbutton';
+import fullPagejs from 'ember-fullPagejs/components/fullPagejs';
 
-export default XButton;
+export default fullPagejs;
 ```
 
 代码从插件路径导入组件，再导出。这个设置允许其他代码通过扩展该组件修改它，同时使组件在应用程序命名空间中可用。
 
-插件的实际代码放在`addon/components/xbutton.js`
+插件的实际代码放在`addon/components/fullPagejs.js`
 
 ```javascript
 import Ember from 'ember';
@@ -201,31 +206,31 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'button',
 
-  setupXbutton: function() {
+  setupfullPagejs: function() {
     // ...
   }.on('didInsertElement'),
 
-  teardownXbutton: function() {
-    this.get('xbutton').destroy();
+  teardownfullPagejs: function() {
+    this.get('fullPagejs').destroy();
   }.on('willDestroyElement'),
 });
 ```
 
-### 蓝图模板
-为创建蓝图模板, 添加一个文件 `blueprints/xbutton/index.js`. 这遵循的是标准的Ember蓝图模板的命名约定。
+#### 蓝图模板
+为创建蓝图模板, 添加一个文件 `blueprints/fullPagejs/index.js`. 这遵循的是标准的Ember蓝图模板的命名约定。
 
 确保依赖文件导入到应用程序，使用`included`钩子以正确的顺序导入这些文件。
 
 ```javascript
 module.exports = {
-  name: 'ember-cli-xbutton',
+  name: 'ember-cli-fullPagejs',
 
   included: function(app) {
     this._super.included(app);
 
     app.import('bower_components/unbutton/dist/unbutton.js');
-    app.import('bower_components/xbutton/dist/js/xbutton.js');
-    app.import('bower_components/xbutton/dist/css/xbutton.css');
+    app.import('bower_components/fullPagejs/dist/js/fullPagejs.js');
+    app.import('bower_components/fullPagejs/dist/css/fullPagejs.css');
   }
 };
 ```
@@ -233,7 +238,7 @@ module.exports = {
 在这个例子文件里, 使用了`included` 钩子。这个钩子被`EmberApp`构造函数调用，并且让该应用把它作为`app`（与`app`文件夹下的文件一样）调用。
 当主应用的`Brocfile.js`被Ember CLI调用去build/serve的时候，插件的`included`函数被调用，通过该应用的`EmberApp`实例（将插件的依赖文件添加到主程序）。
 
-### 高级定制
+#### 高级定制
 一般来说，如果你想超越内置或想要/需要更高级的控制，以下是`index.js`里一些插件对象的可用钩子(键)。所有的钩子都希望把一个函数作为它的值（钩子都应该是函数）。
 
 ```javascript
@@ -248,7 +253,7 @@ serverMiddleware:
 
 一个高级定制的例子可在[这里](https://github.com/poetic/ember-cli-cordova/blob/master/index.js)找到，或者服务器中间件 [这里](https://github.com/rwjblue/ember-cli-inject-live-reload/blob/master/index.js)
 
-### 测试插件
+#### 测试插件
 插件工程包含一个`/tests` 文件夹，该文件夹包含运行和设置插件测试的基本文件。`/tests` 文件夹有下面的结构:
 
 - `/dummy`
@@ -267,7 +272,7 @@ serverMiddleware:
 
 `index.html`包含浏览器中加载的测试页面，以显示运行单元测试的结果。
 
-### 验收测试
+#### 验收测试
 下面是一个简单的*QUnit*验收测试的例子，放在`tests/unit/components`文件夹之下。
 
 ```javascript
@@ -279,7 +284,7 @@ import Ember from 'ember';
 
 var App;
 
-moduleForComponent('xbutton', 'XButtonComponent', {
+moduleForComponent('fullPagejs', 'fullPagejsComponent', {
   setup: function() {
     App = startApp();
   },
@@ -291,7 +296,7 @@ moduleForComponent('xbutton', 'XButtonComponent', {
 test('is a button tag', function() {
   equal('BUTTON', this.$().prop('tagName'));
 
-  this.subject().teardownXButton();
+  this.subject().teardownfullPagejs();
 });
 
 // more tests follow...
@@ -299,7 +304,7 @@ test('is a button tag', function() {
 
 对于如何运行和设置测试，看 [[Ember CLI Testing]] 部分。
 
-### 创建蓝图模板
+#### 创建蓝图模板
 蓝图模板是一些具有可选安装逻辑的模板文件。它用于根据一些参数和选项脚手架(生成)特定应用程序文件。
 更多细节请看[[generators-and-blueprints]])。一个插件可以有一个或多个蓝图模板。
 
@@ -313,20 +318,20 @@ test('is a button tag', function() {
 
 在我们的例子中:
 
-`ember addon xbutton --blueprint`
+`ember addon fullPagejs --blueprint`
 
-这将为插件产生一个文件夹 `blueprints/xbutton`，在这里你可以定义蓝图模板的逻辑和模板文件。您可以为一个插件定义多个蓝图模板。
+这将为插件产生一个文件夹 `blueprints/fullPagejs`，在这里你可以定义蓝图模板的逻辑和模板文件。您可以为一个插件定义多个蓝图模板。
 最后加载的蓝图模板会覆盖现有(同名)蓝图的模板，该模板可以是来自Ember或其他插件(根据包加载顺序)
 
-### 蓝图模板约定
+#### 蓝图模板约定
 蓝图模板应该放在在插件根目录的`blueprints`文件夹下， 就像覆盖工程根目录的蓝图模板一样。如果把它们放在插件的其他目录下，需要通过设置插件的`blueprintsPath`属性告诉ember-cli去哪找到它
 (请看下面的 *高级定制* 部分)，如果你熟悉 *Yeoman* (或Rails)的产生器，蓝图模板遵从类似的约定和结构。要想更深入的了解蓝图模板设计，请看 [Ember CLI blueprints](https://github.com/stefanpenner/ember-cli/tree/master/blueprints)。
 
-### 模板文件结构
+#### 模板文件结构
 
 ```bash
 blueprints/
-  xbutton/
+  fullPagejs/
     index.js
     files/
       app/
@@ -341,17 +346,17 @@ blueprints/
 
 注：这里被命名为`__name__` 的特殊文件或文件夹，将（在运行命令时）在你的应用程序中产生一个文件/文件夹，第一个命令行参数(name)代替`__name__`。
 
-`ember g xbutton my-button``
+`ember g fullPagejs my-button``
 
 由此在你的应用程序中产生一个文件夹`app/components/my-button`。
 
-### 开发时链接到插件
+#### 开发时链接到插件
 当你开发和测试的时候，你可以在你的插件工程的根目录运行`npm link`，这样你就可以通过插件名称在本地使用该插件了。
 
 然后，在您计划使用的应用程序工程根目录，运行`npm link <addon-name>`，就会将插件链接到应用程序的`node_modules`文件夹下，这样，插件中的任何改变都会在链接该插件的任何工程中直接发生作用。
 请看 [npm-tricks](http://www.devthought.com/2012/02/17/npm-tricks)
 
-### 发布插件
+#### 发布插件
 使用 *npm* 和 *git* 来发布插件，就像一个标准的npm包。
 
 ```bash
@@ -370,26 +375,26 @@ npm publish
 - push the new tag to your git repo (origin branch)
 - publish addon to the global npm repository.
 
-### 安装和使用插件
+#### 安装和使用插件
 为了从您托管的应用中使用插件，从 [npm.org](https://www.npmjs.org/) 安装该插件：
 
 `npm install ember-cli-<your-addon-name-here> --save-dev`.
 
-对于我们的 *xbutton* 插件：
+对于我们的 *fullPagejs* 插件：
 
-`npm install ember-cli-xbutton --save-dev`.
+`npm install ember-cli-fullPagejs --save-dev`.
 
-运行 *xbutton* 蓝图模板：
+运行 *fullPagejs* 蓝图模板：
 
-`ember generate xbutton`
+`ember generate fullPagejs`
 
-### 更新插件
+#### 更新插件
 可以像更新Ember应用一样，通过在工程根目录运行`ember init`命令，更新一个插件。
 
-### 完整例子
+#### 完整例子
 作为一个真实的插件应用实例，请看 [创建一个DatePicker Ember-CLI插件](http://edgycircle.com/blog/2014-creating-a-datepicker-ember-addon)
 
-### 译注
+#### 译注
 
 1. the consuming application：是基于ember-cli等核心API开发的应用，英文通常就是这么称呼，也就是我们口头所说的应用程序，而非插件应用;
 2. the hosting application: 托管中的应用，应该是另一种称谓而已，这里应该没有太大区别;
