@@ -33,9 +33,10 @@ Ember CLI插件API，当前支持下面的场景:
 * 添加预处理器到默认的注册表
 * 提供一个自定义应用程序树与应用程序合并
 * 提供定制的专用(服务)中间件
-* 添加自定义的额外的蓝图模板，为脚本生成应用程序/工程文件
+* 添加自定义模板，为主程序生成相关的工程文件
 
 #### 插件命令行选项
+
 Ember CLI有一个 *addon* 命令，带有下面的选项:
 
 ```bash
@@ -52,6 +53,7 @@ ember addon <addon-name> <options...>
 注意：一个插件不会在已经存在的应用程序中被创建
 
 #### 创建插件
+
 创建一个基本插件:
 
 `ember addon <addon-name>`
@@ -59,7 +61,7 @@ ember addon <addon-name> <options...>
 运行该命令，就会产生下面这些文件：
 
 ```bash
-ember addon my-fullPagejs
+ember addon fullPagejs
 version x.y.zz
 installing
   create .bowerrc
@@ -87,21 +89,24 @@ Installed browser packages via Bower.
 ```
 
 #### 插件约定
-插件基于“约定优于配置”，与 *Ember* 哲学一致。建议你遵循这些约定，让自己更容易、让别人更好地理解你的代码。这同样适用于插件的蓝图模板。
+
+插件基于“约定优于配置”，与 *Ember* 哲学一致。建议你遵循这些约定，让自己更容易、让别人更好地理解你的代码。这同样适用于设计插件模板文件。
 
 #### 插件工程结构
+
 插件工程遵循这些结构约定:
 
 * `app/` - 合并到应用程序的命名空间。
 * `addon/` - 插件的命名空间部分。
-* `blueprints/` - 包含插件所有蓝图模板，每一个存放在一个独立的文件夹里。
+* `blueprints/` - 包含插件所有模板文件，每一个存放在一个独立的文件夹里。
 * `tests/` - 测试文件夹，包括一个"dummy"测试应用和验收测试助手。
 * `vendor/` - 第三方专有文件，比如stylesheets, fonts, 外部包等等。
-* `Brocfile.js` - 编译配置。
-* `package.json` - Node元数据，依赖库等。
-* `index.js` - 主要Node入口点(遵从npm约定)。
+* `ember-cli-build.js` - 编译设置。
+* `package.json` - Node.js元数据，依赖库等。
+* `index.js` - Node.js入口(遵从npm约定)。
 
 #### Package.json
+
 插件的`package.json`文件，像这样:
 
 ```javascript
@@ -389,10 +394,8 @@ npm publish
 `ember generate fullPagejs`
 
 #### 更新插件
-可以像更新Ember应用一样，通过在工程根目录运行`ember init`命令，更新一个插件。
 
-#### 完整例子
-作为一个真实的插件应用实例，请看 [创建一个DatePicker Ember-CLI插件](http://edgycircle.com/blog/2014-creating-a-datepicker-ember-addon)
+可以像更新Ember应用一样，通过在工程根目录运行`ember init`命令，更新一个插件。
 
 #### 译注
 
