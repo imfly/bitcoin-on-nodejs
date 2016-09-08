@@ -148,23 +148,33 @@ Installed browser packages via Bower.
   "keywords": [
     "ember-addon",
     "fullPagejs",
-    "button"
+    "fullpage.js"
   ],
 ```
 
-#### 插件入口节点
-插件将利用npm约定，并寻找一个`index.js` 作为入口点，除非通过`package.json`文件的`"main"`属性指定另一个入口点。建议你使用`index.js`作为插件入口点。
+#### 插件入口
 
-产生的`index.js`文件是一个简单的js对象(POJO) ，你可以定制和扩展，像这样：
+所谓的插件入口，就是调用插件最先执行的文件，每种编程语言都需要。插件将利用npm约定，并寻找一个 `index.js` 文件作为入口点，除非通过`package.json`文件的`"main"`属性指定另一个入口点。建议使用`index.js`作为插件入口点。
+
+产生的`index.js`文件是一个简单的js对象(POJO) ，可以定制和扩展，像这样：
 
 ```javascript
 // index.js
 module.exports = {
-  name: 'my-addon'
+  name: 'ember-cli-full-pagejs',
+  included: function(app, parentAddon) {
+    var target = (parentAddon || app);
+    // 这里你可以修改主应用（app） / 父插件（parentAddon）. 比如, 如果你想包括
+    // 一个定制的执行器，你可以把它加到目标注册器，如：
+    //     target.registry.add('js', myPreprocessor);
+  }
 };
 ```
 
+在构建（build）过程中，included钩子方法会被执行，直接操作主应用程序或者它的父插件，提高插件的处理能力。这个对象扩展了`Addon`类，所以任何存在于`Addon`类的钩子方法都可以被重写。请参考《Ember的几个重要钩子方法简介》
+
 #### 管理插件依赖
+
 安装客户端依赖要通过'Bower'。这里我们安装一个虚构的bower依赖`fullPagejs`:
 
 ```
@@ -185,11 +195,8 @@ bower install --save-dev fullPagejs
   }
 ```
 
-#### 插件的Brocfile
-
-通常你可以空着`Brocfile.js`文件，不用管它。只有需要定制插件的合并树时才去处理它。理解如何使用[Brocfile API](https://www.npmjs.org/package/broccoli).
-
 #### 组件
+
 为了允许应用程序不用手动导入语句而使用插件组件,把组件放在`app/components`目录下。
 
 ```javascript
