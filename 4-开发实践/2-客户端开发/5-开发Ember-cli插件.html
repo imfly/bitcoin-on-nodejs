@@ -1,0 +1,1359 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <title>开发Ember-cli插件 · GitBook</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.1.1">
+        <meta name="author" content="Imfly">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="6-将库转化为Ember-CLI插件.html" />
+    
+    
+    <link rel="prev" href="4-静态网站开发全景扫描.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../0-开篇的话/readme.html">
+            
+                <a href="../../0-开篇的话/readme.html">
+            
+                    
+                    开篇的话
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../0-开篇的话/0-序言.html">
+            
+                <a href="../../0-开篇的话/0-序言.html">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../0-开篇的话/1-开栏寄语.html">
+            
+                <a href="../../0-开篇的话/1-开栏寄语.html">
+            
+                    
+                    开栏寄语
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../1-了解加密货币/readme.html">
+            
+                <a href="../../1-了解加密货币/readme.html">
+            
+                    
+                    了解加密货币
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../1-了解加密货币/5-加密货币就是货币.html">
+            
+                <a href="../../1-了解加密货币/5-加密货币就是货币.html">
+            
+                    
+                    加密货币就是货币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
+            
+                <a href="../../1-了解加密货币/6-利益，魔鬼与天使的共同目标.html">
+            
+                    
+                    利益，魔鬼与天使的共同目标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
+            
+                <a href="../../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html">
+            
+                    
+                    共识机制，可编程的“利益”转移规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../2-Node.js入门指南/readme.html">
+            
+                <a href="../../2-Node.js入门指南/readme.html">
+            
+                    
+                    Node.js入门指南
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                <a href="../../2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.html">
+            
+                    
+                    Nodejs原来在币圈如此流行？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                <a href="../../2-Node.js入门指南/2-Nodejs让您的前端开发像子弹飞一样.html">
+            
+                    
+                    Nodejs让您的前端开发像子弹飞一样
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                <a href="../../2-Node.js入门指南/3-Nodejs让后台开发像前端一样简单.html">
+            
+                    
+                    Nodejs让后台开发像前端一样简单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                <a href="../../2-Node.js入门指南/4-您必须知道的几个Nodejs编码习惯.html">
+            
+                    
+                    您必须知道的几个Nodejs编码习惯
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../3-源码解读/readme.html">
+            
+                <a href="../../3-源码解读/readme.html">
+            
+                    
+                    源码解读
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
+            
+                <a href="../../3-源码解读/1-亿书，一个面向未来的自出版平台.html">
+            
+                    
+                    亿书，一个面向未来的自出版平台
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../3-源码解读/2-入口程序app.js解读.html">
+            
+                <a href="../../3-源码解读/2-入口程序app.js解读.html">
+            
+                    
+                    入口程序app.js解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../3-源码解读/3-一个精巧的p2p网络实现.html">
+            
+                <a href="../../3-源码解读/3-一个精巧的p2p网络实现.html">
+            
+                    
+                    一个精巧的p2p网络实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../3-源码解读/4-加密和验证.html">
+            
+                <a href="../../3-源码解读/4-加密和验证.html">
+            
+                    
+                    加密和验证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../3-源码解读/5-地址.html">
+            
+                <a href="../../3-源码解读/5-地址.html">
+            
+                    
+                    地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../../3-源码解读/6-签名和多重签名.html">
+            
+                <a href="../../3-源码解读/6-签名和多重签名.html">
+            
+                    
+                    签名和多重签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../../3-源码解读/7-交易.html">
+            
+                <a href="../../3-源码解读/7-交易.html">
+            
+                    
+                    交易
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../../3-源码解读/8-区块链.html">
+            
+                <a href="../../3-源码解读/8-区块链.html">
+            
+                    
+                    区块链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../../3-源码解读/9-DPOS机制.html">
+            
+                <a href="../../3-源码解读/9-DPOS机制.html">
+            
+                    
+                    DPOS机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../../3-源码解读/10-侧链.html">
+            
+                <a href="../../3-源码解读/10-侧链.html">
+            
+                    
+                    侧链
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../readme.html">
+            
+                <a href="../readme.html">
+            
+                    
+                    开发实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../0-加密与解密/readme.html">
+            
+                <a href="../0-加密与解密/readme.html">
+            
+                    
+                    加密与解密
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+            
+                <a href="../0-加密与解密/3-三张图让你全面掌握加密解密技术.html">
+            
+                    
+                    三张图让你全面掌握加密解密技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../1-命令行设计/readme.html">
+            
+                <a href="../1-命令行设计/readme.html">
+            
+                    
+                    命令行设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../1-命令行设计/1-commander介绍.html">
+            
+                <a href="../1-命令行设计/1-commander介绍.html">
+            
+                    
+                    commander介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="readme.html">
+            
+                <a href="readme.html">
+            
+                    
+                    客户端开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="4-静态网站开发全景扫描.html">
+            
+                <a href="4-静态网站开发全景扫描.html">
+            
+                    
+                    静态网站开发全景扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.3.2" data-path="5-开发Ember-cli插件.html">
+            
+                <a href="5-开发Ember-cli插件.html">
+            
+                    
+                    开发Ember-cli插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="6-将库转化为Ember-CLI插件.html">
+            
+                <a href="6-将库转化为Ember-CLI插件.html">
+            
+                    
+                    将库转化为Ember-CLI插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="7-Ember的几个重要钩子方法简介.html">
+            
+                <a href="7-Ember的几个重要钩子方法简介.html">
+            
+                    
+                    Ember的几个重要钩子方法简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../4-测试/readme.html">
+            
+                <a href="../4-测试/readme.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../5-部署/readme.html">
+            
+                <a href="../5-部署/readme.html">
+            
+                    
+                    部署
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.5.1" data-path="../5-部署/1-Nodejs部署方案全解析.html">
+            
+                <a href="../5-部署/1-Nodejs部署方案全解析.html">
+            
+                    
+                    Nodejs部署方案全解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.2" data-path="../5-部署/2-生产环境下的pm2部署.html">
+            
+                <a href="../5-部署/2-生产环境下的pm2部署.html">
+            
+                    
+                    生产环境下的pm2部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.3" data-path="../5-部署/3-使用ShipIt实现全自动一键部署.html">
+            
+                <a href="../5-部署/3-使用ShipIt实现全自动一键部署.html">
+            
+                    
+                    使用ShipIt实现全自动一键部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../6-优化/readme.html">
+            
+                <a href="../6-优化/readme.html">
+            
+                    
+                    优化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.6.1" data-path="../6-优化/1-Js对数据计算处理的各种问题.html">
+            
+                <a href="../6-优化/1-Js对数据计算处理的各种问题.html">
+            
+                    
+                    Js对数据计算处理的各种问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.2" data-path="../6-优化/2-Node.JS Error: ENOSPC.html">
+            
+                <a href="../6-优化/2-Node.JS Error: ENOSPC.html">
+            
+                    
+                    Node.JS Error: ENOSPC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.3" data-path="../6-优化/2-一张图学会使用Async组件进行流程控制.html">
+            
+                <a href="../6-优化/2-一张图学会使用Async组件进行流程控制.html">
+            
+                    
+                    一张图学会使用Async组件进行流程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.4" data-path="../6-优化/3-事件循环.html">
+            
+                <a href="../6-优化/3-事件循环.html">
+            
+                    
+                    事件循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.5" data-path="../6-优化/5-关于时间戳及相关问题.html">
+            
+                <a href="../6-优化/5-关于时间戳及相关问题.html">
+            
+                    
+                    关于时间戳及相关问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" >
+            
+                <span>
+            
+                    
+                    方法论
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.7.1" data-path="../7-方法论/5-函数式编程入门经典.html">
+            
+                <a href="../7-方法论/5-函数式编程入门经典.html">
+            
+                    
+                    函数式编程入门经典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.2" data-path="../7-方法论/6-轻松从Js文件生成UML类图.html">
+            
+                <a href="../7-方法论/6-轻松从Js文件生成UML类图.html">
+            
+                    
+                    轻松从Js文件生成UML类图
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../5-附录/readme.html">
+            
+                <a href="../../5-附录/readme.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../5-附录/0-区块链相关术语中英对照.html">
+            
+                <a href="../../5-附录/0-区块链相关术语中英对照.html">
+            
+                    
+                    区块链相关术语中英对照
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../5-附录/1-加密货币相关名词解释.html">
+            
+                <a href="../../5-附录/1-加密货币相关名词解释.html">
+            
+                    
+                    加密货币相关名词解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../5-附录/2-Javascript开发规范.html">
+            
+                <a href="../../5-附录/2-Javascript开发规范.html">
+            
+                    
+                    Javascript开发规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../5-附录/3-ES5开发规范.html">
+            
+                <a href="../../5-附录/3-ES5开发规范.html">
+            
+                    
+                    ES5开发规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../5-附录/4-资源链接.html">
+            
+                <a href="../../5-附录/4-资源链接.html">
+            
+                    
+                    资源链接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../5-附录/6-关于亿书.html">
+            
+                <a href="../../5-附录/6-关于亿书.html">
+            
+                    
+                    关于亿书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../5-附录/7-关于区款链俱乐部.html">
+            
+                <a href="../../5-附录/7-关于区款链俱乐部.html">
+            
+                    
+                    关于区款链俱乐部
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../../5-附录/8-关于作者.html">
+            
+                <a href="../../5-附录/8-关于作者.html">
+            
+                    
+                    关于作者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../6-后记/readme.html">
+            
+                <a href="../../6-后记/readme.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >开发Ember-cli插件</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5F00;&#x53D1;ember-cli&#x63D2;&#x4EF6;">&#x5F00;&#x53D1;Ember-cli&#x63D2;&#x4EF6;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6240;&#x8C13;&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x867D;&#x7136;&#x5F3A;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x62D2;&#x5F88;&#x591A;&#x73B0;&#x6709;&#x7684;&#x5DE5;&#x5177;&#x4E8E;&#x95E8;&#x5916;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x6846;&#x67B6;&#x4E0D;&#x4F1A;&#x88AB;&#x5927;&#x5BB6;&#x5E7F;&#x6CDB;&#x63A5;&#x53D7;&#x3002;Ember.js&#x5177;&#x5907;&#x8FD9;&#x6837;&#x7684;&#x6269;&#x5C55;&#x80FD;&#x529B;&#xFF0C;&#x73B0;&#x5728;&#x5B98;&#x65B9;&#x7F51;&#x7AD9;&#x6709;&#x5F88;&#x591A;&#x6269;&#x5C55;&#x63D2;&#x4EF6;&#xFF08;addon&#xFF09;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x62FF;&#x6765;&#x7528;&#x3002;&#x672C;&#x6587;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x7ED3;&#x5408;<code>ember-cli-fullPagejs</code>&#x63D2;&#x4EF6;&#x7684;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#xFF0C;&#x4ECB;&#x7ECD;&#x4E86;Ember-cli&#x63D2;&#x4EF6;&#x5F00;&#x53D1;&#x7684;&#x5404;&#x4E2A;&#x7EC6;&#x8282;&#x3002;</p>
+<h4 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h4>
+<p>&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x53EF;&#x4EE5;&#x50CF;&#x5176;&#x4ED6;&#x4EFB;&#x4F55;npm&#x5305;&#x4E00;&#x6837;&#x5B89;&#x88C5;&#xFF1A;</p>
+<p><code>npm install --save-dev &lt;package name&gt;</code></p>
+<p>&#x5B89;&#x88C5;&#x8FD9;&#x4E2A;(&#x865A;&#x6784;&#x7684;)fullPagejs&#x63D2;&#x4EF6;&#x5305;&#xFF1A;</p>
+<p><code>npm install --save-dev ember-cli-fullPagejs</code></p>
+<h4 id="&#x53D1;&#x73B0;">&#x53D1;&#x73B0;</h4>
+<p>Ember CLI&#x5C06;&#x68C0;&#x67E5;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x901A;&#x8FC7;&#x68C0;&#x6D4B;&#x6BCF;&#x4E2A;&#x5E94;&#x7528;&#x7684;&#x4F9D;&#x8D56;&#x5305;&#xFF0C;&#x641C;&#x7D22;&#x8FD9;&#x4E9B;&#x4F9D;&#x8D56;&#x5305;&#x7684;<code>package.json</code>&#x6587;&#x4EF6;&#xFF0C;&#x770B;&#x5728;<code>keywords</code>&#x90E8;&#x5206;&#x662F;&#x5426;&#x6709;<code>ember-addon</code>&#x5173;&#x952E;&#x5B57; (&#x5982;&#x4E0B;).</p>
+<pre><code class="lang-javascript">  <span class="hljs-string">&quot;keywords&quot;</span>: [
+    <span class="hljs-string">&quot;ember-addon&quot;</span>
+    ...
+  ],
+</code></pre>
+<h4 id="&#x573A;&#x666F;">&#x573A;&#x666F;</h4>
+<p>Ember CLI&#x63D2;&#x4EF6;API&#xFF0C;&#x5F53;&#x524D;&#x652F;&#x6301;&#x4E0B;&#x9762;&#x7684;&#x573A;&#x666F;:</p>
+<ul>
+<li>&#x901A;&#x8FC7;<code>ember-cli-build.js</code>&#x64CD;&#x4F5C;<code>EmberApp</code>&#xFF08;&#x4E3B;&#x5E94;&#x7528;&#xFF09;</li>
+<li>&#x6DFB;&#x52A0;&#x9884;&#x5904;&#x7406;&#x5668;&#x5230;&#x9ED8;&#x8BA4;&#x7684;&#x6CE8;&#x518C;&#x8868;</li>
+<li>&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6811;&#x4E0E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5408;&#x5E76;</li>
+<li>&#x63D0;&#x4F9B;&#x5B9A;&#x5236;&#x7684;&#x4E13;&#x7528;(&#x670D;&#x52A1;)&#x4E2D;&#x95F4;&#x4EF6;</li>
+<li>&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x6A21;&#x677F;&#xFF0C;&#x4E3A;&#x4E3B;&#x7A0B;&#x5E8F;&#x751F;&#x6210;&#x76F8;&#x5173;&#x7684;&#x5DE5;&#x7A0B;&#x6587;&#x4EF6;</li>
+</ul>
+<h4 id="&#x63D2;&#x4EF6;&#x547D;&#x4EE4;&#x884C;&#x9009;&#x9879;">&#x63D2;&#x4EF6;&#x547D;&#x4EE4;&#x884C;&#x9009;&#x9879;</h4>
+<p>Ember CLI&#x6709;&#x4E00;&#x4E2A; <em>addon</em> &#x547D;&#x4EE4;&#xFF0C;&#x5E26;&#x6709;&#x4E0B;&#x9762;&#x7684;&#x9009;&#x9879;:</p>
+<pre><code class="lang-bash">ember addon &lt;addon-name&gt; &lt;options...&gt;
+  Creates a new folder and runs ember init <span class="hljs-keyword">in</span> it.
+  --dry-run (Default: <span class="hljs-literal">false</span>)
+  --verbose (Default: <span class="hljs-literal">false</span>)
+  --blueprint (Default: addon)
+  --skip-npm (Default: <span class="hljs-literal">false</span>)
+  --skip-bower (Default: <span class="hljs-literal">false</span>)
+  --skip-git (Default: <span class="hljs-literal">false</span>)
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x4E0D;&#x4F1A;&#x5728;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x88AB;&#x521B;&#x5EFA;</p>
+<h4 id="&#x521B;&#x5EFA;&#x63D2;&#x4EF6;">&#x521B;&#x5EFA;&#x63D2;&#x4EF6;</h4>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x63D2;&#x4EF6;:</p>
+<p><code>ember addon &lt;addon-name&gt;</code></p>
+<p>&#x8FD0;&#x884C;&#x8BE5;&#x547D;&#x4EE4;&#xFF0C;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-bash">ember addon fullPagejs
+version x.y.zz
+installing
+  create .bowerrc
+  create .editorconfig
+  create tests/dummy/.jshintrc
+  create .travis.yml
+  create Brocfile.js
+  create README.md
+
+  create tests/dummy/app/app.js
+  ... more <span class="hljs-built_in">test</span> files
+
+  create bower.json
+  create .gitignore
+  create package.json  
+
+  ...
+  create vendor/.gitkeep
+  create addon/.gitkeep
+  create app/.gitkeep
+  create index.js
+
+Installing packages <span class="hljs-keyword">for</span> tooling via npm
+Installed browser packages via Bower.
+</code></pre>
+<h4 id="&#x63D2;&#x4EF6;&#x7EA6;&#x5B9A;">&#x63D2;&#x4EF6;&#x7EA6;&#x5B9A;</h4>
+<p>&#x63D2;&#x4EF6;&#x57FA;&#x4E8E;&#x201C;&#x7EA6;&#x5B9A;&#x4F18;&#x4E8E;&#x914D;&#x7F6E;&#x201D;&#xFF0C;&#x4E0E; <em>Ember</em> &#x54F2;&#x5B66;&#x4E00;&#x81F4;&#x3002;&#x5EFA;&#x8BAE;&#x4F60;&#x9075;&#x5FAA;&#x8FD9;&#x4E9B;&#x7EA6;&#x5B9A;&#xFF0C;&#x8BA9;&#x81EA;&#x5DF1;&#x66F4;&#x5BB9;&#x6613;&#x3001;&#x8BA9;&#x522B;&#x4EBA;&#x66F4;&#x597D;&#x5730;&#x7406;&#x89E3;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x8FD9;&#x540C;&#x6837;&#x9002;&#x7528;&#x4E8E;&#x8BBE;&#x8BA1;&#x63D2;&#x4EF6;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x3002;</p>
+<h4 id="&#x63D2;&#x4EF6;&#x5DE5;&#x7A0B;&#x7ED3;&#x6784;">&#x63D2;&#x4EF6;&#x5DE5;&#x7A0B;&#x7ED3;&#x6784;</h4>
+<p>&#x63D2;&#x4EF6;&#x5DE5;&#x7A0B;&#x9075;&#x5FAA;&#x8FD9;&#x4E9B;&#x7ED3;&#x6784;&#x7EA6;&#x5B9A;:</p>
+<ul>
+<li><code>app/</code> - &#x5408;&#x5E76;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x3002;</li>
+<li><code>addon/</code> - &#x63D2;&#x4EF6;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x90E8;&#x5206;&#x3002;</li>
+<li><code>blueprints/</code> - &#x5305;&#x542B;&#x63D2;&#x4EF6;&#x6240;&#x6709;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x5B58;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x3002;</li>
+<li><code>tests/</code> - &#x6D4B;&#x8BD5;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5305;&#x62EC;&#x4E00;&#x4E2A;&quot;dummy&quot;&#x6D4B;&#x8BD5;&#x5E94;&#x7528;&#x548C;&#x9A8C;&#x6536;&#x6D4B;&#x8BD5;&#x52A9;&#x624B;&#x3002;</li>
+<li><code>vendor/</code> - &#x7B2C;&#x4E09;&#x65B9;&#x4E13;&#x6709;&#x6587;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982;stylesheets, fonts, &#x5916;&#x90E8;&#x5305;&#x7B49;&#x7B49;&#x3002;</li>
+<li><code>ember-cli-build.js</code> - &#x7F16;&#x8BD1;&#x8BBE;&#x7F6E;&#x3002;</li>
+<li><code>package.json</code> - Node.js&#x5143;&#x6570;&#x636E;&#xFF0C;&#x4F9D;&#x8D56;&#x5E93;&#x7B49;&#x3002;</li>
+<li><code>index.js</code> - Node.js&#x5165;&#x53E3;(&#x9075;&#x4ECE;npm&#x7EA6;&#x5B9A;)&#x3002;</li>
+</ul>
+<h4 id="packagejson">Package.json</h4>
+<p>&#x63D2;&#x4EF6;&#x7684;<code>package.json</code>&#x6587;&#x4EF6;&#xFF0C;&#x50CF;&#x8FD9;&#x6837;:</p>
+<pre><code class="lang-javascript">{
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;ember-cli-fullPagejs&quot;</span>, <span class="hljs-comment">// &#x63D2;&#x4EF6;&#x540D;&#x79F0;</span>
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.0.1&quot;</span>, <span class="hljs-comment">// &#x63D2;&#x4EF6;&#x7248;&#x672C;</span>
+  <span class="hljs-string">&quot;directories&quot;</span>: {
+    <span class="hljs-string">&quot;doc&quot;</span>: <span class="hljs-string">&quot;doc&quot;</span>,
+    <span class="hljs-string">&quot;test&quot;</span>: <span class="hljs-string">&quot;test&quot;</span>
+  },
+  <span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;ember server&quot;</span>,
+    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;ember build&quot;</span>,
+    <span class="hljs-string">&quot;test&quot;</span>: <span class="hljs-string">&quot;ember test&quot;</span>
+  },
+  <span class="hljs-string">&quot;repository&quot;</span>: <span class="hljs-string">&quot;https://github.com/repo-user/my-addon&quot;</span>,
+  <span class="hljs-string">&quot;engines&quot;</span>: {
+    <span class="hljs-string">&quot;node&quot;</span>: <span class="hljs-string">&quot;&gt;= 0.10.0&quot;</span>
+  },
+  <span class="hljs-string">&quot;keywords&quot;</span>: [
+    <span class="hljs-string">&quot;ember-addon&quot;</span>
+    <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x4FBF;&#x4E8E;&#x5206;&#x7C7B;&#x63D2;&#x4EF6;</span>
+  ],
+  <span class="hljs-string">&quot;ember-addon&quot;</span>: {
+    <span class="hljs-comment">// &#x63D2;&#x4EF6;&#x914D;&#x7F6E;&#x5C5E;&#x6027;</span>
+    <span class="hljs-string">&quot;configPath&quot;</span>: <span class="hljs-string">&quot;tests/dummy/config&quot;</span>
+  },
+  <span class="hljs-string">&quot;author&quot;</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-comment">// &#x4F60;&#x7684;&#x540D;&#x5B57;</span>
+  <span class="hljs-string">&quot;license&quot;</span>: <span class="hljs-string">&quot;MIT&quot;</span>, <span class="hljs-comment">// &#x534F;&#x8BAE;</span>
+  <span class="hljs-string">&quot;devDependencies&quot;</span>: {
+    <span class="hljs-string">&quot;body-parser&quot;</span>: <span class="hljs-string">&quot;^1.2.0&quot;</span>,
+    ... <span class="hljs-comment">// &#x5728;&#x8FD9;&#x91CC;&#x6DFB;&#x52A0;&#x4E13;&#x95E8;&#x7684;&#x4F9D;&#x8D56;&#x5E93;!</span>
+}
+</code></pre>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x5143;&#x6570;&#x636E;&#x6765;&#x66F4;&#x597D;&#x5730;&#x5206;&#x7C7B;&#x8BE5;&#x63D2;&#x4EF6;:</p>
+<pre><code class="lang-javascript">  <span class="hljs-string">&quot;keywords&quot;</span>: [
+    <span class="hljs-string">&quot;ember-addon&quot;</span>,
+    <span class="hljs-string">&quot;fullPagejs&quot;</span>,
+    <span class="hljs-string">&quot;fullpage.js&quot;</span>
+  ],
+</code></pre>
+<h4 id="&#x63D2;&#x4EF6;&#x5165;&#x53E3;">&#x63D2;&#x4EF6;&#x5165;&#x53E3;</h4>
+<p>&#x6240;&#x8C13;&#x7684;&#x63D2;&#x4EF6;&#x5165;&#x53E3;&#xFF0C;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x63D2;&#x4EF6;&#x6700;&#x5148;&#x6267;&#x884C;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x6BCF;&#x79CD;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x90FD;&#x9700;&#x8981;&#x3002;&#x63D2;&#x4EF6;&#x5C06;&#x5229;&#x7528;npm&#x7EA6;&#x5B9A;&#xFF0C;&#x5E76;&#x5BFB;&#x627E;&#x4E00;&#x4E2A; <code>index.js</code> &#x6587;&#x4EF6;&#x4F5C;&#x4E3A;&#x5165;&#x53E3;&#x70B9;&#xFF0C;&#x9664;&#x975E;&#x901A;&#x8FC7;<code>package.json</code>&#x6587;&#x4EF6;&#x7684;<code>&quot;main&quot;</code>&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x53E6;&#x4E00;&#x4E2A;&#x5165;&#x53E3;&#x70B9;&#x3002;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;<code>index.js</code>&#x4F5C;&#x4E3A;&#x63D2;&#x4EF6;&#x5165;&#x53E3;&#x70B9;&#x3002;</p>
+<p>&#x4EA7;&#x751F;&#x7684;<code>index.js</code>&#x6587;&#x4EF6;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;js&#x5BF9;&#x8C61;(POJO) &#xFF0C;&#x53EF;&#x4EE5;&#x5B9A;&#x5236;&#x548C;&#x6269;&#x5C55;&#xFF0C;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// index.js</span>
+<span class="hljs-built_in">module</span>.exports = {
+  name: <span class="hljs-string">&apos;ember-cli-full-pagejs&apos;</span>,
+  included: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">app, parentAddon</span>) </span>{
+    <span class="hljs-keyword">var</span> target = (parentAddon || app);
+    <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x4F60;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x4E3B;&#x5E94;&#x7528;&#xFF08;app&#xFF09; / &#x7236;&#x63D2;&#x4EF6;&#xFF08;parentAddon&#xFF09;. &#x6BD4;&#x5982;, &#x5982;&#x679C;&#x4F60;&#x60F3;&#x5305;&#x62EC;</span>
+    <span class="hljs-comment">// &#x4E00;&#x4E2A;&#x5B9A;&#x5236;&#x7684;&#x6267;&#x884C;&#x5668;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x52A0;&#x5230;&#x76EE;&#x6807;&#x6CE8;&#x518C;&#x5668;&#xFF0C;&#x5982;&#xFF1A;</span>
+    <span class="hljs-comment">//     target.registry.add(&apos;js&apos;, myPreprocessor);</span>
+  }
+};
+</code></pre>
+<p>&#x5728;&#x6784;&#x5EFA;&#xFF08;build&#xFF09;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;included&#x94A9;&#x5B50;&#x65B9;&#x6CD5;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#xFF0C;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;&#x4E3B;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6216;&#x8005;&#x5B83;&#x7684;&#x7236;&#x63D2;&#x4EF6;&#xFF0C;&#x63D0;&#x9AD8;&#x63D2;&#x4EF6;&#x7684;&#x5904;&#x7406;&#x80FD;&#x529B;&#x3002;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x6269;&#x5C55;&#x4E86;<code>Addon</code>&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;&#x4EFB;&#x4F55;&#x5B58;&#x5728;&#x4E8E;<code>Addon</code>&#x7C7B;&#x7684;&#x94A9;&#x5B50;&#x65B9;&#x6CD5;&#x90FD;&#x53EF;&#x4EE5;&#x88AB;&#x91CD;&#x5199;&#x3002;&#x8BF7;&#x53C2;&#x8003;&#x300A;Ember&#x7684;&#x51E0;&#x4E2A;&#x91CD;&#x8981;&#x94A9;&#x5B50;&#x65B9;&#x6CD5;&#x7B80;&#x4ECB;&#x300B;</p>
+<h4 id="&#x7BA1;&#x7406;&#x63D2;&#x4EF6;&#x4F9D;&#x8D56;">&#x7BA1;&#x7406;&#x63D2;&#x4EF6;&#x4F9D;&#x8D56;</h4>
+<p>&#x5B89;&#x88C5;&#x5BA2;&#x6237;&#x7AEF;&#x4F9D;&#x8D56;&#x8981;&#x901A;&#x8FC7;&apos;Bower&apos;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x865A;&#x6784;&#x7684;bower&#x4F9D;&#x8D56;<code>fullPagejs</code>:</p>
+<pre><code>bower install --save-dev fullPagejs
+</code></pre><p>&#x6DFB;&#x52A0;bower&#x7EC4;&#x4EF6;&#x5230;&#x5F00;&#x53D1;&#x4F9D;&#x8D56;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// bower.js</span>
+{
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;ember-fullPagejs&quot;</span>,
+  <span class="hljs-string">&quot;dependencies&quot;</span>: {
+    <span class="hljs-comment">// ...</span>
+  },
+  <span class="hljs-string">&quot;devDependencies&quot;</span>: {
+    <span class="hljs-string">&quot;fullPagejs&quot;</span>:  <span class="hljs-string">&quot;^1.4.0&quot;</span>
+  }
+</code></pre>
+<h4 id="&#x7EC4;&#x4EF6;">&#x7EC4;&#x4EF6;</h4>
+<p>&#x4E3A;&#x4E86;&#x5141;&#x8BB8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E0D;&#x7528;&#x624B;&#x52A8;&#x5BFC;&#x5165;&#x8BED;&#x53E5;&#x800C;&#x4F7F;&#x7528;&#x63D2;&#x4EF6;&#x7EC4;&#x4EF6;,&#x628A;&#x7EC4;&#x4EF6;&#x653E;&#x5728;<code>app/components</code>&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// app/components/fullPagejs.js</span>
+
+<span class="hljs-keyword">import</span> Ember <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;ember&apos;</span>;
+<span class="hljs-keyword">import</span> fullPagejs <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;ember-fullPagejs/components/fullPagejs&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> fullPagejs;
+</code></pre>
+<p>&#x4EE3;&#x7801;&#x4ECE;&#x63D2;&#x4EF6;&#x8DEF;&#x5F84;&#x5BFC;&#x5165;&#x7EC4;&#x4EF6;&#xFF0C;&#x518D;&#x5BFC;&#x51FA;&#x3002;&#x8FD9;&#x4E2A;&#x8BBE;&#x7F6E;&#x5141;&#x8BB8;&#x5176;&#x4ED6;&#x4EE3;&#x7801;&#x901A;&#x8FC7;&#x6269;&#x5C55;&#x8BE5;&#x7EC4;&#x4EF6;&#x4FEE;&#x6539;&#x5B83;&#xFF0C;&#x540C;&#x65F6;&#x4F7F;&#x7EC4;&#x4EF6;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#x53EF;&#x7528;&#x3002;</p>
+<p>&#x63D2;&#x4EF6;&#x7684;&#x5B9E;&#x9645;&#x4EE3;&#x7801;&#x653E;&#x5728;<code>addon/components/fullPagejs.js</code></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> Ember <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;ember&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Ember.Component.extend({
+  tagName: <span class="hljs-string">&apos;button&apos;</span>,
+
+  setupfullPagejs: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// ...</span>
+  }.on(<span class="hljs-string">&apos;didInsertElement&apos;</span>),
+
+  teardownfullPagejs: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.get(<span class="hljs-string">&apos;fullPagejs&apos;</span>).destroy();
+  }.on(<span class="hljs-string">&apos;willDestroyElement&apos;</span>),
+});
+</code></pre>
+<h4 id="&#x84DD;&#x56FE;&#x6A21;&#x677F;">&#x84DD;&#x56FE;&#x6A21;&#x677F;</h4>
+<p>&#x4E3A;&#x521B;&#x5EFA;&#x84DD;&#x56FE;&#x6A21;&#x677F;, &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6587;&#x4EF6; <code>blueprints/fullPagejs/index.js</code>. &#x8FD9;&#x9075;&#x5FAA;&#x7684;&#x662F;&#x6807;&#x51C6;&#x7684;Ember&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x7684;&#x547D;&#x540D;&#x7EA6;&#x5B9A;&#x3002;</p>
+<p>&#x786E;&#x4FDD;&#x4F9D;&#x8D56;&#x6587;&#x4EF6;&#x5BFC;&#x5165;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x4F7F;&#x7528;<code>included</code>&#x94A9;&#x5B50;&#x4EE5;&#x6B63;&#x786E;&#x7684;&#x987A;&#x5E8F;&#x5BFC;&#x5165;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = {
+  name: <span class="hljs-string">&apos;ember-cli-fullPagejs&apos;</span>,
+
+  included: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">app</span>) </span>{
+    <span class="hljs-keyword">this</span>._super.included(app);
+
+    app.import(<span class="hljs-string">&apos;bower_components/unbutton/dist/unbutton.js&apos;</span>);
+    app.import(<span class="hljs-string">&apos;bower_components/fullPagejs/dist/js/fullPagejs.js&apos;</span>);
+    app.import(<span class="hljs-string">&apos;bower_components/fullPagejs/dist/css/fullPagejs.css&apos;</span>);
+  }
+};
+</code></pre>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6587;&#x4EF6;&#x91CC;, &#x4F7F;&#x7528;&#x4E86;<code>included</code> &#x94A9;&#x5B50;&#x3002;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x88AB;<code>EmberApp</code>&#x6784;&#x9020;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x8BA9;&#x8BE5;&#x5E94;&#x7528;&#x628A;&#x5B83;&#x4F5C;&#x4E3A;<code>app</code>&#xFF08;&#x4E0E;<code>app</code>&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x4E00;&#x6837;&#xFF09;&#x8C03;&#x7528;&#x3002;
+&#x5F53;&#x4E3B;&#x5E94;&#x7528;&#x7684;<code>Brocfile.js</code>&#x88AB;Ember CLI&#x8C03;&#x7528;&#x53BB;build/serve&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x63D2;&#x4EF6;&#x7684;<code>included</code>&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x5E94;&#x7528;&#x7684;<code>EmberApp</code>&#x5B9E;&#x4F8B;&#xFF08;&#x5C06;&#x63D2;&#x4EF6;&#x7684;&#x4F9D;&#x8D56;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x5230;&#x4E3B;&#x7A0B;&#x5E8F;&#xFF09;&#x3002;</p>
+<h4 id="&#x9AD8;&#x7EA7;&#x5B9A;&#x5236;">&#x9AD8;&#x7EA7;&#x5B9A;&#x5236;</h4>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8D85;&#x8D8A;&#x5185;&#x7F6E;&#x6216;&#x60F3;&#x8981;/&#x9700;&#x8981;&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x4EE5;&#x4E0B;&#x662F;<code>index.js</code>&#x91CC;&#x4E00;&#x4E9B;&#x63D2;&#x4EF6;&#x5BF9;&#x8C61;&#x7684;&#x53EF;&#x7528;&#x94A9;&#x5B50;(&#x952E;)&#x3002;&#x6240;&#x6709;&#x7684;&#x94A9;&#x5B50;&#x90FD;&#x5E0C;&#x671B;&#x628A;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x5B83;&#x7684;&#x503C;&#xFF08;&#x94A9;&#x5B50;&#x90FD;&#x5E94;&#x8BE5;&#x662F;&#x51FD;&#x6570;&#xFF09;&#x3002;</p>
+<pre><code class="lang-javascript">includedCommands: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{}
+blueprintsPath: <span class="hljs-comment">// return path as String</span>
+postBuild:
+treeFor:
+included:
+postprocessTree:
+serverMiddleware:
+</code></pre>
+<p>&#x4E00;&#x4E2A;&#x9AD8;&#x7EA7;&#x5B9A;&#x5236;&#x7684;&#x4F8B;&#x5B50;&#x53EF;&#x5728;<a href="https://github.com/poetic/ember-cli-cordova/blob/master/index.js" target="_blank">&#x8FD9;&#x91CC;</a>&#x627E;&#x5230;&#xFF0C;&#x6216;&#x8005;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x95F4;&#x4EF6; <a href="https://github.com/rwjblue/ember-cli-inject-live-reload/blob/master/index.js" target="_blank">&#x8FD9;&#x91CC;</a></p>
+<h4 id="&#x6D4B;&#x8BD5;&#x63D2;&#x4EF6;">&#x6D4B;&#x8BD5;&#x63D2;&#x4EF6;</h4>
+<p>&#x63D2;&#x4EF6;&#x5DE5;&#x7A0B;&#x5305;&#x542B;&#x4E00;&#x4E2A;<code>/tests</code> &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x8BE5;&#x6587;&#x4EF6;&#x5939;&#x5305;&#x542B;&#x8FD0;&#x884C;&#x548C;&#x8BBE;&#x7F6E;&#x63D2;&#x4EF6;&#x6D4B;&#x8BD5;&#x7684;&#x57FA;&#x672C;&#x6587;&#x4EF6;&#x3002;<code>/tests</code> &#x6587;&#x4EF6;&#x5939;&#x6709;&#x4E0B;&#x9762;&#x7684;&#x7ED3;&#x6784;:</p>
+<ul>
+<li><code>/dummy</code></li>
+<li><code>/helpers</code></li>
+<li><code>/unit</code></li>
+<li><code>index.html</code></li>
+<li><code>test_helper.js</code></li>
+</ul>
+<p><code>/dummy</code> &#x6587;&#x4EF6;&#x5939;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684;dummy&#x5E94;&#x7528;&#xFF0C;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x63D2;&#x4EF6;&#x3002;</p>
+<p><code>/helpers</code> &#x6587;&#x4EF6;&#x5939;&#x5305;&#x542B;&#x5404;&#x7C7B;<em>qunit</em>&#x52A9;&#x624B;&#xFF0C;&#x5305;&#x62EC;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x6D4B;&#x8BD5;&#x7B80;&#x6D01;&#x4F60;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x7684;&#x3002;</p>
+<p><code>/unit</code> &#x6587;&#x4EF6;&#x5939;&#x5305;&#x542B;&#x4F60;&#x7684;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF0C;&#x7528;&#x4EE5;&#x6D4B;&#x8BD5;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x7528;&#x4E8E;&#x5404;&#x79CD;&#x53EF;&#x7528;&#x573A;&#x666F;&#x3002;&#x8FD9;&#x4E9B;&#x6D4B;&#x8BD5;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5B8C;&#x6574;&#x7684;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;,&#x6D4B;&#x8BD5;&#x88AB;&#x6258;&#x7BA1;&#x5728;&#x865A;&#x62DF;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x63D2;&#x4EF6;&#x3002;</p>
+<p><code>test_helper.js</code> &#x662F;&#x5E94;&#x8BE5;&#x5728;&#x4EFB;&#x4F55;&#x6D4B;&#x8BD5;&#x6587;&#x4EF6;&#x4E2D;&#x5F15;&#x7528;&#x7684;&#x4E3B;&#x8981;&#x5E2E;&#x52A9;&#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x5BFC;&#x5165;&#x4E86;<code>resolver</code>&#x52A9;&#x624B;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;<code>/helpers</code>&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x627E;&#x5230;&#xFF0C;&#x7528;&#x4E8E;&#x89E3;&#x6790;<code>dummy</code>&#x4E2D;&#x7684;&#x9875;&#x9762;&#x3002;</p>
+<p><code>index.html</code>&#x5305;&#x542B;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x52A0;&#x8F7D;&#x7684;&#x6D4B;&#x8BD5;&#x9875;&#x9762;&#xFF0C;&#x4EE5;&#x663E;&#x793A;&#x8FD0;&#x884C;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<h4 id="&#x9A8C;&#x6536;&#x6D4B;&#x8BD5;">&#x9A8C;&#x6536;&#x6D4B;&#x8BD5;</h4>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;<em>QUnit</em>&#x9A8C;&#x6536;&#x6D4B;&#x8BD5;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x653E;&#x5728;<code>tests/unit/components</code>&#x6587;&#x4EF6;&#x5939;&#x4E4B;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// tests/unit/components/button-test.js</span>
+
+<span class="hljs-keyword">import</span> { test, moduleForComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;ember-qunit&apos;</span>;
+<span class="hljs-keyword">import</span> startApp <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../helpers/start-app&apos;</span>;
+<span class="hljs-keyword">import</span> Ember <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;ember&apos;</span>;
+
+<span class="hljs-keyword">var</span> App;
+
+moduleForComponent(<span class="hljs-string">&apos;fullPagejs&apos;</span>, <span class="hljs-string">&apos;fullPagejsComponent&apos;</span>, {
+  setup: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    App = startApp();
+  },
+  teardown: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    Ember.run(App, <span class="hljs-string">&apos;destroy&apos;</span>);
+  }
+});
+
+test(<span class="hljs-string">&apos;is a button tag&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  equal(<span class="hljs-string">&apos;BUTTON&apos;</span>, <span class="hljs-keyword">this</span>.$().prop(<span class="hljs-string">&apos;tagName&apos;</span>));
+
+  <span class="hljs-keyword">this</span>.subject().teardownfullPagejs();
+});
+
+<span class="hljs-comment">// more tests follow...</span>
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x5982;&#x4F55;&#x8FD0;&#x884C;&#x548C;&#x8BBE;&#x7F6E;&#x6D4B;&#x8BD5;&#xFF0C;&#x770B; [[Ember CLI Testing]] &#x90E8;&#x5206;&#x3002;</p>
+<h4 id="&#x521B;&#x5EFA;&#x84DD;&#x56FE;&#x6A21;&#x677F;">&#x521B;&#x5EFA;&#x84DD;&#x56FE;&#x6A21;&#x677F;</h4>
+<p>&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x662F;&#x4E00;&#x4E9B;&#x5177;&#x6709;&#x53EF;&#x9009;&#x5B89;&#x88C5;&#x903B;&#x8F91;&#x7684;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x3002;&#x5B83;&#x7528;&#x4E8E;&#x6839;&#x636E;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#x548C;&#x9009;&#x9879;&#x811A;&#x624B;&#x67B6;(&#x751F;&#x6210;)&#x7279;&#x5B9A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x3002;
+&#x66F4;&#x591A;&#x7EC6;&#x8282;&#x8BF7;&#x770B;[[generators-and-blueprints]])&#x3002;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x53EF;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x3002;</p>
+<p>&#x7ED9;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;<em>blueprint</em>:</p>
+<p><code>ember addon &lt;blueprint-name&gt; --blueprint</code></p>
+<p>&#x6309;&#x7167;&#x60EF;&#x4F8B;&#xFF0C;&#x63D2;&#x4EF6;&#x7684;&#x4E3B;&#x8981;&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x5E94;&#x8BE5;&#x5177;&#x6709;&#x4E0E;&#x63D2;&#x4EF6;&#x76F8;&#x540C;&#x7684;&#x540D;&#x79F0;:</p>
+<p><code>ember addon &lt;addon-name&gt; --blueprint</code></p>
+<p>&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;:</p>
+<p><code>ember addon fullPagejs --blueprint</code></p>
+<p>&#x8FD9;&#x5C06;&#x4E3A;&#x63D2;&#x4EF6;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939; <code>blueprints/fullPagejs</code>&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x4F60;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x7684;&#x903B;&#x8F91;&#x548C;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x4E3A;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x3002;
+&#x6700;&#x540E;&#x52A0;&#x8F7D;&#x7684;&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x4F1A;&#x8986;&#x76D6;&#x73B0;&#x6709;(&#x540C;&#x540D;)&#x84DD;&#x56FE;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x8BE5;&#x6A21;&#x677F;&#x53EF;&#x4EE5;&#x662F;&#x6765;&#x81EA;Ember&#x6216;&#x5176;&#x4ED6;&#x63D2;&#x4EF6;(&#x6839;&#x636E;&#x5305;&#x52A0;&#x8F7D;&#x987A;&#x5E8F;)</p>
+<h4 id="&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x7EA6;&#x5B9A;">&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x7EA6;&#x5B9A;</h4>
+<p>&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x5E94;&#x8BE5;&#x653E;&#x5728;&#x5728;&#x63D2;&#x4EF6;&#x6839;&#x76EE;&#x5F55;&#x7684;<code>blueprints</code>&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#xFF0C; &#x5C31;&#x50CF;&#x8986;&#x76D6;&#x5DE5;&#x7A0B;&#x6839;&#x76EE;&#x5F55;&#x7684;&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x4E00;&#x6837;&#x3002;&#x5982;&#x679C;&#x628A;&#x5B83;&#x4EEC;&#x653E;&#x5728;&#x63D2;&#x4EF6;&#x7684;&#x5176;&#x4ED6;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x63D2;&#x4EF6;&#x7684;<code>blueprintsPath</code>&#x5C5E;&#x6027;&#x544A;&#x8BC9;ember-cli&#x53BB;&#x54EA;&#x627E;&#x5230;&#x5B83;
+(&#x8BF7;&#x770B;&#x4E0B;&#x9762;&#x7684; <em>&#x9AD8;&#x7EA7;&#x5B9A;&#x5236;</em> &#x90E8;&#x5206;)&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x719F;&#x6089; <em>Yeoman</em> (&#x6216;Rails)&#x7684;&#x4EA7;&#x751F;&#x5668;&#xFF0C;&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x9075;&#x4ECE;&#x7C7B;&#x4F3C;&#x7684;&#x7EA6;&#x5B9A;&#x548C;&#x7ED3;&#x6784;&#x3002;&#x8981;&#x60F3;&#x66F4;&#x6DF1;&#x5165;&#x7684;&#x4E86;&#x89E3;&#x84DD;&#x56FE;&#x6A21;&#x677F;&#x8BBE;&#x8BA1;&#xFF0C;&#x8BF7;&#x770B; <a href="https://github.com/stefanpenner/ember-cli/tree/master/blueprints" target="_blank">Ember CLI blueprints</a>&#x3002;</p>
+<h4 id="&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x7ED3;&#x6784;">&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x7ED3;&#x6784;</h4>
+<pre><code class="lang-bash">blueprints/
+  fullPagejs/
+    index.js
+    files/
+      app/
+        components/
+          __name__/
+  unbutton
+    index.js
+    files/
+      config/
+        __name__.js
+</code></pre>
+<p>&#x6CE8;&#xFF1A;&#x8FD9;&#x91CC;&#x88AB;&#x547D;&#x540D;&#x4E3A;<code>__name__</code> &#x7684;&#x7279;&#x6B8A;&#x6587;&#x4EF6;&#x6216;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5C06;&#xFF08;&#x5728;&#x8FD0;&#x884C;&#x547D;&#x4EE4;&#x65F6;&#xFF09;&#x5728;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;/&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;(name)&#x4EE3;&#x66FF;<code>__name__</code>&#x3002;</p>
+<p>`ember g fullPagejs my-button``</p>
+<p>&#x7531;&#x6B64;&#x5728;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;<code>app/components/my-button</code>&#x3002;</p>
+<h4 id="&#x5F00;&#x53D1;&#x65F6;&#x94FE;&#x63A5;&#x5230;&#x63D2;&#x4EF6;">&#x5F00;&#x53D1;&#x65F6;&#x94FE;&#x63A5;&#x5230;&#x63D2;&#x4EF6;</h4>
+<p>&#x5F53;&#x4F60;&#x5F00;&#x53D1;&#x548C;&#x6D4B;&#x8BD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x5DE5;&#x7A0B;&#x7684;&#x6839;&#x76EE;&#x5F55;&#x8FD0;&#x884C;<code>npm link</code>&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D2;&#x4EF6;&#x540D;&#x79F0;&#x5728;&#x672C;&#x5730;&#x4F7F;&#x7528;&#x8BE5;&#x63D2;&#x4EF6;&#x4E86;&#x3002;</p>
+<p>&#x7136;&#x540E;&#xFF0C;&#x5728;&#x60A8;&#x8BA1;&#x5212;&#x4F7F;&#x7528;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5DE5;&#x7A0B;&#x6839;&#x76EE;&#x5F55;&#xFF0C;&#x8FD0;&#x884C;<code>npm link &lt;addon-name&gt;</code>&#xFF0C;&#x5C31;&#x4F1A;&#x5C06;&#x63D2;&#x4EF6;&#x94FE;&#x63A5;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;<code>node_modules</code>&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x63D2;&#x4EF6;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x6539;&#x53D8;&#x90FD;&#x4F1A;&#x5728;&#x94FE;&#x63A5;&#x8BE5;&#x63D2;&#x4EF6;&#x7684;&#x4EFB;&#x4F55;&#x5DE5;&#x7A0B;&#x4E2D;&#x76F4;&#x63A5;&#x53D1;&#x751F;&#x4F5C;&#x7528;&#x3002;
+&#x8BF7;&#x770B; <a href="http://www.devthought.com/2012/02/17/npm-tricks" target="_blank">npm-tricks</a></p>
+<h4 id="&#x53D1;&#x5E03;&#x63D2;&#x4EF6;">&#x53D1;&#x5E03;&#x63D2;&#x4EF6;</h4>
+<p>&#x4F7F;&#x7528; <em>npm</em> &#x548C; <em>git</em> &#x6765;&#x53D1;&#x5E03;&#x63D2;&#x4EF6;&#xFF0C;&#x5C31;&#x50CF;&#x4E00;&#x4E2A;&#x6807;&#x51C6;&#x7684;npm&#x5305;&#x3002;</p>
+<pre><code class="lang-bash">npm version 0.0.1
+git push origin master
+git push origin --tags
+npm publish
+</code></pre>
+<p>&#x66F4;&#x591A;&#x7EC6;&#x8282;&#xFF0C;&#x8BF7;&#x770B; <a href="https://www.npmjs.org/doc/cli/npm-version.html" target="_blank">npm-version</a>&#x3002;</p>
+<p>&#x8FD9;&#x4E9B;&#x547D;&#x4EE4;&#x5C06;&#x88AB;&#x6267;&#x884C;&#xFF1A;</p>
+<ul>
+<li>tag with the version number</li>
+<li>push the committed addon code to your git repo (origin branch)</li>
+<li>push the new tag to your git repo (origin branch)</li>
+<li>publish addon to the global npm repository.</li>
+</ul>
+<h4 id="&#x5B89;&#x88C5;&#x548C;&#x4F7F;&#x7528;&#x63D2;&#x4EF6;">&#x5B89;&#x88C5;&#x548C;&#x4F7F;&#x7528;&#x63D2;&#x4EF6;</h4>
+<p>&#x4E3A;&#x4E86;&#x4ECE;&#x60A8;&#x6258;&#x7BA1;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x4F7F;&#x7528;&#x63D2;&#x4EF6;&#xFF0C;&#x4ECE; <a href="https://www.npmjs.org/" target="_blank">npm.org</a> &#x5B89;&#x88C5;&#x8BE5;&#x63D2;&#x4EF6;&#xFF1A;</p>
+<p><code>npm install ember-cli-&lt;your-addon-name-here&gt; --save-dev</code>.</p>
+<p>&#x5BF9;&#x4E8E;&#x6211;&#x4EEC;&#x7684; <em>fullPagejs</em> &#x63D2;&#x4EF6;&#xFF1A;</p>
+<p><code>npm install ember-cli-fullPagejs --save-dev</code>.</p>
+<p>&#x8FD0;&#x884C; <em>fullPagejs</em> &#x84DD;&#x56FE;&#x6A21;&#x677F;&#xFF1A;</p>
+<p><code>ember generate fullPagejs</code></p>
+<h4 id="&#x66F4;&#x65B0;&#x63D2;&#x4EF6;">&#x66F4;&#x65B0;&#x63D2;&#x4EF6;</h4>
+<p>&#x53EF;&#x4EE5;&#x50CF;&#x66F4;&#x65B0;Ember&#x5E94;&#x7528;&#x4E00;&#x6837;&#xFF0C;&#x901A;&#x8FC7;&#x5728;&#x5DE5;&#x7A0B;&#x6839;&#x76EE;&#x5F55;&#x8FD0;&#x884C;<code>ember init</code>&#x547D;&#x4EE4;&#xFF0C;&#x66F4;&#x65B0;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x3002;</p>
+<h4 id="&#x8BD1;&#x6CE8;">&#x8BD1;&#x6CE8;</h4>
+<ol>
+<li>the consuming application&#xFF1A;&#x662F;&#x57FA;&#x4E8E;ember-cli&#x7B49;&#x6838;&#x5FC3;API&#x5F00;&#x53D1;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x82F1;&#x6587;&#x901A;&#x5E38;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x79F0;&#x547C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x53E3;&#x5934;&#x6240;&#x8BF4;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x800C;&#x975E;&#x63D2;&#x4EF6;&#x5E94;&#x7528;;</li>
+<li>the hosting application: &#x6258;&#x7BA1;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x53E6;&#x4E00;&#x79CD;&#x79F0;&#x8C13;&#x800C;&#x5DF2;&#xFF0C;&#x8FD9;&#x91CC;&#x5E94;&#x8BE5;&#x6CA1;&#x6709;&#x592A;&#x5927;&#x533A;&#x522B;;</li>
+<li>blueprint: &#x8FD9;&#x91CC;&#x7FFB;&#x8BD1;&#x6210; <code>&#x84DD;&#x56FE;&#x6A21;&#x677F;</code>&#xFF0C;&#x533A;&#x522B;&#x4E8E;&#x5B83;&#x4E4B;&#x4E0B;&#x7684;&#x5177;&#x4F53;&#x7684;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x5728;rails&#x4E2D;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;generator</li>
+</ol>
+<h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
+<p><a href="https://ember-cli.com/extending/#developing-addons-and-blueprints" target="_blank">https://ember-cli.com/extending/#developing-addons-and-blueprints</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="4-静态网站开发全景扫描.html" class="navigation navigation-prev " aria-label="Previous page: 静态网站开发全景扫描">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="6-将库转化为Ember-CLI插件.html" class="navigation navigation-next " aria-label="Next page: 将库转化为Ember-CLI插件">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"开发Ember-cli插件","level":"1.6.3.2","depth":3,"next":{"title":"将库转化为Ember-CLI插件","level":"1.6.3.3","depth":3,"path":"4-开发实践/2-客户端开发/6-将库转化为Ember-CLI插件.md","ref":"4-开发实践/2-客户端开发/6-将库转化为Ember-CLI插件.md","articles":[]},"previous":{"title":"静态网站开发全景扫描","level":"1.6.3.1","depth":3,"path":"4-开发实践/2-客户端开发/4-静态网站开发全景扫描.md","ref":"4-开发实践/2-客户端开发/4-静态网站开发全景扫描.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","-livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"4-开发实践/2-客户端开发/5-开发Ember-cli插件.md","mtime":"2016-09-08T22:53:07.084Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-09-09T21:48:24.842Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-baidu/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
