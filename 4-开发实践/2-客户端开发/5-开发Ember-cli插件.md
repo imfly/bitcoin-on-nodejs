@@ -4,6 +4,29 @@
 
 如果一个所谓的框架，虽然强大，但是会拒很多现有的工具于门外，这样的框架不会被大家广泛接受。Ember.js具备这样的扩展能力，现在官方网站有很多扩展插件（addon）可以直接拿来用。本文参考官方文档，结合`ember-cli-fullPagejs`插件的开发过程，介绍了Ember-cli插件开发的各个细节。
 
+## 插件简介
+
+https://github.com/imfly/ember-cli-fullPagejs
+
+## 概念解读
+
+（1）约定优于配置(convention over configuration)
+
+我们在《静态网站开发全景扫描》里简单罗列了Ember的几个注意点，特别提到约定优于配置的问题，这是导致很多小伙伴入手困难的根源。有人很奇怪，这是大家纷纷提倡的，本来是好事，怎么就成了问题了呢？是的，如果习惯了（其实就是记牢了）约定，开发难度会大大降低，效率大大提高，因为框架本身已经帮你做好了这一切。相反，记不住那么多约定，或者你根本就不知道其中有这样的约定，就会给你带来很多困扰。
+
+举个简单的例子，我们在
+
+（2）浏览器世界里的组件
+
+Ember的组件（Component）是非常重要的概念，特别是v2.0.0版本之后，全部取代了视图（View），可以理解为Ember的一切都是组件。我个人觉得，Ember团队从此终于走出了ruby on rails的桎梏，开始回归理性，真正面向前端了。把所有功能集中到一个浏览器页面里（单页面应用），还要硬生生的拉上MVC来，着实让开发者极度纠结，给前端开发者和后台开发者带来不少困惑。一切都是组件的概念，大大简化了问题逻辑，也与浏览器保持了最大兼容性，甚至可以兼容未来的浏览器标准。
+
+我们可以把浏览器最原始的按钮、链接、下拉框等标签元素，当成Ember最基本的组件来理解。有了Ember，我们就可以把一篇文章、一个列表、一个图片展示区域处理成一个组件，这样做至少有三个好处：一是，开发符合MVC的要求，可以做到数据与模板分离，就像使用ror开发一个独立的页面一样，思路清晰，快速高效；二是，使用上，这个组件本身与浏览器的基础组件没有区别，非常简单直接，可以自由组合嵌套；三是，一次开发，任何地方都可使用，甚至兼容未来的浏览器。如此以来，无论开发还是使用都极度简化了
+
+大家看官方文档，还能看到控制器（Controller）和模型（Model）的概念，其实它们是另类的组件而已，可以理解为组件的扩展。只要按照它们的应用规则就能让开发的组件功能更加强大。
+
+## 开发过程
+
+
 #### 安装
 
 一个插件可以像其他任何npm包一样安装：
@@ -92,7 +115,7 @@ Installed browser packages via Bower.
 
 插件基于“约定优于配置”，与 *Ember* 哲学一致。建议你遵循这些约定，让自己更容易、让别人更好地理解你的代码。这同样适用于设计插件模板文件。
 
-#### 插件工程结构
+## 插件工程结构
 
 插件工程遵循这些结构约定:
 
@@ -139,6 +162,7 @@ Installed browser packages via Bower.
   "devDependencies": {
     "body-parser": "^1.2.0",
     ... // 在这里添加专门的依赖库!
+  }
 }
 ```
 
@@ -199,7 +223,7 @@ bower install --save-dev fullPagejs
 
 为了允许应用程序不用手动导入语句而使用插件组件,把组件放在`app/components`目录下。
 
-```javascript
+```javascriptc
 // app/components/fullPagejs.js
 
 import Ember from 'ember';
@@ -250,7 +274,7 @@ module.exports = {
 在这个例子文件里, 使用了`included` 钩子。这个钩子被`EmberApp`构造函数调用，并且让该应用把它作为`app`（与`app`文件夹下的文件一样）调用。
 当主应用的`Brocfile.js`被Ember CLI调用去build/serve的时候，插件的`included`函数被调用，通过该应用的`EmberApp`实例（将插件的依赖文件添加到主程序）。
 
-#### 高级定制
+## 高级定制
 一般来说，如果你想超越内置或想要/需要更高级的控制，以下是`index.js`里一些插件对象的可用钩子(键)。所有的钩子都希望把一个函数作为它的值（钩子都应该是函数）。
 
 ```javascript
@@ -265,7 +289,7 @@ serverMiddleware:
 
 一个高级定制的例子可在[这里](https://github.com/poetic/ember-cli-cordova/blob/master/index.js)找到，或者服务器中间件 [这里](https://github.com/rwjblue/ember-cli-inject-live-reload/blob/master/index.js)
 
-#### 测试插件
+## 测试插件
 插件工程包含一个`/tests` 文件夹，该文件夹包含运行和设置插件测试的基本文件。`/tests` 文件夹有下面的结构:
 
 - `/dummy`
@@ -284,7 +308,7 @@ serverMiddleware:
 
 `index.html`包含浏览器中加载的测试页面，以显示运行单元测试的结果。
 
-#### 验收测试
+## 验收测试
 下面是一个简单的*QUnit*验收测试的例子，放在`tests/unit/components`文件夹之下。
 
 ```javascript
@@ -316,7 +340,7 @@ test('is a button tag', function() {
 
 对于如何运行和设置测试，看 [[Ember CLI Testing]] 部分。
 
-#### 创建蓝图模板
+## 创建蓝图模板
 蓝图模板是一些具有可选安装逻辑的模板文件。它用于根据一些参数和选项脚手架(生成)特定应用程序文件。
 更多细节请看[[generators-and-blueprints]])。一个插件可以有一个或多个蓝图模板。
 
@@ -335,11 +359,11 @@ test('is a button tag', function() {
 这将为插件产生一个文件夹 `blueprints/fullPagejs`，在这里你可以定义蓝图模板的逻辑和模板文件。您可以为一个插件定义多个蓝图模板。
 最后加载的蓝图模板会覆盖现有(同名)蓝图的模板，该模板可以是来自Ember或其他插件(根据包加载顺序)
 
-#### 蓝图模板约定
+## 蓝图模板约定
 蓝图模板应该放在在插件根目录的`blueprints`文件夹下， 就像覆盖工程根目录的蓝图模板一样。如果把它们放在插件的其他目录下，需要通过设置插件的`blueprintsPath`属性告诉ember-cli去哪找到它
 (请看下面的 *高级定制* 部分)，如果你熟悉 *Yeoman* (或Rails)的产生器，蓝图模板遵从类似的约定和结构。要想更深入的了解蓝图模板设计，请看 [Ember CLI blueprints](https://github.com/stefanpenner/ember-cli/tree/master/blueprints)。
 
-#### 模板文件结构
+## 模板文件结构
 
 ```bash
 blueprints/
@@ -362,7 +386,7 @@ blueprints/
 
 由此在你的应用程序中产生一个文件夹`app/components/my-button`。
 
-#### 开发时链接到插件
+## 开发时链接到插件
 当你开发和测试的时候，你可以在你的插件工程的根目录运行`npm link`，这样你就可以通过插件名称在本地使用该插件了。
 
 然后，在您计划使用的应用程序工程根目录，运行`npm link <addon-name>`，就会将插件链接到应用程序的`node_modules`文件夹下，这样，插件中的任何改变都会在链接该插件的任何工程中直接发生作用。
@@ -387,7 +411,7 @@ npm publish
 - push the new tag to your git repo (origin branch)
 - publish addon to the global npm repository.
 
-#### 安装和使用插件
+## 安装和使用插件
 为了从您托管的应用中使用插件，从 [npm.org](https://www.npmjs.org/) 安装该插件：
 
 `npm install ember-cli-<your-addon-name-here> --save-dev`.
@@ -403,12 +427,6 @@ npm publish
 #### 更新插件
 
 可以像更新Ember应用一样，通过在工程根目录运行`ember init`命令，更新一个插件。
-
-#### 译注
-
-1. the consuming application：是基于ember-cli等核心API开发的应用，英文通常就是这么称呼，也就是我们口头所说的应用程序，而非插件应用;
-2. the hosting application: 托管中的应用，应该是另一种称谓而已，这里应该没有太大区别;
-3. blueprint: 这里翻译成 `蓝图模板`，区别于它之下的具体的模板文件，这在rails中，其实就是一个generator
 
 ## 参考
 
