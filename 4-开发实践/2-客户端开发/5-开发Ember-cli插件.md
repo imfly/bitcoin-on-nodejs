@@ -2,11 +2,11 @@
 
 ## 前言
 
-如果一个所谓的框架，虽然强大，但是会拒很多现有的工具于门外，这样的框架不会被大家广泛接受。Ember.js具备这样的扩展能力，现在官方网站有很多扩展插件（addon）可以直接拿来用。本文参考官方文档，结合`ember-cli-fullPagejs`插件的开发过程，介绍了Ember-cli插件开发的各个细节。
+如果一个所谓的框架，虽然强大，但是会拒很多现有的工具于门外，这样的框架不会被大家广泛接受。Ember.js具备这样的扩展能力，现在官方网站有很多扩展插件（addon）可以直接拿来用。本文参考官方文档，结合`ember-cli-fullpagejs`插件的开发过程，介绍了Ember-cli插件开发的各个细节。
 
 ## 插件简介
 
-https://github.com/imfly/ember-cli-fullPagejs
+https://github.com/imfly/ember-cli-fullpagejs
 
 ## 概念解读
 
@@ -28,7 +28,7 @@ Ember的组件（Component）是非常重要的概念，特别是v2.0.0版本之
 
 ## 开发过程
 
-现在，我们就来看看 ember-cli-fullPagejs 的完整开发过程吧。
+现在，我们就来看看 ember-cli-fullpagejs 的完整开发过程吧。
 
 #### 插件基本情况
 
@@ -48,9 +48,9 @@ Ember CLI插件API，当前支持下面的场景:
 
 `npm install --save-dev <package name>`
 
-安装这个fullPagejs插件包：
+安装这个fullpagejs插件包：
 
-`npm install --save-dev ember-cli-fullPagejs`
+`npm install --save-dev ember-cli-fullpagejs`
 
 （3）命令行选项
 
@@ -78,7 +78,7 @@ ember addon <addon-name> <options...>
 运行该命令，就会产生下面这些文件：
 
 ```bash
-$ ember addon fullPagejs
+$ ember addon fullpagejs
 version x.y.zz
 installing
   create .bowerrc
@@ -112,7 +112,7 @@ Installed browser packages via Bower.
 
 ```javascript
 {
-  "name": "ember-cli-fullPagejs", // 插件名称
+  "name": "ember-cli-fullpagejs", // 插件名称
   "version": "0.0.1", // 插件版本
   "directories": {
     "doc": "doc",
@@ -149,7 +149,7 @@ Ember CLI将通过检测每个应用的依赖包的`package.json`文件，看在
 ```javascript
   "keywords": [
     "ember-addon",
-    "fullPagejs",
+    "fullpagejs",
     "fullpage.js"
   ],
 ```
@@ -163,7 +163,7 @@ Ember CLI将通过检测每个应用的依赖包的`package.json`文件，看在
 ```javascript
 // index.js
 module.exports = {
-  name: 'ember-cli-full-pagejs',
+  name: 'ember-cli-fullpagejs',
   included: function(app, parentAddon) {
     var target = (parentAddon || app);
     // 这里你可以修改主应用（app） / 父插件（parentAddon）. 比如, 如果你想包括
@@ -177,12 +177,12 @@ module.exports = {
 
 #### 插件开发设计
 
-（1）管理插件依赖
+（1）添加插件依赖
 
-这里，我们把要封装的第三方包作为插件的依赖包，打包进插件里去。安装客户端依赖要通过'Bower'，这里是`fullPagejs`:
+这里，我们把要封装的第三方包`fullpagejs`作为插件的依赖包，打包进插件里去。安装客户端依赖要通过'Bower':
 
 ```
-bower install --save-dev fullPagejs
+bower install --save-dev fullpagejs
 ```
 
 上述命令，自动添加bower组件到开发依赖
@@ -190,49 +190,88 @@ bower install --save-dev fullPagejs
 ```javascript
 // bower.js
 {
-  "name": "ember-cli-fullPagejs",
+  "name": "ember-cli-fullpagejs",
   "dependencies": {
     ...
     "fullpage.js": "^2.7.8"
   }
+}
 ```
 
-（2）开发设计组件
+（2）定制组件
 
-为了允许应用程序不用手动导入语句而使用插件组件，把组件放在`app/components`目录下。
+为了定制组件，可以使用下面的命令：
+
+```
+$ ember generate component full-page
+```
+
+组件名称至少有有一个“-”线，这是约定。这个命令会自动生成必要的文件，以及测试文件，只要在里面添加逻辑代码就是了。为了允许应用程序不用手动导入语句而使用插件组件，应该把组件放在应用程序的命名空间之下，即`app/components`目录下。
 
 ```javascriptc
 // app/components/full-page.js
 
-export { default } from 'ember-cli-full-pagejs/components/full-page';
+export { default } from 'ember-cli-fullpagejs/components/full-page';
 ```
 
-代码从插件路径导入组件，再导出。这个设置允许其他代码通过扩展该组件修改它，同时使组件在应用程序命名空间中可用。实际代码放在`addon/components/full-page.js`
+这行代码从插件路径导入组件，再导出到应用程序。实际组件的代码放在`addon/components/full-page.js`里：
 
 ```javascript
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  ...
+  tagName: 'div',
+  classNames: ['fullpage-wrapper'],
+  options: {
+    sectionsColor: ['#4f7f9b', '#4BBFC3', '#1bbc9b', 'whitesmoke'],
+    // anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+    // menu: '#menu',
+    scrollingSpeed: 600,
+    autoScrolling: false,
+    navigation: true,
+    navigationPosition: 'right',
+    navigationTooltips: ['First page', 'Second page', 'Third', 'Fourth and last page'],
+    css3: true
+  },
+
+  didRender() {
+    Ember.run.scheduleOnce('afterRender', this, function() {
+      Ember.$("#fullpage").fullpage(this.options);
+    });
+  },
+
+  willDestroyElement() {
+    Ember.$.fn.fullpage.destroy('all');
+  }
 });
 ```
 
+这与直接在应用程序里开发组件是一致的。该组件可以这样使用：
+
+```
+{{#full-page}} code {{/full-page}}
+```
+
+tagName属性指明，程序渲染之后的标签为`<div></div>`，并添加classNames指定的类名`fullpage-wrapper`。didRender()和willDestroyElement()是两个钩子方法，属于组件生命周期的一部分，前者将在组件静态内容全部渲染之后执行，起到了$(document).ready()方法的作用，所以可以确保Ember.$("#fullpage")元素存在的时候执行；后者，将在元素销毁（通常是页面刷新的时候）的时候执行，因为Ember是一个单页面应用，无论你如何跳转或刷新，全局变量Ember.$始终保持，所以必须手动清理。
+
+这里的问题是，为什么使用didRender()，而不是didInsertElement()钩子方法？你看看官方提供钩子方法文档就知道了，前者在页面初始渲染以及再次渲染（刷新）的时候都可用，而后者仅在初始渲染的时候使用。也就是说，前者可以保证刷新页面，也能保证效果，后者则只能在加载页面时有效果，这也是约定好的。
+
 #### 蓝图模板
 
-为创建蓝图模板, 添加一个文件 `blueprints/ember-cli-fullPagejs/index.js`. 这是标准的Ember蓝图模板的命名约定。
+为创建蓝图模板, 添加一个文件 `blueprints/ember-cli-fullpagejs/index.js`. 这是标准的Ember蓝图模板的命名约定。
 
 确保依赖文件导入到应用程序，使用`included`钩子以正确的顺序导入这些文件。
 
 ```javascript
 module.exports = {
-  name: 'ember-cli-fullPagejs',
+  name: 'ember-cli-fullpagejs',
 
   included: function(app) {
     this._super.included(app);
 
     app.import('bower_components/unbutton/dist/unbutton.js');
-    app.import('bower_components/fullPagejs/dist/js/fullPagejs.js');
-    app.import('bower_components/fullPagejs/dist/css/fullPagejs.css');
+    app.import('bower_components/fullpagejs/dist/js/fullpagejs.js');
+    app.import('bower_components/fullpagejs/dist/css/fullpagejs.css');
   }
 };
 ```
@@ -286,7 +325,7 @@ import Ember from 'ember';
 
 var App;
 
-moduleForComponent('fullPagejs', 'fullPagejsComponent', {
+moduleForComponent('fullpagejs', 'fullpagejsComponent', {
   setup: function() {
     App = startApp();
   },
@@ -298,7 +337,7 @@ moduleForComponent('fullPagejs', 'fullPagejsComponent', {
 test('is a button tag', function() {
   equal('BUTTON', this.$().prop('tagName'));
 
-  this.subject().teardownfullPagejs();
+  this.subject().teardownfullpagejs();
 });
 
 // more tests follow...
@@ -320,9 +359,9 @@ test('is a button tag', function() {
 
 在我们的例子中:
 
-`ember addon fullPagejs --blueprint`
+`ember addon fullpagejs --blueprint`
 
-这将为插件产生一个文件夹 `blueprints/fullPagejs`，在这里你可以定义蓝图模板的逻辑和模板文件。您可以为一个插件定义多个蓝图模板。
+这将为插件产生一个文件夹 `blueprints/fullpagejs`，在这里你可以定义蓝图模板的逻辑和模板文件。您可以为一个插件定义多个蓝图模板。
 最后加载的蓝图模板会覆盖现有(同名)蓝图的模板，该模板可以是来自Ember或其他插件(根据包加载顺序)
 
 ## 蓝图模板约定
@@ -333,7 +372,7 @@ test('is a button tag', function() {
 
 ```bash
 blueprints/
-  fullPagejs/
+  fullpagejs/
     index.js
     files/
       app/
@@ -348,7 +387,7 @@ blueprints/
 
 注：这里被命名为`__name__` 的特殊文件或文件夹，将（在运行命令时）在你的应用程序中产生一个文件/文件夹，第一个命令行参数(name)代替`__name__`。
 
-`ember g fullPagejs my-button``
+`ember g fullpagejs my-button``
 
 由此在你的应用程序中产生一个文件夹`app/components/my-button`。
 
@@ -382,13 +421,13 @@ npm publish
 
 `npm install ember-cli-<your-addon-name-here> --save-dev`.
 
-对于我们的 *fullPagejs* 插件：
+对于我们的 *fullpagejs* 插件：
 
-`npm install ember-cli-fullPagejs --save-dev`.
+`npm install ember-cli-fullpagejs --save-dev`.
 
-运行 *fullPagejs* 蓝图模板：
+运行 *fullpagejs* 蓝图模板：
 
-`ember generate fullPagejs`
+`ember generate fullpagejs`
 
 #### 更新插件
 
