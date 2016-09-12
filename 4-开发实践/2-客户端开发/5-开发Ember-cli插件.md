@@ -12,43 +12,27 @@ https://github.com/imfly/ember-cli-fullPagejs
 
 （1）约定优于配置(convention over configuration)
 
-我们在《静态网站开发全景扫描》里简单罗列了Ember的几个注意点，特别提到约定优于配置的问题，这是导致很多小伙伴入手困难的根源。有人很奇怪，这是大家纷纷提倡的，本来是好事，怎么就成了问题了呢？是的，如果习惯了（其实就是记牢了）约定，开发难度会大大降低，效率大大提高，因为框架本身已经帮你做好了这一切。相反，记不住那么多约定，或者你根本就不知道其中有这样的约定，就会给你带来很多困扰。
+我们在《静态网站开发全景扫描》里简单罗列了Ember的几个注意点，特别提到约定优于配置的问题，这是导致很多小伙伴入手困难的根源。有人很奇怪，这是大家纷纷提倡的，本来是好事，怎么就成了问题了呢？是的，如果习惯了（其实就是记牢了）约定，开发难度会大大降低，效率大大提高，因为框架本身已经帮你做好了这一切。相反，记不住那么多约定，或者你根本就不知道其中有这样的约定，就会给你带来很多困扰。这是目前，我们在学习很多所谓的框架知识的时候，应该特别注意的。这类框架，之所以学习成本较高，一方面是因为规则太多，另一方面就是规则与我们固有的习惯冲突太多。
 
-举个简单的例子，我们在
+举个简单的例子，我们在使用第三方库的时候，比如下面例子里的“fullPage.js”，通常要使用<script></script>标签来引入，接着按照该库的逻辑去做就是了。但作为一个约束较强的前端框架，类似的工作，你要先考虑一下，是不是有了它自己的规则。事实上，在Ember框架之下，正确的使用方法是先在`index.js`文件里使用`app.import`引入文件，然后使用组件的生命周期（见参考），通过合适的钩子方法来处理，这里是`didInsertElement()`方法。如果仍然延续原来的做法，最好的情况是得不到任何结果，最差的情况是得出奇怪的结果。
+
+这就给我们使用现有的第三方库造成了很大困难，原本大量现成的好工具，使用起来如此蹩脚。很多小伙伴因此，直接放弃了Ember，转投其他约束较少的框架去了。这里，我们不去衡量框架的优劣，还是直接考虑如何解决这点小问题吧。这个小例子可以帮助我们把现有的库直接改造成Ember可用的插件，让其融入Ember体系，降低绑定难度。因为插件开发的过程，与实际的开发有很多相似的地方，只不过多了一些简单的配置过程，所以我们就把具体的开发过程融入这个插件开发里一起介绍了。当然，这样做不足以介绍Ember的方方面面，至少会解决我认为最困扰我们的地方，降低Ember开发难度。
 
 （2）浏览器世界里的组件
 
-Ember的组件（Component）是非常重要的概念，特别是v2.0.0版本之后，全部取代了视图（View），可以理解为Ember的一切都是组件。我个人觉得，Ember团队从此终于走出了ruby on rails的桎梏，开始回归理性，真正面向前端了。把所有功能集中到一个浏览器页面里（单页面应用），还要硬生生的拉上MVC来，着实让开发者极度纠结，给前端开发者和后台开发者带来不少困惑。一切都是组件的概念，大大简化了问题逻辑，也与浏览器保持了最大兼容性，甚至可以兼容未来的浏览器标准。
+Ember的组件（Component）是非常重要的概念，特别是v2.0.0版本之后，全部取代了视图（View），可以理解为Ember的一切都是组件。一切都是组件的概念，大大简化了问题逻辑，也与浏览器保持了最大兼容性，甚至可以兼容未来的浏览器标准。我个人觉得，Ember团队从此终于走出了ruby on rails的桎梏，开始回归理性，真正面向前端了。毕竟把所有功能集中到一个浏览器页面里（单页面应用），还要硬生生的拉上MVC来，着实让开发者纠结不已。
 
-我们可以把浏览器最原始的按钮、链接、下拉框等标签元素，当成Ember最基本的组件来理解。有了Ember，我们就可以把一篇文章、一个列表、一个图片展示区域处理成一个组件，这样做至少有三个好处：一是，开发符合MVC的要求，可以做到数据与模板分离，就像使用ror开发一个独立的页面一样，思路清晰，快速高效；二是，使用上，这个组件本身与浏览器的基础组件没有区别，非常简单直接，可以自由组合嵌套；三是，一次开发，任何地方都可使用，甚至兼容未来的浏览器。如此以来，无论开发还是使用都极度简化了
+我们可以把浏览器最原始的按钮、链接、下拉框等标签元素，当成Ember最基本的组件来理解。有了Ember，就可以把一篇文章、一个列表、一个图片展示区域处理成一个组件，这样做至少有三个好处：一是，开发符合MVC的要求，可以做到数据与模板分离，就像开发一个独立的页面一样，思路清晰，快速高效；二是，使用上，这个组件本身与浏览器的基础组件没有区别，非常简单直接，可以自由组合嵌套；三是，一次开发，任何地方都可使用，甚至兼容未来的浏览器。
 
-大家看官方文档，还能看到控制器（Controller）和模型（Model）的概念，其实它们是另类的组件而已，可以理解为组件的扩展。只要按照它们的应用规则就能让开发的组件功能更加强大。
+大家看官方文档，还能看到控制器（Controller）和模型（Model）的概念，其实它们是另类的组件而已，可以理解为组件的扩展。如此以来，使用Ember就简化为浏览器组件的开发，而且使用Ember开发的组件功能也更加强大，使用与浏览器普通的组件没有分别，这样无论开发还是使用都极度简化了。如果再把今天的这个例子弄明白，基本上，我们可以把任何重复性的功能都包装成各种组件，然后打包成插件，需要的时候，直接把这些插件安装上，就可以随处可用了，就又达到了一劳永逸的效果。
 
 ## 开发过程
 
+现在，我们就来看看 ember-cli-fullPagejs 的完整开发过程吧。
 
-#### 安装
+#### 插件基本情况
 
-一个插件可以像其他任何npm包一样安装：
-
-`npm install --save-dev <package name>`
-
-安装这个(虚构的)fullPagejs插件包：
-
-`npm install --save-dev ember-cli-fullPagejs`
-
-#### 发现
-
-Ember CLI将检查一个插件的存在，通过检测每个应用的依赖包，搜索这些依赖包的`package.json`文件，看在`keywords`部分是否有`ember-addon`关键字 (如下).
-
-```javascript
-  "keywords": [
-    "ember-addon"
-    ...
-  ],
-```
-
-#### 场景
+（1）场景
 
 Ember CLI插件API，当前支持下面的场景:
 
@@ -58,7 +42,17 @@ Ember CLI插件API，当前支持下面的场景:
 * 提供定制的专用(服务)中间件
 * 添加自定义模板，为主程序生成相关的工程文件
 
-#### 插件命令行选项
+（2）安装
+
+一个插件可以像其他任何npm包一样安装：
+
+`npm install --save-dev <package name>`
+
+安装这个fullPagejs插件包：
+
+`npm install --save-dev ember-cli-fullPagejs`
+
+（3）命令行选项
 
 Ember CLI有一个 *addon* 命令，带有下面的选项:
 
@@ -75,7 +69,7 @@ ember addon <addon-name> <options...>
 
 注意：一个插件不会在已经存在的应用程序中被创建
 
-#### 创建插件
+（4）创建插件
 
 创建一个基本插件:
 
@@ -84,51 +78,35 @@ ember addon <addon-name> <options...>
 运行该命令，就会产生下面这些文件：
 
 ```bash
-ember addon fullPagejs
+$ ember addon fullPagejs
 version x.y.zz
 installing
   create .bowerrc
   create .editorconfig
   create tests/dummy/.jshintrc
-  create .travis.yml
-  create Brocfile.js
-  create README.md
-
-  create tests/dummy/app/app.js
-  ... more test files
-
-  create bower.json
-  create .gitignore
-  create package.json  
-
   ...
-  create vendor/.gitkeep
-  create addon/.gitkeep
-  create app/.gitkeep
   create index.js
 
 Installing packages for tooling via npm
 Installed browser packages via Bower.
 ```
 
-#### 插件约定
+#### 插件工程结构
 
-插件基于“约定优于配置”，与 *Ember* 哲学一致。建议你遵循这些约定，让自己更容易、让别人更好地理解你的代码。这同样适用于设计插件模板文件。
+通过上述命令，自动生成插件工程目录和相关文件，插件工程遵循这些结构约定:
 
-## 插件工程结构
-
-插件工程遵循这些结构约定:
-
-* `app/` - 合并到应用程序的命名空间。
+* `app/` - 合并到应用程序的命名空间(意思是说，在使用该插件的应用程序里，可以直接使用)。
 * `addon/` - 插件的命名空间部分。
-* `blueprints/` - 包含插件所有模板文件，每一个存放在一个独立的文件夹里。
+* `blueprints/` - 包含插件所有蓝图模板文件，每一个存放在一个独立的文件夹里。
+* `public/` - 应用程序使用的静态文件，css，images，fonts等，路径前缀 `/your-addon/*`
+* `test-support/` - 合并到应用程序的`tests/`
 * `tests/` - 测试文件夹，包括一个"dummy"测试应用和验收测试助手。
 * `vendor/` - 第三方专有文件，比如stylesheets, fonts, 外部包等等。
 * `ember-cli-build.js` - 编译设置。
 * `package.json` - Node.js元数据，依赖库等。
 * `index.js` - Node.js入口(遵从npm约定)。
 
-#### Package.json
+（1）Package.json
 
 插件的`package.json`文件，像这样:
 
@@ -166,7 +144,7 @@ Installed browser packages via Bower.
 }
 ```
 
-让我们添加一些元数据来更好地分类该插件:
+Ember CLI将通过检测每个应用的依赖包的`package.json`文件，看在`keywords`部分是否有`ember-addon`关键字，从而检查一个插件是否存在。我们还可以添加一些额外的元数据来更好地分类该插件:
 
 ```javascript
   "keywords": [
@@ -176,7 +154,7 @@ Installed browser packages via Bower.
   ],
 ```
 
-#### 插件入口
+（2）插件入口
 
 所谓的插件入口，就是调用插件最先执行的文件，每种编程语言都需要。插件将利用npm约定，并寻找一个 `index.js` 文件作为入口点，除非通过`package.json`文件的`"main"`属性指定另一个入口点。建议使用`index.js`作为插件入口点。
 
@@ -197,63 +175,51 @@ module.exports = {
 
 在构建（build）过程中，included钩子方法会被执行，直接操作主应用程序或者它的父插件，提高插件的处理能力。这个对象扩展了`Addon`类，所以任何存在于`Addon`类的钩子方法都可以被重写。请参考《Ember的几个重要钩子方法简介》
 
-#### 管理插件依赖
+#### 插件开发设计
 
-安装客户端依赖要通过'Bower'。这里我们安装一个虚构的bower依赖`fullPagejs`:
+（1）管理插件依赖
+
+这里，我们把要封装的第三方包作为插件的依赖包，打包进插件里去。安装客户端依赖要通过'Bower'，这里是`fullPagejs`:
 
 ```
 bower install --save-dev fullPagejs
 ```
 
-添加bower组件到开发依赖
+上述命令，自动添加bower组件到开发依赖
 
 ```javascript
 // bower.js
 {
-  "name": "ember-fullPagejs",
+  "name": "ember-cli-fullPagejs",
   "dependencies": {
-    // ...
-  },
-  "devDependencies": {
-    "fullPagejs":  "^1.4.0"
+    ...
+    "fullpage.js": "^2.7.8"
   }
 ```
 
-#### 组件
+（2）开发设计组件
 
-为了允许应用程序不用手动导入语句而使用插件组件,把组件放在`app/components`目录下。
+为了允许应用程序不用手动导入语句而使用插件组件，把组件放在`app/components`目录下。
 
 ```javascriptc
-// app/components/fullPagejs.js
+// app/components/full-page.js
 
-import Ember from 'ember';
-import fullPagejs from 'ember-fullPagejs/components/fullPagejs';
-
-export default fullPagejs;
+export { default } from 'ember-cli-full-pagejs/components/full-page';
 ```
 
-代码从插件路径导入组件，再导出。这个设置允许其他代码通过扩展该组件修改它，同时使组件在应用程序命名空间中可用。
-
-插件的实际代码放在`addon/components/fullPagejs.js`
+代码从插件路径导入组件，再导出。这个设置允许其他代码通过扩展该组件修改它，同时使组件在应用程序命名空间中可用。实际代码放在`addon/components/full-page.js`
 
 ```javascript
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'button',
-
-  setupfullPagejs: function() {
-    // ...
-  }.on('didInsertElement'),
-
-  teardownfullPagejs: function() {
-    this.get('fullPagejs').destroy();
-  }.on('willDestroyElement'),
+  ...
 });
 ```
 
 #### 蓝图模板
-为创建蓝图模板, 添加一个文件 `blueprints/fullPagejs/index.js`. 这遵循的是标准的Ember蓝图模板的命名约定。
+
+为创建蓝图模板, 添加一个文件 `blueprints/ember-cli-fullPagejs/index.js`. 这是标准的Ember蓝图模板的命名约定。
 
 确保依赖文件导入到应用程序，使用`included`钩子以正确的顺序导入这些文件。
 
@@ -431,3 +397,4 @@ npm publish
 ## 参考
 
 https://ember-cli.com/extending/#developing-addons-and-blueprints
+[组件的生命周期](https://guides.emberjs.com/v2.8.0/components/the-component-lifecycle/)
