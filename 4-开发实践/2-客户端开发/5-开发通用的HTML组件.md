@@ -1,12 +1,60 @@
-# 把常用开发包制作成世界通用的浏览器组件
+# 开发通用的HTML组件
 
 ## 前言
 
-如果一个所谓的框架，虽然强大，但是会拒很多现有的工具于门外，这样的框架不会被大家广泛接受。Ember.js具备这样的扩展能力，现在官方网站有很多扩展插件（addon）可以直接拿来用。本文结合`ember-cli-fullpagejs`插件的开发过程，介绍了Ember-cli插件开发的各个细节。
+人的懒惰常常是麻烦的开始。多数程序员都希望自己的工作一劳永逸，一次开发，到处使用，成了人人追逐的目标，我也不例外。最初写《Nodejs开发加密货币》系列文章，因为不喜欢设定好了去写，所以目录反复修改，索性弄了小工具`gitbook-summary`；在写入门文章的时候，反复搜索github，索性把检索与制图集成到一起（见《Node.js让您的前端开发像子弹飞一样》文章实例）；阅读源码的时候，手动整理Uml图很辛苦，干脆写成了js2uml工具（见《轻松从Js文件生成UML类图》文章实例）。
+
+这里是另一个例子，不过不是辅助我写作的，而是简化web开发的，也是懒惰的成果之一。接下来还会有，与本书写作有关，也与亿书项目有关的一个，就是可视化部署。开发的根本目的就是为了用，这些工具提高了我的工作效率，但也无形中增加了很多工作量。重要的是，一个问题的解决，往往还会孕育另一个问题的诞生，所以，只要写作和工作不断，与之相关的开发也就不会断，亿书算作这里面相对较大的工具了。还好，除了个别时候的压力，我始终是享受其中的。
+
+这种思想，促使我非常喜欢选择那种，稳固的、约束性较强的软件产品或开发平台，比如ruby on rails, Ember等开发框架。省去了我很多优化的过程，一旦学会，可以让我“一劳永逸”的按照一种思路去思考和解决遇到的问题，熟练之后，基本上就不用思考了。但也有聪明的小伙伴，更喜欢自由组合和强大的自主控制权，这样的框架可能就不太适合他。无论什么样的框架产品，如果一个所谓的框架，虽然强大，但是会拒很多现有的工具于门外，必然不会被大家所接受。当然，Ember现在已经做了很大改进，具备很好的扩展能力，本文就结合`ember-cli-fullpagejs`插件的开发过程，介绍Ember-cli插件开发的各个细节，看看把一个第三方库打包成一个小小的组件是多么简单。
 
 ## 插件简介
 
+样式可以浏览亿书官网，http://ebookchain.org
+
+![fullPage][]
+
+（1）源码
+
 https://github.com/imfly/ember-cli-fullpagejs
+
+（2）使用
+
+只要在模板文件里，使用标签 `{{#full-page}}{{/full-page}}` 代替 `<div id="fullpage"></div>`即可， 其他与使用 fullPage.js 一样。
+
+**必须的 HTML 结构**
+
+```
+{{#full-page}}
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+    <div class="section">Some section</div>
+{{/full-page}}
+```
+
+为了在一个区域里创建滑块，每个滑块默认使用包含 slide 类的元素：
+
+```
+<div class="section">
+    <div class="slide"> Slide 1 </div>
+    <div class="slide"> Slide 2 </div>
+    <div class="slide"> Slide 3 </div>
+    <div class="slide"> Slide 4 </div>
+</div>
+```
+
+**选项**
+
+可以给标签直接添加选项，如:
+
+```html
+{{#full-page autoScrolling='true' navigation='true' anchors='["firstPage", "secondPage"]' }}
+
+{{/full-page}}
+```
+
+**注意**: 选项值必须使用单引号，而不是双引号。所有选项如下, [更多请参考](https://github.com/alvarotrigo/fullPage.js#options):
 
 ## 概念解读
 
@@ -453,7 +501,9 @@ npm publish
 
 ## 参考
 
-[developing addons and blueprints](https://ember-cli.com/extending/#developing-addons-and-blueprints)
-[组件的生命周期](https://guides.emberjs.com/v2.8.0/components/the-component-lifecycle/)
-[fullPage.js](https://github.com/alvarotrigo/fullPage.js)
-[插件的钩子方法（hooks）文档](https://ember-cli.com/api/classes/Addon.html)
+- [developing addons and blueprints](https://ember-cli.com/extending/#developing-addons-and-blueprints)
+- [组件的生命周期](https://guides.emberjs.com/v2.8.0/components/the-component-lifecycle/)
+- [fullPage.js](https://github.com/alvarotrigo/fullPage.js)
+- [插件的钩子方法（hooks）文档](https://ember-cli.com/api/classes/Addon.html)
+
+[fullPage]: ../../styles/images/third/fullpage.png
