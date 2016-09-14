@@ -18,13 +18,20 @@ https://github.com/imfly/ember-cli-fullpagejs
 
 （2）使用
 
-只要在模板文件里，使用标签 `{{#full-page}}{{/full-page}}` 代替 `<div id="fullpage"></div>`即可， 其他与使用 fullPage.js 一样。
+安装使用命令
+
+```
+$ npm install ember-cli-fullpagejs --save-dev
+```
+
+然后，只要在模板文件里，使用标签 `{{#full-page}}{{/full-page}}` 代替 `<div id="fullpage"></div>`即可， 其他与使用 fullPage.js 一样。
 
 **必须的 HTML 结构**
 
 ```
 {{#full-page}}
-    <div class="section">Some section</div>
+    <div
+    class="section">Some section</div>
     <div class="section">Some section</div>
     <div class="section">Some section</div>
     <div class="section">Some section</div>
@@ -373,7 +380,7 @@ serverMiddleware:
 lintTree:
 ```
 
-比如，这里的`contentFor`钩子方法，可以在主程序index.html里，含有`{{content-for "header"}}`标签的地方插入对应内容。一个高级定制的例子可在[这里](https://github.com/poetic/ember-cli-cordova/blob/master/index.js)找到，或者服务器中间件 [这里](https://github.com/rwjblue/ember-cli-inject-live-reload/blob/master/index.js)
+比如，这里的`contentFor`钩子方法，可以在主程序index.html里，含有`{{content-for "header"}}`标签的地方插入对应内容。
 
 #### 测试插件
 
@@ -399,7 +406,7 @@ lintTree:
 
 对于如何设置和运行测试，请看官方文档，我们也会用一篇文章专门讲述。
 
-## 蓝图模板
+#### 蓝图模板
 
 蓝图模板是一些具有可选安装逻辑的模板文件。它用于根据一些参数和选项生成特定的应用程序文件。一个插件可以有一个或多个蓝图模板。
 
@@ -451,7 +458,7 @@ blueprints/
 
 （1）开发时链接插件
 
-当开发和测试的时候，可以在插件工程的根目录运行`npm link`，这样就可以通过插件名称在本地使用该插件了。然后，在计划使用的应用程序工程根目录，运行`npm link <addon-name>`，就会将插件链接到应用程序的`node_modules`文件夹下，并添加到`package.json`文件。这样，插件中的任何改变都会在链接该插件的任何工程中直接发生作用。请看 [npm-tricks](http://www.devthought.com/2012/02/17/npm-tricks)
+当开发和测试的时候，可以在插件工程的根目录运行`npm link`，这样就可以通过插件名称在本地使用该插件了。然后，在计划使用的应用程序工程根目录，运行`npm link <addon-name>`，就会将插件链接到应用程序的`node_modules`文件夹下，并添加到`package.json`文件。这样，插件中的任何改变都会在链接该插件的任何工程中直接发生作用。
 
 需要注意的是，`npm link`不会像使用安装命令时那样运行默认的蓝图模板（也就是不会调用钩子方法，下载或生成相关的库文件），需要手动使用`ember g`来处理。另外，当我们使用这种链接的方式测试插件的时候，要提供合法的版本信息`"<addon-name>":"version"`，后面的version可以使用`*`代替，而且旧版本的npm可能需要手动添加到`package.json`。
 
@@ -465,8 +472,6 @@ git push origin master
 git push origin --tags
 npm publish
 ```
-
-更多细节，请看 [npm-version](https://www.npmjs.org/doc/cli/npm-version.html)。
 
 这些命令将被执行：
 
@@ -495,7 +500,9 @@ npm publish
 
 ## 总结
 
-这篇文章，通过实例详细描述了利用Ember框架，把一个第三方库封装为可以重用的组件的方法（当然，要在Ember框架之下使用），简化了第三方库的使用方法，为我们使用Ember扫除了一个障碍。但是，反过来，这篇文章可能不适合刚入门的小伙伴阅读和使用，因为大量基础知识，需要您去浏览官方文档去补充，然后结合本文，做深层次的思考。我本人觉得，Ember的目标和代码给了我很大的触动，确实适合做比较综合的大的项目，就像亿书这类应用，大部分功能将被集中到客户端里，所以用Ember开发将非常方便。但是这不代表您也可以选择，所以做自己喜欢、擅长和有价值的事情，才是成功的开端。
+这篇文章，通过实例详细描述了利用Ember框架，把一个第三方库封装为可以重用的组件的方法（当然，要在Ember框架之下使用），简化了第三方库的使用方法，为我们使用Ember扫除了一个障碍。但是，反过来，这篇文章可能不适合刚入门的小伙伴阅读和使用，因为大量基础知识，需要您去浏览官方文档去补充，然后结合本文，做深层次的思考。
+
+我本人觉得，Ember的目标和代码给了我很大的触动，确实适合做比较综合的大的项目，就像亿书这类应用，大部分功能将被集中到客户端里，所以用Ember开发将非常方便。但是这不代表您也可以选择，所以做自己喜欢、擅长和有价值的事情，才是成功的开端。
 
 ## 链接
 
@@ -517,5 +524,3 @@ npm publish
 - [组件的生命周期](https://guides.emberjs.com/v2.8.0/components/the-component-lifecycle/)
 - [fullPage.js](https://github.com/alvarotrigo/fullPage.js)
 - [插件的钩子方法（hooks）文档](https://ember-cli.com/api/classes/Addon.html)
-
-[fullPage]: ../../styles/images/third/fullpage.png
