@@ -59,7 +59,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="5-开发Ember-cli插件.html" />
+    <link rel="next" href="5-开发通用的HTML组件.html" />
     
     
     <link rel="prev" href="readme.html" />
@@ -532,12 +532,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3.2" data-path="5-开发Ember-cli插件.html">
+        <li class="chapter " data-level="1.6.3.2" data-path="5-开发通用的HTML组件.html">
             
-                <a href="5-开发Ember-cli插件.html">
+                <a href="5-开发通用的HTML组件.html">
             
                     
-                    开发Ember-cli插件
+                    开发通用的HTML组件
             
                 </a>
             
@@ -545,20 +545,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3.3" data-path="6-将库转化为Ember-CLI插件.html">
-            
-                <a href="6-将库转化为Ember-CLI插件.html">
-            
-                    
-                    将库转化为Ember-CLI插件
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3.4" data-path="7-Ember的几个重要钩子方法简介.html">
+        <li class="chapter " data-level="1.6.3.3" data-path="7-Ember的几个重要钩子方法简介.html">
             
                 <a href="7-Ember的几个重要钩子方法简介.html">
             
@@ -983,7 +970,7 @@
 </li>
 <li><p><strong>SVG&#x52A8;&#x753B;</strong>: &#x5F53;&#x6253;&#x5F00;&#x7F51;&#x7AD9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x770B;&#x5230;&#x7B2C;&#x4E00;&#x9875;<code>ebookchain</code>&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;;</p>
 </li>
-<li><p><strong>&#x5168;&#x9875;&#x5C55;&#x793A;</strong>: &#x6EDA;&#x52A8;&#x9875;&#x9762;&#xFF0C;&#x9875;&#x9762;&#x4F1A;&#x6309;&#x7167;&#x5C4F;&#x5E55;&#xFF0C;&#x9010;&#x4E2A;&#x663E;&#x793A;&#x51FA;&#x6765;&#xFF0C;&#x81EA;&#x52A8;&#x9002;&#x914D;&#x5C4F;&#x5E55;&#x5927;&#x5C0F;&#x3002;&#x5C01;&#x88C5;&#x7684;&#x63D2;&#x4EF6;&#x5728;&#x8FD9;&#x91CC;&#xFF1A; <a href="https://github.com/imfly/ember-cli-fullPagejs" target="_blank">https://github.com/imfly/ember-cli-fullPagejs</a></p>
+<li><p><strong>&#x5168;&#x9875;&#x5C55;&#x793A;</strong>: &#x6EDA;&#x52A8;&#x9875;&#x9762;&#xFF0C;&#x9875;&#x9762;&#x4F1A;&#x6309;&#x7167;&#x5C4F;&#x5E55;&#xFF0C;&#x9010;&#x4E2A;&#x663E;&#x793A;&#x51FA;&#x6765;&#xFF0C;&#x81EA;&#x52A8;&#x9002;&#x914D;&#x5C4F;&#x5E55;&#x5927;&#x5C0F;&#x3002;&#x5C01;&#x88C5;&#x7684;&#x63D2;&#x4EF6;&#x5728;&#x8FD9;&#x91CC;&#xFF1A; <a href="https://github.com/imfly/ember-cli-fullpagejs" target="_blank">https://github.com/imfly/ember-cli-fullpagejs</a></p>
 </li>
 <li><p><strong>&#x591A;&#x8BED;&#x8A00;&#x652F;&#x6301;</strong>: &#x63D0;&#x4F9B;&#x4E86;&#x82F1;&#x6587;&#x548C;&#x4E2D;&#x6587;&#x4E24;&#x79CD;&#x8BED;&#x8A00;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x82F1;&#x6587;&#xFF0C;&#x54B1;&#x4E5F;&#x8D70;&#x56FD;&#x9645;&#x8303;;</p>
 </li>
@@ -1029,7 +1016,7 @@
 <h4 id="6&#x638C;&#x63E1;&#x8DEF;&#x7531;&#x3001;&#x6A21;&#x578B;&#x3001;ui&#x7EC4;&#x4EF6;&#x7B49;&#x5404;&#x90E8;&#x5206;&#x7684;&#x94A9;&#x5B50;&#x65B9;&#x6CD5;&#xFF0C;&#x662F;&#x73A9;&#x8F6C;ember&#x7684;&#x5FC5;&#x7ECF;&#x4E4B;&#x8DEF;">6.&#x638C;&#x63E1;&#x8DEF;&#x7531;&#x3001;&#x6A21;&#x578B;&#x3001;UI&#x7EC4;&#x4EF6;&#x7B49;&#x5404;&#x90E8;&#x5206;&#x7684;&#x94A9;&#x5B50;&#x65B9;&#x6CD5;&#xFF0C;&#x662F;&#x73A9;&#x8F6C;Ember&#x7684;&#x5FC5;&#x7ECF;&#x4E4B;&#x8DEF;</h4>
 <p>&#x8BBE;&#x8BA1;&#x72EC;&#x7ACB;&#x9759;&#x6B62;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x80AF;&#x5B9A;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x96BE;&#x5EA6;&#xFF0C;&#x6240;&#x4EE5;&#x7B80;&#x5355;&#x7684;hello world&#x7A0B;&#x5E8F;&#x770B;&#x4E0D;&#x51FA;&#x4EC0;&#x4E48;&#x6765;&#x3002;&#x73B0;&#x5B9E;&#x662F;&#xFF0C;&#x591A;&#x4E2A;&#x6A21;&#x578B;&#x7684;&#x5173;&#x8054;&#x64CD;&#x4F5C;&#xFF0C;&#x8DEF;&#x7531;&#x72B6;&#x6001;&#x7684;&#x8F6C;&#x79FB;&#x53D8;&#x66F4;&#xFF0C;UI&#x7EC4;&#x4EF6;&#x7684;&#x4EA4;&#x4E92;&#x5D4C;&#x5957;&#xFF0C;&#x63D2;&#x4EF6;&#x4E0E;&#x4E3B;&#x7A0B;&#x5E8F;&#x7684;&#x826F;&#x597D;&#x6269;&#x5C55;&#xFF0C;&#x624D;&#x662F;&#x5F00;&#x53D1;&#x4E2D;&#x7684;&#x5E38;&#x6001;&#xFF0C;&#x5904;&#x7406;&#x5B83;&#x4EEC;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x624D;&#x771F;&#x53EB;&#x7B80;&#x5355;&#x3002;&#x5404;&#x90E8;&#x5206;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x8054;&#x64CD;&#x4F5C;&#xFF0C;&#x591A;&#x662F;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;&#x94A9;&#x5B50;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x8BF7;&#x8BA4;&#x771F;&#x9605;&#x8BFB;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x5E76;&#x5728;&#x5B9E;&#x8DF5;&#x4E2D;&#x603B;&#x7ED3;&#x63D0;&#x5347;&#x3002;</p>
 <h4 id="7&#x5B66;&#x4F1A;&#x63D2;&#x4EF6;&#x5F00;&#x53D1;&#xFF0C;&#x628A;&#x4E00;&#x5207;&#x73B0;&#x6210;&#x7684;&#x63D2;&#x4EF6;&#x88C5;&#x8FDB;ember&#x91CC;">7.&#x5B66;&#x4F1A;&#x63D2;&#x4EF6;&#x5F00;&#x53D1;&#xFF0C;&#x628A;&#x4E00;&#x5207;&#x73B0;&#x6210;&#x7684;&#x63D2;&#x4EF6;&#x88C5;&#x8FDB;Ember&#x91CC;</h4>
-<p>Ember&#x56E0;&#x4E3A;&#x5438;&#x6536;&#x4E86;ruby on rails&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x4E00;&#x5207;&#x90FD;&#x662F;&#x7EA6;&#x5B9A;&#x4F18;&#x4E8E;&#x914D;&#x7F6E;(convention over configuration)&#xFF0C;&#x6240;&#x4EE5;&#x89C4;&#x5219;&#x6700;&#x591A;&#xFF0C;&#x7EA6;&#x675F;&#x6700;&#x5F3A;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x4E0D;&#x4E60;&#x60EF;&#x8FD9;&#x4E9B;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#xFF0C;&#x662F;&#x5F88;&#x4E0D;&#x9002;&#x5E94;&#x7684;&#xFF0C;&#x4E5F;&#x5BFC;&#x81F4;&#x5B83;&#x5165;&#x95E8;&#x6BD4;&#x8F83;&#x96BE;&#xFF08;&#x56E0;&#x4E3A;&#x8981;&#x5B66;&#x4E60;&#x9002;&#x5E94;&#x7684;&#x4E60;&#x60EF;&#x6BD4;&#x8F83;&#x591A;&#xFF09;&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x5C31;&#x662F;&#xFF0C;&#x5F3A;&#x7EA6;&#x5B9A;&#x4E4B;&#x4E0B;&#xFF0C;&#x6269;&#x5C55;&#x63D2;&#x4EF6;&#x7684;&#x5F00;&#x53D1;&#x4E5F;&#x662F;&#x6709;&#x4E00;&#x5B9A;&#x96BE;&#x5EA6;&#x7684;&#xFF0C;&#x6700;&#x65E9;&#x5F88;&#x591A;&#x7B2C;&#x4E09;&#x65B9;&#x73B0;&#x6210;&#x7684;js&#x5E94;&#x7528;&#x6839;&#x672C;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#xFF0C;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x8F83;&#x5927;&#x6539;&#x8FDB;&#xFF0C;&#x4E5F;&#x8BDE;&#x751F;&#x4E86;&#x5F88;&#x591A;&#x4F18;&#x79C0;&#x63D2;&#x4EF6;&#x3002;&#x6211;&#x4EEC;&#x4E0B;&#x4E00;&#x7BC7;&#xFF0C;&#x5C31;&#x4EE5;ember-cli-fullPagejs&#x63D2;&#x4EF6;&#x4E3A;&#x4F8B;&#xFF0C;&#x5355;&#x72EC;&#x4ECB;&#x7ECD;&#x63D2;&#x4EF6;&#x5F00;&#x53D1;&#x3002;</p>
+<p>Ember&#x56E0;&#x4E3A;&#x5438;&#x6536;&#x4E86;ruby on rails&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x4E00;&#x5207;&#x90FD;&#x662F;&#x7EA6;&#x5B9A;&#x4F18;&#x4E8E;&#x914D;&#x7F6E;(convention over configuration)&#xFF0C;&#x6240;&#x4EE5;&#x89C4;&#x5219;&#x6700;&#x591A;&#xFF0C;&#x7EA6;&#x675F;&#x6700;&#x5F3A;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x4E0D;&#x4E60;&#x60EF;&#x8FD9;&#x4E9B;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#xFF0C;&#x662F;&#x5F88;&#x4E0D;&#x9002;&#x5E94;&#x7684;&#xFF0C;&#x4E5F;&#x5BFC;&#x81F4;&#x5B83;&#x5165;&#x95E8;&#x6BD4;&#x8F83;&#x96BE;&#xFF08;&#x56E0;&#x4E3A;&#x8981;&#x5B66;&#x4E60;&#x9002;&#x5E94;&#x7684;&#x4E60;&#x60EF;&#x6BD4;&#x8F83;&#x591A;&#xFF09;&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x5C31;&#x662F;&#xFF0C;&#x5F3A;&#x7EA6;&#x5B9A;&#x4E4B;&#x4E0B;&#xFF0C;&#x6269;&#x5C55;&#x63D2;&#x4EF6;&#x7684;&#x5F00;&#x53D1;&#x4E5F;&#x662F;&#x6709;&#x4E00;&#x5B9A;&#x96BE;&#x5EA6;&#x7684;&#xFF0C;&#x6700;&#x65E9;&#x5F88;&#x591A;&#x7B2C;&#x4E09;&#x65B9;&#x73B0;&#x6210;&#x7684;js&#x5E94;&#x7528;&#x6839;&#x672C;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#xFF0C;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x8F83;&#x5927;&#x6539;&#x8FDB;&#xFF0C;&#x4E5F;&#x8BDE;&#x751F;&#x4E86;&#x5F88;&#x591A;&#x4F18;&#x79C0;&#x63D2;&#x4EF6;&#x3002;&#x6211;&#x4EEC;&#x4E0B;&#x4E00;&#x7BC7;&#xFF0C;&#x5C31;&#x4EE5;ember-cli-fullpagejs&#x63D2;&#x4EF6;&#x4E3A;&#x4F8B;&#xFF0C;&#x5355;&#x72EC;&#x4ECB;&#x7ECD;&#x63D2;&#x4EF6;&#x5F00;&#x53D1;&#x3002;</p>
 <p>&#x672C;&#x5730;&#x63D2;&#x4EF6;&#x5F00;&#x53D1;&#x65F6;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x6700;&#x5BB9;&#x6613;&#x5FFD;&#x89C6;&#x7684;&#x5C0F;&#x52A8;&#x4F5C;&#x3002;&#x8FD9;&#x4E2A;&#x4E0D;&#x662F;ember&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;ember&#x7684;&#x63D2;&#x4EF6;&#x4E5F;&#x662F;npm&#x5305;&#xFF0C;&#x81EA;&#x7136;npm&#x7684;&#x95EE;&#x9898;&#x4E5F;&#x662F;&#x5B83;&#x7684;&#x95EE;&#x9898;&#x3002;&#x6211;&#x4EEC;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x8C03;&#x8BD5;npm&#x5305;&#xFF08;&#x6216;ember-cli&#x63D2;&#x4EF6;&#xFF09;&#xFF0C;&#x901A;&#x5E38;&#x4F7F;&#x7528;<code>npm link</code>&#x548C;<code>npm link npm-name</code>&#x4E24;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x5C06;&#x5F00;&#x53D1;&#x7684;npm&#x5305;&#x5F15;&#x5165;&#x5DE5;&#x7A0B;&#x3002;&#x6700;&#x5BB9;&#x6613;&#x5FFD;&#x7565;&#x7684;&#x5C31;&#x662F;&#xFF0C;&#x8FD0;&#x884C;&#x5B8C;&#x547D;&#x4EE4;&#x540E;&#xFF0C;&#x8FD8;&#x5E94;&#x5728;&#x5DE5;&#x7A0B;&#x7684;<code>package.json</code>&#x91CC;&#xFF0C;&#x6DFB;&#x52A0;&#x5BF9;&#x8BE5;&#x5305;&#x7684;&#x4F9D;&#x8D56;<code>ember-cli-pluginName: &apos;*&apos;</code>&#xFF0C;&#x4E0D;&#x7136;&#x5DE5;&#x7A0B;&#x662F;&#x4E0D;&#x77E5;&#x9053;&#x7684;&#x3002;</p>
 <p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x4E5F;&#x6709;&#x4E0D;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x7684;&#x3002;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x662F;&#x6700;&#x7A33;&#x59A5;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5EFA;&#x8BAE;&#x628A;&#x8FD9;&#x4E00;&#x4E2A;&#x5C0F;&#x6B65;&#x9AA4;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;<code>&#x7EA6;&#x675F;</code>&#xFF0C;&#x4F1A;&#x8282;&#x7701;&#x5F88;&#x591A;&#x65F6;&#x95F4;&#xFF08;&#x4FFA;&#x8FD9;&#x6B21;&#x88AB;&#x5751;&#x4E86;&#x5927;&#x534A;&#x5929;&#xFF09;&#x3002;</p>
 <h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
@@ -1039,7 +1026,7 @@
 <p><strong>&#x672C;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x5373;&#x65F6;&#x66F4;&#x65B0;&#xFF0C;&#x82E5;&#x8981;&#x638C;&#x63E1;&#x6700;&#x65B0;&#x5185;&#x5BB9;&#xFF0C;&#x8BF7;&#x5173;&#x6CE8;&#x4E0B;&#x9762;&#x7684;&#x94FE;&#x63A5;</strong></p>
 <p>&#x672C;&#x6E90;&#x6587;&#x5730;&#x5740;&#xFF1A; <a href="https://github.com/imfly/bitcoin-on-nodejs" target="_blank">https://github.com/imfly/bitcoin-on-nodejs</a></p>
 <p>&#x4EBF;&#x4E66;&#x5B98;&#x7F51;&#x6E90;&#x7801;&#xFF1A; <a href="https://github.com/Ebookchain/ebookchain.org" target="_blank">https://github.com/Ebookchain/ebookchain.org</a></p>
-<p>&#x5168;&#x5C4F;&#x9875;&#x9762;&#x63D2;&#x4EF6;&#xFF1A; <a href="https://github.com/imfly/ember-cli-fullPagejs" target="_blank">https://github.com/imfly/ember-cli-fullPagejs</a></p>
+<p>&#x5168;&#x5C4F;&#x9875;&#x9762;&#x63D2;&#x4EF6;&#xFF1A; <a href="https://github.com/imfly/ember-cli-fullpagejs" target="_blank">https://github.com/imfly/ember-cli-fullpagejs</a></p>
 <p>&#x52A8;&#x753B;&#x6548;&#x679C;&#x5BFC;&#x822A;&#xFF1A;<a href="https://github.com/imfly/ember-cli-animated-header" target="_blank">https://github.com/imfly/ember-cli-animated-header</a></p>
 <p>Ember&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;&#xFF1A;<a href="https://github.com/imfly/ember-cli-scroller" target="_blank">https://github.com/imfly/ember-cli-scroller</a></p>
 <h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
@@ -1078,7 +1065,7 @@
                 </a>
                 
                 
-                <a href="5-开发Ember-cli插件.html" class="navigation navigation-next " aria-label="Next page: 开发Ember-cli插件">
+                <a href="5-开发通用的HTML组件.html" class="navigation navigation-next " aria-label="Next page: 开发通用的HTML组件">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1089,7 +1076,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"静态网站开发全景扫描","level":"1.6.3.1","depth":3,"next":{"title":"开发Ember-cli插件","level":"1.6.3.2","depth":3,"path":"4-开发实践/2-客户端开发/5-开发Ember-cli插件.md","ref":"4-开发实践/2-客户端开发/5-开发Ember-cli插件.md","articles":[]},"previous":{"title":"客户端开发","level":"1.6.3","depth":2,"path":"4-开发实践/2-客户端开发/readme.md","ref":"4-开发实践/2-客户端开发/readme.md","articles":[{"title":"静态网站开发全景扫描","level":"1.6.3.1","depth":3,"path":"4-开发实践/2-客户端开发/4-静态网站开发全景扫描.md","ref":"4-开发实践/2-客户端开发/4-静态网站开发全景扫描.md","articles":[]},{"title":"开发Ember-cli插件","level":"1.6.3.2","depth":3,"path":"4-开发实践/2-客户端开发/5-开发Ember-cli插件.md","ref":"4-开发实践/2-客户端开发/5-开发Ember-cli插件.md","articles":[]},{"title":"将库转化为Ember-CLI插件","level":"1.6.3.3","depth":3,"path":"4-开发实践/2-客户端开发/6-将库转化为Ember-CLI插件.md","ref":"4-开发实践/2-客户端开发/6-将库转化为Ember-CLI插件.md","articles":[]},{"title":"Ember的几个重要钩子方法简介","level":"1.6.3.4","depth":3,"path":"4-开发实践/2-客户端开发/7-Ember的几个重要钩子方法简介.md","ref":"4-开发实践/2-客户端开发/7-Ember的几个重要钩子方法简介.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["baidu","-livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"4-开发实践/2-客户端开发/4-静态网站开发全景扫描.md","mtime":"2016-09-07T22:00:15.481Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-09-09T21:48:24.842Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"静态网站开发全景扫描","level":"1.6.3.1","depth":3,"next":{"title":"开发通用的HTML组件","level":"1.6.3.2","depth":3,"path":"4-开发实践/2-客户端开发/5-开发通用的HTML组件.md","ref":"4-开发实践/2-客户端开发/5-开发通用的HTML组件.md","articles":[]},"previous":{"title":"客户端开发","level":"1.6.3","depth":2,"path":"4-开发实践/2-客户端开发/readme.md","ref":"4-开发实践/2-客户端开发/readme.md","articles":[{"title":"静态网站开发全景扫描","level":"1.6.3.1","depth":3,"path":"4-开发实践/2-客户端开发/4-静态网站开发全景扫描.md","ref":"4-开发实践/2-客户端开发/4-静态网站开发全景扫描.md","articles":[]},{"title":"开发通用的HTML组件","level":"1.6.3.2","depth":3,"path":"4-开发实践/2-客户端开发/5-开发通用的HTML组件.md","ref":"4-开发实践/2-客户端开发/5-开发通用的HTML组件.md","articles":[]},{"title":"Ember的几个重要钩子方法简介","level":"1.6.3.3","depth":3,"path":"4-开发实践/2-客户端开发/7-Ember的几个重要钩子方法简介.md","ref":"4-开发实践/2-客户端开发/7-Ember的几个重要钩子方法简介.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["baidu","-livereload","livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"4-开发实践/2-客户端开发/4-静态网站开发全景扫描.md","mtime":"2016-09-13T21:37:50.452Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-09-14T11:08:29.440Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
