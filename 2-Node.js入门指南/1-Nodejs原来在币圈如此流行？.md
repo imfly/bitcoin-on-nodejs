@@ -1,5 +1,4 @@
-Node.js原来在币圈如此流行？
--------------------------
+# Node.js原来在币圈如此流行？
 
 
 ## 前言
@@ -16,9 +15,9 @@ Node.js原来在币圈如此流行？
 
 在开源社区， [Github][] 大名鼎鼎，我们先看看，在其上托管的项目语言使用情况。
 
-Github上Top20项目情况（这是早期的旧数据）
+Github上Top15项目情况（这是2016年的最新数据，见《[2016年github官方报告][]》）
 
-![Github上Top20项目情况][]
+![top-15.jpg][]
 
 从图中可以看出，在整个开源社区，`javascript`被广泛应用。如果你点开其中的链接，仔细审查，会发现他们都建立在Node.js平台之上，哪怕是纯前端的项目。
 
@@ -170,10 +169,17 @@ bitcoin language:JavaScript
 
 电子书阅读： http://bitcoin-on-nodejs.ebookchain.org/
 
+## 参考
+
+[2016年github官方报告][]
+
+
+[2016年github官方报告]: https://octoverse.github.com/
 
 [Github]: https://github.com
 [Github自带的搜索工具]: https://github.com/search
 
+[top-15.jpg]: ../styles/images/third/top-15.jpg
 [Github上Top20项目情况]: ../styles/images/third/top20-table.jpg
 [github-search-bitcoin]: ../styles/images/third/github-search-bitcoin.jpg
 [github-search-bitcoin-result]: ../styles/images/third/github-search-bitcoin-result.jpg
