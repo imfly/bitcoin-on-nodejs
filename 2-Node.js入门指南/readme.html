@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.1.1">
+        <meta name="generator" content="GitBook 3.2.0">
         <meta name="author" content="Imfly">
         
         
@@ -34,17 +34,17 @@
 
     
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
         <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
         
     
 
@@ -62,7 +62,7 @@
     <link rel="next" href="1-Nodejs原来在币圈如此流行？.html" />
     
     
-    <link rel="prev" href="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html" />
+    <link rel="prev" href="../1-了解加密货币/8-区块链架构设计简介.html" />
     
 
     </head>
@@ -73,7 +73,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
+    <input type="text" placeholder="輸入並搜尋" />
 </div>
 
             
@@ -195,6 +195,19 @@
             
                     
                     共识机制，可编程的“利益”转移规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../1-了解加密货币/8-区块链架构设计简介.html">
+            
+                <a href="../1-了解加密货币/8-区块链架构设计简介.html">
+            
+                    
+                    区块链架构设计简介
             
                 </a>
             
@@ -402,19 +415,6 @@
             
                     
                     DPOS机制
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.10" data-path="../3-源码解读/10-侧链.html">
-            
-                <a href="../3-源码解读/10-侧链.html">
-            
-                    
-                    侧链
             
                 </a>
             
@@ -661,20 +661,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6.2" data-path="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
-            
-                <a href="../4-开发实践/6-优化/2-Node.JS Error: ENOSPC.html">
-            
-                    
-                    Node.JS Error: ENOSPC
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6.3" data-path="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
+        <li class="chapter " data-level="1.6.6.2" data-path="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
             
                 <a href="../4-开发实践/6-优化/2-一张图学会使用Async组件进行流程控制.html">
             
@@ -687,22 +674,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6.4" data-path="../4-开发实践/6-优化/3-事件循环.html">
+        <li class="chapter " data-level="1.6.6.3" data-path="../4-开发实践/6-优化/3-关于时间戳及相关问题.html">
             
-                <a href="../4-开发实践/6-优化/3-事件循环.html">
-            
-                    
-                    事件循环
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6.5" data-path="../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
-            
-                <a href="../4-开发实践/6-优化/5-关于时间戳及相关问题.html">
+                <a href="../4-开发实践/6-优化/3-关于时间戳及相关问题.html">
             
                     
                     关于时间戳及相关问题
@@ -911,7 +885,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+            本書使用 GitBook 釋出
         </a>
     </li>
 </ul>
@@ -949,12 +923,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#xFF1A;-nodejs&#x5165;&#x95E8;&#x6307;&#x5357;">&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#xFF1A; Node.js&#x5165;&#x95E8;&#x6307;&#x5357;</h2>
-<p>&#x8FD9;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x9488;&#x5BF9;&#x521D;&#x5B66;&#x8005;&#x3002;&#x5982;&#x679C;&#x60A8;&#x662F;<code>Node.js</code>&#x9AD8;&#x624B;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED5;&#x9053;&#x4E86;&#x3002;</p>
-<p>&#x4EFB;&#x4F55;&#x4E00;&#x95E8;&#x6280;&#x672F;&#xFF0C;&#x90FD;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x95E8;&#x69DB;&#xFF0C;<code>Node.js</code>&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#x3002;&#x8FD9;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x4EE5;&#x89E3;&#x51B3;&#x6280;&#x672F;&#x9009;&#x578B;&#x4E3A;&#x5207;&#x5165;&#x70B9;&#xFF0C;&#x4ECE;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x5DE5;&#x5177;&#x5165;&#x624B;&#xFF0C;&#x5E26;&#x7740;&#x95EE;&#x9898;&#x9010;&#x6B65;&#x6DF1;&#x5165;&#x5C55;&#x5F00;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x60A8;&#x662F;&#x4E00;&#x4F4D;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x5176;&#x4E2D;&#x5927;&#x91CF;&#x7684;&#x77E5;&#x8BC6;&#x9700;&#x8981;&#x60A8;&#x81EA;&#x5DF1;&#x53BB;&#x8865;&#x5145;&#x3002;&#x56E0;&#x4E3A;&#x672C;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x7684;&#x76EE;&#x6807;&#x4E0D;&#x5728;<code>Node.js</code>&#x672C;&#x8EAB;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4E2A;&#x4EBA;&#x7684;&#x65F6;&#x95F4;&#x548C;&#x6C34;&#x5E73;&#x6240;&#x9650;&#xFF0C;&#x5728;&#x5FC5;&#x8981;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6211;&#x4EC5;&#x80FD;&#x4F5C;&#x7B80;&#x5355;&#x63D0;&#x793A;&#x3002;</p>
-<p>&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x8BF7;&#x53CA;&#x65F6;&#x53CD;&#x9988;&#x7ED9;&#x6211;&#xFF0C;&#x5FAE;&#x4FE1;&#xFF1A;kubying</p>
-
+                                <h2 id="&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#xFF1A;-nodejs&#x5165;&#x95E8;&#x6307;&#x5357;">&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#xFF1A; Node.js&#x5165;&#x95E8;&#x6307;&#x5357;</h2><p>&#x8FD9;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x9488;&#x5BF9;&#x521D;&#x5B66;&#x8005;&#x3002;&#x5982;&#x679C;&#x60A8;&#x662F;<code>Node.js</code>&#x9AD8;&#x624B;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED5;&#x9053;&#x4E86;&#x3002;</p><p>&#x4EFB;&#x4F55;&#x4E00;&#x95E8;&#x6280;&#x672F;&#xFF0C;&#x90FD;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x95E8;&#x69DB;&#xFF0C;<code>Node.js</code>&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#x3002;&#x8FD9;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x4EE5;&#x89E3;&#x51B3;&#x6280;&#x672F;&#x9009;&#x578B;&#x4E3A;&#x5207;&#x5165;&#x70B9;&#xFF0C;&#x4ECE;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x7EDF;&#x8BA1;&#x5206;&#x6790;&#x5DE5;&#x5177;&#x5165;&#x624B;&#xFF0C;&#x5E26;&#x7740;&#x95EE;&#x9898;&#x9010;&#x6B65;&#x6DF1;&#x5165;&#x5C55;&#x5F00;&#x3002;</p><p>&#x5982;&#x679C;&#x60A8;&#x662F;&#x4E00;&#x4F4D;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x5176;&#x4E2D;&#x5927;&#x91CF;&#x7684;&#x77E5;&#x8BC6;&#x9700;&#x8981;&#x60A8;&#x81EA;&#x5DF1;&#x53BB;&#x8865;&#x5145;&#x3002;&#x56E0;&#x4E3A;&#x672C;&#x7CFB;&#x5217;&#x6587;&#x7AE0;&#x7684;&#x76EE;&#x6807;&#x4E0D;&#x5728;<code>Node.js</code>&#x672C;&#x8EAB;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4E2A;&#x4EBA;&#x7684;&#x65F6;&#x95F4;&#x548C;&#x6C34;&#x5E73;&#x6240;&#x9650;&#xFF0C;&#x5728;&#x5FC5;&#x8981;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6211;&#x4EC5;&#x80FD;&#x4F5C;&#x7B80;&#x5355;&#x63D0;&#x793A;&#x3002;</p><p>&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x8BF7;&#x53CA;&#x65F6;&#x53CD;&#x9988;&#x7ED9;&#x6211;&#xFF0C;&#x5FAE;&#x4FE1;&#xFF1A;kubying</p>
                                 
                                 </section>
                             
@@ -981,7 +950,7 @@
 
             
                 
-                <a href="../1-了解加密货币/7-共识机制，可编程的“利益”转移规则.html" class="navigation navigation-prev " aria-label="Previous page: 共识机制，可编程的“利益”转移规则">
+                <a href="../1-了解加密货币/8-区块链架构设计简介.html" class="navigation navigation-prev " aria-label="Previous page: 区块链架构设计简介">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -997,7 +966,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Node.js入门指南","level":"1.4","depth":1,"next":{"title":"Nodejs原来在币圈如此流行？","level":"1.4.1","depth":2,"path":"2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.md","ref":"2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.md","articles":[]},"previous":{"title":"共识机制，可编程的“利益”转移规则","level":"1.3.3","depth":2,"path":"1-了解加密货币/7-共识机制，可编程的“利益”转移规则.md","ref":"1-了解加密货币/7-共识机制，可编程的“利益”转移规则.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","-livereload","livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"2-Node.js入门指南/readme.md","mtime":"2016-08-15T22:56:48.585Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-09-14T11:08:29.440Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Node.js入门指南","level":"1.4","depth":1,"next":{"title":"Nodejs原来在币圈如此流行？","level":"1.4.1","depth":2,"path":"2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.md","ref":"2-Node.js入门指南/1-Nodejs原来在币圈如此流行？.md","articles":[]},"previous":{"title":"区块链架构设计简介","level":"1.3.4","depth":2,"path":"1-了解加密货币/8-区块链架构设计简介.md","ref":"1-了解加密货币/8-区块链架构设计简介.md","articles":[]},"dir":"ltr"},"config":{"plugins":["baidu","-livereload"],"license":"MIT","ignores":["backup","_book","styles","assets","node_modules","sources","doc"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"baidu":{"token":"a489cddfaf5ed40abc3a60e2783e8019"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","repository":{"type":"git","url":"https://github.com/imfly/bitcoin-on-nodejs.git"},"keywords":["bitcoin","nodejs"],"author":"Imfly","homepage":"http://imfly.github.io/bitcoin-on-nodejs","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"bookname":"Nodejs开发加密货币","sortedBy":"-","variables":{},"language":"zh","gitbook":"*","description":"第一本详细讲解Nodejs在加密货币领域应用的免费电子书籍","bugs":{"url":"https://github.com/imfly/bitcoin-on-nodejs/issues"}},"file":{"path":"2-Node.js入门指南/readme.md","mtime":"2016-08-23T08:10:45.140Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-23T01:53:23.532Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
