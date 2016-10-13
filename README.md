@@ -109,7 +109,7 @@ $ npm run deploy
 贡献者（Contributors）
 ----------------------
 
-@imfly @mojied @cyio @zbinlin
+@imfly @Tailor @火鼎 @珍惜 @一 @Mojie @cyio @zbinlin
 
 协议
 ----
