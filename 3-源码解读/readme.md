@@ -19,6 +19,6 @@
 
 网址： https://github.com/Ebookcoin/ebookcoin.git
 
-版本： v0.1.0
+版本： v0.1.3
 
-该代码基于Crypti和宽松的MIT协议，感谢Crypti和它的原始团队。
+该代码基于Crypti和宽松的MIT协议，尽管该项目已经无人维护，但是仍然感谢Crypti和它的原始团队原始团队为社区做出的贡献。

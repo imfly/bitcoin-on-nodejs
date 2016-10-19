@@ -16,3 +16,4 @@ doc
 .publish
 .vscode
 ~*
+**/**/media/*.*
