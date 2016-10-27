@@ -33,7 +33,6 @@
 ```
 //引用模块
 var fs = require('fs');
-var iconv = require('iconv-lite');
 
 var rs = fs.createReadStream('test.md');
 var chunks = [],
@@ -45,12 +44,13 @@ rs.on("data", function (chunk){
   size += chunk.length;
 });
 
-//拼接数据：并转化为utf-8的编码格式，这样就能支持包括中文，否则会乱码
+//拼接数据，并转换为字符串（**注**：如果 test.md 不是 UTF-8 编码格式的，如果直接
+//转换为字符串，可能会出现乱码，这时需要使用其他的模块（比如：iconv-lite）来进行转换）
 rs.on("end", function() {
   var data = Buffer.concat(chunks, size);
-  var str = iconv.decode(data, 'utf8');
-  console.log(data);
-})
+  var str = data.toString("utf8");
+  console.log(str);
+});
 ```
 
 其实，在Express的编码中，默认也是在处理buffer数据流，上面的方法照样适用。
