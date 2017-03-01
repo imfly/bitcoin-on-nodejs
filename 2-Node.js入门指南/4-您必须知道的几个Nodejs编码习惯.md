@@ -102,7 +102,7 @@ console.log("I`m end.");
 
 ```
 var fs = requrie('fs');
-fs.readFoile('/resource.json', function(err, data){
+fs.readFile('/resource.json', function(err, data){
    //code
    console.log("Hello, ", data);
 });
