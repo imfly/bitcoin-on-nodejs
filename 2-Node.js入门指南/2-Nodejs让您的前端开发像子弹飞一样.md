@@ -101,7 +101,7 @@ $ nvm alias default 5.1.0
 
 **安装使用CNpm**
 
-使用淘宝npm镜像，可以提高我们的组件下载数度
+使用淘宝npm镜像，可以提高我们的组件下载速度
 
 <http://npm.taobao.org/>
 
