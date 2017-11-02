@@ -11,11 +11,6 @@ Node.js开发加密货币
 
 联系方式，请将您的简历发送到： hr@ebookchain.org
 
-**注**: 本书永久`免费`访问地址: http://bitcoin-on-nodejs.ebookchain.org
-
-亿书官网： http://ebookchain.org
-
-官方开发交流QQ群：185046161
 
 关于（About）
 -------------
@@ -27,6 +22,12 @@ Node.js开发加密货币
 亿书的目标是打造人人可用的去中心化软件，以加密货币为驱动，促进人类知识分享。与其他竞争币不同，我们以提供落地可用的软件为核心，力争成为人类第一个“零门槛”的加密货币产品。更多详情，请看[关于亿书](./5-附录/6-关于亿书.md)
 
 本书写作，也是亿书的最佳实践，从写到发布，简单、快捷。文章暂时在[github](https://github.com/imfly/bitcoin-on-nodejs)上免费发布，永久免费访问地址: http://bitcoin-on-nodejs.ebookchain.org
+
+**注**: 本书永久`免费`访问地址: http://bitcoin-on-nodejs.ebookchain.org
+
+亿书官网： http://ebookchain.org
+
+官方开发交流QQ群：185046161
 
 日志（Log）
 -----------
