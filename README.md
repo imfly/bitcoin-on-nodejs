@@ -1,7 +1,7 @@
 《Node.js区块链开发》
 ===================
 
-【注】基于ES6的最新版，正在筹划中。
+#【注】基于ES6的最新版，即将推出，暂时定名为《Node.js区块链开发2》。
 
 ## 特别说明
 
@@ -11,7 +11,7 @@
 
 纸质书籍：<https://item.jd.com/12206128.html>
 
-在线培训：<https://www.shiguangkey.com/course/1929>
+在线培训：<https://www.shiguangkey.com/course/2413>
 
 联系方式，请将您的简历发送到： hr@ebookchain.org
 
