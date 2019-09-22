@@ -9,7 +9,7 @@
 
 反馈地址：<https://github.com/imfly/blockchain-on-nodejs/issues/1>
 
-[DDN Blockchain v3.0](https://github.com/ddnlink/ddn)  【请动动您的小手，点击**star**进行收藏】
+DDN Blockchain v3.0: <https://github.com/ddnlink/ddn)> 【请动动您的小手，点击**star**进行收藏】
 
 旧版纸质书籍：<https://item.jd.com/12206128.html>
 
