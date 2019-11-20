@@ -3,7 +3,9 @@
 
 ## 说明
 
-本文档是基于亿书旧版代码，书中区块链程序已经迭代升级为 [DDN Blockchain v3.0](https://github.com/ddnlink/ddn) 。
+本文档是基于亿书旧版代码，书中区块链程序已经迭代升级为 [DDN Blockchain v3.0](https://github.com/ddnlink/ddn) 。本书纸质书籍：<https://item.jd.com/12206128.html>
+
+**本书的升级版，《Node.js区块链开发2》（会同步推出视频讲解），正在陆续更新，请star关注。** 链接点 [这里](https://github.com/imfly/blockchain-on-nodejs)
 
 ## 福利
 
@@ -17,11 +19,10 @@ DDN Blockchain v3.0: <https://github.com/ddnlink/ddn>
 
 ## 反馈
 
-本书将在后续随之更新，暂定名为《Node.js区块链开发2》。具体要不要更新？您是否需要？请点击下面反馈链接，给我反馈，如果没有需求，我就把精力放在产品研发上了。
+有什么意见或建议，请通过下面的反馈链接，给我反馈
 
 反馈地址：<https://github.com/imfly/blockchain-on-nodejs/issues/1>
 
-旧版纸质书籍：<https://item.jd.com/12206128.html>
 
 ## 附件
 
