@@ -1,6 +1,8 @@
 《Node.js区块链开发》
 ===================
 
+[![Join the chat at https://gitter.im/bitcoin-on-nodejs/community](https://badges.gitter.im/bitcoin-on-nodejs/community.svg)](https://gitter.im/bitcoin-on-nodejs/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## 说明
 
 本文档是基于亿书旧版代码，书中区块链程序已经迭代升级为 [DDN Blockchain v3.0](https://github.com/ddnlink/ddn) 。本书纸质书籍：<https://item.jd.com/12206128.html>
