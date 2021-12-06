@@ -510,13 +510,7 @@ npm publish
 
 本源文地址： https://github.com/imfly/bitcoin-on-nodejs
 
-亿书白皮书： http://ebookchain.org/ebookchain.pdf
-
-亿书官网： http://ebookchain.org
-
-亿书官方QQ群：185046161（亿书完全开源开放，欢迎各界小伙伴参与）
-
-区块链俱乐部公众号：chainclub
+亿书技术已经全部用在新产品，请关注：https://datm.link
 
 ## 参考
 
