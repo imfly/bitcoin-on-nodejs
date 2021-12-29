@@ -32,6 +32,7 @@
   },
   "homepage": "http://imfly.github.io/bitcoin-on-nodejs#readme",
   "dependencies": {
+    "graceful-fs": "^4.2.8",
     "sha1": "^1.1.1"
   },
   "devDependencies": {
