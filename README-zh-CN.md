@@ -6,9 +6,10 @@
 
 <img src="./styles/images/third/club.png" alt="中国区块链俱乐部" width="50%" height="50%">
 
+如果二维码过期，请加微信：kubying ，并注明 `来自github，希望加入俱乐部`。
+
 ## 关于（About）
 
-\
 亿书，让有知识的人富起来。我们的产品，将全部基于P2P网络进行开发设计，面向未来进行技术研发。
 
 本书可以作为区块链开发的入门书籍（正式出版《Node.js区块链开发》），也可以作为亿书的官方开发文档。
@@ -115,9 +116,6 @@ $ npm run deploy
 
 @imfly @Tailor @火鼎 @珍惜 @一 @Mojie @cyio @zbinlin
 
-\
-\
-\
 ## 协议
 
 原创作品许可 [署名-非商业性使用-禁止演绎 3.0 未本地化版本 (CC BY-NC-ND 3.0)](http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh)
