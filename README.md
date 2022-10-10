@@ -9,17 +9,10 @@
 
 ## 说明
 
-本文档是基于亿书旧版代码，书中区块链程序已经迭代升级为 [DDN 企业级区块链 v3.0](https://github.com/ddnlink/ddn) ，亿书的全部技术实践都体现在新产品 [DATM](https://datm.link) 里。本书纸质书籍：<https://item.jd.com/12206128.html>
+本文档是基于旧版代码，书中区块链程序已经迭代升级为 [DDN 企业级区块链 v3.0](https://github.com/ddnlink/ddn) 。基于 DDN企业级区块链 的应用开发教学平台即将上线，欢迎加群学习交流！
 
-## 福利
+关于 DDN Blockchain v3.0: <https://github.com/ddnlink/ddn>，请动动您的小手，点击**star**收藏起来~~
 
-凡是关注或参与DDN开发的小伙伴，`都有机会获得DDN的不定期反馈奖励，我们会从star用户里查找并确认`，所以请动动您的小手，点击**star**收藏下面的DDN项目，有惊喜哦~~
-
-DDN Blockchain v3.0: <https://github.com/ddnlink/ddn>
-
-我们的理念基于自治组织（参看DDN白皮书），代码、运营、社区全部由社区用户自发完成！
-
-分布式社群管理工具 DATM： <https://datm.link>
 
 > “做自己喜欢、擅长、有价值的事情是成功的开端”，欢迎加入这个温馨的大家庭，一起搞事情！
 
