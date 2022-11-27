@@ -3,9 +3,12 @@
 
 **【注】感谢小伙伴们的关注，亿书已经全新升级，本书内容也即将更新完成，欢迎大家收藏，分享给需要的人！**
 
-交流请加入中国区块链俱乐部：
+交流请加入中国区块链俱乐部(群如果过期，可以加小助手，拉您进群，记得备注口令：进俱乐部）：
 
-<img src="./styles/images/third/club.png" alt="中国区块链俱乐部" width="50%" height="50%">
+<div>
+<img src="./styles/images/third/club.png" alt="中国区块链俱乐部" height="300px">
+<img src="./styles/images/third/helper.png" alt="小助手" height="300px">
+</div>
 
 ## 说明
 

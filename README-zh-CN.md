@@ -6,8 +6,6 @@
 
 <img src="./styles/images/third/club.png" alt="中国区块链俱乐部" width="50%" height="50%">
 
-
-
 ## 关于（About）
 
 亿书，让有知识的人富起来。我们的产品，将全部基于P2P网络进行开发设计，面向未来进行技术研发。
